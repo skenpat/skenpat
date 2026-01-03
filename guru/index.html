@@ -1,43 +1,66 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Kehadiran Guru — RPL</title>
+    <title>Dashboard Kehadiran Guru — SMKN 4 Banjarmasin</title>
+
+    <!-- Fonts: Fredoka (Headings) & Quicksand (Body) for Cartoon Look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
+        /* --- VARIABLES & THEME --- */
         :root {
-            --primary: #3b82f6;
-            --primary-dark: #2563eb;
-            --primary-light: #60a5fa;
-            --secondary: #f1f5f9;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --text-primary: #0f172a;
-            --text-secondary: #64748b;
-            --border: #e2e8f0;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --radius: 12px;
-            --radius-sm: 8px;
+            --primary: #4ADE80;
+            /* Bright Green */
+            --primary-dark: #22C55E;
+            --accent: #FACC15;
+            /* Pop Yellow */
+            --accent-blue: #38BDF8;
+            /* Sky Blue */
+            --accent-red: #F87171;
+            /* Soft Red */
+            --bg-color: #F0FDF4;
+            /* Minty Background */
+            --text-main: #14532D;
+            /* Dark Green Text */
+            --border-color: #14532D;
+            /* Thick Border Color */
+            --white: #ffffff;
+
+            --shadow-hard: 4px 4px 0px var(--border-color);
+            --shadow-hover: 6px 6px 0px var(--border-color);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 10px;
+
+            --font-head: 'Fredoka', sans-serif;
+            --font-body: 'Quicksand', sans-serif;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            outline: none;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--light);
-            color: var(--text-primary);
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            /* Dot pattern background */
+            background-image: radial-gradient(#bbf7d0 15%, transparent 16%), radial-gradient(#bbf7d0 15%, transparent 16%);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
             line-height: 1.6;
         }
 
@@ -47,402 +70,247 @@
             padding: 24px;
         }
 
-        /* Header */
-        .header {
-            background-color: white;
-            border-radius: var(--radius);
+        /* --- UI COMPONENTS --- */
+        .btn {
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: 3px solid var(--border-color);
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.1s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            background: var(--white);
+            color: var(--text-main);
+            box-shadow: var(--shadow-hard);
+        }
+
+        .btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--text-main);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: var(--text-main);
+        }
+
+        .btn-red {
+            background: var(--accent-red);
+            color: white;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
             padding: 24px;
-            box-shadow: var(--shadow);
+            border: 3px solid var(--border-color);
+            box-shadow: var(--shadow-hard);
             margin-bottom: 24px;
+            transition: transform 0.2s;
+        }
+
+        /* --- HEADER --- */
+        .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .header-title {
-            flex: 1;
+            gap: 20px;
+            margin-bottom: 30px;
         }
 
         .header-title h1 {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 4px;
+            font-family: var(--font-head);
+            font-size: 2.5rem;
+            color: var(--text-main);
+            text-shadow: 2px 2px 0px #fff;
+            line-height: 1.1;
         }
 
-        .header-subtitle {
-            color: var(--text-secondary);
-            font-size: 14px;
+        .header-title p {
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            font-weight: 600;
         }
 
         .header-actions {
             display: flex;
             gap: 12px;
+            flex-wrap: wrap;
         }
 
-        .btn {
-            padding: 10px 16px;
-            border-radius: var(--radius-sm);
-            border: none;
-            font-weight: 500;
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.2s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-primary {
-            background-color: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-dark);
-        }
-
-        .btn-secondary {
-            background-color: white;
-            color: var(--text-primary);
-            border: 1px solid var(--border);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--secondary);
-        }
-
-        /* Loading */
-        .loading {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 400px;
-            background-color: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-        }
-
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 3px solid rgba(59, 130, 246, 0.2);
-            border-radius: 50%;
-            border-top-color: var(--primary);
-            animation: spin 1s ease-in-out infinite;
-            margin-bottom: 16px;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Navigation Tabs */
-        .nav-tabs {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 24px;
-            background-color: white;
-            padding: 8px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-        }
-
-        .nav-tab {
-            padding: 12px 20px;
-            border-radius: var(--radius-sm);
-            border: none;
-            background: none;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            color: var(--text-secondary);
-            font-size: 14px;
-        }
-
-        .nav-tab.active {
-            background-color: var(--primary);
-            color: white;
-        }
-
-        .nav-tab:hover:not(.active) {
-            background-color: var(--secondary);
-        }
-
-        /* Tab Content */
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        /* Stats Cards */
+        /* --- STATS GRID --- */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
-            margin-bottom: 32px;
+            margin-bottom: 30px;
         }
 
         .stat-card {
-            background-color: white;
-            border-radius: var(--radius);
-            padding: 24px;
-            box-shadow: var(--shadow);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            position: relative;
-            overflow: hidden;
+            background: var(--white);
+            border: 3px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: var(--shadow-hard);
+            transition: transform 0.2s;
         }
 
         .stat-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-        }
-
-        .stat-card.primary::before {
-            background-color: var(--primary);
-        }
-
-        .stat-card.success::before {
-            background-color: var(--success);
-        }
-
-        .stat-card.warning::before {
-            background-color: var(--warning);
-        }
-
-        .stat-card.danger::before {
-            background-color: var(--danger);
+            transform: translateY(-5px);
         }
 
         .stat-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: var(--radius-sm);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 16px;
-            font-size: 20px;
+            font-size: 1.5rem;
+            border: 3px solid var(--border-color);
+            background: #ecfccb;
+            /* Light green */
+            color: var(--text-main);
         }
 
-        .stat-card.primary .stat-icon {
-            background-color: rgba(59, 130, 246, 0.1);
-            color: var(--primary);
+        .stat-info h3 {
+            font-family: var(--font-head);
+            font-size: 2rem;
+            margin-bottom: 2px;
         }
 
-        .stat-card.success .stat-icon {
-            background-color: rgba(16, 185, 129, 0.1);
-            color: var(--success);
+        .stat-info p {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .stat-card.warning .stat-icon {
-            background-color: rgba(245, 158, 11, 0.1);
-            color: var(--warning);
+        /* --- NAV TABS --- */
+        .nav-tabs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 24px;
+            padding: 8px;
+            background: var(--white);
+            border-radius: 50px;
+            border: 3px solid var(--border-color);
+            box-shadow: var(--shadow-hard);
+            width: fit-content;
         }
 
-        .stat-card.danger .stat-icon {
-            background-color: rgba(239, 68, 68, 0.1);
-            color: var(--danger);
-        }
-
-        .stat-value {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .stat-label {
+        .nav-tab {
+            padding: 10px 24px;
+            border-radius: 30px;
+            border: none;
+            background: none;
+            font-family: var(--font-head);
+            font-weight: 600;
             color: var(--text-secondary);
-            font-size: 14px;
-            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
         }
 
-        /* Charts */
+        .nav-tab.active {
+            background: var(--accent);
+            color: var(--text-main);
+            box-shadow: 2px 2px 0px var(--border-color);
+        }
+
+        /* --- CHARTS --- */
         .charts-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 24px;
-            margin-bottom: 32px;
-        }
-
-        .chart-card {
-            background-color: white;
-            border-radius: var(--radius);
-            padding: 24px;
-            box-shadow: var(--shadow);
+            margin-bottom: 30px;
         }
 
         .chart-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .chart-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--dark);
-        }
-
-        .chart-actions {
-            display: flex;
-            gap: 8px;
-        }
-
-        .chart-action {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background-color: var(--secondary);
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: var(--text-secondary);
-            transition: all 0.2s ease;
-        }
-
-        .chart-action:hover {
-            background-color: var(--primary);
-            color: white;
+            margin-bottom: 15px;
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 1.2rem;
         }
 
         .chart-container {
             position: relative;
             height: 300px;
+            width: 100%;
         }
 
-        /* Insights */
-        .insights-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 32px;
-        }
-
-        .insight-card {
-            background-color: white;
-            border-radius: var(--radius);
-            padding: 20px;
-            box-shadow: var(--shadow);
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-        }
-
-        .insight-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-size: 18px;
-        }
-
-        .insight-card.primary .insight-icon {
-            background-color: rgba(59, 130, 246, 0.1);
-            color: var(--primary);
-        }
-
-        .insight-card.success .insight-icon {
-            background-color: rgba(16, 185, 129, 0.1);
-            color: var(--success);
-        }
-
-        .insight-card.warning .insight-icon {
-            background-color: rgba(245, 158, 11, 0.1);
-            color: var(--warning);
-        }
-
-        .insight-content {
-            flex: 1;
-        }
-
-        .insight-text {
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        .insight-time {
-            font-size: 12px;
-            color: var(--text-secondary);
-            margin-top: 4px;
-        }
-
-        /* Table */
+        /* --- TABLE --- */
         .table-container {
-            background-color: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            border: 3px solid var(--border-color);
+            box-shadow: var(--shadow-hard);
             overflow: hidden;
         }
 
         .table-header {
-            padding: 20px 24px;
-            border-bottom: 1px solid var(--border);
+            padding: 20px;
+            border-bottom: 3px solid var(--border-color);
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 16px;
+            gap: 15px;
+            background: #f0fdf4;
         }
 
         .table-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--dark);
-        }
-
-        .table-actions {
-            display: flex;
-            gap: 12px;
-            align-items: center;
+            font-family: var(--font-head);
+            font-size: 1.3rem;
+            font-weight: 700;
         }
 
         .search-box {
             position: relative;
-            width: 280px;
         }
 
         .search-input {
-            width: 100%;
-            padding: 10px 16px 10px 40px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            font-size: 14px;
-            transition: border-color 0.2s ease;
+            padding: 10px 15px 10px 40px;
+            border: 2px solid var(--border-color);
+            border-radius: 30px;
+            font-family: var(--font-body);
+            font-weight: 600;
+            width: 250px;
+            transition: 0.3s;
         }
 
         .search-input:focus {
-            outline: none;
-            border-color: var(--primary);
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.2);
         }
 
         .search-icon {
             position: absolute;
-            left: 14px;
+            left: 15px;
             top: 50%;
             transform: translateY(-50%);
-            color: var(--text-secondary);
+            color: var(--text-main);
         }
 
         .table-wrapper {
@@ -454,267 +322,315 @@
             border-collapse: collapse;
         }
 
-        th, td {
-            padding: 16px 24px;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-        }
-
         th {
-            background-color: var(--secondary);
-            font-weight: 600;
-            color: var(--text-primary);
-            font-size: 14px;
-            position: sticky;
-            top: 0;
-            z-index: 10;
+            background: var(--primary);
+            color: var(--text-main);
+            font-family: var(--font-head);
+            font-weight: 700;
+            padding: 15px;
+            text-align: left;
+            border-bottom: 3px solid var(--border-color);
         }
 
         td {
-            font-size: 14px;
+            padding: 15px;
+            border-bottom: 1px dashed var(--border-color);
+            color: var(--text-main);
         }
 
         tr:hover td {
-            background-color: rgba(241, 245, 249, 0.5);
+            background-color: #f0fdf4;
         }
 
         .badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 4px 10px;
-            border-radius: 9999px;
-            font-size: 12px;
-            font-weight: 500;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border: 2px solid var(--border-color);
+            display: inline-block;
         }
 
-        .badge-success {
-            background-color: rgba(16, 185, 129, 0.1);
-            color: var(--success);
+        .badge-nihil {
+            background: var(--primary);
         }
 
-        .badge-warning {
-            background-color: rgba(245, 158, 11, 0.1);
-            color: var(--warning);
-        }
-
-        /* Pagination */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            gap: 8px;
-        }
-
-        .pagination-btn {
-            width: 36px;
-            height: 36px;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--border);
-            background-color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .pagination-btn:hover:not(:disabled) {
-            background-color: var(--secondary);
-        }
-
-        .pagination-btn.active {
-            background-color: var(--primary);
+        .badge-absent {
+            background: var(--accent-red);
             color: white;
-            border-color: var(--primary);
         }
 
-        .pagination-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
+        /* --- FILTER CONTROLS --- */
+        .filter-controls {
+            background: #fff;
+            padding: 15px;
+            border-radius: var(--radius-md);
+            border: 3px solid var(--border-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
+        .filter-label {
+            font-family: var(--font-head);
+            font-weight: 700;
+        }
+
+        .month-select {
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 3px solid var(--border-color);
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            background: #fff;
+        }
+
+        /* --- LOADING --- */
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 60vh;
+            text-align: center;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 6px solid #ecfccb;
+            border-top: 6px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* --- PRINT STYLES --- */
+        @media print {
+            body {
+                background: white;
+                background-image: none;
+                color: black;
+            }
+
             .container {
-                padding: 16px;
-            }
-            
-            .header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .header-title h1 {
-                font-size: 24px;
-            }
-            
-            .stats-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 16px;
-            }
-            
-            .charts-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .chart-container {
-                height: 250px;
-            }
-            
-            .search-box {
                 width: 100%;
+                max-width: 100%;
+                padding: 0;
             }
-            
-            .table-header {
-                flex-direction: column;
-                align-items: flex-start;
+
+            .header,
+            .nav-tabs,
+            .header-actions,
+            .filter-controls,
+            .pagination {
+                display: none !important;
             }
-            
-            th, td {
-                padding: 12px 16px;
-                font-size: 13px;
+
+            .card {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+                margin: 0;
             }
+
+            .table-container {
+                box-shadow: none;
+                border: 1px solid #000;
+                border-radius: 0;
+            }
+
+            table {
+                font-size: 10pt;
+                color: black;
+            }
+
+            th {
+                background: #ddd !important;
+                color: black !important;
+                border: 1px solid #000;
+                -webkit-print-color-adjust: exact;
+            }
+
+            td {
+                border: 1px solid #000;
+                color: black;
+            }
+
+            .badge {
+                border: 1px solid #000;
+                color: black;
+                background: none !important;
+            }
+
+            /* Print Header Info */
+            #print-header {
+                display: block !important;
+                text-align: center;
+                margin-bottom: 20px;
+                border-bottom: 2px solid #000;
+                padding-bottom: 10px;
+            }
+
+            #print-header h2 {
+                font-family: 'Times New Roman', serif;
+                font-size: 18pt;
+                text-transform: uppercase;
+            }
+        }
+
+        #print-header {
+            display: none;
         }
     </style>
 </head>
+
 <body>
+
+    <!-- Print Header (Only visible on print) -->
+    <div id="print-header">
+        <h2>Laporan Absensi Guru - SMK Negeri 4 Banjarmasin</h2>
+        <p id="print-month-label">Periode: Semua Bulan</p>
+    </div>
+
     <div class="container">
+        <!-- Header -->
         <header class="header">
             <div class="header-title">
-                <h1>Dashboard Kehadiran Guru</h1>
-                <p class="header-subtitle">SMK Negeri 4 Banjarmasin </p>
+                <h1><i class="fas fa-leaf" style="color:var(--primary); margin-right:10px;"></i>Dashboard Kehadiran</h1>
+                <p>Guru SMKN 4 Banjarmasin - Dibuat Atas Perintah Ibu Hadijah, S.Pd. - Honor Daerah TK.I Provinsi</p>
             </div>
             <div class="header-actions">
-                <button class="btn btn-secondary" id="refreshBtn">
+                <button class="btn" id="refreshBtn">
                     <i class="fas fa-sync-alt"></i> Refresh
                 </button>
+                <button class="btn btn-accent" onclick="window.print()">
+                    <i class="fas fa-print"></i> Cetak Laporan
+                </button>
                 <button class="btn btn-primary" id="exportBtn">
-                    <i class="fas fa-download"></i> Export
+                    <i class="fas fa-file-excel"></i> Export Excel
                 </button>
             </div>
         </header>
 
+        <!-- Loading State -->
         <div class="loading" id="loadingIndicator">
             <div class="spinner"></div>
-            <p>Memuat data...</p>
+            <h2 style="font-family: var(--font-head);">Memuat Data...</h2>
+            <p>Mengambil data dari spreadsheet online</p>
         </div>
 
+        <!-- Main Content -->
         <div class="dashboard-content" id="dashboardContent" style="display: none;">
+
+            <!-- Filter Section -->
+            <div class="filter-controls no-print">
+                <span class="filter-label"><i class="fas fa-calendar-alt"></i> Pilih Bulan:</span>
+                <select id="monthFilter" class="month-select">
+                    <option value="all">Semua Bulan</option>
+                    <!-- Options populated via JS -->
+                </select>
+                <button class="btn btn-sm" style="padding: 8px 16px; font-size: 0.9rem;" id="resetFilter">
+                    Reset
+                </button>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card" style="border-left: 10px solid var(--primary);">
+                    <div class="stat-icon" style="background: #dcfce7; color: var(--primary);">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalReports">0</h3>
+                        <p>Total Laporan</p>
+                    </div>
+                </div>
+                <div class="stat-card" style="border-left: 10px solid var(--accent-blue);">
+                    <div class="stat-icon" style="background: #e0f2fe; color: var(--accent-blue);">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="nihilReports">0</h3>
+                        <p>Laporan NIHIL</p>
+                    </div>
+                </div>
+                <div class="stat-card" style="border-left: 10px solid var(--accent-red);">
+                    <div class="stat-icon" style="background: #fee2e2; color: var(--accent-red);">
+                        <i class="fas fa-user-times"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="absentTeachers">0</h3>
+                        <p>Guru Tidak Hadir</p>
+                    </div>
+                </div>
+                <div class="stat-card" style="border-left: 10px solid var(--accent);">
+                    <div class="stat-icon" style="background: #fef9c3; color: var(--accent);">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="uniqueTeachers">0</h3>
+                        <p>Guru Unik</p>
+                    </div>
+                </div>
+            </div>
+
             <!-- Navigation Tabs -->
-            <div class="nav-tabs">
+            <div class="nav-tabs no-print">
                 <button class="nav-tab active" data-tab="overview">
                     <i class="fas fa-chart-pie"></i> Overview
                 </button>
                 <button class="nav-tab" data-tab="data">
-                    <i class="fas fa-table"></i> Data Tabel
+                    <i class="fas fa-table"></i> Data Lengkap
                 </button>
             </div>
 
             <!-- Overview Tab -->
             <div class="tab-content active" id="overview-tab">
-                <!-- Stats Cards -->
-                <div class="stats-grid">
-                    <div class="stat-card primary">
-                        <div class="stat-icon">
-                            <i class="fas fa-file-alt"></i>
-                        </div>
-                        <div class="stat-value" id="totalReports">0</div>
-                        <div class="stat-label">Total Laporan</div>
-                    </div>
-                    <div class="stat-card success">
-                        <div class="stat-icon">
-                            <i class="fas fa-check-circle"></i>
-                        </div>
-                        <div class="stat-value" id="nihilReports">0</div>
-                        <div class="stat-label">Laporan NIHIL</div>
-                    </div>
-                    <div class="stat-card warning">
-                        <div class="stat-icon">
-                            <i class="fas fa-user-times"></i>
-                        </div>
-                        <div class="stat-value" id="absentTeachers">0</div>
-                        <div class="stat-label">Guru Tidak Hadir</div>
-                    </div>
-                    <div class="stat-card danger">
-                        <div class="stat-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div class="stat-value" id="uniqueTeachers">0</div>
-                        <div class="stat-label">Guru Unik</div>
-                    </div>
-                </div>
-
-                <!-- Charts -->
                 <div class="charts-grid">
-                    <div class="chart-card">
+                    <div class="card">
                         <div class="chart-header">
-                            <h3 class="chart-title">Perbandingan Laporan</h3>
-                            <div class="chart-actions">
-                                <button class="chart-action" title="Perbesar">
-                                    <i class="fas fa-expand"></i>
-                                </button>
-                            </div>
+                            <span>Perbandingan Status</span>
+                            <i class="fas fa-chart-pie" style="color: var(--accent);"></i>
                         </div>
                         <div class="chart-container">
                             <canvas id="comparisonChart"></canvas>
                         </div>
                     </div>
-                    <div class="chart-card">
+                    <div class="card">
                         <div class="chart-header">
-                            <h3 class="chart-title">Frekuensi per Kelas</h3>
-                            <div class="chart-actions">
-                                <button class="chart-action" title="Perbesar">
-                                    <i class="fas fa-expand"></i>
-                                </button>
-                            </div>
+                            <span>Top 10 Kelas Laporan</span>
+                            <i class="fas fa-chart-bar" style="color: var(--accent-blue);"></i>
                         </div>
                         <div class="chart-container">
                             <canvas id="classFrequencyChart"></canvas>
                         </div>
                     </div>
                 </div>
-
-                <!-- Insights -->
-                <div class="insights-grid">
-                    <div class="insight-card primary">
-                        <div class="insight-icon">
-                            <i class="fas fa-calendar-alt"></i>
-                        </div>
-                        <div class="insight-content">
-                            <p class="insight-text" id="lastUpdateInsight">📅 Data terakhir diupdate pada: Memuat...</p>
-                            <p class="insight-time" id="lastUpdateTime"></p>
-                        </div>
-                    </div>
-                    <div class="insight-card success">
-                        <div class="insight-icon">
-                            <i class="fas fa-percentage"></i>
-                        </div>
-                        <div class="insight-content">
-                            <p class="insight-text" id="nihilPercentageInsight">✅ 0% laporan menyatakan nihil.</p>
-                        </div>
-                    </div>
-                    <div class="insight-card warning">
-                        <div class="insight-icon">
-                            <i class="fas fa-exclamation-triangle"></i>
-                        </div>
-                        <div class="insight-content">
-                            <p class="insight-text" id="mostAbsentInsight">⚠️ Guru yang paling sering tercatat tidak hadir: Memuat...</p>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- Data Table Tab -->
-            <div class="tab-content" id="data-tab">
+            <div class="tab-content" id="data-tab" style="display: none;">
                 <div class="table-container">
-                    <div class="table-header">
-                        <h3 class="table-title">Data Laporan Kehadiran</h3>
-                        <div class="table-actions">
-                            <div class="search-box">
-                                <i class="fas fa-search search-icon"></i>
-                                <input type="text" class="search-input" id="searchInput" placeholder="Cari data...">
-                            </div>
+                    <div class="table-header no-print">
+                        <div class="table-title">Data Detail Kehadiran</div>
+                        <div class="search-box">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" class="search-input" id="searchInput" placeholder="Cari guru/kelas...">
                         </div>
                     </div>
                     <div class="table-wrapper">
@@ -729,710 +645,425 @@
                                 </tr>
                             </thead>
                             <tbody id="tableBody">
-                                <!-- Data akan diisi oleh JavaScript -->
+                                <!-- Data -->
                             </tbody>
                         </table>
                     </div>
-                    <div class="pagination" id="pagination">
-                        <!-- Pagination akan diisi oleh JavaScript -->
+                    <div class="pagination" id="pagination"
+                        style="padding: 20px; display: flex; justify-content: center; gap: 10px;">
+                        <!-- Pagination -->
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 
-    <!-- External Libraries -->
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // URL CSV Google Spreadsheet
+        document.addEventListener('DOMContentLoaded', function () {
+            // Konfigurasi
             const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQmOaIjXmtY3dnOWCRs4YvV4a8fv9ri-PVLHzGWpQkclFRC1OiPotJZjYmx41ORMGK-kFJsuaxt94oB/pub?output=csv';
-            
-            // Elemen DOM
+
+            // DOM Elements
             const loadingIndicator = document.getElementById('loadingIndicator');
             const dashboardContent = document.getElementById('dashboardContent');
-            const totalReportsElement = document.getElementById('totalReports');
-            const nihilReportsElement = document.getElementById('nihilReports');
-            const absentTeachersElement = document.getElementById('absentTeachers');
-            const uniqueTeachersElement = document.getElementById('uniqueTeachers');
+            const monthFilter = document.getElementById('monthFilter');
+            const resetFilter = document.getElementById('resetFilter');
             const tableBody = document.getElementById('tableBody');
             const searchInput = document.getElementById('searchInput');
-            
-            // Elemen insight
-            const lastUpdateInsight = document.getElementById('lastUpdateInsight');
-            const lastUpdateTime = document.getElementById('lastUpdateTime');
-            const nihilPercentageInsight = document.getElementById('nihilPercentageInsight');
-            const mostAbsentInsight = document.getElementById('mostAbsentInsight');
-            
-            // Elemen tab
-            const navTabs = document.querySelectorAll('.nav-tab');
-            const tabContents = document.querySelectorAll('.tab-content');
-            
-            // Elemen action
-            const refreshBtn = document.getElementById('refreshBtn');
-            const exportBtn = document.getElementById('exportBtn');
-            
-            // Elemen pagination
-            const paginationElement = document.getElementById('pagination');
-            
-            // Variabel untuk menyimpan data
-            let csvData = [];
-            let processedData = [];
-            let filteredData = [];
+            const printMonthLabel = document.getElementById('print-month-label');
+
+            // Stats Elements
+            const els = {
+                total: document.getElementById('totalReports'),
+                nihil: document.getElementById('nihilReports'),
+                absent: document.getElementById('absentTeachers'),
+                unique: document.getElementById('uniqueTeachers')
+            };
+
+            // State
+            let rawData = []; // Data asli dari CSV
+            let processedData = []; // Data yang sudah dibersihkan
+            let filteredData = []; // Data setelah filter bulan dan pencarian
+            let currentMonthFilter = 'all'; // YYYY-MM atau 'all'
             let currentPage = 1;
             const itemsPerPage = 15;
             let teacherStats = {};
             let classStats = {};
-            
-            // Setup tab navigation
-            navTabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    const targetTab = this.getAttribute('data-tab');
-                    
-                    // Update active tab
-                    navTabs.forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Update active content
-                    tabContents.forEach(content => {
-                        content.classList.remove('active');
-                        if (content.id === `${targetTab}-tab`) {
-                            content.classList.add('active');
-                        }
-                    });
+
+            // --- INITIALIZATION ---
+
+            // Tab Navigation
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+                    document.getElementById(`${tab.dataset.tab}-tab`).style.display = 'block';
                 });
             });
-            
-            // Fetch data dari CSV
+
+            // --- DATA FETCHING ---
+
             function fetchData() {
                 loadingIndicator.style.display = 'flex';
                 dashboardContent.style.display = 'none';
-                
+
                 fetch(csvUrl)
-                    .then(response => response.text())
+                    .then(r => r.text())
                     .then(csvText => {
-                        // Parse CSV menggunakan PapaParse
                         Papa.parse(csvText, {
                             header: true,
                             skipEmptyLines: true,
-                            complete: function(results) {
-                                csvData = results.data;
-                                
-                                // Proses data CSV
-                                processCSVData();
-                                
-                                // Update dashboard dengan data
-                                updateDashboard();
-                                
-                                // Tampilkan dashboard dan sembunyikan loading
+                            complete: (results) => {
+                                rawData = results.data;
+                                processData(rawData);
+                                populateMonthFilter();
+                                applyFilters(); // Ini akan memfilter (default all) dan render
+
                                 loadingIndicator.style.display = 'none';
                                 dashboardContent.style.display = 'block';
                             }
                         });
                     })
-                    .catch(error => {
-                        console.error('Error fetching CSV data:', error);
-                        loadingIndicator.innerHTML = '<p><i class="fas fa-exclamation-circle"></i> Gagal memuat data. Silakan coba lagi nanti.</p>';
+                    .catch(err => {
+                        loadingIndicator.innerHTML = '<p style="color:red; font-weight:bold;">Gagal memuat data: ' + err.message + '</p>';
                     });
             }
-            
-            // Fetch data saat halaman dimuat
-            fetchData();
-            
-            // Refresh button
-            refreshBtn.addEventListener('click', function() {
-                const icon = this.querySelector('i');
-                icon.classList.add('fa-spin');
-                fetchData();
-                setTimeout(() => {
-                    icon.classList.remove('fa-spin');
-                }, 1000);
-            });
-            
-            // Export button
-            exportBtn.addEventListener('click', function() {
-                const dropdown = document.createElement('div');
-                dropdown.style.position = 'absolute';
-                dropdown.style.backgroundColor = 'white';
-                dropdown.style.boxShadow = 'var(--shadow-lg)';
-                dropdown.style.borderRadius = 'var(--radius)';
-                dropdown.style.padding = '8px';
-                dropdown.style.zIndex = '1000';
-                dropdown.style.minWidth = '150px';
-                
-                const csvOption = document.createElement('button');
-                csvOption.className = 'btn btn-secondary';
-                csvOption.style.width = '100%';
-                csvOption.style.justifyContent = 'flex-start';
-                csvOption.innerHTML = '<i class="fas fa-file-csv"></i> Export CSV';
-                csvOption.addEventListener('click', exportToCSV);
-                
-                const excelOption = document.createElement('button');
-                excelOption.className = 'btn btn-secondary';
-                excelOption.style.width = '100%';
-                excelOption.style.justifyContent = 'flex-start';
-                excelOption.style.marginTop = '8px';
-                excelOption.innerHTML = '<i class="fas fa-file-excel"></i> Export Excel';
-                excelOption.addEventListener('click', exportToExcel);
-                
-                dropdown.appendChild(csvOption);
-                dropdown.appendChild(excelOption);
-                
-                // Position dropdown
-                const rect = this.getBoundingClientRect();
-                dropdown.style.top = `${rect.bottom + 8}px`;
-                dropdown.style.left = `${rect.left}px`;
-                
-                document.body.appendChild(dropdown);
-                
-                // Close dropdown when clicking outside
-                setTimeout(() => {
-                    document.addEventListener('click', function closeDropdown(e) {
-                        if (!dropdown.contains(e.target) && e.target !== exportBtn) {
-                            document.body.removeChild(dropdown);
-                            document.removeEventListener('click', closeDropdown);
-                        }
-                    });
-                }, 100);
-            });
-            
-            // Fungsi untuk memeriksa apakah teks adalah NIHIL
+
+            // --- DATA PROCESSING ---
+
             function isNihil(text) {
                 if (!text) return true;
-                
-                const cleanedText = text.trim().toLowerCase();
-                const nihilVariations = [
-                    "nihil", "nihill", "nihi", "nihl", "nihil ", " nihil", 
-                    "nihil bu", "nihil (", "nama nihil", "nihill"
-                ];
-                
-                return nihilVariations.some(variation => 
-                    cleanedText === variation || 
-                    cleanedText.startsWith(variation) || 
-                    cleanedText.endsWith(variation)
-                );
+                const t = text.trim().toLowerCase();
+                return ['nihil', 'nihi', 'nihl', '-'].includes(t) || t.startsWith('nihil');
             }
-            
-            // Fungsi untuk memproses data CSV
-            function processCSVData() {
+
+            function extractName(entry) {
+                // Coba ambil nama sebelum koma atau titik dua
+                let name = entry.split(',')[0].split(':')[0].trim();
+                // Hapus honorifiks
+                return name.replace(/^(Bapa|Ibu|Pak|Bu|Mr|Mrs|Ms)\s+/i, '');
+            }
+
+            function processData(data) {
                 processedData = [];
                 teacherStats = {};
                 classStats = {};
-                let nihilCount = 0;
-                let absentCount = 0;
-                
-                // Inisialisasi statistik kelas
+                let count = { total: 0, nihil: 0, absent: 0 };
+
+                // Daftar kelas lengkap
                 const allClasses = [
-                    'X A1', 'X A2', 'X A3', 'X B1', 'X B2', 'X B3', 
+                    'X A1', 'X A2', 'X A3', 'X B1', 'X B2', 'X B3',
                     'X P1', 'X P2', 'X RPL1', 'X RPL2', 'X ULW', 'X KECANTIKAN', 'X SENI',
-                    'XI A1', 'XI A2', 'XI A3', 'XI B1', 'XI B2', 'XI B3', 
+                    'XI A1', 'XI A2', 'XI A3', 'XI B1', 'XI B2', 'XI B3',
                     'XI P1', 'XI P2', 'XI RPL1', 'XI RPL2', 'XI ULW', 'XI KECANTIKAN', 'XI SENI'
                 ];
-                
-                allClasses.forEach(cls => {
-                    classStats[cls] = 0;
-                });
-                
-                for (let row of csvData) {
-                    const timestamp = row["Timestamp"] || '';
-                    const dateStr = row["Untitled Question"] || '';
+                allClasses.forEach(c => classStats[c] = 0);
+
+                data.forEach(row => {
+                    // Parsing Tanggal
+                    // Asumsi format ISO "YYYY-MM-DD" atau teks yang bisa diparse Date
+                    let dateObj = new Date(row["Untitled Question"]);
+                    let dateIso = isNaN(dateObj.getTime()) ? 'Invalid' : dateObj.toISOString().split('T')[0]; // YYYY-MM-DD
+
                     const classX = row["KELAS X"] || '';
                     const classXI = row["KELAS XI"] || '';
-                    const guruInfo = row["Tuliskan nama guru yang tidak masuk kelas hari ini, sesuai contoh di bawah. \nFormatnya :\nNama Guru, Tugas, Keterangan"] || '';
-                    
-                    // Update statistik kelas
+                    const info = row["Tuliskan nama guru yang tidak masuk kelas hari ini, sesuai contoh di bawah. \nFormatnya :\nNama Guru, Tugas, Keterangan"] || '';
+
+                    // Update Stats Kelas
                     if (classX) classStats[classX]++;
                     if (classXI) classStats[classXI]++;
-                    
-                    // Periksa apakah guruInfo adalah NIHIL
-                    if (isNihil(guruInfo)) {
-                        nihilCount++;
-                        processedData.push({
-                            timestamp: timestamp,
-                            date: dateStr,
-                            classX: classX,
-                            classXI: classXI,
-                            teacherInfo: "NIHIL",
-                            teacherName: "NIHIL",
-                            isNihil: true
-                        });
-                    } else if (guruInfo.trim() === '') {
-                        // Jika kosong, masukkan sebagai NIHIL
-                        nihilCount++;
-                        processedData.push({
-                            timestamp: timestamp,
-                            date: dateStr,
-                            classX: classX,
-                            classXI: classXI,
-                            teacherInfo: "NIHIL",
-                            teacherName: "NIHIL",
-                            isNihil: true
-                        });
-                    } else {
-                        // Pisahkan guruInfo berdasarkan baris baru
-                        const teacherEntries = guruInfo.split('\n');
-                        for (let entry of teacherEntries) {
-                            entry = entry.trim();
-                            if (entry === '') continue;
-                            
-                            // Periksa apakah entry adalah NIHIL
-                            if (isNihil(entry)) {
-                                nihilCount++;
-                                processedData.push({
-                                    timestamp: timestamp,
-                                    date: dateStr,
-                                    classX: classX,
-                                    classXI: classXI,
-                                    teacherInfo: "NIHIL",
-                                    teacherName: "NIHIL",
-                                    isNihil: true
-                                });
-                                continue;
-                            }
-                            
-                            // Ekstrak nama guru untuk statistik
-                            const teacherName = extractTeacherName(entry);
-                            
-                            // Update statistik guru
-                            if (teacherName && !isNihil(teacherName)) {
-                                if (!teacherStats[teacherName]) {
-                                    teacherStats[teacherName] = {
-                                        count: 0,
-                                        dates: [],
-                                        classes: [],
-                                        entries: []
-                                    };
-                                }
-                                teacherStats[teacherName].count++;
-                                teacherStats[teacherName].dates.push(dateStr);
-                                if (classX) teacherStats[teacherName].classes.push(classX);
-                                if (classXI) teacherStats[teacherName].classes.push(classXI);
-                                teacherStats[teacherName].entries.push(entry);
-                            }
-                            
+
+                    // Parse Info Guru (bisa multiline)
+                    const entries = info.split('\n').filter(e => e.trim() !== '');
+
+                    entries.forEach(entry => {
+                        count.total++;
+
+                        if (isNihil(entry)) {
+                            count.nihil++;
                             processedData.push({
-                                timestamp: timestamp,
-                                date: dateStr,
-                                classX: classX,
-                                classXI: classXI,
-                                teacherInfo: entry,
-                                teacherName: teacherName,
+                                dateObj: dateObj,
+                                dateIso: dateIso,
+                                dateDisplay: dateObj.toLocaleDateString('id-ID'),
+                                classX, classXI,
+                                info: "NIHIL",
+                                name: "NIHIL",
+                                isNihil: true
+                            });
+                        } else {
+                            count.absent++;
+                            const name = extractName(entry);
+
+                            // Stats Teacher
+                            if (!teacherStats[name]) teacherStats[name] = 0;
+                            teacherStats[name]++;
+
+                            processedData.push({
+                                dateObj: dateObj,
+                                dateIso: dateIso,
+                                dateDisplay: dateObj.toLocaleDateString('id-ID'),
+                                classX, classXI,
+                                info: entry,
+                                name: name,
                                 isNihil: false
                             });
-                            absentCount++;
                         }
+                    });
+                });
+
+                // Simpan hasil count ke global untuk filter nanti (jika perlu stats dasar)
+                processedData.forEach(d => d._originalIndex = processedData.indexOf(d));
+            }
+
+            // --- MONTH FILTER LOGIC ---
+
+            function populateMonthFilter() {
+                // Ambil semua unik YYYY-MM dari processedData
+                const months = new Set();
+                processedData.forEach(d => {
+                    if (d.dateIso !== 'Invalid') {
+                        months.add(d.dateIso.substring(0, 7)); // YYYY-MM
                     }
-                }
-                
-                // Set filteredData ke semua data yang telah diproses
-                filteredData = [...processedData];
-                
-                // Update statistik
-                totalReportsElement.textContent = csvData.length;
-                nihilReportsElement.textContent = nihilCount;
-                absentTeachersElement.textContent = absentCount;
-                uniqueTeachersElement.textContent = Object.keys(teacherStats).length;
+                });
+
+                const sortedMonths = Array.from(months).sort().reverse();
+
+                monthFilter.innerHTML = '<option value="all">Semua Bulan</option>';
+                sortedMonths.forEach(m => {
+                    const [y, mon] = m.split('-');
+                    const dateName = new Date(y, mon - 1).toLocaleString('id-ID', { month: 'long', year: 'numeric' });
+                    const option = document.createElement('option');
+                    option.value = m;
+                    option.textContent = dateName;
+                    monthFilter.appendChild(option);
+                });
             }
-            
-            // Fungsi untuk mengekstrak nama guru dari entri
-            function extractTeacherName(entry) {
-                // Coba ekstrak nama guru dari berbagai format
-                let name = '';
-                
-                // Format dengan koma: "Nama Guru, Tugas, Keterangan"
-                if (entry.includes(',')) {
-                    name = entry.split(',')[0].trim();
-                } 
-                // Format dengan titik dua: "Nama Guru : Tugas : Keterangan"
-                else if (entry.includes(':')) {
-                    const parts = entry.split(':');
-                    name = parts[0].replace(/Nama Guru|nama guru/i, '').trim();
-                } 
-                // Format lainnya
-                else {
-                    name = entry.trim();
-                }
-                
-                // Hapus prefix yang umum
-                name = name.replace(/^(Bapa|Ibu|Pak|Bu|Mr|Mrs|Ms|Dr|Prof)\s+/i, '');
-                
-                return name;
+
+            monthFilter.addEventListener('change', (e) => {
+                currentMonthFilter = e.target.value;
+                updatePrintLabel();
+                applyFilters();
+            });
+
+            resetFilter.addEventListener('click', () => {
+                monthFilter.value = 'all';
+                currentMonthFilter = 'all';
+                searchInput.value = '';
+                updatePrintLabel();
+                applyFilters();
+            });
+
+            function updatePrintLabel() {
+                const txt = monthFilter.options[monthFilter.selectedIndex].text;
+                printMonthLabel.textContent = `Periode: ${txt}`;
             }
-            
-            // Fungsi untuk update dashboard
+
+            // --- FILTERING & UPDATING ---
+
+            function applyFilters() {
+                // 1. Filter by Month
+                let data = processedData;
+                if (currentMonthFilter !== 'all') {
+                    data = data.filter(d => d.dateIso.startsWith(currentMonthFilter));
+                }
+
+                // 2. Filter by Search
+                const term = searchInput.value.toLowerCase();
+                if (term) {
+                    data = data.filter(d =>
+                        (d.name && d.name.toLowerCase().includes(term)) ||
+                        (d.classX && d.classX.toLowerCase().includes(term)) ||
+                        (d.classXI && d.classXI.toLowerCase().includes(term))
+                    );
+                }
+
+                filteredData = data;
+                currentPage = 1;
+                updateDashboard();
+            }
+
+            searchInput.addEventListener('input', applyFilters);
+
             function updateDashboard() {
-                // Update tanggal terakhir
-                updateLastUpdateDate();
-                
-                // Update tabel
+                // Update Stats
+                const nihilCount = filteredData.filter(d => d.isNihil).length;
+                const absentCount = filteredData.length - nihilCount;
+
+                els.total.textContent = filteredData.length;
+                els.nihil.textContent = nihilCount;
+                els.absent.textContent = absentCount;
+
+                // Unique teachers from filtered data
+                const uniqueNames = new Set(filteredData.filter(d => !d.isNihil).map(d => d.name));
+                els.unique.textContent = uniqueNames.size;
+
                 updateTable();
-                
-                // Update grafik
                 updateCharts();
-                
-                // Update insight
-                updateInsights();
-                
-                // Setup event listener untuk pencarian
-                setupSearch();
             }
-            
-            // Fungsi untuk update tanggal terakhir
-            function updateLastUpdateDate() {
-                if (csvData.length > 0) {
-                    const lastTimestamp = csvData[csvData.length - 1]["Timestamp"];
-                    if (lastTimestamp) {
-                        const dateObj = new Date(lastTimestamp);
-                        const formattedDate = dateObj.toLocaleDateString('id-ID', {
-                            weekday: 'long',
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric'
-                        });
-                        const formattedTime = dateObj.toLocaleTimeString('id-ID', {
-                            hour: '2-digit',
-                            minute: '2-digit'
-                        });
-                        
-                        lastUpdateInsight.textContent = `📅 Data terakhir diupdate pada: ${formattedDate}`;
-                        lastUpdateTime.textContent = `Pukul ${formattedTime}`;
-                    }
-                }
-            }
-            
-            // Fungsi untuk update tabel
+
+            // --- TABLE RENDER ---
+
             function updateTable() {
-                // Kosongkan tabel
                 tableBody.innerHTML = '';
-                
-                // Hitung pagination
+
+                const start = (currentPage - 1) * itemsPerPage;
+                const paged = filteredData.slice(start, start + itemsPerPage);
                 const totalPages = Math.ceil(filteredData.length / itemsPerPage);
-                const startIndex = (currentPage - 1) * itemsPerPage;
-                const endIndex = startIndex + itemsPerPage;
-                const paginatedData = filteredData.slice(startIndex, endIndex);
-                
-                // Tambahkan data ke tabel
-                paginatedData.forEach(row => {
+
+                paged.forEach(row => {
                     const tr = document.createElement('tr');
-                    
-                    // Format tanggal
-                    const dateStr = row.date ? new Date(row.date).toLocaleDateString('id-ID') : '-';
-                    
-                    // Ambil data kelas
-                    const classX = row.classX || '-';
-                    const classXI = row.classXI || '-';
-                    
-                    // Ambil informasi guru
-                    const guruInfo = row.teacherInfo || '-';
-                    
-                    // Status badge
-                    const statusBadge = row.isNihil ? 
-                        '<span class="badge badge-success">NIHIL</span>' : 
-                        '<span class="badge badge-warning">Tidak Hadir</span>';
-                    
+                    const badge = row.isNihil
+                        ? `<span class="badge badge-nihil">NIHIL</span>`
+                        : `<span class="badge badge-absent">Tidak Hadir</span>`;
+
                     tr.innerHTML = `
-                        <td>${dateStr}</td>
-                        <td>${classX}</td>
-                        <td>${classXI}</td>
-                        <td>${guruInfo}</td>
-                        <td>${statusBadge}</td>
+                        <td style="font-weight:bold;">${row.dateDisplay}</td>
+                        <td>${row.classX || '-'}</td>
+                        <td>${row.classXI || '-'}</td>
+                        <td>${row.info}</td>
+                        <td>${badge}</td>
                     `;
-                    
                     tableBody.appendChild(tr);
                 });
-                
-                // Update pagination
-                updatePagination(totalPages);
+
+                renderPagination(totalPages);
             }
-            
-            // Fungsi untuk update pagination
-            function updatePagination(totalPages) {
-                paginationElement.innerHTML = '';
-                
-                // Previous button
-                const prevBtn = document.createElement('button');
-                prevBtn.className = 'pagination-btn';
-                prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
-                prevBtn.disabled = currentPage === 1;
-                prevBtn.addEventListener('click', () => {
-                    if (currentPage > 1) {
-                        currentPage--;
-                        updateTable();
+
+            function renderPagination(totalPages) {
+                const pDiv = document.getElementById('pagination');
+                pDiv.innerHTML = '';
+                if (totalPages <= 1) return;
+
+                const createBtn = (txt, page, active = false, disabled = false) => {
+                    const btn = document.createElement('button');
+                    btn.className = 'btn btn-sm';
+                    btn.style.padding = '8px 12px';
+                    btn.style.minWidth = '40px';
+                    btn.textContent = txt;
+                    if (active) {
+                        btn.style.background = 'var(--text-main)';
+                        btn.style.color = 'white';
                     }
-                });
-                paginationElement.appendChild(prevBtn);
-                
-                // Page numbers
-                const maxVisiblePages = 5;
-                let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
-                let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
-                
-                if (endPage - startPage + 1 < maxVisiblePages) {
-                    startPage = Math.max(1, endPage - maxVisiblePages + 1);
+                    if (disabled) {
+                        btn.style.opacity = '0.5';
+                        btn.style.cursor = 'not-allowed';
+                    } else {
+                        btn.onclick = () => { currentPage = page; updateTable(); };
+                    }
+                    return btn;
+                };
+
+                pDiv.appendChild(createBtn('<', currentPage - 1, false, currentPage === 1));
+
+                // Simple pagination logic
+                for (let i = 1; i <= totalPages; i++) {
+                    if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
+                        pDiv.appendChild(createBtn(i, i, i === currentPage));
+                    } else if (
+                        (i === currentPage - 2 && i > 1) ||
+                        (i === currentPage + 2 && i < totalPages)
+                    ) {
+                        pDiv.appendChild(document.createTextNode('...'));
+                    }
                 }
-                
-                for (let i = startPage; i <= endPage; i++) {
-                    const pageBtn = document.createElement('button');
-                    pageBtn.className = 'pagination-btn';
-                    pageBtn.textContent = i;
-                    if (i === currentPage) {
-                        pageBtn.classList.add('active');
-                    }
-                    pageBtn.addEventListener('click', () => {
-                        currentPage = i;
-                        updateTable();
-                    });
-                    paginationElement.appendChild(pageBtn);
-                }
-                
-                // Next button
-                const nextBtn = document.createElement('button');
-                nextBtn.className = 'pagination-btn';
-                nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
-                nextBtn.disabled = currentPage === totalPages;
-                nextBtn.addEventListener('click', () => {
-                    if (currentPage < totalPages) {
-                        currentPage++;
-                        updateTable();
-                    }
-                });
-                paginationElement.appendChild(nextBtn);
+
+                pDiv.appendChild(createBtn('>', currentPage + 1, false, currentPage === totalPages));
             }
-            
-            // Fungsi untuk update grafik
+
+            // --- CHARTS ---
+
             function updateCharts() {
-                // Update grafik perbandingan
-                updateComparisonChart();
-                
-                // Update grafik frekuensi kelas
-                updateClassFrequencyChart();
-            }
-            
-            // Fungsi untuk update grafik perbandingan
-            function updateComparisonChart() {
-                const ctx = document.getElementById('comparisonChart').getContext('2d');
-                
-                // Hitung data
-                const nihilCount = processedData.filter(row => row.isNihil).length;
-                const absentCount = processedData.filter(row => !row.isNihil).length;
-                
-                // Hapus grafik lama jika ada
-                if (window.comparisonChartInstance) {
-                    window.comparisonChartInstance.destroy();
-                }
-                
-                // Buat grafik baru
-                window.comparisonChartInstance = new Chart(ctx, {
+                // 1. Doughnut
+                const ctx1 = document.getElementById('comparisonChart').getContext('2d');
+                const nihil = filteredData.filter(d => d.isNihil).length;
+                const absen = filteredData.length - nihil;
+
+                if (window.myChart1) window.myChart1.destroy();
+                window.myChart1 = new Chart(ctx1, {
                     type: 'doughnut',
                     data: {
-                        labels: ['Laporan NIHIL', 'Guru Tidak Hadir'],
+                        labels: ['NIHIL', 'Tidak Hadir'],
                         datasets: [{
-                            data: [nihilCount, absentCount],
-                            backgroundColor: [
-                                'rgba(16, 185, 129, 0.8)',
-                                'rgba(245, 158, 11, 0.8)'
-                            ],
-                            borderColor: [
-                                'rgba(16, 185, 129, 1)',
-                                'rgba(245, 158, 11, 1)'
-                            ],
-                            borderWidth: 1
+                            data: [nihil, absen],
+                            backgroundColor: ['#4ADE80', '#F87171'],
+                            borderWidth: 0
                         }]
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
                         plugins: {
-                            legend: {
-                                position: 'bottom',
-                                labels: {
-                                    padding: 20,
-                                    font: {
-                                        size: 12
-                                    }
-                                }
-                            },
-                            tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        const label = context.label || '';
-                                        const value = context.raw || 0;
-                                        const total = context.dataset.data.reduce((a, b) => a + b, 0);
-                                        const percentage = Math.round((value / total) * 100);
-                                        return `${label}: ${value} (${percentage}%)`;
-                                    }
-                                }
-                            }
+                            legend: { position: 'bottom', labels: { font: { family: 'Fredoka' } } }
                         }
                     }
                 });
-            }
-            
-            // Fungsi untuk update grafik frekuensi kelas
-            function updateClassFrequencyChart() {
-                const ctx = document.getElementById('classFrequencyChart').getContext('2d');
-                
-                // Ambil 10 kelas teratas
-                const sortedClasses = Object.entries(classStats)
-                    .filter(([_, count]) => count > 0) // Filter kelas dengan count > 0
+
+                // 2. Bar Chart (Classes)
+                const ctx2 = document.getElementById('classFrequencyChart').getContext('2d');
+                // Recalculate class stats based on filtered data
+                let tempStats = {};
+                filteredData.forEach(d => {
+                    if (d.classX) tempStats[d.classX] = (tempStats[d.classX] || 0) + 1;
+                    if (d.classXI) tempStats[d.classXI] = (tempStats[d.classXI] || 0) + 1;
+                });
+
+                const sortedClasses = Object.entries(tempStats)
                     .sort((a, b) => b[1] - a[1])
                     .slice(0, 10);
-                
-                const classLabels = sortedClasses.map(item => item[0]);
-                const classValues = sortedClasses.map(item => item[1]);
-                
-                // Hapus grafik lama jika ada
-                if (window.classFrequencyChartInstance) {
-                    window.classFrequencyChartInstance.destroy();
-                }
-                
-                // Buat grafik baru
-                window.classFrequencyChartInstance = new Chart(ctx, {
+
+                if (window.myChart2) window.myChart2.destroy();
+                window.myChart2 = new Chart(ctx2, {
                     type: 'bar',
                     data: {
-                        labels: classLabels,
+                        labels: sortedClasses.map(i => i[0]),
                         datasets: [{
-                            label: 'Frekuensi Laporan',
-                            data: classValues,
-                            backgroundColor: 'rgba(59, 130, 246, 0.8)',
-                            borderColor: 'rgba(59, 130, 246, 1)',
-                            borderWidth: 1,
-                            borderRadius: 6
+                            label: 'Frekuensi',
+                            data: sortedClasses.map(i => i[1]),
+                            backgroundColor: '#38BDF8',
+                            borderRadius: 5
                         }]
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
                         scales: {
-                            y: {
-                                beginAtZero: true,
-                                ticks: {
-                                    precision: 0,
-                                    font: {
-                                        size: 11
-                                    }
-                                },
-                                grid: {
-                                    color: 'rgba(0, 0, 0, 0.05)'
-                                }
-                            },
-                            x: {
-                                ticks: {
-                                    font: {
-                                        size: 11
-                                    }
-                                },
-                                grid: {
-                                    display: false
-                                }
-                            }
+                            y: { beginAtZero: true, ticks: { font: { family: 'Quicksand' } } },
+                            x: { ticks: { font: { family: 'Quicksand' } } }
                         },
-                        plugins: {
-                            legend: {
-                                display: false
-                            }
-                        }
+                        plugins: { legend: { display: false } }
                     }
                 });
             }
-            
-            // Fungsi untuk update insight
-            function updateInsights() {
-                // Update persentase NIHIL
-                const nihilCount = processedData.filter(row => row.isNihil).length;
-                const totalCount = processedData.length;
-                const nihilPercentage = totalCount > 0 ? Math.round((nihilCount / totalCount) * 100) : 0;
-                nihilPercentageInsight.textContent = `✅ ${nihilPercentage}% laporan menyatakan nihil.`;
-                
-                // Update guru yang paling sering tidak hadir
-                if (Object.keys(teacherStats).length > 0) {
-                    const sortedTeachers = Object.entries(teacherStats)
-                        .sort((a, b) => b[1].count - a[1].count);
-                    
-                    const mostAbsentTeacher = sortedTeachers[0][0];
-                    const mostAbsentCount = sortedTeachers[0][1].count;
-                    
-                    mostAbsentInsight.textContent = `⚠️ Guru yang paling sering tercatat tidak hadir: ${mostAbsentTeacher} (${mostAbsentCount} kali)`;
-                } else {
-                    mostAbsentInsight.textContent = `⚠️ Tidak ada data guru yang tidak hadir.`;
-                }
-            }
-            
-            // Fungsi untuk setup pencarian
-            function setupSearch() {
-                searchInput.addEventListener('input', function() {
-                    const searchTerm = this.value.toLowerCase();
-                    
-                    if (searchTerm === '') {
-                        filteredData = [...processedData];
-                    } else {
-                        filteredData = processedData.filter(row => {
-                            return (
-                                (row.date && row.date.toLowerCase().includes(searchTerm)) ||
-                                (row.classX && row.classX.toLowerCase().includes(searchTerm)) ||
-                                (row.classXI && row.classXI.toLowerCase().includes(searchTerm)) ||
-                                (row.teacherInfo && row.teacherInfo.toLowerCase().includes(searchTerm)) ||
-                                (row.teacherName && row.teacherName.toLowerCase().includes(searchTerm))
-                            );
-                        });
-                    }
-                    
-                    currentPage = 1;
-                    updateTable();
-                });
-            }
-            
-            // Fungsi untuk export ke CSV
-            function exportToCSV() {
-                // Siapkan data untuk export
-                const exportData = filteredData.map(row => ({
-                    'Tanggal': row.date,
-                    'Kelas X': row.classX,
-                    'Kelas XI': row.classXI,
-                    'Informasi Guru': row.teacherInfo,
-                    'Status': row.isNihil ? 'NIHIL' : 'Tidak Hadir'
-                }));
-                
-                // Konversi ke CSV
-                const csv = Papa.unparse(exportData);
-                
-                // Download file
-                const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-                const url = URL.createObjectURL(blob);
-                const link = document.createElement('a');
-                link.setAttribute('href', url);
-                link.setAttribute('download', `kehadiran_guru_${new Date().toISOString().slice(0, 10)}.csv`);
-                link.style.visibility = 'hidden';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            }
-            
-            // Fungsi untuk export ke Excel
-            function exportToExcel() {
-                // Siapkan data untuk export
-                const exportData = filteredData.map(row => ({
-                    'Tanggal': row.date,
-                    'Kelas X': row.classX,
-                    'Kelas XI': row.classXI,
-                    'Informasi Guru': row.teacherInfo,
-                    'Status': row.isNihil ? 'NIHIL' : 'Tidak Hadir'
-                }));
-                
-                // Buat workbook
+
+            // --- EXPORT & REFRESH ---
+
+            document.getElementById('refreshBtn').addEventListener('click', fetchData);
+
+            document.getElementById('exportBtn').addEventListener('click', () => {
+                const ws = XLSX.utils.json_to_sheet(filteredData.map(d => ({
+                    'Tanggal': d.dateDisplay,
+                    'Kelas X': d.classX,
+                    'Kelas XI': d.classXI,
+                    'Keterangan': d.info,
+                    'Status': d.isNihil ? 'NIHIL' : 'Tidak Hadir'
+                })));
                 const wb = XLSX.utils.book_new();
-                const ws = XLSX.utils.json_to_sheet(exportData);
-                
-                // Tambahkan worksheet ke workbook
-                XLSX.utils.book_append_sheet(wb, ws, 'Kehadiran Guru');
-                
-                // Download file
-                XLSX.writeFile(wb, `kehadiran_guru_${new Date().toISOString().slice(0, 10)}.xlsx`);
-            }
+                XLSX.utils.book_append_sheet(wb, ws, "Laporan");
+                XLSX.writeFile(wb, `Laporan_Kehadiran_${currentMonthFilter}.xlsx`);
+            });
+
+            // Start
+            fetchData();
         });
     </script>
 </body>
+
 </html>
