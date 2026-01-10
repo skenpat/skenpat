@@ -1,87 +1,111 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jadwal Ekstrakurikuler | SMKN 4 Banjarmasin</title>
   <meta name="description" content="Lihat jadwal lengkap kegiatan ekstrakurikuler SMKN 4 Banjarmasin." />
-  <link rel="icon" href="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760687917/faviconV2_s4utef.png" type="image/png" />
-  
-  <!-- Preconnect for performance -->
+  <link rel="icon" href="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760687917/faviconV2_s4utef.png"
+    type="image/png" />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
-  
-  <!-- Preload critical resources -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-  
-  <!-- Inline critical CSS for faster initial render -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
   <style>
     :root {
-      --primary-color: #FF7A45; /* Warna oranye yang sedikit lebih lembut */
-      --primary-light: #FF9A76;
-      --primary-dark: #E55A2B;
-      --secondary-color: #4ECDC4;
-      --accent-color: #FFD166;
-      --dark-bg: #121212;
-      --card-bg: #1E1E1E;
-      --card-hover: #2A2A2A;
-      --card-border: #333333;
-      --text-primary: #FFFFFF;
-      --text-secondary: #B0B0B0;
-      --text-muted: #808080;
-      --today-bg: rgba(255, 122, 69, 0.15);
-      --success-color: #4CAF50;
-      --info-color: #2196F3;
-      --warning-color: #FFC107;
-      --danger-color: #F44336;
-      --shadow-sm: 0 2px 8px rgba(0,0,0,0.15);
-      --shadow-md: 0 4px 12px rgba(0,0,0,0.2);
-      --shadow-lg: 0 8px 24px rgba(0,0,0,0.25);
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      --radius: 12px;
-      --radius-lg: 16px;
+      /* Orange Pop Palette */
+      --primary: #FF9F43;
+      --primary-dark: #EE5A24;
+      --secondary: #FDC500;
+      --accent: #5f27cd;
+      --bg-color: #FFF8F0;
+      --text-main: #4E342E;
+      --border-color: #3E2723;
+      --white: #FFFFFF;
+
+      /* Functional Colors */
+      --success: #2ecc71;
+      --info: #54a0ff;
+      --warning: #f1c40f;
+      --danger: #e74c3c;
+
+      /* UI */
+      --shadow-hard: 5px 5px 0px var(--border-color);
+      --shadow-sm: 3px 3px 0px rgba(62, 39, 35, 0.2);
+      --radius-lg: 20px;
+      --radius-md: 15px;
+      --radius-sm: 10px;
+      --font-head: 'Fredoka', sans-serif;
+      --font-body: 'Quicksand', sans-serif;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      outline: none;
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--dark-bg);
-      color: var(--text-primary);
+      font-family: var(--font-body);
+      background: var(--bg-color);
+      color: var(--text-main);
       line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
       min-height: 100vh;
       padding: 1rem;
       overflow-x: hidden;
+      /* Polka Dot Background */
+      background-image: radial-gradient(var(--secondary) 15%, transparent 16%), radial-gradient(var(--secondary) 15%, transparent 16%);
+      background-size: 20px 20px;
+      background-position: 0 0, 10px 10px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 
     /* Loading Screen */
     .loader-container {
       position: fixed;
       inset: 0;
-      background: var(--dark-bg);
+      background: var(--bg-color);
       display: flex;
       justify-content: center;
       align-items: center;
       z-index: 9999;
       transition: opacity 0.5s ease;
     }
+
     .loader {
       width: 60px;
       height: 60px;
-      border: 4px solid rgba(255, 255, 255, 0.1);
-      border-top-color: var(--primary-color);
+      background: var(--primary);
       border-radius: 50%;
-      animation: spin 1s linear infinite;
+      border: 4px solid var(--border-color);
+      animation: bounce 0.6s infinite alternate;
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .loader-container.hidden { opacity: 0; pointer-events: none; }
+
+    @keyframes bounce {
+      from {
+        transform: translateY(0) scale(1);
+      }
+
+      to {
+        transform: translateY(-20px) scale(1.1);
+      }
+    }
+
+    .loader-container.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
 
     /* App Container */
     .app-container {
@@ -94,158 +118,189 @@
     .header {
       display: flex;
       flex-direction: column;
-      margin: 1.5rem 0 2rem;
-      position: relative;
+      align-items: center;
+      margin: 2rem 0;
+      text-align: center;
     }
+
     .back-button {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 1.2rem;
-      padding: 10px 16px;
-      background: var(--card-bg);
+      margin-bottom: 1rem;
+      padding: 10px 20px;
+      background: var(--white);
+      border: 3px solid var(--border-color);
       border-radius: 30px;
-      color: var(--text-primary);
-      font-weight: 500;
-      text-decoration: none;
-      transition: var(--transition);
-      align-self: flex-start;
-      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      font-weight: 600;
+      box-shadow: var(--shadow-sm);
+      transition: 0.2s;
     }
-    .back-button:hover { background: var(--card-hover); transform: translateY(-2px); }
+
+    .back-button:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 4px 4px 0px var(--border-color);
+    }
+
     .header h1 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--primary-color);
-      display: flex;
+      font-family: var(--font-head);
+      font-size: 2.5rem;
+      color: var(--text-main);
+      background: var(--white);
+      padding: 10px 30px;
+      border: 4px solid var(--border-color);
+      border-radius: 50px;
+      box-shadow: var(--shadow-hard);
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 0.5rem;
+      gap: 10px;
+      margin-bottom: 1rem;
     }
+
     .header-subtitle {
-      text-align: center;
-      color: var(--text-secondary);
-      font-size: 1rem;
-      font-weight: 400;
+      color: #6D4C41;
+      font-weight: 600;
+      font-size: 1.1rem;
     }
 
     /* Stats Bar */
     .stats-bar {
       display: flex;
       justify-content: space-around;
-      background: var(--card-bg);
+      background: var(--white);
       border-radius: var(--radius-lg);
-      padding: 1rem;
-      margin-bottom: 1.5rem;
-      border: 1px solid var(--card-border);
-      box-shadow: var(--shadow-sm);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border: 3px solid var(--border-color);
+      box-shadow: var(--shadow-hard);
+      flex-wrap: wrap;
+      gap: 1rem;
     }
+
     .stat-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       text-align: center;
     }
-    .stat-value { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); }
-    .stat-label { font-size: 0.85rem; color: var(--text-secondary); }
+
+    .stat-value {
+      font-family: var(--font-head);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: #6D4C41;
+      font-weight: 600;
+    }
 
     /* Toolbar */
     .toolbar {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
       margin-bottom: 1.5rem;
     }
+
     .search-container {
       position: relative;
       flex: 1;
       min-width: 250px;
     }
+
     .search-container i {
       position: absolute;
       left: 16px;
       top: 50%;
       transform: translateY(-50%);
-      color: var(--primary-color);
+      color: var(--text-main);
     }
+
     .toolbar input {
       width: 100%;
       padding: 12px 16px 12px 44px;
-      border: 1px solid var(--card-border);
+      border: 3px solid var(--border-color);
       border-radius: 30px;
-      background: var(--card-bg);
-      color: var(--text-primary);
-      font-size: 1rem;
-      transition: var(--transition);
-    }
-    .toolbar input:focus {
-      outline: none;
-      border-color: var(--primary-color);
-      box-shadow: 0 0 0 3px rgba(255, 122, 69, 0.2);
-    }
-    .btn-group {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .toolbar button {
-      padding: 10px 18px;
-      background: var(--primary-color);
-      color: white;
-      border: none;
-      border-radius: 30px;
+      background: var(--white);
+      font-family: var(--font-body);
       font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .toolbar input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(255, 159, 67, 0.2);
+    }
+
+    .toolbar button {
+      padding: 10px 20px;
+      background: var(--primary);
+      color: white;
+      border: 3px solid var(--border-color);
+      border-radius: 30px;
+      font-weight: 700;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 6px;
-      transition: var(--transition);
-      font-size: 0.9rem;
+      gap: 8px;
+      box-shadow: var(--shadow-sm);
+      transition: 0.1s;
+      font-family: var(--font-head);
     }
-    .toolbar button:hover {
-      background: var(--primary-light);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
+
+    .toolbar button:active {
+      transform: translate(2px, 2px);
+      box-shadow: none;
     }
-    .toolbar button.secondary { background: var(--secondary-color); }
-    .toolbar button.secondary:hover { background: #5EDDD5; }
-    .toolbar button.success { background: var(--success-color); }
-    .toolbar button.success:hover { background: #5CBF60; }
-    .toolbar button.info { background: var(--info-color); }
-    .toolbar button.info:hover { background: #42A5F5; }
-    .toolbar button.warning { background: var(--warning-color); }
-    .toolbar button.warning:hover { background: #FFD54F; }
+
+    .toolbar button.secondary {
+      background: var(--secondary);
+    }
+
+    .toolbar button.success {
+      background: var(--success);
+    }
+
+    .toolbar button.info {
+      background: var(--info);
+    }
+
+    .toolbar button.warning {
+      background: var(--warning);
+    }
 
     /* View Toggle */
     .view-toggle {
       display: flex;
-      background: var(--card-bg);
+      background: var(--white);
       border-radius: 30px;
-      padding: 4px;
+      padding: 5px;
       margin: 0 auto 1.5rem;
       width: fit-content;
-      border: 1px solid var(--card-border);
-      box-shadow: var(--shadow-sm);
-    }
-    .view-toggle button {
-      padding: 8px 20px;
-      background: transparent;
-      color: var(--text-secondary);
-      border: none;
-      border-radius: 30px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-      font-size: 0.9rem;
-    }
-    .view-toggle button.active {
-      background: var(--primary-color);
-      color: white;
+      border: 3px solid var(--border-color);
       box-shadow: var(--shadow-sm);
     }
 
-    /* Filters */
+    .view-toggle button {
+      padding: 8px 20px;
+      background: transparent;
+      color: var(--text-main);
+      border: none;
+      border-radius: 30px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: var(--font-head);
+    }
+
+    .view-toggle button.active {
+      background: var(--primary);
+      color: white;
+      border: 2px solid var(--border-color);
+      box-shadow: 2px 2px 0px var(--border-color);
+    }
+
+    /* Filter Pills */
     .filter-container {
       display: flex;
       flex-wrap: wrap;
@@ -253,290 +308,279 @@
       justify-content: center;
       margin-bottom: 1.5rem;
     }
+
     .filter-pill {
       padding: 8px 16px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
+      background: var(--white);
+      border: 3px solid var(--border-color);
       border-radius: 20px;
-      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: var(--font-head);
       cursor: pointer;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .filter-pill:hover { background: var(--card-hover); transform: translateY(-2px); }
-    .filter-pill.active {
-      background: var(--primary-color);
-      color: white;
-      border-color: var(--primary-color);
+      box-shadow: var(--shadow-sm);
+      transition: 0.2s;
     }
 
-    /* Schedule Grid */
+    .filter-pill.active {
+      background: var(--primary);
+      color: white;
+      transform: rotate(-3deg);
+    }
+
+    /* Schedule Cards (Main View) */
     .schedule {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 24px;
+      gap: 20px;
       margin-bottom: 2rem;
     }
+
     .day {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
+      background: var(--white);
+      border: 3px solid var(--border-color);
       border-radius: var(--radius-lg);
       overflow: hidden;
-      transition: var(--transition);
-      box-shadow: var(--shadow-sm);
+      box-shadow: var(--shadow-hard);
+      transition: 0.3s;
       opacity: 0;
       transform: translateY(20px);
+      /* Animation state */
     }
+
     .day.animate {
       opacity: 1;
       transform: translateY(0);
     }
+
     .day:hover {
-      box-shadow: var(--shadow-md);
-      transform: translateY(-4px);
+      transform: translateY(-5px) rotate(1deg);
     }
-    .day.today {
-      background: var(--card-bg);
-      position: relative;
-      border: 1px solid var(--primary-color);
-      box-shadow: 0 0 0 2px rgba(255, 122, 69, 0.3);
-    }
-    .day.today::before {
-      content: "Hari Ini";
-      position: absolute;
-      top: 12px;
-      right: 16px;
-      background: var(--primary-color);
-      color: white;
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 20px;
-      z-index: 2;
-    }
+
     .day-header {
-      padding: 16px 20px;
-      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      background: var(--primary);
       color: white;
-      font-weight: 600;
+      padding: 15px;
+      font-weight: 700;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: relative;
+      border-bottom: 3px solid var(--border-color);
+      font-family: var(--font-head);
     }
+
     .day-header h2 {
+      font-size: 1.2rem;
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 1.2rem;
     }
+
     .toggle {
-      font-size: 1.1rem;
-      transition: var(--transition);
+      transition: 0.3s;
     }
-    .toggle.collapsed { transform: rotate(-90deg); }
+
+    .toggle.collapsed {
+      transform: rotate(-90deg);
+    }
+
     .activities {
-      padding: 16px;
+      padding: 15px;
       display: grid;
-      gap: 14px;
+      gap: 12px;
     }
+
     .activity {
-      background: rgba(30, 30, 30, 0.7);
-      padding: 16px;
-      border-radius: var(--radius);
+      background: #FFF3E0;
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 12px;
       display: flex;
       align-items: flex-start;
       gap: 12px;
       position: relative;
-      transition: var(--transition);
-      border: 1px solid transparent;
+      transition: 0.2s;
     }
+
     .activity:hover {
-      background: rgba(40, 40, 40, 0.8);
-      border-color: rgba(255, 122, 69, 0.3);
-      transform: translateX(4px);
+      transform: scale(1.02);
+      background: white;
     }
+
     .activity i {
-      color: var(--primary-color);
-      font-size: 1.3rem;
-      margin-top: 3px;
-      background: rgba(255, 122, 69, 0.1);
-      padding: 8px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      color: var(--primary);
+      font-size: 1.4rem;
+      background: var(--white);
+      border: 2px solid var(--border-color);
       width: 40px;
       height: 40px;
-    }
-    .activity-info { flex: 1; }
-    .activity-name { font-weight: 600; margin-bottom: 6px; font-size: 1rem; }
-    .activity-time, .activity-location {
-      font-size: 0.85rem;
-      color: var(--text-muted);
+      border-radius: 50%;
       display: flex;
       align-items: center;
-      gap: 6px;
-      margin-bottom: 3px;
+      justify-content: center;
     }
+
+    .activity-info {
+      flex: 1;
+    }
+
+    .activity-name {
+      font-weight: 700;
+      font-family: var(--font-head);
+      color: var(--text-main);
+      margin-bottom: 4px;
+      font-size: 1.05rem;
+    }
+
+    .activity-time,
+    .activity-location {
+      font-size: 0.85rem;
+      color: #6D4C41;
+      margin-bottom: 2px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
     .favorite-btn {
       position: absolute;
-      top: 12px;
-      right: 12px;
+      top: 10px;
+      right: 10px;
       background: none;
       border: none;
-      color: var(--text-muted);
+      color: #ccc;
       cursor: pointer;
-      font-size: 1.1rem;
-      transition: var(--transition);
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
+      font-size: 1.2rem;
+      transition: 0.2s;
     }
-    .favorite-btn:hover { background: rgba(255, 255, 255, 0.1); }
-    .favorite-btn.active { color: var(--warning-color); }
-    .activity.hidden { display: none !important; }
-    .no-results {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 40px;
-      color: var(--text-muted);
-      background: var(--card-bg);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--card-border);
+
+    .favorite-btn.active {
+      color: var(--warning);
+      transform: scale(1.2);
     }
-    .no-results i { font-size: 3rem; margin-bottom: 1rem; color: var(--text-muted); }
+
+    .activity.hidden {
+      display: none !important;
+    }
 
     /* List View */
-    .list-view { display: none; }
-    .list-view.active { display: block; }
+    .list-view {
+      display: none;
+    }
+
+    .list-view.active {
+      display: block;
+    }
+
     .list-item {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 18px;
-      margin-bottom: 16px;
+      background: var(--white);
+      border: 3px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 15px;
+      margin-bottom: 15px;
       display: flex;
       align-items: center;
-      gap: 16px;
-      transition: var(--transition);
-    }
-    .list-item:hover {
-      background: var(--card-hover);
-      transform: translateX(4px);
+      gap: 15px;
       box-shadow: var(--shadow-sm);
     }
+
     .list-icon {
-      width: 48px;
-      height: 48px;
+      width: 50px;
+      height: 50px;
+      background: #FFE0B2;
+      border: 2px solid var(--border-color);
       border-radius: 50%;
-      background: rgba(255, 122, 69, 0.15);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--primary-color);
-      font-size: 1.3rem;
-      flex-shrink: 0;
+      color: var(--primary);
+      font-size: 1.4rem;
     }
-    .list-content { flex: 1; }
-    .list-title { font-weight: 600; margin-bottom: 6px; font-size: 1.1rem; }
-    .list-details {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
+
     .list-day {
-      background: var(--primary-color);
+      background: var(--primary);
       color: white;
       padding: 5px 12px;
-      border-radius: 20px;
-      font-weight: 600;
-      font-size: 0.85rem;
-      white-space: nowrap;
+      border-radius: 15px;
+      font-weight: 700;
+      font-family: var(--font-head);
+      border: 2px solid var(--border-color);
     }
 
     /* Calendar View */
-    .calendar-view { display: none; }
-    .calendar-view.active { display: block; }
+    .calendar-view {
+      display: none;
+      background: var(--white);
+      padding: 20px;
+      border-radius: var(--radius-lg);
+      border: 3px solid var(--border-color);
+      box-shadow: var(--shadow-hard);
+    }
+
+    .calendar-view.active {
+      display: block;
+    }
+
     .calendar-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 20px;
     }
-    .calendar-nav { display: flex; gap: 10px; }
+
     .calendar-nav button {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      color: var(--text-primary);
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      border: 2px solid var(--border-color);
+      background: var(--white);
       cursor: pointer;
-      transition: var(--transition);
     }
-    .calendar-nav button:hover {
-      background: var(--card-hover);
-      border-color: var(--primary-color);
-    }
+
     .calendar-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      gap: 10px;
+      gap: 8px;
     }
+
     .calendar-day-header {
       text-align: center;
-      font-weight: 600;
-      color: var(--text-secondary);
-      padding: 10px 0;
-      font-size: 0.9rem;
+      font-weight: 700;
+      color: #6D4C41;
+      padding-bottom: 10px;
+      font-family: var(--font-head);
     }
+
     .calendar-day {
       aspect-ratio: 1/1;
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 8px;
+      border: 2px solid var(--border-color);
+      border-radius: 10px;
+      padding: 5px;
       display: flex;
       flex-direction: column;
-      cursor: pointer;
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
+      font-size: 0.8rem;
+      font-weight: 600;
     }
-    .calendar-day:hover { background: var(--card-hover); border-color: var(--primary-color); }
+
     .calendar-day.today {
-      background: var(--today-bg);
-      border-color: var(--primary-color);
-      box-shadow: 0 0 0 2px rgba(255, 122, 69, 0.3);
+      background: #FFE0B2;
+      border-color: var(--primary);
+      transform: scale(1.05);
+      z-index: 2;
+      box-shadow: var(--shadow-sm);
     }
-    .calendar-day-number { font-weight: 600; margin-bottom: 4px; }
-    .calendar-day-activities {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      flex: 1;
-    }
+
     .calendar-day-activity {
-      background: var(--primary-color);
+      background: var(--primary);
       color: white;
       border-radius: 4px;
-      padding: 2px 4px;
-      font-size: 0.7rem;
+      padding: 2px;
+      margin-top: 2px;
       text-align: center;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      font-size: 0.65rem;
     }
 
     /* Modal */
@@ -544,161 +588,251 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(62, 39, 35, 0.6);
+      backdrop-filter: blur(3px);
       z-index: 1000;
       align-items: center;
       justify-content: center;
       padding: 20px;
-      backdrop-filter: blur(5px);
     }
-    .modal.active { display: flex; }
+
+    .modal.active {
+      display: flex;
+      animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popIn {
+      from {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
     .modal-content {
-      background: var(--card-bg);
+      background: var(--white);
       border-radius: var(--radius-lg);
-      padding: 24px;
-      max-width: 500px;
+      padding: 25px;
       width: 100%;
-      border: 1px solid var(--card-border);
-      box-shadow: var(--shadow-lg);
+      max-width: 480px;
+      border: 4px solid var(--border-color);
+      box-shadow: 0 10px 0px rgba(0, 0, 0, 0.2);
       position: relative;
-      animation: modalFadeIn 0.3s ease;
     }
-    @keyframes modalFadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+
+    .modal-content h2 {
+      font-family: var(--font-head);
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      border-bottom: 2px dashed var(--border-color);
+      padding-bottom: 10px;
     }
+
     .modal-close {
       position: absolute;
-      top: 16px;
-      right: 16px;
+      top: 15px;
+      right: 15px;
       background: none;
-      border: none;
-      color: var(--text-primary);
-      font-size: 1.4rem;
-      cursor: pointer;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--transition);
-    }
-    .modal-close:hover { background: rgba(255, 255, 255, 0.1); }
-    .modal-form input, .modal-form textarea, .modal-form select {
-      width: 100%;
-      padding: 12px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid var(--card-border);
-      border-radius: 8px;
-      color: var(--text-primary);
-      margin-top: 8px;
-      margin-bottom: 16px;
-      font-family: 'Poppins', sans-serif;
-      transition: var(--transition);
-    }
-    .modal-form input:focus, .modal-form textarea:focus, .modal-form select:focus {
-      outline: none;
-      border-color: var(--primary-color);
-      background: rgba(255, 255, 255, 0.08);
-    }
-    .modal-form label { font-weight: 500; color: var(--text-secondary); }
-    .modal-form button {
-      width: 100%;
-      padding: 12px;
-      background: var(--primary-color);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-    .modal-form button:hover { background: var(--primary-light); }
-
-    /* Toast Notification */
-    .toast {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--card-bg);
-      color: var(--text-primary);
-      padding: 16px 20px;
-      border-radius: var(--radius);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      opacity: 0;
-      transform: translateY(100px);
-      transition: var(--transition);
-      z-index: 1001;
-      border: 1px solid var(--card-border);
-      box-shadow: var(--shadow-lg);
-      max-width: 350px;
-    }
-    .toast.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .toast.success { border-left: 4px solid var(--success-color); }
-    .toast.error { border-left: 4px solid var(--danger-color); }
-    .toast.info { border-left: 4px solid var(--info-color); }
-    .toast.warning { border-left: 4px solid var(--warning-color); }
-
-    /* Floating Action Button */
-    .fab {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: var(--primary-color);
-      color: white;
       border: none;
       font-size: 1.5rem;
       cursor: pointer;
-      box-shadow: var(--shadow-lg);
+      color: var(--text-main);
+      transition: 0.2s;
+    }
+
+    .modal-close:hover {
+      color: var(--danger);
+      transform: rotate(90deg);
+    }
+
+    .modal-form label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .modal-form input,
+    .modal-form select,
+    .modal-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 2px solid var(--border-color);
+      border-radius: 10px;
+      font-family: var(--font-body);
+      background: #FFF3E0;
+    }
+
+    .modal-form input:focus,
+    .modal-form select:focus {
+      border-color: var(--primary);
+      background: white;
+    }
+
+    .modal-form button {
+      width: 100%;
+      padding: 12px;
+      background: var(--primary);
+      color: white;
+      border: 3px solid var(--border-color);
+      border-radius: 15px;
+      font-weight: 700;
+      font-family: var(--font-head);
+      cursor: pointer;
+      font-size: 1.1rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--white);
+      padding: 15px 20px;
+      border-radius: var(--radius-md);
+      border-left: 6px solid var(--primary);
+      box-shadow: var(--shadow-hard);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transform: translateX(200%);
+      transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      z-index: 2000;
+    }
+
+    .toast.show {
+      transform: translateX(0);
+    }
+
+    /* Fab */
+    .fab {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: var(--primary);
+      color: white;
+      border: 3px solid var(--border-color);
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: var(--transition);
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: var(--shadow-hard);
       z-index: 100;
+      transition: 0.2s;
     }
-    .fab:hover { background: var(--primary-light); transform: scale(1.1); }
 
-    /* Print Styles */
-    @media print {
-      body { background: #fff; color: #000; }
-      .toolbar, .view-toggle, .filter-container, .back-button, .fab, .modal-close, .toast { display: none !important; }
-      .header { margin-bottom: 1rem; }
-      .day { break-inside: avoid; page-break-after: always; box-shadow: none; border: 1px solid #ddd; }
-      .day-header { background: var(--primary-color) !important; -webkit-print-color-adjust: exact; }
-      .activities { padding: 10px; }
-      .activity { background: #f9f9f9; border: 1px solid #eee; }
-      .favorite-btn { display: none; }
+    .fab:hover {
+      transform: scale(1.1) rotate(10deg);
+      background: var(--secondary);
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 40px;
+      color: #6D4C41;
+      font-weight: 600;
+      grid-column: 1/-1;
+      background: #FFE0B2;
+      border-radius: var(--radius-lg);
+      border: 2px dashed var(--border-color);
     }
 
     /* Responsive */
     @media (max-width: 768px) {
-      .schedule { grid-template-columns: 1fr; }
-      .toolbar { flex-direction: column; }
-      .search-container { max-width: 100%; }
-      .list-item { flex-direction: column; align-items: flex-start; }
-      .list-day { align-self: flex-start; margin-top: 12px; }
-      .stats-bar { flex-wrap: wrap; gap: 1rem; }
-      .calendar-grid { gap: 5px; }
-      .calendar-day-activity { font-size: 0.6rem; }
+
+      /* Reduce outer padding for smaller screens */
+      .calendar-view {
+        padding: 10px;
+      }
+
+      /* Stack header items vertically and add spacing */
+      .calendar-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+
+      /* Smaller navigation buttons */
+      .calendar-nav button {
+        width: 30px;
+        height: 30px;
+      }
+
+      /* Tighter grid gaps */
+      .calendar-grid {
+        gap: 4px;
+      }
+
+      /* Slightly smaller day cells and font */
+      .calendar-day {
+        font-size: 0.7rem;
+        padding: 3px;
+      }
+
+      /* Reduce activity badge size */
+      .calendar-day-activity {
+        font-size: 0.55rem;
+        padding: 1px;
+      }
+
+      .schedule {
+        grid-template-columns: 1fr;
+      }
+
+      .toolbar {
+        flex-direction: column;
+      }
+
+      .stats-bar {
+        justify-content: center;
+      }
+
+      .header h1 {
+        font-size: 1.8rem;
+      }
     }
-    @media (max-width: 480px) {
-      .header h1 { font-size: 1.8rem; }
-      .filter-container { justify-content: flex-start; overflow-x: auto; padding-bottom: 8px; -webkit-overflow-scrolling: touch; }
-      .modal-content { padding: 20px; }
-      .toast { right: 10px; left: 10px; max-width: none; }
+
+    @media (max-width: 665px) {
+      .calendar-view {
+        padding: 5px;
+      }
+
+      .calendar-header {
+        gap: 5px;
+        margin-bottom: 10px;
+      }
+
+      .calendar-nav button {
+        width: 25px;
+        height: 25px;
+      }
+
+      .calendar-day {
+        font-size: 0.5rem;
+        padding: 2px;
+      }
+
+      .calendar-day-activity {
+        font-size: 0.42rem;
+        padding: 0px;
+      }
     }
   </style>
 </head>
+
 <body>
+
   <!-- Loading Screen -->
   <div class="loader-container" id="loader">
     <div class="loader"></div>
@@ -709,8 +843,8 @@
       <a href="javascript:history.back()" class="back-button">
         <i class="fas fa-arrow-left"></i> Kembali
       </a>
-      <h1><i class="fas fa-calendar-alt"></i> Jadwal Ekstrakurikuler</h1>
-      <p class="header-subtitle">Semua kegiatan ekstrakurikuler dalam satu tempat</p>
+      <h1><i class="fas fa-calendar-alt"></i> Jadwal Eskul</h1>
+      <p class="header-subtitle">Semua kegiatan seru dalam satu tempat! 🌟</p>
     </div>
 
     <!-- Stats Bar -->
@@ -738,55 +872,36 @@
         <i class="fas fa-search"></i>
         <input type="text" id="search" placeholder="Cari kegiatan..." oninput="filterActivities()" />
       </div>
-        <button class="secondary" onclick="toggleAllDays()">
-          <i class="fas fa-angle-double-down"></i> Expand Semua
-        </button>
-        <button class="info" onclick="showReminderModal()">
-          <i class="fas fa-bell"></i> Pengingat
-        </button>
-        <button class="success" onclick="exportSchedule()">
-          <i class="fas fa-download"></i> Export
-        </button>
-        <button class="warning" onclick="shareSchedule()">
-          <i class="fas fa-share-alt"></i> Bagikan
-        </button>
-        <button onclick="window.print()">
-          <i class="fas fa-print"></i> Cetak
-        </button>
-      </div>
+      <button class="secondary" onclick="toggleAllDays()">
+        <i class="fas fa-angle-double-down"></i> Buka Semua
+      </button>
+      <button class="info" onclick="showReminderModal()">
+        <i class="fas fa-bell"></i> Pengingat
+      </button>
+      <button class="success" onclick="exportSchedule()">
+        <i class="fas fa-download"></i> Simpan
+      </button>
+      <button class="warning" onclick="shareSchedule()">
+        <i class="fas fa-share-alt"></i> Bagikan
+      </button>
+      <button onclick="window.print()">
+        <i class="fas fa-print"></i> Cetak
+      </button>
     </div>
 
     <div class="view-toggle">
-      <button class="active" onclick="switchView('card')">
-        <i class="fas fa-th-large"></i> Kartu
-      </button>
-      <button onclick="switchView('list')">
-        <i class="fas fa-list"></i> Daftar
-      </button>
-      <button onclick="switchView('calendar')">
-        <i class="fas fa-calendar"></i> Kalender
-      </button>
+      <button class="active" onclick="switchView('card')"><i class="fas fa-th-large"></i> Kartu</button>
+      <button onclick="switchView('list')"><i class="fas fa-list"></i> Daftar</button>
+      <button onclick="switchView('calendar')"><i class="fas fa-calendar"></i> Kalender</button>
     </div>
 
     <div class="filter-container">
-      <div class="filter-pill active" onclick="filterByCategory('all')">
-        <i class="fas fa-th"></i> Semua
-      </div>
-      <div class="filter-pill" onclick="filterByCategory('olahraga')">
-        <i class="fas fa-running"></i> Olahraga
-      </div>
-      <div class="filter-pill" onclick="filterByCategory('seni')">
-        <i class="fas fa-palette"></i> Seni
-      </div>
-      <div class="filter-pill" onclick="filterByCategory('akademik')">
-        <i class="fas fa-book"></i> Akademik
-      </div>
-      <div class="filter-pill" onclick="filterByCategory('keagamaan')">
-        <i class="fas fa-mosque"></i> Keagamaan
-      </div>
-      <div class="filter-pill" onclick="filterByCategory('sosial')">
-        <i class="fas fa-hands-helping"></i> Sosial
-      </div>
+      <div class="filter-pill active" onclick="filterByCategory('all')"><i class="fas fa-th"></i> Semua</div>
+      <div class="filter-pill" onclick="filterByCategory('olahraga')"><i class="fas fa-running"></i> Olahraga</div>
+      <div class="filter-pill" onclick="filterByCategory('seni')"><i class="fas fa-palette"></i> Seni</div>
+      <div class="filter-pill" onclick="filterByCategory('akademik')"><i class="fas fa-book"></i> Akademik</div>
+      <div class="filter-pill" onclick="filterByCategory('keagamaan')"><i class="fas fa-mosque"></i> Keagamaan</div>
+      <div class="filter-pill" onclick="filterByCategory('sosial')"><i class="fas fa-hands-helping"></i> Sosial</div>
     </div>
 
     <div class="schedule" id="schedule">
@@ -794,18 +909,17 @@
     </div>
 
     <div class="list-view" id="list-view"></div>
-    
+
     <div class="calendar-view" id="calendar-view">
       <div class="calendar-header">
-        <h2 id="calendar-month">Juni 2023</h2>
+        <h2 id="calendar-month" style="font-family: var(--font-head); font-size: 1.5rem; color: var(--text-main);">Juni
+          2024</h2>
         <div class="calendar-nav">
           <button onclick="previousMonth()"><i class="fas fa-chevron-left"></i></button>
           <button onclick="nextMonth()"><i class="fas fa-chevron-right"></i></button>
         </div>
       </div>
-      <div class="calendar-grid" id="calendar-grid">
-        <!-- Calendar will be generated by JavaScript -->
-      </div>
+      <div class="calendar-grid" id="calendar-grid"></div>
     </div>
   </div>
 
@@ -889,7 +1003,7 @@
   <div class="modal" id="export-modal">
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal('export-modal')"><i class="fas fa-times"></i></button>
-      <h2><i class="fas fa-download"></i> Export Jadwal</h2>
+      <h2><i class="fas fa-download"></i> Simpan Jadwal</h2>
       <form class="modal-form" onsubmit="doExport(event)">
         <div>
           <label for="export-format">Format</label>
@@ -903,15 +1017,15 @@
             <input type="checkbox" id="include-favorites" /> Hanya Favorit
           </label>
         </div>
-        <button type="submit">Export</button>
+        <button type="submit">Simpan File</button>
       </form>
     </div>
   </div>
 
   <!-- Toast Notification -->
   <div class="toast" id="toast">
-    <i class="fas fa-check-circle"></i>
-    <span id="toast-message">Pesan berhasil disimpan!</span>
+    <i class="fas fa-check-circle" style="color: var(--success); font-size: 1.5rem;"></i>
+    <span id="toast-message" style="font-weight: 600;">Pesan berhasil disimpan!</span>
   </div>
 
   <script>
@@ -920,39 +1034,51 @@
     let currentMonth = new Date().getMonth();
     let currentYear = new Date().getFullYear();
     let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    
+
     // Data kegiatan ekstrakurikuler
     const activitiesData = [
-      { day: 'Senin', activities: [
-        { name: 'Basket', time: '15:00 - 17:00', location: 'Lapangan sekolah', category: 'olahraga', icon: 'fas fa-basketball-ball' },
-        { name: 'Dance', time: '15:30 - 17:30', location: 'Lapangan sekolah', category: 'seni', icon: 'fas fa-music' }
-      ]},
-      { day: 'Selasa', activities: [
-        { name: 'Pramuka', time: '14:00 - 16:00', location: 'Lapangan sekolah', category: 'sosial', icon: 'fas fa-campground' },
-        { name: 'Paskibra', time: '15:00 - 17:00', location: 'Lapangan sekolah', category: 'sosial', icon: 'fas fa-flag' },
-        { name: 'Futsal', time: '16:00 - 18:00', location: 'Lapangan sekolah', category: 'olahraga', icon: 'fas fa-futbol' },
-        { name: 'Teater', time: '14:30 - 16:30', location: 'Taman budaya', category: 'seni', icon: 'fa-solid fa-masks-theater' }
-      ]},
-      { day: 'Rabu', activities: [
-        { name: 'Habsyi', time: '15:00 - 16:30', location: 'Mushola', category: 'keagamaan', icon: 'fas fa-microphone-alt' },
-        { name: 'Basket', time: '15:00 - 17:00', location: 'Lapangan sekolah', category: 'olahraga', icon: 'fas fa-basketball-ball' },
-        { name: 'Bahasa Jepang', time: '14:00 - 15:30', location: 'Kelas teori 17', category: 'akademik', icon: 'fas fa-language' },
-        { name: 'Tari Tradisional', time: '15:30 - 17:00', location: 'Lapangan sekolah', category: 'seni', icon: 'fas fa-vest' },
-        { name: 'Dance', time: '15:30 - 17:30', location: 'Lapangan sekolah', category: 'seni', icon: 'fas fa-music' }
-      ]},
-      { day: 'Kamis', activities: [
-        { name: 'Ekupat', time: '14:00 - 16:00', location: 'Aula edotel', category: 'sosial', icon: 'fas fa-cat' },
-        { name: 'Paskibra', time: '15:00 - 17:00', location: 'Lapangan sekolah', category: 'sosial', icon: 'fas fa-flag' },
-        { name: 'PMR', time: '14:30 - 16:30', location: 'Lapangan sekolah', category: 'sosial', icon: 'fa-solid fa-heart-circle-plus' },
-        { name: 'Futsal', time: '16:00 - 18:00', location: 'Lapangan sekolah', category: 'olahraga', icon: 'fas fa-futbol' }
-      ]},
-      { day: 'Jumat', activities: [
-        { name: 'Pramuka', time: '14:00 - 16:00', location: 'Lapangan sekolah', category: 'sosial', icon: 'fas fa-campground' }
-      ]},
-      { day: 'Sabtu', activities: [
-        { name: 'Modeling', time: '09:00 - 11:00', location: 'Aula sekolah', category: 'seni', icon: 'fas fa-user-tie' },
-        { name: 'Teater', time: '10:00 - 12:00', location: 'Taman budaya', category: 'seni', icon: 'fa-solid fa-masks-theater' }
-      ]}
+      {
+        day: 'Senin', activities: [
+          { name: 'Basket', time: '15:00 - 17:00', location: 'Lapangan sekolah', category: 'olahraga', icon: 'fas fa-basketball-ball' },
+          { name: 'Dance', time: '15:30 - 17:30', location: 'Lapangan sekolah', category: 'seni', icon: 'fas fa-music' }
+        ]
+      },
+      {
+        day: 'Selasa', activities: [
+          { name: 'Pramuka', time: '14:00 - 16:00', location: 'Lapangan sekolah', category: 'sosial', icon: 'fas fa-campground' },
+          { name: 'Paskibra', time: '15:00 - 17:00', location: 'Lapangan sekolah', category: 'sosial', icon: 'fas fa-flag' },
+          { name: 'Futsal', time: '16:00 - 18:00', location: 'Lapangan sekolah', category: 'olahraga', icon: 'fas fa-futbol' },
+          { name: 'Teater', time: '14:30 - 16:30', location: 'Taman budaya', category: 'seni', icon: 'fa-solid fa-masks-theater' }
+        ]
+      },
+      {
+        day: 'Rabu', activities: [
+          { name: 'Habsyi', time: '15:00 - 16:30', location: 'Mushola', category: 'keagamaan', icon: 'fas fa-microphone-alt' },
+          { name: 'Basket', time: '15:00 - 17:00', location: 'Lapangan sekolah', category: 'olahraga', icon: 'fas fa-basketball-ball' },
+          { name: 'Bahasa Jepang', time: '14:00 - 15:30', location: 'Kelas teori 17', category: 'akademik', icon: 'fas fa-language' },
+          { name: 'Tari Tradisional', time: '15:30 - 17:00', location: 'Lapangan sekolah', category: 'seni', icon: 'fas fa-vest' },
+          { name: 'Dance', time: '15:30 - 17:30', location: 'Lapangan sekolah', category: 'seni', icon: 'fas fa-music' }
+        ]
+      },
+      {
+        day: 'Kamis', activities: [
+          { name: 'Ekupat', time: '14:00 - 16:00', location: 'Aula edotel', category: 'sosial', icon: 'fas fa-cat' },
+          { name: 'Paskibra', time: '15:00 - 17:00', location: 'Lapangan sekolah', category: 'sosial', icon: 'fas fa-flag' },
+          { name: 'PMR', time: '14:30 - 16:30', location: 'Lapangan sekolah', category: 'sosial', icon: 'fa-solid fa-heart-circle-plus' },
+          { name: 'Futsal', time: '16:00 - 18:00', location: 'Lapangan sekolah', category: 'olahraga', icon: 'fas fa-futbol' }
+        ]
+      },
+      {
+        day: 'Jumat', activities: [
+          { name: 'Pramuka', time: '14:00 - 16:00', location: 'Lapangan sekolah', category: 'sosial', icon: 'fas fa-campground' }
+        ]
+      },
+      {
+        day: 'Sabtu', activities: [
+          { name: 'Modeling', time: '09:00 - 11:00', location: 'Aula sekolah', category: 'seni', icon: 'fas fa-user-tie' },
+          { name: 'Teater', time: '10:00 - 12:00', location: 'Taman budaya', category: 'seni', icon: 'fa-solid fa-masks-theater' }
+        ]
+      }
     ];
 
     // Cache DOM elements
@@ -974,7 +1100,7 @@
         generateCalendar();
       }, 500);
     });
-    
+
     // Expand / Collapse All
     function toggleAllDays() {
       allExpanded = !allExpanded;
@@ -1019,7 +1145,7 @@
     function filterActivities() {
       const query = document.getElementById('search').value.toLowerCase();
       let anyVisible = false;
-      
+
       document.querySelectorAll('.day').forEach(day => {
         let dayVisible = false;
         day.querySelectorAll('.activity').forEach(act => {
@@ -1030,9 +1156,9 @@
         day.style.display = dayVisible ? '' : 'none';
         if (dayVisible) anyVisible = true;
       });
-      
+
       handleNoResults(anyVisible);
-      
+
       // Also filter list view if active
       if (listViewEl.classList.contains('active')) {
         filterListView(query);
@@ -1059,11 +1185,11 @@
       const activityEl = btn.closest('.activity');
       const activityName = activityEl.querySelector('.activity-name').textContent;
       const icon = btn.querySelector('i');
-      
+
       icon.classList.toggle('far');
       icon.classList.toggle('fas');
       btn.classList.toggle('active');
-      
+
       // Update favorites array
       if (btn.classList.contains('active')) {
         if (!favorites.includes(activityName)) {
@@ -1072,13 +1198,13 @@
       } else {
         favorites = favorites.filter(name => name !== activityName);
       }
-      
+
       // Save to localStorage
       localStorage.setItem('favorites', JSON.stringify(favorites));
-      
+
       // Update stats
       updateStats();
-      
+
       // Show toast notification
       showToast(`${activityName} ${btn.classList.contains('active') ? 'ditambahkan ke' : 'dihapus dari'} favorit`, 'success');
     }
@@ -1086,15 +1212,15 @@
     // Switch view
     function switchView(view) {
       const toggleButtons = document.querySelectorAll('.view-toggle button');
-      
+
       // Reset all buttons
       toggleButtons.forEach(btn => btn.classList.remove('active'));
-      
+
       // Hide all views
       scheduleEl.style.display = 'none';
       listViewEl.classList.remove('active');
       document.getElementById('calendar-view').classList.remove('active');
-      
+
       if (view === 'card') {
         scheduleEl.style.display = 'grid';
         toggleButtons[0].classList.add('active');
@@ -1116,16 +1242,16 @@
     // Generate list view
     function generateListView() {
       listViewEl.innerHTML = ''; // Clear previous content
-      
+
       activitiesData.forEach(dayData => {
         dayData.activities.forEach(activity => {
           const listItem = document.createElement('div');
           listItem.className = 'list-item';
-          
+
           // Clone icon from original data to avoid parsing issues
           const iconEl = document.createElement('i');
           iconEl.className = activity.icon;
-          
+
           listItem.innerHTML = `
             <div class="list-icon">${iconEl.outerHTML}</div>
             <div class="list-content">
@@ -1137,7 +1263,7 @@
             </div>
             <div class="list-day">${dayData.day}</div>
           `;
-          
+
           listViewEl.appendChild(listItem);
         });
       });
@@ -1147,21 +1273,21 @@
     function filterListView(query) {
       const listItems = listViewEl.querySelectorAll('.list-item');
       let anyVisible = false;
-      
+
       listItems.forEach(item => {
         const text = item.textContent.toLowerCase();
         const match = text.includes(query);
         item.style.display = match ? 'flex' : 'none';
         if (match) anyVisible = true;
       });
-      
+
       handleNoResults(anyVisible);
     }
 
     // Generate calendar view
     function generateCalendar() {
       calendarGridEl.innerHTML = '';
-      
+
       // Add day headers
       const dayHeaders = ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'];
       dayHeaders.forEach(day => {
@@ -1170,49 +1296,49 @@
         dayHeaderEl.textContent = day;
         calendarGridEl.appendChild(dayHeaderEl);
       });
-      
+
       // Get first day of month and number of days
       const firstDay = new Date(currentYear, currentMonth, 1).getDay();
       const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-      
+
       // Add empty cells for days before month starts
       for (let i = 0; i < firstDay; i++) {
         calendarGridEl.appendChild(document.createElement('div'));
       }
-      
+
       // Get current day for highlighting
       const today = new Date();
       const todayDate = today.getDate();
       const isCurrentMonth = currentMonth === today.getMonth() && currentYear === today.getFullYear();
-      
+
       // Add days of the month
       for (let day = 1; day <= daysInMonth; day++) {
         const dayEl = document.createElement('div');
         dayEl.className = 'calendar-day';
-        
+
         // Check if this is today
         if (isCurrentMonth && day === todayDate) {
           dayEl.classList.add('today');
         }
-        
+
         // Get day of week
         const dayOfWeek = new Date(currentYear, currentMonth, day).getDay();
         const dayName = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'][dayOfWeek];
-        
+
         // Find activities for this day
         const dayData = activitiesData.find(d => d.day === dayName);
         const activities = dayData ? dayData.activities : [];
-        
+
         // Create day number
         const dayNumberEl = document.createElement('div');
         dayNumberEl.className = 'calendar-day-number';
         dayNumberEl.textContent = day;
         dayEl.appendChild(dayNumberEl);
-        
+
         // Create activities container
         const activitiesDiv = document.createElement('div');
         activitiesDiv.className = 'calendar-day-activities';
-        
+
         // Add up to 2 activities
         activities.forEach((activity, index) => {
           if (index < 2) {
@@ -1222,7 +1348,7 @@
             activitiesDiv.appendChild(activityDiv);
           }
         });
-        
+
         // Add "more" indicator if there are more than 2 activities
         if (activities.length > 2) {
           const moreDiv = document.createElement('div');
@@ -1231,11 +1357,11 @@
           moreDiv.style.background = 'var(--text-secondary)';
           activitiesDiv.appendChild(moreDiv);
         }
-        
+
         dayEl.appendChild(activitiesDiv);
         calendarGridEl.appendChild(dayEl);
       }
-      
+
       // Update month display
       const monthNames = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
       calendarMonthEl.textContent = `${monthNames[currentMonth]} ${currentYear}`;
@@ -1267,7 +1393,7 @@
         pill.classList.remove('active');
       });
       event.target.classList.add('active');
-      
+
       // Filter activities
       document.querySelectorAll('.activity').forEach(activity => {
         if (category === 'all' || activity.dataset.category === category) {
@@ -1276,13 +1402,13 @@
           activity.style.display = 'none';
         }
       });
-      
+
       // Check if any day has visible activities
       document.querySelectorAll('.day').forEach(day => {
         const visibleActivities = day.querySelectorAll('.activity:not([style*="display: none"])');
         day.style.display = visibleActivities.length > 0 ? '' : 'none';
       });
-      
+
       // Also filter list view if active
       if (listViewEl.classList.contains('active')) {
         filterListByCategory(category);
@@ -1293,17 +1419,17 @@
     function filterListByCategory(category) {
       const listItems = listViewEl.querySelectorAll('.list-item');
       let anyVisible = false;
-      
+
       listItems.forEach(item => {
         const activityEl = item.querySelector('.list-title');
         const categoryName = item.querySelector('.list-day').textContent;
         const dayData = activitiesData.find(d => d.day === categoryName);
         const categoryMatch = category === 'all' || dayData?.activities.some(a => a.category === category);
-        
+
         item.style.display = categoryMatch ? 'flex' : 'none';
         if (categoryMatch) anyVisible = true;
       });
-      
+
       handleNoResults(anyVisible);
     }
 
@@ -1312,20 +1438,20 @@
       // Total activities
       const totalActivities = document.querySelectorAll('.activity').length;
       document.getElementById('total-activities').textContent = totalActivities;
-      
+
       // Total categories
       const categories = new Set();
       document.querySelectorAll('.activity').forEach(activity => {
         categories.add(activity.dataset.category);
       });
       document.getElementById('total-categories').textContent = categories.size;
-      
+
       // Today's activities
       const today = new Date();
-      const dayNames = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'][ today.getDay() ];
+      const dayNames = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'][today.getDay()];
       const todayActivities = document.querySelectorAll(`.day[data-day="${dayNames[today.getDay()]} .activity`).length;
       document.getElementById('today-activities').textContent = todayActivities;
-      
+
       // Favorite count
       document.getElementById('favorite-count').textContent = favorites.length;
     }
@@ -1334,7 +1460,7 @@
     function populateReminderActivities() {
       const select = document.getElementById('reminder-activity');
       select.innerHTML = '<option value="">Pilih kegiatan</option>';
-      
+
       document.querySelectorAll('.activity').forEach(activity => {
         const name = activity.querySelector('.activity-name').textContent;
         const option = document.createElement('option');
@@ -1363,9 +1489,9 @@
       const activity = document.getElementById('reminder-activity').value;
       const time = document.getElementById('reminder-time').value;
       const note = document.getElementById('reminder-note').value;
-      
+
       console.log('Reminder set:', { activity, time, note });
-      
+
       closeModal('reminder-modal');
       showToast('Pengingat berhasil disimpan!', 'success');
     }
@@ -1373,7 +1499,7 @@
     // Add activity
     function addActivity(event) {
       event.preventDefault();
-      
+
       const name = document.getElementById('activity-name').value;
       const day = document.getElementById('activity-day').value;
       const timeStart = document.getElementById('activity-time-start').value;
@@ -1381,18 +1507,18 @@
       const location = document.getElementById('activity-location').value;
       const category = document.getElementById('activity-category').value;
       const icon = document.getElementById('activity-icon').value;
-      
+
       // Find the day element
       const dayEl = document.querySelector(`.day[data-day="${day}"]`);
-      
+
       if (dayEl) {
         const activitiesContainer = dayEl.querySelector('.activities');
-        
+
         // Create new activity element
         const activityEl = document.createElement('div');
         activityEl.className = 'activity';
         activityEl.dataset.category = category;
-        
+
         activityEl.innerHTML = `
           <i class="${icon}"></i>
           <div class="activity-info">
@@ -1404,15 +1530,15 @@
             <i class="far fa-star"></i>
           </button>
         `;
-        
+
         activitiesContainer.appendChild(activityEl);
-        
+
         // Update stats
         updateStats();
-        
+
         // Show success message
         showToast('Kegiatan berhasil ditambahkan!', 'success');
-        
+
         // Reset form
         event.target.reset();
         closeModal('add-activity-modal');
@@ -1427,10 +1553,10 @@
     // Do export
     function doExport(event) {
       event.preventDefault();
-      
+
       const format = document.getElementById('export-format').value;
       const includeFavorites = document.getElementById('include-favorites').checked;
-      
+
       let dataToExport = activitiesData;
       if (includeFavorites) {
         dataToExport = activitiesData.map(day => ({
@@ -1438,24 +1564,24 @@
           activities: day.activities.filter(act => favorites.includes(act.name))
         })).filter(day => day.activities.length > 0);
       }
-      
+
       // Create a blob and download link
       const dataStr = JSON.stringify(dataToExport, null, 2);
       const blob = new Blob([dataStr], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
-      
+
       const a = document.createElement('a');
       a.href = url;
       a.download = `jadwal_ekstrakurikuler.${format}`;
       document.body.appendChild(a);
       a.click();
-      
+
       // Clean up
       setTimeout(() => {
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
       }, 100);
-      
+
       closeModal('export-modal');
       showToast(`Jadwal berhasil diexport sebagai ${format.toUpperCase()}!`, 'success');
     }
@@ -1465,7 +1591,7 @@
       const view = document.querySelector('.view-toggle button.active').textContent.trim().toLowerCase();
       const activeFilter = document.querySelector('.filter-pill.active').textContent.trim().toLowerCase();
       const shareUrl = `${window.location.origin}${window.location.pathname}?view=${view}&filter=${activeFilter}`;
-      
+
       if (navigator.share) {
         navigator.share({
           title: 'Jadwal Ekstrakurikuler SMKN 4 Banjarmasin',
@@ -1489,12 +1615,12 @@
     // Show toast notification
     function showToast(message, type = 'success') {
       toastMessageEl.textContent = message;
-      
+
       toastEl.className = 'toast';
       if (type) {
         toastEl.classList.add(type);
       }
-      
+
       const icon = toastEl.querySelector('i');
       switch (type) {
         case 'success': icon.className = 'fas fa-check-circle'; break;
@@ -1503,9 +1629,9 @@
         case 'warning': icon.className = 'fas fa-exclamation-triangle'; break;
         default: icon.className = 'fas fa-check-circle';
       }
-      
+
       toastEl.classList.add('show');
-      
+
       setTimeout(() => {
         toastEl.classList.remove('show');
       }, 3000);
@@ -1514,12 +1640,12 @@
     // Render schedule from data
     function renderSchedule() {
       scheduleEl.innerHTML = '';
-      
+
       activitiesData.forEach(dayData => {
         const dayEl = document.createElement('div');
         dayEl.className = 'day';
         dayEl.dataset.day = dayData.day;
-        
+
         const dayHeaderEl = document.createElement('div');
         dayHeaderEl.className = 'day-header';
         dayHeaderEl.setAttribute('onclick', 'toggleDay(this)');
@@ -1527,18 +1653,18 @@
           <h2><i class="fas fa-calendar-day"></i> ${dayData.day}</h2>
           <span class="toggle">▾</span>
         `;
-        
+
         const activitiesEl = document.createElement('div');
         activitiesEl.className = 'activities';
-        
+
         dayData.activities.forEach(activity => {
           const activityEl = document.createElement('div');
           activityEl.className = 'activity';
           activityEl.dataset.category = activity.category;
-          
+
           // Check if this activity is a favorite
           const isFavorite = favorites.includes(activity.name);
-          
+
           activityEl.innerHTML = `
             <i class="${activity.icon}"></i>
             <div class="activity-info">
@@ -1550,15 +1676,15 @@
               <i class="${isFavorite ? 'fas' : 'far'} fa-star"></i>
             </button>
           `;
-          
+
           activitiesEl.appendChild(activityEl);
         });
-        
+
         dayEl.appendChild(dayHeaderEl);
         dayEl.appendChild(activitiesEl);
         scheduleEl.appendChild(dayEl);
       });
-      
+
       // Animate cards on load
       document.querySelectorAll('.day').forEach((day, i) => {
         setTimeout(() => {
@@ -1581,7 +1707,7 @@
 
       // Highlight today
       highlightToday();
-      
+
       // Animate cards on load
       document.querySelectorAll('.day').forEach((day, i) => {
         setTimeout(() => {
@@ -1592,4 +1718,5 @@
     });
   </script>
 </body>
+
 </html>
