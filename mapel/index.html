@@ -19,533 +19,76 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;600;700&display=swap"
     rel="stylesheet" />
-
-  <style>
-    /* --- VARIABEL & RESET --- */
-    :root {
-      /* Orange Pop Palette */
-      --primary: #FF9F43;
-      /* Bright Orange */
-      --secondary: #FDC500;
-      /* Pop Yellow */
-      --accent: #5f27cd;
-      /* Purple Accent */
-      --bg-color: #FFF8F0;
-      /* Warm Cream */
-      --text-main: #4E342E;
-      /* Dark Brown Text */
-      --text-light: #FFFFFF;
-      --border-color: #3E2723;
-      /* Very Dark Brown Border */
-      --shadow-hard: 5px 5px 0px var(--border-color);
-      --shadow-hover: 8px 8px 0px var(--border-color);
-      --radius-lg: 25px;
-      --radius-md: 15px;
-      --font-head: 'Fredoka', sans-serif;
-      --font-body: 'Quicksand', sans-serif;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    body {
-      font-family: var(--font-body);
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      line-height: 1.6;
-      min-height: 100vh;
-      overflow-x: hidden;
-      /* Polka Dot Pattern */
-      background-image: radial-gradient(var(--secondary) 15%, transparent 16%), radial-gradient(var(--secondary) 15%, transparent 16%);
-      background-size: 20px 20px;
-      background-position: 0 0, 10px 10px;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-      transition: 0.2s;
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    button {
-      border: none;
-      outline: none;
-      cursor: pointer;
-      font-family: inherit;
-    }
-
-    select {
-      appearance: none;
-      -webkit-appearance: none;
-      outline: none;
-    }
-
-    /* --- LOADING SCREEN --- */
-    .loader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--bg-color);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      transition: opacity 0.5s ease;
-    }
-
-    .loader.hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    .bouncy-loader {
-      width: 60px;
-      height: 60px;
-      background: var(--primary);
-      border-radius: 50%;
-      border: 4px solid var(--border-color);
-      animation: bounce 0.6s infinite alternate;
-    }
-
-    @keyframes bounce {
-      from {
-        transform: translateY(0) scale(1);
-      }
-
-      to {
-        transform: translateY(-20px) scale(1.1);
-      }
-    }
-
-    /* --- CONTAINER --- */
-    .app-container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem 0 6rem 0;
-    }
-
-    /* --- HEADER --- */
-    .header {
-      text-align: center;
-      margin-bottom: 3rem;
-      position: relative;
-    }
-
-    .header h1 {
-      font-family: var(--font-head);
-      font-size: 2.5rem;
-      color: var(--border-color);
-      text-shadow: 3px 3px 0px #fff;
-      margin-bottom: 0.5rem;
-      display: inline-block;
-      background: #fff;
-      padding: 10px 30px;
-      border: 4px solid var(--border-color);
-      border-radius: 50px;
-      box-shadow: var(--shadow-hard);
-      animation: wiggle 3s infinite ease-in-out;
-    }
-
-    @keyframes wiggle {
-
-      0%,
-      100% {
-        transform: rotate(-2deg);
-      }
-
-      50% {
-        transform: rotate(2deg);
-      }
-    }
-
-    .subtitle {
-      font-size: 1.1rem;
-      color: #6D4C41;
-      font-weight: 600;
-      margin-top: 1rem;
-    }
-
-    /* --- BUTTONS --- */
-    .btn {
-      background-color: var(--primary);
-      color: white;
-      padding: 12px 25px;
-      border-radius: 50px;
-      border: 3px solid var(--border-color);
-      box-shadow: var(--shadow-hard);
-      font-family: var(--font-head);
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.2s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn:hover {
-      transform: translate(-3px, -3px);
-      box-shadow: var(--shadow-hover);
-      background-color: var(--secondary);
-      color: var(--border-color);
-    }
-
-    .btn:active {
-      transform: translate(2px, 2px);
-      box-shadow: 1px 1px 0px var(--border-color);
-    }
-
-    .btn-secondary {
-      background-color: #fff;
-      color: var(--border-color);
-    }
-
-    /* Tombol Reset Kecil */
-    .btn-reset {
-      background-color: #f0f0f0;
-      color: #666;
-      font-size: 0.8rem;
-      padding: 5px 12px;
-      border: 2px solid #ccc;
-      box-shadow: 2px 2px 0px #999;
-      border-radius: 20px;
-      margin-top: 10px;
-    }
-
-    .btn-reset:hover {
-      background-color: var(--primary);
-      color: white;
-      border-color: var(--border-color);
-      box-shadow: 3px 3px 0px var(--border-color);
-    }
-
-    .btn-back {
-      margin-bottom: 1.5rem;
-      background-color: #ff6b6b;
-    }
-
-    /* --- HOME: JURUSAN GRID --- */
-    .home-view {
-      display: block;
-      animation: fadeIn 0.5s ease;
-    }
-
-    .schedule-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .jurusan-card {
-      background: #fff;
-      border: 4px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-hard);
-      transition: transform 0.2s;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .jurusan-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--primary);
-    }
-
-    .jurusan-header {
-      padding: 2rem 1.5rem;
-      text-align: center;
-      border-bottom: 4px solid var(--border-color);
-      position: relative;
-      background: var(--primary);
-      color: white;
-    }
-
-    .jurusan-header h2 {
-      font-family: var(--font-head);
-      font-size: 1.6rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      text-shadow: 2px 2px 0px var(--border-color);
-    }
-
-    .jurusan-header i {
-      font-size: 2.5rem;
-      opacity: 0.9;
-    }
-
-    .jurusan-content {
-      padding: 1.5rem;
-      text-align: center;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    /* Styled Dropdown inside Card */
-    .kelas-select-wrapper {
-      width: 100%;
-      position: relative;
-    }
-
-    .kelas-select {
-      width: 100%;
-      padding: 15px;
-      border-radius: 15px;
-      border: 3px solid var(--border-color);
-      background: #FFF3E0;
-      font-family: var(--font-head);
-      font-weight: 600;
-      font-size: 1rem;
-      color: var(--text-main);
-      cursor: pointer;
-      text-align: center;
-      box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
-      transition: 0.2s;
-    }
-
-    .kelas-select:hover {
-      background: white;
-    }
-
-    .kelas-select:focus {
-      background: white;
-      border-color: var(--primary);
-      box-shadow: 3px 3px 0px var(--border-color);
-    }
-
-    /* --- SCHEDULE VIEW (DETAIL) --- */
-    .schedule-view {
-      display: none;
-      animation: fadeIn 0.5s ease;
-    }
-
-    .schedule-view.active {
-      display: block;
-    }
-
-    .controls-area {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .kelas-switcher-select {
-      padding: 10px 15px;
-      border-radius: 12px;
-      border: 3px solid var(--border-color);
-      font-family: var(--font-head);
-      font-size: 0.9rem;
-      background: white;
-      cursor: pointer;
-      box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Day Cards styling */
-    .day-card {
-      background: #fff;
-      border: 4px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-hard);
-      margin-bottom: 2rem;
-      overflow: hidden;
-    }
-
-    .day-header {
-      background: var(--primary);
-      color: white;
-      padding: 1rem 1.5rem;
-      font-family: var(--font-head);
-      font-size: 1.5rem;
-      border-bottom: 4px solid var(--border-color);
-      text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    /* List Items */
-    .subject-list {
-      padding: 0;
-    }
-
-    .subject-item {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      padding: 15px;
-      border-bottom: 2px solid #eee;
-      transition: 0.2s;
-    }
-
-    .subject-item:last-child {
-      border-bottom: none;
-    }
-
-    .subject-item:hover {
-      background-color: #FFF8E1;
-    }
-
-    .subject-time {
-      font-family: monospace;
-      font-weight: 700;
-      background: #eee;
-      padding: 5px 10px;
-      border-radius: 8px;
-      border: 2px solid var(--border-color);
-      margin-right: 15px;
-      font-size: 0.9rem;
-      color: #555;
-    }
-
-    .subject-info {
-      flex: 1;
-      min-width: 200px;
-    }
-
-    .subject-name {
-      display: block;
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--text-main);
-    }
-
-    .subject-teacher {
-      display: block;
-      font-size: 0.9rem;
-      color: #777;
-      font-style: italic;
-    }
-
-    .subject-item.break {
-      background-color: #ffebee;
-      color: #c62828;
-      justify-content: center;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .subject-item.upacara {
-      background-color: #E3F2FD;
-      color: #1565C0;
-    }
-
-    /* --- MOBILE DAY NAV --- */
-    .mobile-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: #fff;
-      border-top: 4px solid var(--border-color);
-      display: flex;
-      overflow-x: auto;
-      z-index: 100;
-      padding: 10px;
-      gap: 10px;
-      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .mobile-nav-btn {
-      background: #f0f0f0;
-      border: 2px solid var(--border-color);
-      border-radius: 50px;
-      padding: 10px 20px;
-      white-space: nowrap;
-      font-family: var(--font-head);
-      font-weight: 600;
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      transition: 0.2s;
-    }
-
-    .mobile-nav-btn.active {
-      background: var(--primary);
-      color: white;
-      transform: scale(1.05);
-    }
-
-    /* --- RIPPLE EFFECT --- */
-    .ripple {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.6);
-      transform: scale(0);
-      animation: ripple-anim 0.6s linear;
-      pointer-events: none;
-    }
-
-    @keyframes ripple-anim {
-      to {
-        transform: scale(4);
-        opacity: 0;
-      }
-    }
-
-    /* --- FOOTER --- */
-    .footer-note {
-      background: #fff;
-      padding: 2rem;
-      border: 3px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      text-align: center;
-      box-shadow: var(--shadow-hard);
-      margin-top: 3rem;
-    }
-
-    /* Helper */
-    .hidden {
-      display: none !important;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Info Jam */
-    .info-jam {
-      background: #E1F5FE;
-      padding: 1.5rem;
-      border-radius: var(--radius-md);
-      border: 3px solid var(--border-color);
-      margin-bottom: 2rem;
-    }
-  </style>
+  <link rel="stylesheet" href="/skenpat/aset/css/jet.mapel.css">
+  <link rel="stylesheet" href="/skenpat/aset/css/tio.mapel.css">
 </head>
 
 <body>
+  <button class="hamburger-menu">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <h3>ㅤㅤㅤㅤSMKN4BJM</h3>
+    </div>
+    <div class="sidebar-footer">
+      <p>Jadwal Mapel Kelas Lainnya</p>
+    </div>
+    <a href="?x_rpl_1" target="_blank">
+      <i class="fas fa-calendar-day"></i> X RPL 1
+    </a>
+
+    <a href="?x_rpl_2" target="_blank">
+      <i class="fas fa-calendar-day"></i> X RPL 2
+    </a>
+    <a href="/mapel" target="_blank">
+      <i class="fas fa-calendar-day"></i> Lainnya
+    </a>
+    <div class="sidebar-footer">
+      <p>Link Resmi Sekolah</p>
+    </div>
+    <a href="https://smkn4bjm.sch.id" target="_blank">
+      <i class="fas fa-globe"></i> Website Resmi
+    </a>
+    <a href="https://smkn4bjm.sch.id/tentang-kami/tenaga-pendidik/" target="_blank">
+      <i class="fas fa-user-graduate"></i> Tenaga Pendidik
+    </a>
+    <a href="https://smkn4bjm.sch.id/tentang-kami/tenaga-kependidikan/" target="_blank">
+      <i class="fas fa-user"></i> Tenaga Kependidikan
+    </a>
+    <a href="https://smkn4bjm.sch.id/perpustakaan-sekolah/" target="_blank">
+      <i class="fas fa-address-book"></i> Perpustakaan Sekolah
+    </a>
+    <a href="https://kubuku.id/download/smk-negeri-4-banjarmasin/" target="_blank">
+      <i class="fas fa-book"></i> E-Library Skenpat
+    </a>
+    <a href="https://www.instagram.com/smkn4banjarmasin" target="_blank">
+      <i class="fab fa-instagram"></i> Instagram Skenpat
+    </a>
+    <a href="https://web.facebook.com/smkn4banjarmasin" target="_blank">
+      <i class="fab fa-facebook"></i> Facebook Skenpat
+    </a>
+    <a href="https://www.youtube.com/channel/UCxbHXnN7paUGIs_NRdTpc0Q" target="_blank">
+      <i class="fab fa-youtube"></i> YouTube Skenpat
+    </a>
+    <a href="https://twitter.com/smkn4bjm__" target="_blank">
+      <i class="fab fa-twitter"></i> Twitter Skenpat
+    </a>
+    <div class="sidebar-footer">
+      <p>Credit</p>
+    </div>
+    <a href="https://id.wikipedia.org/wiki/Pengguna:Flessan" target="_blank">
+      <i class="fab fa-github"></i> Siapa Thio?
+    </a>
+    <div class="sidebar-footer">
+      <p>Terakhir Di-update 11/01/26</p>
+    </div>
+  </div>
+  </div>
+
+  <!-- Overlay -->
+  <div class="overlay"></div>
 
   <!-- Loading Screen -->
   <div class="loader" id="loader">
@@ -598,6 +141,27 @@
         </button>
 
         <style>
+          .subject-teacher {
+            display: block;
+            font-size: 0.9rem;
+            color: #777;
+            font-style: italic;
+          }
+
+          .subject-limit {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            background: #fff;
+            padding: 2px 8px;
+            border-radius: 6px;
+            border: 2px solid var(--border-color);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 5px;
+          }
+
           .kaki {
             margin-top: 10px;
             font-size: 0.9rem;
@@ -646,338 +210,23 @@
       </div>
 
       <div class="footer-note">
-        <p>SMK Negeri 4 Banjarmasin</p>
+        <p>OSIS SMK Negeri 4 Banjarmasin</p>
       </div>
 
     </div>
 
   </div>
 
+  <!-- Back to Top Button -->
+  <button id="backToTopBtn" title="Kembali ke atas">
+    <i class="fas fa-arrow-up">io</i>
+  </button>
+
   <!-- PapaParse Library -->
   <script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="/skenpat/aset/js/burgir.mapel.js"></script>
 
-  <script>
-    // --- KONFIGURASI ---
-    const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_0-HrBEJTG1vfHycGRu6oP9h4UaAgq7j70gskW9SriVSphZQB5DoXAiSSPrqNPEg-VCRiefvNDjLV/pub?gid=0&single=true&output=csv";
-    const cacheKey = "skenpat_jadwal_v3";
-
-    // --- STATE MANAGEMENT ---
-    let allData = [];
-
-    // --- DOM ELEMENTS ---
-    const loader = document.getElementById('loader');
-    const homeView = document.getElementById('homeView');
-    const scheduleView = document.getElementById('scheduleView');
-    const pageTitle = document.getElementById('pageTitle');
-    const pageSubtitle = document.getElementById('pageSubtitle');
-    const mobileNav = document.getElementById('mobileNav');
-
-    // --- HELPERS ---
-
-    // 1. Deteksi Jurusan dari nama kelas (contoh: x_rpl_1 -> 'rpl')
-    function getMajorCode(kelasName) {
-      const parts = kelasName.toLowerCase().split('_');
-      // Asumsi format: x_jurusan_no (contoh: x_rpl_1)
-      // Jika panjang array cukup, ambil bagian tengahnya
-      if (parts.length >= 2) {
-        return parts[1]; // 'rpl', 'dpb', 'ulw' dan lain lain cuy (dkk)
-      }
-      return 'umum';
-    }
-
-    function getMajorDisplay(majorCode) {
-      const map = {
-        'rpl': 'REKAYASA PERANGKAT LUNAK',
-        'dpb': 'DESAIN & PRODUKSI BUSANA',
-        'ulw': 'USAHA LAYANAN WISATA',
-        'seni': 'SENI MUSIK POPULER',
-        'htl': 'AKOMODASI PERHOTELAN',
-        'boga': 'KULINER',
-        'kct': 'KECANTIKAN'
-      };
-      return map[majorCode] || majorCode.toUpperCase();
-    }
-
-    function getIconForMajor(majorCode) {
-      if (majorCode.includes('rpl')) return 'fa-laptop-code';
-      if (majorCode.includes('dpb') || majorCode.includes('busana')) return 'fa-mitten';
-      if (majorCode.includes('ulw') || majorCode.includes('hotel')) return 'fa-person-walking-luggage';
-      if (majorCode.includes('seni')) return 'fa-palette';
-      if (majorCode.includes('htl')) return 'fa-hotel';
-      if (majorCode.includes('boga') || majorCode.includes('kuliner')) return 'fa-utensils';
-      if (majorCode.includes('kct')) return 'fa-hand-sparkles';
-      return 'fa-book-open';
-    }
-
-    function getColorForIndex(index) {
-      const colors = ['#FF9F43', '#FF6B6B', '#48DBFB', '#5F27CD', '#1DD1A1', '#FECA57'];
-      return colors[index % colors.length];
-    }
-
-    // --- INIT ---
-    document.addEventListener('DOMContentLoaded', async () => {
-      await fetchData();
-      handleRouting();
-    });
-
-    // --- FITUR BARU: FORCE REFRESH ---
-    function forceRefresh() {
-      const konfirmasi = confirm("Yakin ingin reset cache? Website akan memuat ulang data dari server (butuh internet).");
-      if (konfirmasi) {
-        localStorage.removeItem(cacheKey);
-        location.reload();
-      }
-    }
-
-    // --- DATA FETCHING (OFFLINE FIRST LOGIC) ---
-    async function fetchData() {
-      // 1. Cek Cache dulu (Offline Priority)
-      const cached = localStorage.getItem(cacheKey);
-      if (cached) {
-        try {
-          allData = JSON.parse(cached);
-          console.log("✅ Menggunakan data cache (Mode Offline/Speed).");
-          // Jika ada cache, langsung sembunyikan loader biar user nggak nunggu lama
-          loader.classList.add('hidden');
-          // Jangan return di sini, kita tetap coba update di background
-        } catch (e) {
-          console.error("Cache rusak, akan di-fetch ulang.");
-        }
-      }
-
-      // 2. Coba Fetch Online (untuk update data baru)
-      try {
-        const response = await fetch(CSV_URL);
-        if (!response.ok) throw new Error("yahh, gagal koneksi server nich :(");
-
-        const csvText = await response.text();
-        const parsed = Papa.parse(csvText, { header: true });
-        const newData = parsed.data.filter(row => row.kelas && row.hari && row.mapel);
-
-        if (newData.length > 0) {
-          localStorage.setItem(cacheKey, JSON.stringify(newData));
-          allData = newData; // Update variable global
-          console.log("🌐 Data berhasil diupdate dari server.");
-
-          // Jika tampilan sudah muncul (dari cache), kita refresh UI silently
-          // agar data yang tampilkan adalah yang terbaru
-          if (loader.classList.contains('hidden')) {
-            const params = new URLSearchParams(window.location.search);
-            if (params.get('kelas')) renderScheduleView(params.get('kelas'));
-            else renderHomeView();
-          }
-        }
-      } catch (error) {
-        console.error("Gagal fetch online:", error);
-        // Jika gagal fetch DAN allData kosong (belum pernah buka sama sekali)
-        if (allData.length === 0) {
-          alert("⚠️ Gagal memuat data. Coba periksa koneksi internetmu. okeii?");
-          loader.classList.add('hidden');
-        }
-        // Jika gagal fetch TAPI allData ada (dari cache), biarkan saja (Offline mode jalan)
-      }
-    }
-
-    // --- ROUTING ---
-    function handleRouting() {
-      const params = new URLSearchParams(window.location.search);
-      const kelasParam = params.get('kelas');
-
-      if (kelasParam) {
-        renderScheduleView(kelasParam);
-      } else {
-        renderHomeView();
-      }
-    }
-
-    // --- RENDER HOME VIEW (GROUPED BY MAJOR) ---
-    function renderHomeView() {
-      homeView.classList.remove('hidden');
-      scheduleView.classList.remove('active');
-      mobileNav.classList.add('hidden');
-
-      pageTitle.textContent = "Mapel Kelas X 📚";
-      pageSubtitle.textContent = "Pilih jurusanmu, lalu pilih kelas! okeii?";
-
-      // 1. Group Kelas berdasarkan Major Code
-      const majorGroups = {};
-      allData.forEach(d => {
-        const major = getMajorCode(d.kelas);
-        if (!majorGroups[major]) majorGroups[major] = new Set();
-        majorGroups[major].add(d.kelas);
-      });
-
-      // 2. Render Grid
-      const grid = document.getElementById('kelasGrid');
-      grid.innerHTML = '';
-
-      // Urutkan jurusan (alphabetical)
-      const sortedMajors = Object.keys(majorGroups).sort();
-
-      if (sortedMajors.length === 0) {
-        grid.innerHTML = `<div class="jurusan-card"><p>Data tidak tersedia. Tekan tombol 'Reset Data' jika terjadi error.</p></div>`;
-        return;
-      }
-
-      sortedMajors.forEach((major, index) => {
-        // Ambil semua kelas di jurusan ini dan Sort Natural (1, 2, 10 bukan 1, 10, 2)
-        const kelasList = Array.from(majorGroups[major]).sort((a, b) => {
-          return a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
-        });
-
-        const color = getColorForIndex(index);
-        const icon = getIconForMajor(major);
-        const displayName = getMajorDisplay(major);
-
-        const card = document.createElement('div');
-        card.className = 'jurusan-card';
-
-        card.innerHTML = `
-          <div class="jurusan-header" style="background-color: ${color}">
-            <h2>
-              <i class="fa-solid ${icon}"></i>
-              ${displayName}
-            </h2>
-          </div>
-          <div class="jurusan-content">
-            <p style="margin-bottom: 0.5rem; font-size: 0.9rem; color: #777;">Pilih Kelas:</p>
-            <div class="kelas-select-wrapper">
-              <select class="kelas-select" onchange="window.location.href='?kelas='+this.value">
-                <option value="" disabled selected>-- Pilih --</option>
-                ${kelasList.map(k => `<option value="${k}">${k.toUpperCase().replace(/_/g, ' ')}</option>`).join('')}
-              </select>
-            </div>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
-    }
-
-    // --- RENDER SCHEDULE VIEW ---
-    function renderScheduleView(kelas) {
-      homeView.classList.add('hidden');
-      scheduleView.classList.add('active');
-
-      pageTitle.textContent = `Jadwal ${kelas.replace(/_/g, ' ').toUpperCase()}`;
-      pageSubtitle.textContent = "Semester 2 - 2025/2026";
-
-      // Populate Dropdown Switcher
-      const switcher = document.getElementById('kelasSwitcher');
-      // Ambil semua kelas unik (global) agar bisa pindah ke jurusan lain cepat
-      const allKelas = [...new Set(allData.map(d => d.kelas))].sort((a, b) => {
-        return a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
-      });
-
-      switcher.innerHTML = `<option value="">Pindah Kelas Cepat...</option>`;
-      allKelas.forEach(k => {
-        const opt = document.createElement('option');
-        opt.value = k;
-        opt.textContent = k.toUpperCase();
-        if (k === kelas) opt.selected = true;
-        switcher.appendChild(opt);
-      });
-
-      // Filter Data
-      const kelasData = allData.filter(d => d.kelas === kelas);
-
-      // Group by Hari
-      const groupedByDay = kelasData.reduce((acc, curr) => {
-        if (!acc[curr.hari]) acc[curr.hari] = [];
-        acc[curr.hari].push(curr);
-        return acc;
-      }, {});
-
-      const dayOrder = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat"];
-      const container = document.getElementById('scheduleContent');
-      container.innerHTML = '';
-
-      renderMobileNav(dayOrder);
-
-      dayOrder.forEach(day => {
-        if (groupedByDay[day]) {
-          const dayData = groupedByDay[day].sort((a, b) => {
-            return parseInt(a.jam) - parseInt(b.jam);
-          });
-
-          const dayCard = document.createElement('div');
-          dayCard.className = 'day-card';
-          dayCard.id = `section-${day.toLowerCase()}`;
-
-          let listHTML = '';
-          dayData.forEach(item => {
-            if (item.mapel.toLowerCase().includes('istirahat')) {
-              listHTML += `
-                <li class="subject-item break">
-                  ${item.mapel.toUpperCase()} (${item.guru})
-                </li>`;
-            } else if (item.mapel.toLowerCase().includes('upacara')) {
-              listHTML += `
-                <li class="subject-item upacara">
-                  <div class="subject-time" style="background:#BBDEFB; border-color:#1565C0;">Ke-${item.jam}</div>
-                  <div class="subject-info">
-                    <span class="subject-name">${item.mapel}</span>
-                    <span class="subject-teacher">${item.guru || '-'}</span>
-                  </div>
-                </li>`;
-            } else {
-              listHTML += `
-                <li class="subject-item">
-                  <div class="subject-time">Ke-${item.jam}</div>
-                  <div class="subject-info">
-                    <span class="subject-name">${item.mapel}</span>
-                    <span class="subject-teacher">${item.guru || '-'}</span>
-                  </div>
-                </li>`;
-            }
-          });
-
-          dayCard.innerHTML = `
-            <div class="day-header">${day.toUpperCase()}</div>
-            <ul class="subject-list">
-              ${listHTML}
-            </ul>
-          `;
-          container.appendChild(dayCard);
-        }
-      });
-
-      window.scrollTo(0, 0);
-    }
-
-    // --- NAVIGATION FUNCTIONS ---
-    function switchKelas(val) {
-      if (val) {
-        window.location.href = `?kelas=${val}`;
-      }
-    }
-
-    function goHome() {
-      window.location.href = window.location.pathname;
-    }
-
-    function renderMobileNav(days) {
-      mobileNav.innerHTML = '';
-      days.forEach(day => {
-        const btn = document.createElement('button');
-        btn.className = 'mobile-nav-btn';
-        btn.innerHTML = `<i class="fa-regular fa-calendar"></i> ${day.substring(0, 3)}`;
-        btn.onclick = () => {
-          const target = document.getElementById(`section-${day.toLowerCase()}`);
-          if (target) {
-            const headerOffset = 80;
-            const elementPosition = target.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-
-            document.querySelectorAll('.mobile-nav-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-          }
-        };
-        mobileNav.appendChild(btn);
-      });
-      mobileNav.classList.remove('hidden');
-    }
-  </script>
+  <script src="/skenpat/aset/js/mapel.min.js"></script>
 </body>
 
 </html>
