@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#F46900" />
+  <meta name="theme-color" content="#FF9F43" />
 
   <!-- Primary Meta Tags -->
   <title>Feedback | Skenpat OSIS | SMKN 4 Banjarmasin</title>
@@ -42,102 +42,94 @@
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
   <link rel="preconnect" href="https://res.cloudinary.com" />
 
-  <!-- Fonts & CSS -->
+  <!-- Fonts: Fredoka & Quicksand for Cartoonish Pop look -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap&font-display=swap"
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;600;700&display=swap"
     rel="stylesheet" />
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
+    /* --- VARIABLES & RESET --- */
+    :root {
+      /* Orange Pop Palette */
+      --primary: #FF9F43;
+      --primary-dark: #EE5A24;
+      --secondary: #FDC500;
+      --accent: #5f27cd;
+      --bg-color: #FFF8F0;
+      --text-main: #4E342E;
+      --text-light: #FFFFFF;
+      --border-color: #3E2723;
+      --white: #FFFFFF;
+
+      /* Functional Colors */
+      --success: #2ecc71;
+      --error: #e74c3c;
+      --warning: #f1c40f;
+      --info: #54a0ff;
+
+      /* UI */
+      --shadow-hard: 5px 5px 0px var(--border-color);
+      --shadow-sm: 3px 3px 0px rgba(62, 39, 35, 0.2);
+      --radius-lg: 25px;
+      --radius-md: 15px;
+      --radius-sm: 10px;
+      --font-head: 'Fredoka', sans-serif;
+      --font-body: 'Quicksand', sans-serif;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-    }
-
-    :root {
-      --primary-color: #F46900;
-      --primary-light: #FF8A4C;
-      --primary-dark: #D55800;
-      --secondary-color: #4ECDC4;
-      --success-color: #4CAF50;
-      --warning-color: #FFC107;
-      --error-color: #F44336;
-      --bg-color: #0a0a0a;
-      --bg-secondary: #1e1e1e;
-      --card-bg: #2A2A2A;
-      --text-color: #f0f0f0;
-      --text-secondary: #aaa;
-      --text-muted: #777;
-      --border-color: rgba(255, 255, 255, 0.1);
-      --shadow-color: rgba(0, 0, 0, 0.3);
-      --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.4);
-      --shadow-primary: 0 8px 24px rgba(244, 105, 0, 0.3);
-    }
-
-    /* Light mode variables */
-    [data-theme="light"] {
-      --bg-color: #f5f5f5;
-      --bg-secondary: #ffffff;
-      --card-bg: #ffffff;
-      --text-color: #333333;
-      --text-secondary: #666666;
-      --text-muted: #777777;
-      --border-color: rgba(0, 0, 0, 0.1);
-      --shadow-color: rgba(0, 0, 0, 0.1);
-      --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.15);
+      outline: none;
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--bg-color);
-      color: var(--text-color);
+      font-family: var(--font-body);
+      background-color: var(--bg-color);
+      color: var(--text-main);
       line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
       min-height: 100vh;
       overflow-x: hidden;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: background-color 0.3s, color 0.3s;
+      /* Polka Dot Background */
+      background-image: radial-gradient(var(--secondary) 15%, transparent 16%), radial-gradient(var(--secondary) 15%, transparent 16%);
+      background-size: 20px 20px;
+      background-position: 0 0, 10px 10px;
     }
 
-    /* Animated background */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(circle at 20% 50%, rgba(244, 105, 0, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(78, 205, 196, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 20%, rgba(255, 209, 102, 0.05) 0%, transparent 40%);
-      z-index: -1;
-      pointer-events: none;
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: 0.2s;
     }
 
-    /* Navigation */
+    ul {
+      list-style: none;
+    }
+
+    /* --- NAVBAR --- */
     .navbar {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      background: rgba(10, 10, 10, 0.85);
-      backdrop-filter: blur(10px);
+      background: var(--white);
+      border-bottom: 3px solid var(--border-color);
       z-index: 1000;
-      padding: 1rem 0;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    [data-theme="light"] .navbar {
-      background: rgba(255, 255, 255, 0.85);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 10px 0;
+      transition: all 0.3s;
     }
 
     .navbar-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 1.5rem;
+      padding: 0 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -146,181 +138,168 @@
     .navbar-logo {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 10px;
+      font-family: var(--font-head);
       font-weight: 700;
-      font-size: 1.25rem;
-      color: var(--primary-color);
-      text-decoration: none;
+      font-size: 1.2rem;
+      color: var(--text-main);
     }
 
     .navbar-logo img {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
+      width: 40px;
+      height: 40px;
     }
 
     .navbar-menu {
       display: flex;
-      gap: 1.5rem;
-      list-style: none;
+      gap: 20px;
     }
 
     .navbar-menu a {
-      color: var(--text-color);
-      text-decoration: none;
-      font-weight: 500;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      transition: all 0.3s;
+      font-weight: 600;
+      padding: 5px 15px;
+      border-radius: 20px;
+      color: var(--text-main);
+      transition: 0.2s;
     }
 
     .navbar-menu a:hover {
-      color: var(--primary-color);
-      background: rgba(244, 105, 0, 0.1);
+      background: var(--primary);
+      color: white;
+      transform: rotate(-2deg);
     }
 
     .navbar-actions {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 10px;
     }
 
     .theme-toggle {
       background: none;
-      border: none;
-      color: var(--text-color);
+      border: 2px solid var(--border-color);
+      color: var(--text-main);
       font-size: 1.2rem;
       cursor: pointer;
-      padding: 0.5rem;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.2s;
     }
 
     .theme-toggle:hover {
-      color: var(--primary-color);
-      background: rgba(244, 105, 0, 0.1);
+      background: var(--secondary);
+      transform: scale(1.1);
     }
 
     .navbar-toggle {
       display: none;
       background: none;
       border: none;
-      color: var(--text-color);
       font-size: 1.5rem;
+      color: var(--text-main);
       cursor: pointer;
     }
 
-    /* Main container */
+    /* --- CONTAINER --- */
     .container {
       width: 100%;
       max-width: 900px;
       margin: 0 auto;
-      padding: 7rem 1.5rem 2rem;
+      padding: 120px 20px 40px;
+      /* Top padding for fixed navbar */
       min-height: 100vh;
+      position: relative;
+      z-index: 1;
     }
 
-    /* Header section */
+    /* --- HEADER --- */
     .header {
       text-align: center;
       margin-bottom: 3rem;
-      animation: fadeInUp 0.7s forwards;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
 
     .header-badge {
-      display: inline-block;
-      background: var(--primary-color);
+      background: var(--accent);
       color: white;
-      font-size: 0.85rem;
-      font-weight: 600;
-      padding: 0.35rem 1rem;
-      border-radius: 30px;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-family: var(--font-head);
+      display: inline-block;
       margin-bottom: 1rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
+      border: 2px solid var(--border-color);
+      box-shadow: 3px 3px 0px var(--border-color);
+      transform: rotate(-3deg);
     }
 
     .header h1 {
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
-      background: linear-gradient(135deg, var(--primary-color), var(--primary-light), var(--secondary-color));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--text-main);
+      text-shadow: 3px 3px 0px var(--white);
       margin-bottom: 1rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
+      background: var(--white);
+      display: inline-block;
+      padding: 10px 30px;
+      border: 4px solid var(--border-color);
+      border-radius: 50px;
+      box-shadow: var(--shadow-hard);
     }
 
     .header p {
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      color: var(--text-secondary);
-      font-weight: 400;
-      max-width: 600px;
+      font-size: 1.1rem;
+      color: #6D4C41;
+      font-weight: 600;
+      max-width: 700px;
       margin: 0 auto;
     }
 
-    /* Form container */
+    /* --- FORM CONTAINER --- */
     .form-container {
-      background: var(--card-bg);
-      border-radius: 20px;
+      background: var(--white);
+      border: 3px solid var(--border-color);
+      border-radius: var(--radius-lg);
       padding: 2.5rem;
-      box-shadow: var(--shadow-lg);
-      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-hard);
       margin-bottom: 2rem;
-      animation: fadeInUp 0.7s 0.2s backwards;
       position: relative;
       overflow: hidden;
+      transition: 0.3s;
     }
 
-    /* Decorative elements */
+    .form-container:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Decorative Blob (CSS Only) */
     .form-container::before {
       content: '';
       position: absolute;
-      top: -70px;
-      right: -70px;
-      width: 250px;
-      height: 250px;
-      background: radial-gradient(circle, rgba(244, 105, 0, 0.2) 0%, transparent 70%);
+      top: -50px;
+      right: -50px;
+      width: 150px;
+      height: 150px;
+      background: var(--primary);
       border-radius: 50%;
-      pointer-events: none;
-      animation: pulse 5s infinite alternate;
+      opacity: 0.1;
+      z-index: 0;
     }
 
     .form-container::after {
       content: '';
       position: absolute;
-      bottom: -50px;
-      left: -50px;
-      width: 180px;
-      height: 180px;
-      background: radial-gradient(circle, rgba(78, 205, 196, 0.15) 0%, transparent 70%);
+      bottom: -30px;
+      left: -30px;
+      width: 100px;
+      height: 100px;
+      background: var(--secondary);
       border-radius: 50%;
-      pointer-events: none;
-      animation: pulse 5s infinite alternate-reverse;
-    }
-
-    @keyframes pulse {
-      0% {
-        transform: scale(1);
-        opacity: 0.2;
-      }
-
-      100% {
-        transform: scale(1.15);
-        opacity: 0.35;
-      }
+      opacity: 0.1;
+      z-index: 0;
     }
 
     .form-header {
@@ -331,166 +310,146 @@
     }
 
     .form-header h2 {
-      font-size: 1.8rem;
-      color: var(--text-color);
+      font-family: var(--font-head);
+      font-size: 2rem;
+      color: var(--primary-dark);
       margin-bottom: 0.5rem;
     }
 
     .form-header p {
-      color: var(--text-secondary);
+      color: #666;
       font-size: 1rem;
     }
 
-    /* Form styles */
+    /* --- FORM STYLES --- */
     .feedback-form {
-      display: grid;
-      gap: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
       position: relative;
       z-index: 1;
     }
 
-    .form-group {
-      display: flex;
-      flex-direction: column;
-    }
-
     .form-group label {
-      color: var(--text-color);
-      font-weight: 500;
+      display: block;
+      font-weight: 700;
+      font-family: var(--font-head);
       margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      color: var(--text-main);
     }
 
     .required {
-      color: var(--error-color);
+      color: var(--error);
     }
 
     .form-group input,
     .form-group textarea,
     .form-group select {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 0.75rem 1rem;
-      color: var(--text-color);
-      font-family: 'Poppins', sans-serif;
-      font-size: 1rem;
-      transition: all 0.3s;
       width: 100%;
+      padding: 12px 15px;
+      border: 3px solid var(--border-color);
+      border-radius: 10px;
+      background: #FFF3E0;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      transition: 0.2s;
     }
 
     .form-group input:focus,
     .form-group textarea:focus,
     .form-group select:focus {
-      outline: none;
-      border-color: var(--primary-color);
-      box-shadow: 0 0 0 3px rgba(244, 105, 0, 0.2);
-    }
-
-    .form-group textarea {
-      resize: vertical;
-      min-height: 120px;
-    }
-
-    .form-group select {
-      cursor: pointer;
+      background: var(--white);
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(255, 159, 67, 0.2);
     }
 
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
+      gap: 1.2rem;
     }
 
-    /* Submit button */
+    /* Submit Button */
     .submit-btn {
-      background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+      background: var(--primary);
       color: white;
-      border: none;
+      border: 3px solid var(--border-color);
       border-radius: 50px;
-      padding: 1rem 2rem;
-      font-size: 1.1rem;
-      font-weight: 600;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      font-family: var(--font-head);
       cursor: pointer;
-      transition: all 0.3s;
+      box-shadow: var(--shadow-sm);
+      transition: 0.1s;
+      margin-top: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
-      margin-top: 1rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .submit-btn::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(255, 255, 255, 0.2);
-      transform: translateX(-100%);
-      transition: transform 0.6s;
-    }
-
-    .submit-btn:hover::before {
-      transform: translateX(100%);
+      gap: 10px;
     }
 
     .submit-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-primary);
+      transform: translate(-3px, -3px);
+      box-shadow: 6px 6px 0px var(--border-color);
+      background: var(--primary-dark);
     }
 
     .submit-btn:active {
-      transform: translateY(0);
+      transform: translate(0, 0);
+      box-shadow: none;
     }
 
     .submit-btn:disabled {
       opacity: 0.6;
       cursor: not-allowed;
       transform: none;
+      box-shadow: none;
     }
 
-    /* Status messages */
+    /* Status Messages */
     .status-message {
-      padding: 1rem;
-      border-radius: 10px;
+      padding: 15px;
+      border-radius: var(--radius-sm);
       margin-bottom: 1.5rem;
       display: none;
-      animation: slideIn 0.3s ease;
+      animation: slideIn 0.3s;
+      font-weight: 700;
+      font-family: var(--font-head);
+      border: 3px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
     }
 
     @keyframes slideIn {
       from {
+        transform: translateY(-20px);
         opacity: 0;
-        transform: translateY(-10px);
       }
 
       to {
-        opacity: 1;
         transform: translateY(0);
+        opacity: 1;
       }
     }
 
     .status-message.success {
-      background: rgba(76, 175, 80, 0.1);
-      border: 1px solid var(--success-color);
-      color: var(--success-color);
+      background: #d1fae5;
+      color: #065f46;
+      border-color: var(--success);
     }
 
     .status-message.error {
-      background: rgba(244, 67, 54, 0.1);
-      border: 1px solid var(--error-color);
-      color: var(--error-color);
+      background: #fee2e2;
+      color: #991b1b;
+      border-color: var(--error);
     }
 
-    /* Loading spinner */
+    /* Spinner */
     .spinner {
       display: none;
       width: 20px;
       height: 20px;
-      border: 2px solid rgba(255, 255, 255, 0.3);
+      border: 3px solid rgba(255, 255, 255, 0.3);
       border-top-color: white;
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
@@ -502,15 +461,7 @@
       }
     }
 
-    .submit-btn.loading .spinner {
-      display: inline-block;
-    }
-
-    .submit-btn.loading .btn-text {
-      display: none;
-    }
-
-    /* Info cards */
+    /* --- INFO CARDS --- */
     .info-cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -519,110 +470,121 @@
     }
 
     .info-card {
-      background: var(--card-bg);
-      border-radius: 15px;
+      background: var(--white);
+      border: 3px solid var(--border-color);
+      border-radius: var(--radius-lg);
       padding: 1.5rem;
-      border: 1px solid var(--border-color);
-      box-shadow: var(--shadow-color);
-      transition: all 0.3s;
-      animation: fadeInUp 0.7s 0.3s backwards;
+      box-shadow: var(--shadow-sm);
+      transition: 0.3s;
+      text-align: center;
     }
 
     .info-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--primary-color);
+      transform: translateY(-5px) rotate(1deg);
+      box-shadow: var(--shadow-hard);
+      border-color: var(--primary);
     }
 
     .info-card-icon {
-      width: 50px;
-      height: 50px;
-      background: rgba(244, 105, 0, 0.1);
+      width: 60px;
+      height: 60px;
+      background: #FFE0B2;
+      border: 3px solid var(--border-color);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 1rem;
+      margin: 0 auto 1rem;
       font-size: 1.5rem;
-      color: var(--primary-color);
+      color: var(--primary);
+    }
+
+    .info-card:nth-child(2) .info-card-icon {
+      background: #fee2e2;
+      color: var(--error);
+    }
+
+    .info-card:nth-child(3) .info-card-icon {
+      background: #e2e8f0;
+      color: #333;
     }
 
     .info-card h3 {
-      color: var(--text-color);
-      font-size: 1.2rem;
+      font-family: var(--font-head);
       margin-bottom: 0.5rem;
+      color: var(--text-main);
     }
 
     .info-card p {
-      color: var(--text-secondary);
-      line-height: 1.6;
+      font-size: 0.9rem;
+      color: #666;
     }
 
-    /* Footer */
+    /* --- FOOTER --- */
     .footer {
       text-align: center;
       padding: 2rem 0;
-      color: var(--text-secondary);
-      border-top: 1px solid var(--border-color);
-      margin-top: 3rem;
+      border-top: 5px solid var(--primary);
+      background: var(--white);
+      margin-top: 4rem;
     }
 
     .footer a {
-      color: var(--primary-color);
+      color: var(--primary);
+      font-weight: 700;
       text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s;
     }
 
     .footer a:hover {
-      color: var(--primary-light);
+      text-decoration: underline;
     }
 
-    /* Responsive */
+    /* --- RESPONSIVE --- */
     @media (max-width: 768px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
       .navbar-menu {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        flex-direction: column;
+        padding: 20px;
+        border-bottom: 3px solid var(--border-color);
         display: none;
+        z-index: 999;
+      }
+
+      .navbar-menu.active {
+        display: flex;
       }
 
       .navbar-toggle {
         display: block;
-      }
-
-      .container {
-        padding: 6rem 1rem 2rem;
-      }
-
-      .form-row {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
-
-      .form-container {
-        padding: 2rem 1.5rem;
-      }
-
-      .info-cards {
-        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 
 <body>
+
   <!-- Navigation -->
   <nav class="navbar">
     <div class="navbar-container">
       <a href="https://skenpat.pages.dev" class="navbar-logo">
-        <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760687917/faviconV2_s4utef.png"
-          alt="SMKN4BJM Logo">
-        <span>Skenpat OSIS SMKN4BJM</span>
+        <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760687917/faviconV2_s4utef.png" alt="Logo">
+        <span>Umpan Balik Untuk Thio Saputra</span>
       </a>
-      <ul class="navbar-menu">
+      <ul class="navbar-menu" id="navbar-menu">
         <li><a href="https://skenpat.pages.dev">Beranda</a></li>
-        <li><a href="https://skenpat.pages.dev/feedback">Feedback</a></li>
+        <li><a href="https://skenpat.pages.dev/feedback" style="background:var(--primary); color:white;">Feedback</a>
+        </li>
       </ul>
       <div class="navbar-actions">
-        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <button style="display:none;" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
           <i class="fas fa-moon"></i>
         </button>
         <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation">
@@ -636,7 +598,7 @@
   <div class="container">
     <!-- Header -->
     <header class="header">
-      <div class="header-badge">Bantu <i>Thio</i> Dengan Memberikan Sebuah Umpan Balik</div>
+      <div class="header-badge">Bantu Thio Dengan Memberikan Umpan Balik</div>
       <h1>Feedback & Saran</h1>
       <p>Kami menghargai setiap masukan Anda untuk meningkatkan pengalaman website Skenpat OSIS SMKN 4 Banjarmasin</p>
     </header>
@@ -648,22 +610,18 @@
     <div class="form-container">
       <div class="form-header">
         <h2>Kirim Feedback</h2>
-        <p>Isi form di bawah ini untuk memberikan masukan atau melaporkan masalah</p>
+        <p>Isi form di bawah ini untuk memberikan masukan</p>
       </div>
 
       <form id="feedback-form" class="feedback-form" action="https://formspree.io/f/xldkkvba" method="POST">
         <!-- Name and Email Row -->
         <div class="form-row">
           <div class="form-group">
-            <label for="name">
-              Nama Lengkap <span class="required">*</span>
-            </label>
+            <label for="name">Nama Lengkap <span class="required">*</span></label>
             <input type="text" id="name" name="name" required placeholder="Masukkan nama lengkap Anda">
           </div>
           <div class="form-group">
-            <label for="email">
-              Email <span class="required">*</span>
-            </label>
+            <label for="email">Email <span class="required">*</span></label>
             <input type="email" id="email" name="email" required placeholder="email@example.com">
           </div>
         </div>
@@ -671,15 +629,11 @@
         <!-- Subject and Type Row -->
         <div class="form-row">
           <div class="form-group">
-            <label for="subject">
-              Subjek <span class="required">*</span>
-            </label>
+            <label for="subject">Subjek <span class="required">*</span></label>
             <input type="text" id="subject" name="subject" required placeholder="Subjek pesan Anda">
           </div>
           <div class="form-group">
-            <label for="type">
-              Jenis Feedback <span class="required">*</span>
-            </label>
+            <label for="type">Jenis Feedback <span class="required">*</span></label>
             <select id="type" name="type" required>
               <option value="">Pilih jenis feedback</option>
               <option value="saran">Saran</option>
@@ -693,18 +647,14 @@
 
         <!-- Message -->
         <div class="form-group">
-          <label for="message">
-            Pesan <span class="required">*</span>
-          </label>
-          <textarea id="message" name="message" required
-            placeholder="Tuliskan pesan atau feedback Anda di sini..."></textarea>
+          <label for="message">Pesan <span class="required">*</span></label>
+          <textarea id="message" name="message" required placeholder="Tuliskan pesan atau feedback Anda di sini..."
+            style="min-height: 120px; resize: vertical;"></textarea>
         </div>
 
         <!-- Priority -->
         <div class="form-group">
-          <label for="priority">
-            Prioritas
-          </label>
+          <label for="priority">Prioritas</label>
           <select id="priority" name="priority">
             <option value="rendah">Rendah</option>
             <option value="sedang" selected>Sedang</option>
@@ -715,10 +665,7 @@
 
         <!-- Submit Button -->
         <button type="submit" class="submit-btn" id="submit-btn">
-          <span class="btn-text">
-            <i class="fas fa-paper-plane"></i>
-            Kirim Feedback
-          </span>
+          <span class="btn-text"><i class="fas fa-paper-plane"></i> Kirim Feedback</span>
           <div class="spinner"></div>
         </button>
       </form>
@@ -726,38 +673,39 @@
 
     <!-- Info Cards -->
     <div class="info-cards">
-      <a href="mailto:kambinghirang2@gmail.com">
+      <a href="mailto:kambinghirang2@gmail.com" style="text-decoration:none;">
         <div class="info-card">
-          <div class="info-card-icon">
-            <i class="fas fa-envelope"></i>
-          </div>
+          <div class="info-card-icon"><i class="fas fa-envelope"></i></div>
           <h3>Email Langsung</h3>
           <p>Anda juga bisa mengirim email langsung untuk respon yang lebih lengkap</p>
         </div>
       </a>
-      <a href="https://wa.me/6289523234160">
+      <a href="https://wa.me/6289523234160" style="text-decoration:none;">
         <div class="info-card">
-          <div class="info-card-icon">
-            <i class="fab fa-whatsapp"></i>
-          </div>
+          <div class="info-card-icon"><i class="fab fa-whatsapp"></i></div>
           <h3>Whatsapp</h3>
           <p>Chat pribadi saja untuk respon yang lebih cepat</p>
         </div>
       </a>
-      <a href="https://github.com/skenpat/skenpat">
+      <a href="https://github.com/skenpat/skenpat" style="text-decoration:none;">
         <div class="info-card">
-          <div class="info-card-icon">
-            <i class="fab fa-github"></i>
-          </div>
+          <div class="info-card-icon"><i class="fab fa-github"></i></div>
           <h3>GitHub</h3>
           <p>Laporkan issue atau buat pull request di repository GitHub kami</p>
+        </div>
+      </a>
+      <a href="https://github.com/skenpat/people" style="text-decoration:none;">
+        <div class="info-card">
+          <div class="info-card-icon"><i class="fas fa-handshake"></i></div>
+          <h3>Berkontribusi</h3>
+          <p>Berikan kontribusi untuk meningkatkan website kami</p>
         </div>
       </a>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
-      <p>&copy; 2025 <a href="https://skenpat.pages.dev">Skenpat OSIS</a> | SMKN 4 Banjarmasin</p>
+      <p>&copy; 2026 <a href="https://skenpat.pages.dev">Skenpat OSIS</a> | SMKN 4 Banjarmasin</p>
       <p>
         <a href="https://skenpat.pages.dev">Kembali ke Beranda</a> |
         <a href="https://flessan.pages.dev">Developer</a>
@@ -766,39 +714,8 @@
   </div>
 
   <script>
-    // Theme Management
-    const initTheme = () => {
-      const savedTheme = localStorage.getItem('theme') || 'dark';
-      document.documentElement.setAttribute('data-theme', savedTheme);
-      updateThemeIcon(savedTheme);
-    };
 
-    const updateThemeIcon = (theme) => {
-      const themeToggle = document.getElementById('theme-toggle');
-      if (themeToggle) {
-        const icon = themeToggle.querySelector('i');
-        if (icon) {
-          icon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
-        }
-      }
-    };
-
-    const toggleTheme = () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      updateThemeIcon(newTheme);
-    };
-
-    // Initialize theme
-    initTheme();
-
-    // Theme toggle functionality
-    document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
-
-    // Form submission handling
+    // --- Form Submission Logic (Retained) ---
     const form = document.getElementById('feedback-form');
     const submitBtn = document.getElementById('submit-btn');
     const statusMessage = document.getElementById('status-message');
@@ -854,42 +771,19 @@
       }
     });
 
-    // Form validation enhancements
-    const inputs = form.querySelectorAll('input, textarea, select');
-    inputs.forEach(input => {
-      input.addEventListener('blur', () => {
-        if (input.hasAttribute('required') && !input.value.trim()) {
-          input.style.borderColor = 'var(--error-color)';
-        } else {
-          input.style.borderColor = '';
-        }
-      });
-    });
-
-    // Auto-resize textarea
-    const textarea = document.getElementById('message');
-    textarea.addEventListener('input', () => {
-      textarea.style.height = 'auto';
-      textarea.style.height = textarea.scrollHeight + 'px';
-    });
-
-    // Mobile menu toggle (simplified for feedback page)
+    // --- Mobile Menu Logic ---
     const navbarToggle = document.getElementById('navbar-toggle');
-    const navbarMenu = document.querySelector('.navbar-menu');
+    const navbarMenu = document.getElementById('navbar-menu');
 
-    if (navbarToggle && navbarMenu) {
-      navbarToggle.addEventListener('click', () => {
-        navbarMenu.style.display = navbarMenu.style.display === 'flex' ? 'none' : 'flex';
-        navbarMenu.style.position = navbarMenu.style.display === 'flex' ? 'absolute' : '';
-        navbarMenu.style.top = navbarMenu.style.display === 'flex' ? '60px' : '';
-        navbarMenu.style.right = navbarMenu.style.display === 'flex' ? '20px' : '';
-        navbarMenu.style.background = navbarMenu.style.display === 'flex' ? 'var(--card-bg)' : '';
-        navbarMenu.style.flexDirection = navbarMenu.style.display === 'flex' ? 'column' : '';
-        navbarMenu.style.padding = navbarMenu.style.display === 'flex' ? '1rem' : '';
-        navbarMenu.style.borderRadius = navbarMenu.style.display === 'flex' ? '10px' : '';
-        navbarMenu.style.boxShadow = navbarMenu.style.display === 'flex' ? 'var(--shadow-lg)' : '';
-      });
-    }
+    navbarToggle.addEventListener('click', () => {
+      navbarMenu.classList.toggle('active');
+      const icon = navbarToggle.querySelector('i');
+      if (navbarMenu.classList.contains('active')) {
+        icon.className = 'fas fa-times';
+      } else {
+        icon.className = 'fas fa-bars';
+      }
+    });
   </script>
 </body>
 
