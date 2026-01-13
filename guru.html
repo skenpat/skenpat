@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pemberitahuan Pembayaran</title>
+    <style>
+        :root {
+            --primary: #1e40af;
+            --accent: #f59e0b;
+            --danger: #dc2626;
+            --bg: #f8fafc;
+            --text: #0f172a;
+            --muted: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: linear-gradient(135deg, #e0e7ff, #f8fafc);
+            color: var(--text);
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, .08);
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(220, 38, 38, .1);
+            color: var(--danger);
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin: 0 0 16px;
+            line-height: 1.3;
+        }
+
+        p {
+            color: var(--muted);
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .alert {
+            background: #fef2f2;
+            border-left: 5px solid var(--danger);
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 32px;
+            font-weight: 500;
+        }
+
+        .cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 10px;
+            border: none;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: transform .1s ease, box-shadow .1s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: #1f2933;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 30px rgba(0, 0, 0, .15);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .info-box {
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .info-box h3 {
+            margin: 0 0 8px;
+            font-size: 18px;
+        }
+
+        .info-box span {
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        .trust {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            align-items: center;
+            border-top: 1px solid #e5e7eb;
+            padding-top: 24px;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        .trust-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e0e7ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 13px;
+            color: var(--muted);
+            margin-top: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="badge">Pemberitahuan Penting</div>
+
+            <h1>Layanan Anda Telah Habis Masa Berlakunya</h1>
+
+            <div class="alert">
+                Layanan Anda telah habis masa berlakunya, akan melakukan pembayaran untuk memperpanjang.
+            </div>
+
+            <p>
+                Untuk memastikan layanan tetap aktif tanpa gangguan, silakan lakukan pembayaran
+                perpanjangan sekarang. Proses pembayaran cepat, aman, dan didukung oleh sistem
+                keamanan berstandar tinggi.
+            </p>
+
+            <div class="cta">
+                <a href="#" class="btn btn-primary">Bayar Sekarang</a>
+                <a href="#" class="btn btn-accent">Perpanjang Layanan</a>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-box">
+                    <h3>Status Layanan</h3>
+                    <span>Kedaluwarsa</span>
+                </div>
+                <div class="info-box">
+                    <h3>Metode Pembayaran</h3>
+                    <span>Transfer Bank, E-Wallet, Virtual Account</span>
+                </div>
+                <div class="info-box">
+                    <h3>Waktu Aktivasi</h3>
+                    <span>Otomatis setelah pembayaran</span>
+                </div>
+            </div>
+
+            <div class="trust">
+                <div class="trust-item">
+                    <div class="trust-icon">🔒</div>
+                    <span>Pembayaran Aman & Terenkripsi</span>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">⭐</div>
+                    <span>Dipercaya oleh ribuan pengguna</span>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">⚡</div>
+                    <span>Proses cepat & tanpa ribet</span>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            © 2026 Layanan Anda. Semua hak dilindungi.
+        </footer>
+    </div>
+</body>
+
+</html>
