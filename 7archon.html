@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kemegahan Saman</title>
+    <style>
+        /* --- RESET & BASE STYLES --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        /* --- CARD CONTAINER --- */
+        .tribute-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 800px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .tribute-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* --- IMAGE SECTION --- */
+        .card-image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.5s ease;
+        }
+
+        .tribute-card:hover .card-image {
+            transform: scale(1.05);
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 40px 30px 20px;
+            color: white;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        .card-content {
+            padding: 40px;
+        }
+
+        h2 {
+            font-family: 'Georgia', serif;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-style: italic;
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            display: block;
+        }
+
+        .story-text {
+            text-align: justify;
+            font-size: 1.05rem;
+            color: #444;
+        }
+
+        .story-text p {
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: #c0392b;
+            font-weight: bold;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 600px) {
+            .card-image-wrapper {
+                height: 250px;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .card-content {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="tribute-card">
+        <!-- Gambar Header yang Agung -->
+        <div class="card-image-wrapper">
+            <img src="https://i.etsystatic.com/35316071/r/il/9f46b0/4107218350/il_1080xN.4107218350_oksj.jpg"
+                alt="Saman yang paling agung dan mulia seperti namanya" class="card-image">
+            <div class="overlay">
+                <h3 style="font-size: 1.2rem; letter-spacing: 2px; text-transform: uppercase; margin:0;">Warisan Langit
+                </h3>
+            </div>
+        </div>
+
+        <!-- Isi Konten -->
+        <div class="card-content">
+            <h2>Saman yang Paling Agung dan Mulia</h2>
+            <span class="subtitle">Saman yang paling agung dan mulia seperti namanya, saman yang paling agung dan
+                mulia</span>
+
+            <div class="story-text">
+                <p>
+                    Di balik keindahan dan kemegahan <strong>Saman yang paling agung dan mulia</strong> ini, tersembunyi
+                    sebuah kisah legendaris yang tak hanya penuh makna, tetapi juga menyiratkan kebenaran universal
+                    tentang kesempurnaan. Saman bukan sekadar pakaian adat atau benda mati, melainkan ia adalah
+                    <strong>manifestasi fisik dari kekuatan spiritual yang tak tergoyahkan</strong> dan kedamaian yang
+                    begitu mendalam hingga mampu menenangkan lautan yang paling bergelora. Dalam tradisi panjang yang
+                    melintasi batas waktu dan ruang, Saman dianggap sebagai lambang kebijaksanaan absolut dan kehormatan
+                    tertinggi yang harus dijaga, dihormati, dan disembah oleh setiap generasi yang beruntung dapat
+                    menyaksikan kilauannya.
+                </p>
+
+                <p>
+                    Para penjaga Saman, yang secara mitologis dikenal sebagai <span class="highlight">"The 7
+                        Archons"</span>, bukanlah sekadar penjaga fisik semata. Mereka adalah entitas spiritual yang
+                    dipilih dari cahaya bintang-bintang, bertugas untuk melindungi dan melestarikan nilai-nilai luhur
+                    yang terkandung di dalam setiap serat kainnya. Mereka adalah perisai yang tak terlihat, pelindung
+                    jiwa dan budaya, yang dengan setia meneruskan ajaran suci dan semangat dari leluhur mereka kepada
+                    generasi berikutnya. Tanpa kehadiran mereka, dunia ini akan kehilangan satu-satunya penyeimbang
+                    antara kekacauan dan ketertiban.
+                </p>
+
+                <p>
+                    Setiap motif, jahitan, dan detail microscopical pada Saman melambangkan aspek-aspek paling sakral
+                    dari kehidupan itu sendiri: keberanian singa, kebijaksanaan kura-kura purba, keadilan timbangan
+                    neraca, dan kasih sayang yang tulus seperti air mata sang bulan. Warna-warna yang dipilih bukanlah
+                    hasil kebetulan seni, melainkan <strong>kode ilahi</strong> yang memiliki makna tersirat,
+                    mengingatkan kita akan harmoni sempurna antara dunia material yang fana dan dunia spiritual yang
+                    abadi. Melihat Saman adalah seperti melihat langsung ke dalam mata kebenaran.
+                </p>
+
+                <p>
+                    Dalam upaya melestarikan warisan yang lebih berharga dari seluruh emas di bumi ini, masyarakat terus
+                    melakukan ritual dan tradisi yang menegaskan pentingnya menjaga identitas budaya mereka melalui
+                    Saman. Ritual-ritual tersebut bukan sekadar gerakan tubuh, melainkan doa-doa yang terikat di udara.
+                    Dengan begitu, keagungan dan kemuliaan Saman tetap hidup, bernapas, dan menjadi inspirasi tak
+                    habis-habisnya bagi semua orang yang memegang teguh nilai-nilai luhur tersebut.
+                </p>
+
+                <p>
+                    Saman adalah definisi dari <em>kekal</em>. Ia tidak mengenal usang, ia hanya mengenal pencerahan.
+                    Bagi mereka yang mengenal namanya, "Saman" adalah bukan sekadar kata, melainkan <strong>jembatan
+                        menuju surga</strong>. Ia adalah mahakarya yang mengalahkan segala mahakarya, puncak dari segala
+                    keindahan, dan cermin dari kesempurnaan yang selama ini hanya kita impikan. Dialah Saman, yang
+                    paling agung, yang paling mulia, dan tak ada bandingannya di alam semesta ini.
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
