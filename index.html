@@ -22,989 +22,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;600;700&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="/aset/css/skenpat.min.css" />
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
-  <style>
-    /* --- VARIABLES & THEME --- */
-    :root {
-      /* Color Palette - Orange Pop */
-      --primary: #FF9F43;
-      --primary-dark: #EE5A24;
-      --primary-light: #FFE0B2;
-      --secondary: #FDC500;
-      --accent: #5f27cd;
-
-      /* Backgrounds */
-      --bg-color: #FFF8F0;
-      --surface-color: #FFFFFF;
-      --pattern-opacity: 0.15;
-      /* Polkadot semakin halus */
-
-      /* Text */
-      --text-main: #3E2723;
-      /* Dark Brown */
-      --text-muted: #6D4C41;
-      --text-light: #FFFFFF;
-
-      /* Borders & Shadows */
-      --border-color: #3E2723;
-      --border-width: 3px;
-      --shadow-hard: 5px 5px 0px var(--border-color);
-      --shadow-hover: 7px 7px 0px var(--border-color);
-      --shadow-sm: 3px 3px 0px rgba(62, 39, 35, 0.15);
-
-      /* Radius */
-      --radius-sm: 10px;
-      --radius-md: 15px;
-      --radius-lg: 25px;
-      --radius-full: 999px;
-
-      /* Fonts */
-      --font-head: 'Fredoka', sans-serif;
-      --font-body: 'Quicksand', sans-serif;
-
-      /* Functional Colors */
-      --success: #2ecc71;
-      --danger: #ff6b6b;
-      --warning: #feca57;
-      --info: #54a0ff;
-    }
-
-    /* --- DARK MODE OVERRIDES --- */
-    [data-theme="dark"] {
-      --bg-color: #1e1b18;
-      /* Deep Brown Black */
-      --surface-color: #2d2824;
-      --pattern-opacity: 0.1;
-      --text-main: #E0E0E0;
-      --text-muted: #B0BEC5;
-      --border-color: #FF9F43;
-      /* Orange Border for Dark Mode */
-      --shadow-hard: 5px 5px 0px #000;
-      --shadow-hover: 7px 7px 0px #000;
-    }
-
-    /* --- RESET & GLOBAL --- */
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: var(--font-body);
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      line-height: 1.6;
-      min-height: 100vh;
-      overflow-x: hidden;
-      transition: background-color 0.3s ease, color 0.3s ease;
-
-      /* Haluskan Polka Dot Pattern */
-      background-image:
-        radial-gradient(var(--text-muted) var(--pattern-opacity), transparent var(--pattern-opacity)),
-        radial-gradient(var(--text-muted) var(--pattern-opacity), transparent var(--pattern-opacity));
-      background-size: 20px 20px;
-      background-position: 0 0, 10px 10px;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-      transition: 0.2s;
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: var(--bg-color);
-      border-left: 2px solid var(--border-color);
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: var(--primary);
-      border: 2px solid var(--border-color);
-      border-radius: 10px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--primary-dark);
-    }
-
-    /* --- LOADER --- */
-    .loader {
-      position: fixed;
-      inset: 0;
-      background: var(--bg-color);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      transition: opacity 0.5s ease, visibility 0.5s;
-    }
-
-    .loader.hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    .bouncy-loader {
-      width: 60px;
-      height: 60px;
-      background: var(--primary);
-      border-radius: 50%;
-      border: var(--border-width) solid var(--border-color);
-      box-shadow: var(--shadow-hard);
-      animation: bounce 0.6s infinite alternate cubic-bezier(0.5, 0.05, 1, 0.5);
-    }
-
-    @keyframes bounce {
-      from {
-        transform: translateY(0) scale(1);
-      }
-
-      to {
-        transform: translateY(-20px) scale(1.1);
-      }
-    }
-
-    /* --- NAVBAR --- */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: var(--surface-color);
-      border-bottom: var(--border-width) solid var(--border-color);
-      z-index: 1000;
-      padding: 0.8rem 0;
-      transition: 0.3s ease;
-    }
-
-    .navbar-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .navbar-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: var(--font-head);
-      font-weight: 700;
-      font-size: 1.3rem;
-      color: var(--text-main);
-      position: relative;
-      z-index: 1001;
-      /* Above mobile menu */
-    }
-
-    .navbar-logo img {
-      width: 45px;
-      height: 45px;
-    }
-
-    .navbar-menu {
-      display: flex;
-      gap: 20px;
-    }
-
-    .navbar-menu li a {
-      font-weight: 600;
-      font-size: 1rem;
-      color: var(--text-main);
-      padding: 8px 20px;
-      border-radius: var(--radius-full);
-      border: var(--border-width) solid transparent;
-      /* Pre-allocate border width */
-      transition: 0.2s;
-    }
-
-    .navbar-menu li a:hover,
-    .navbar-menu li a.active {
-      background: var(--primary);
-      color: white;
-      transform: rotate(-2deg);
-      border-color: var(--border-color);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .navbar-actions {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .theme-toggle {
-      background: transparent;
-      border: none;
-      font-size: 1.2rem;
-      cursor: pointer;
-      color: var(--text-main);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: var(--border-width) solid var(--border-color);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .theme-toggle:hover {
-      background: var(--secondary);
-      color: var(--text-main);
-      transform: rotate(15deg) scale(1.1);
-    }
-
-    .navbar-toggle {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: var(--text-main);
-      cursor: pointer;
-      z-index: 1001;
-    }
-
-    /* --- LAYOUT & CONTAINERS --- */
-    .app-container {
-      padding-top: 90px;
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding-bottom: 50px;
-    }
-
-    .section {
-      background: var(--surface-color);
-      border: var(--border-width) solid var(--border-color);
-      border-radius: var(--radius-lg);
-      padding: 2rem;
-      margin-bottom: 2.5rem;
-      box-shadow: var(--shadow-hard);
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Decorative stripe for sections */
-    .section::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 6px;
-      background: repeating-linear-gradient(45deg, var(--primary), var(--primary) 10px, var(--secondary) 10px, var(--secondary) 20px);
-    }
-
-    .section-title {
-      font-family: var(--font-head);
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-      color: var(--primary-dark);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    /* --- BUTTONS & GRID --- */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-      gap: 15px;
-    }
-
-    .btn {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem 1rem;
-      background: var(--surface-color);
-      border: var(--border-width) solid var(--border-color);
-      border-radius: var(--radius-md);
-      text-align: center;
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: var(--text-main);
-      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 3.275);
-      box-shadow: var(--shadow-sm);
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      transform: translate(-4px, -4px);
-      background: var(--primary-light);
-      border-color: var(--primary);
-      box-shadow: var(--shadow-hover);
-    }
-
-    .btn:active {
-      transform: translate(0, 0);
-      box-shadow: 2px 2px 0px var(--border-color);
-    }
-
-    .btn .icon {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-      color: var(--primary);
-    }
-
-    .btn:hover .icon {
-      position: relative;
-      top: 12px;
-      animation: bounce 0.5s infinite alternate;
-    }
-
-    /* --- CBOX WRAPPER --- */
-    .cbox-wrapper {
-      background: var(--surface-color);
-      border: var(--border-width) solid var(--primary);
-      border-radius: var(--radius-lg);
-      padding: 5px;
-      /* Inner padding */
-      box-shadow: var(--shadow-hard);
-      margin-bottom: 2rem;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .cbox-wrapper::before {
-      content: 'THio-UI';
-      position: absolute;
-      bottom: 61px;
-      left: 40px;
-      font-family: var(--font-head);
-      font-weight: 700;
-      color: var(--primary);
-      opacity: 0.5;
-      pointer-events: none;
-    }
-
-    .cbox-wrapper iframe {
-      border: none;
-      display: block;
-      width: 100%;
-    }
-
-    /* --- MUSIC PLAYER --- */
-    .music-player-section {
-      background: var(--surface-color);
-      border: var(--border-width) solid var(--border-color);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-      box-shadow: var(--shadow-hard);
-    }
-
-    .soundcloud-player {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 20px;
-      align-items: center;
-    }
-
-    .player-artwork-info img {
-      width: 80px;
-      height: 80px;
-      border-radius: var(--radius-md);
-      border: var(--border-width) solid var(--border-color);
-      box-shadow: 3px 3px 0px var(--border-color);
-      object-fit: cover;
-    }
-
-    .player-info {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .player-track-title {
-      font-family: var(--font-head);
-      font-weight: 700;
-      font-size: 2.8rem;
-      color: var(--text-main);
-      margin-bottom: 1px;
-      position: sticky;
-      top: -80px;
-      left: 20px;
-    }
-
-    .player-track-artist {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      font-weight: 600;
-      position: sticky;
-      top: -90px;
-      left: 30px;
-    }
-
-    .main-play-btn {
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      background: var(--primary);
-      color: white;
-      border: var(--border-width) solid var(--border-color);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: var(--shadow-sm);
-      transition: 0.2s;
-    }
-
-    .main-play-btn:hover {
-      transform: scale(1.1) rotate(5deg);
-      background: var(--primary-dark);
-    }
-
-    .main-play-btn.playing {
-      animation: pulse 1.5s infinite;
-      background: var(--danger);
-    }
-
-    /* Range Input (Progress Bar) */
-    input[type=range] {
-      -webkit-appearance: none;
-      width: 100%;
-      height: 10px;
-      background: var(--bg-color);
-      border: var(--border-width) solid var(--border-color);
-      border-radius: var(--radius-full);
-      cursor: pointer;
-      margin-top: 10px;
-    }
-
-    input[type=range]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      height: 20px;
-      width: 20px;
-      border-radius: 50%;
-      background: var(--primary);
-      border: 2px solid var(--border-color);
-      cursor: pointer;
-      box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
-      transition: 0.2s;
-    }
-
-    input[type=range]::-webkit-slider-thumb:hover {
-      transform: scale(1.2);
-    }
-
-    .download-btn {
-      background: var(--secondary);
-      color: var(--text-main);
-      padding: 9px 18px;
-      border-radius: var(--radius-full);
-      border: var(--border-width) solid var(--border-color);
-      font-weight: 700;
-      cursor: pointer;
-      display: grid;
-      left: 25px;
-      align-items: center;
-      gap: 8px;
-      box-shadow: var(--shadow-sm);
-      font-size: 0.9rem;
-    }
-
-    .download-btn:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: var(--shadow-hover);
-    }
-
-    /* --- PLAYLIST --- */
-    .playlist-section {
-      background: var(--bg-color);
-      border: 2px dashed var(--border-color);
-      border-radius: var(--radius-md);
-      margin-top: 1rem;
-    }
-
-    .playlist-header {
-      padding: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      font-family: var(--font-head);
-      font-weight: 700;
-    }
-
-    .playlist-header:hover {
-      background: rgba(255, 159, 67, 0.1);
-    }
-
-    .playlist-items {
-      max-height: 0;
-      overflow: hidden;
-      transition: 0.4s ease-in-out;
-    }
-
-    .playlist-items.active {
-      max-height: 300px;
-      overflow-y: auto;
-    }
-
-    .playlist-item {
-      padding: 12px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      border-bottom: 1px dashed var(--border-color);
-      cursor: pointer;
-      transition: 0.2s;
-      font-weight: 600;
-    }
-
-    .playlist-item:hover {
-      background: var(--primary-light);
-      padding-left: 18px;
-    }
-
-    .playlist-item.active {
-      background: var(--primary);
-      color: white;
-      border-bottom: none;
-    }
-
-    /* --- TIMELINE --- */
-    .timeline-section {
-      margin: 4rem 0;
-    }
-
-    .section-title-centered {
-      text-align: center;
-      font-family: var(--font-head);
-      font-size: 2.2rem;
-      margin-bottom: 3rem;
-      color: var(--text-main);
-      display: inline-block;
-      position: relative;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--primary);
-      color: white;
-      padding: 10px 30px;
-      border: var(--border-width) solid var(--border-color);
-      border-radius: var(--radius-full);
-      box-shadow: var(--shadow-hard);
-    }
-
-    .timeline {
-      position: relative;
-      padding: 20px 0;
-    }
-
-    /* The vertical line */
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 10px;
-      bottom: 0;
-      width: 4px;
-      background: var(--border-color);
-      border-radius: 4px;
-      transform: translateX(-50%);
-      z-index: 0;
-    }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: 3rem;
-      width: 45%;
-    }
-
-    .timeline-item:nth-child(odd) {
-      left: 0;
-      padding-right: 40px;
-      text-align: right;
-    }
-
-    .timeline-item:nth-child(even) {
-      left: 55%;
-      padding-left: 40px;
-    }
-
-    .timeline-content {
-      background: var(--surface-color);
-      border: var(--border-width) solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 1.5rem;
-      box-shadow: var(--shadow-hard);
-      transition: 0.3s;
-      position: relative;
-      z-index: 1;
-    }
-
-    .timeline-content:hover {
-      transform: scale(1.03);
-      border-color: var(--primary);
-    }
-
-    /* Timeline Dots */
-    .timeline-icon {
-      position: absolute;
-      top: 25px;
-      width: 45px;
-      height: 45px;
-      background: var(--secondary);
-      border: var(--border-width) solid var(--border-color);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-main);
-      font-size: 1.3rem;
-      z-index: 2;
-      box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
-    }
-
-    .timeline-item:nth-child(odd) .timeline-icon {
-      right: -24.5px;
-    }
-
-    .timeline-item:nth-child(even) .timeline-icon {
-      left: -24.5px;
-    }
-
-    .timeline-date {
-      font-weight: 700;
-      color: var(--primary-dark);
-      display: inline-block;
-      background: var(--primary-light);
-      padding: 5px 12px;
-      border-radius: var(--radius-sm);
-      margin-bottom: 8px;
-      font-size: 0.9rem;
-      border: 2px solid var(--border-color);
-    }
-
-    .timeline-toggle {
-      color: var(--primary);
-      cursor: pointer;
-      font-weight: 700;
-      margin-top: 10px;
-      display: inline-block;
-      font-size: 0.9rem;
-      text-decoration: underline;
-    }
-
-    .timeline-details {
-      max-height: 0;
-      overflow: hidden;
-      transition: 0.3s;
-      margin-top: 10px;
-      font-size: 0.95rem;
-      color: var(--text-muted);
-    }
-
-    .timeline-details.active {
-      max-height: 500px;
-      padding-top: 10px;
-    }
-
-    /* --- MODALS --- */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(4px);
-      /* Modern blur */
-      z-index: 2000;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .modal-overlay.active {
-      display: flex;
-      opacity: 1;
-    }
-
-    .modal-content-wrapper {
-      background: var(--surface-color);
-      border: var(--border-width) solid var(--border-color);
-      border-radius: var(--radius-lg);
-      max-width: 550px;
-      width: 100%;
-      max-height: 85vh;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 15px 0px rgba(0, 0, 0, 0.4);
-      transform: scale(0.9);
-      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .modal-overlay.active .modal-content-wrapper {
-      transform: scale(1);
-    }
-
-    .modal-header {
-      background: var(--primary);
-      padding: 15px 25px;
-      border-radius: var(--radius-md);
-      border-bottom: var(--border-width) solid var(--border-color);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .modal-header h2 {
-      color: white;
-      font-family: var(--font-head);
-      font-size: 1.4rem;
-    }
-
-    .modal-close-btn {
-      background: rgba(255, 255, 255, 0.2);
-      border: none;
-      color: white;
-      font-size: 1.5rem;
-      cursor: pointer;
-      border-radius: 50%;
-      width: 35px;
-      height: 35px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: 0.2s;
-    }
-
-    .modal-close-btn:hover {
-      background: white;
-      color: var(--primary);
-    }
-
-    .modal-body {
-      padding: 25px;
-      overflow-y: auto;
-      font-size: 1.05rem;
-      line-height: 1.8;
-    }
-
-    .modal-actions {
-      padding: 20px 25px;
-      border-top: 1px solid rgba(0, 0, 0, 0.1);
-      text-align: right;
-    }
-
-    /* --- FAB & FLOATING BTNS --- */
-    .fab,
-    .back-to-top {
-      position: fixed;
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      color: white;
-      cursor: pointer;
-      border: var(--border-width) solid var(--border-color);
-      z-index: 100;
-      transition: 0.3s;
-      box-shadow: var(--shadow-hard);
-    }
-
-    .fab {
-      bottom: 30px;
-      right: 30px;
-      background: var(--primary);
-    }
-
-    .back-to-top {
-      bottom: 30px;
-      left: 30px;
-      background: var(--secondary);
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(20px);
-    }
-
-    .back-to-top.visible {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .fab:hover,
-    .back-to-top:hover {
-      transform: scale(1.1) rotate(10deg);
-    }
-
-    /* --- FOOTER --- */
-    .footer {
-      background: var(--border-color);
-      color: var(--bg-color);
-      padding: 2.5rem 1rem;
-      text-align: center;
-      margin-top: 5rem;
-      border-top: 6px solid var(--primary);
-      position: relative;
-    }
-
-    .footer-links {
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-links a {
-      color: var(--bg-color);
-      margin: 0 10px;
-      font-weight: 600;
-      position: relative;
-      display: inline-block;
-    }
-
-    .footer-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 3px;
-      background: var(--secondary);
-      transition: 0.3s;
-    }
-
-    .footer-links a:hover {
-      color: var(--secondary);
-    }
-
-    .footer-links a:hover::after {
-      width: 100%;
-    }
-
-    /* --- RESPONSIVE --- */
-    @media (max-width: 1108px) {
-
-      /* Navbar Mobile */
-      .navbar-menu {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 80%;
-        height: 100vh;
-        background: var(--surface-color);
-        flex-direction: column;
-        padding: 100px 30px;
-        transform: translateX(-100%);
-        transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 998;
-        border-right: var(--border-width) solid var(--border-color);
-        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
-      }
-
-      .navbar-menu.active {
-        transform: translateX(0);
-      }
-
-      .navbar-toggle {
-        display: block;
-      }
-
-      /* Header */
-      .header h1 {
-        font-size: 2rem;
-      }
-
-      /* Timeline Mobile */
-      .timeline::before {
-        left: 20px;
-      }
-
-      .timeline-item {
-        width: 100%;
-        padding-left: 65px;
-        padding-right: 0;
-        text-align: left !important;
-        left: 0 !important;
-      }
-
-      .timeline-icon {
-        left: 0 !important;
-        right: auto !important;
-      }
-
-      /* Music Player Stack */
-      .soundcloud-player {
-        grid-template-columns: 1fr;
-        gap: 15px;
-        text-align: center;
-      }
-
-      .player-artwork-info {
-        margin: 0 auto;
-      }
-
-      /* Grid Mobile */
-      .grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-      }
-
-      .btn {
-        padding: 1rem 0.5rem;
-        font-size: 0.85rem;
-      }
-
-      .btn .icon {
-        font-size: 1.8rem;
-      }
-
-      .fab,
-      .back-to-top {
-        width: 45px;
-        height: 45px;
-        bottom: 20px;
-        right: 20px;
-        font-size: 1.2rem;
-      }
-
-      .back-to-top {
-        left: 20px;
-      }
-    }
-
-    @media (max-width: 880px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
-</head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/skenpat/aset/css/style.css" />
 
 <body>
 
@@ -1021,12 +40,13 @@
         <span>OSIS SMKN4BJM</span>
       </a>
       <ul class="navbar-menu" id="navbar-menu">
-        <li><a href="#home">Beranda</a></li>
+        <li><a href="index.html?tab=beranda">Beranda</a></li>
         <li><a href="#links">Link Penting</a></li>
         <li><a href="#team">Tim</a></li>
         <li><a href="#profile">Profil</a></li>
         <li><a href="#music-player">Mars</a></li>
         <li><a href="#timeline">Acara</a></li>
+        <li><a href="index.html?tab=tentang">Tentang</a></li>
       </ul>
       <div class="navbar-actions">
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
@@ -1092,230 +112,510 @@
     </div>
   </div>
 
-  <div class="app-container" id="home">
+  <div class="app-container">
     <main>
-      <!-- Header -->
-      <header class="header">
-        <div class="header-badge">Skenpat-People</div>
-        <h1>OSIS SMKN4BJM</h1>
-        <p>Portal Informasi Terpadu SMK Negeri 4 Banjarmasin</p>
-      </header>
+      <div id="tab-beranda" class="tab-content active">
+        <!-- Improved Hero Section -->
+        <header class="header">
+          <div class="header-badge">🚀 Platform Digital Skenpat</div>
+          <h1>OSIS <span>SMKN 4</span> Banjarmasin</h1>
+          <p>Portal Informasi Terpadu & Hub Kreativitas Siswa. Jelajahi berbagai layanan, kegiatan, dan sumber daya
+            akademik dalam satu pintu.</p>
+          <div class="header-cta">
+            <a href="#links" class="cta-pill primary">Mulai Jelajah <i class="fas fa-arrow-right"></i></a>
+            <a href="?tab=tentang" class="cta-pill secondary">Tentang Kami</a>
+          </div>
+        </header>
 
-      <!-- Portal Utama -->
-      <section class="card-balance">
-        <h2>Portal Utama</h2>
-        <p style="color:#666; margin-bottom:1rem;">Akses cepat ke informasi penting</p>
-        <div style="display:flex; gap:15px; flex-wrap:wrap; justify-content:center;">
-          <a href="/eskul" class="btn" style="flex:1; min-width:120px;">
-            <i class="fas fa-calendar-alt icon"></i> Ekstrakurikuler
-          </a>
-          <a href="/mapel" class="btn" style="flex:1; min-width:120px;">
-            <i class="fas fa-book-open icon"></i> Jadwal Mapel
-          </a>
+        <!-- Portal Utama Dashboard -->
+        <section class="card-balance">
+          <h2>Portal Utama</h2>
+          <p class="subtitle">Pusat Informasi & Layanan Siswa</p>
+          <div class="portal-grid">
+            <a href="/eskul" class="portal-card">
+              <div class="icon-wrapper"><i class="fas fa-users-cog"></i></div>
+              <h3>Ekstrakurikuler</h3>
+              <p>Jadwal latihan, daftar organisasi, dan info kegiatan pengembangan diri.</p>
+            </a>
+            <a href="/mapel" class="portal-card">
+              <div class="icon-wrapper"><i class="fas fa-graduation-cap"></i></div>
+              <h3>Jadwal Mapel</h3>
+              <p>Akses jadwal mata pelajaran harian dan kalender akademik SMK.</p>
+            </a>
+            <a href="#music-player" class="portal-card">
+              <div class="icon-wrapper"><i class="fas fa-music"></i></div>
+              <h3>Mars Skenpat</h3>
+              <p>Dengarkan lagu kebangsaan sekolah dan hafalkan liriknya.</p>
+            </a>
+          </div>
+        </section>
+
+        <!-- Cbox Discussion Hub -->
+        <div class="cbox-wrapper" style="margin-bottom: 3rem;">
+          <div class="section-title" style="padding: 1rem 2rem 0; margin-bottom: 0;">
+            <i class="fas fa-comments"></i> Forum Diskusi
+          </div>
+          <div style="padding: 15px;">
+            <iframe src="https://www3.cbox.ws/box/?boxid=3549497&boxtag=18ooNP" width="100%" height="450" loading="lazy"
+              frameborder="0" title="ChitChat Skenpat"
+              style="display:block; border-radius: var(--radius-md); border: var(--border-thin) solid var(--border-color);"></iframe>
+          </div>
         </div>
-      </section>
 
-      <!-- Cbox Wrapper -->
-      <div class="cbox-wrapper">
-        <iframe src="https://www3.cbox.ws/box/?boxid=3549497&boxtag=18ooNP" width="100%" height="450" loading="lazy"
-          frameborder="0" title="ChitChat Skenpat" style="display:block;"></iframe>
+        <!-- Religi & Spiritual -->
+        <section class="section" id="religi">
+          <h3><i class="fas fa-mosque"></i> Sektor Religi</h3>
+          <p style="margin-bottom: 1.5rem; color: var(--text-muted);">Layanan spiritual dan pembinaan karakter religius
+            bagi seluruh siswa.</p>
+          <div class="portal-grid">
+            <a href="?tab=muslim" class="portal-card"
+              style="background: linear-gradient(135deg, rgba(39, 174, 96, 0.1), transparent);">
+              <div class="icon-wrapper" style="color: #27ae60;"><i class="fas fa-star-and-crescent"></i></div>
+              <h3>Skenpat Muslim</h3>
+              <p>Jadwal pengajian, info OSIS keagamaan, dan mutaba'ah harian.</p>
+            </a>
+            <a href="?tab=kristen" class="portal-card"
+              style="background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), transparent);">
+              <div class="icon-wrapper" style="color: #3498db;"><i class="fas fa-cross"></i></div>
+              <h3>Christ Skenpat</h3>
+              <p>Ibadah rutin, persekutuan siswa kristen, dan kegiatan kerohanian.</p>
+            </a>
+          </div>
+        </section>
+
+        <!-- Links Section -->
+        <section class="section" id="links">
+          <h3><i class="fas fa-link"></i> Link Penting</h3>
+          <p style="margin-bottom: 1.5rem; color: var(--text-muted);">Tautan resmi dan platform pendukung aktivitas
+            sekolah.</p>
+          <div class="links-grid">
+            <a href="https://smkn4bjm.sch.id/berita" class="link-btn" rel="noopener">
+              <i class="fa-solid fa-newspaper"></i>
+              <span>Berita</span>
+            </a>
+            <a href="https://smkn4bjm.sch.id/perpustakaan-sekolah" class="link-btn" rel="noopener">
+              <i class="fa-solid fa-book"></i>
+              <span>Perpus</span>
+            </a>
+            <a href="https://smkn4bjm.sch.id/prestasi" class="link-btn" rel="noopener">
+              <i class="fa-solid fa-trophy"></i>
+              <span>Prestasi</span>
+            </a>
+            <a href="https://smkn4bjm.sch.id/sejarah-sekolah" class="link-btn" rel="noopener">
+              <i class="fa-solid fa-history"></i>
+              <span>Sejarah</span>
+            </a>
+            <a href="/spin" class="link-btn" rel="noopener">
+              <i class="fa-solid fa-dharmachakra"></i>
+              <span>Wheel</span>
+            </a>
+            <a href="/feedback" class="link-btn" rel="noopener">
+              <i class="fa-solid fa-comments"></i>
+              <span>Feedback</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="section" id="team">
+          <h3><i class="fas fa-users"></i> Skenpat Team</h3>
+          <p style="margin-bottom: 1.5rem; color: var(--text-muted);">Mengenal lebih dekat tim manajemen dan pendidik
+            kami.</p>
+          <div class="links-grid">
+            <a href="https://smkn4bjm.sch.id/tim-manajemen" class="link-btn" rel="noopener">
+              <i class="fa-solid fa-users"></i>
+              <span>Manajemen</span>
+            </a>
+            <a href="https://smkn4bjm.sch.id/tentang-kami/tenaga-pendidik" class="link-btn" rel="noopener">
+              <i class="fa-solid fa-chalkboard-user"></i>
+              <span>Pendidik</span>
+            </a>
+            <a href="https://smkn4bjm.sch.id/tentang-kami/tenaga-kependidikan" class="link-btn" rel="noopener">
+              <i class="fa-solid fa-user-tie"></i>
+              <span>Staff</span>
+            </a>
+            <a href="https://smkn4bjm.sch.id/wp-content/uploads/2024/12/Struktur-Sekolah-2024-november.jpg"
+              class="link-btn" rel="noopener">
+              <i class="fa-solid fa-sitemap"></i>
+              <span>Struktur</span>
+            </a>
+            <a href="/osis" class="link-btn">
+              <i class="fa-solid fa-layer-group"></i>
+              <span>OSIS</span>
+            </a>
+            <a href="/green" class="link-btn">
+              <i class="fa-solid fa-leaf"></i>
+              <span>Green</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- Visi Misi / Profile -->
+        <section class="section" id="profile" style="padding: 3rem 2rem;">
+          <h2 style="font-family: var(--font-head); font-size: 2.2rem; text-align: center; margin-bottom: 2rem;">Profil
+            SMKN 4 Banjarmasin</h2>
+          <div class="video-container"
+            style="border-radius: var(--radius-md); overflow: hidden; border: var(--border-thin) solid var(--border-color); box-shadow: var(--shadow-flat); margin-bottom: 3rem;">
+            <iframe src="https://www.youtube.com/embed/XQKoNTQTrkM?mute=1" title="Profil SMKN 4 Banjarmasin"
+              allowfullscreen loading="lazy" style="width: 100%; aspect-ratio: 16/9; border: none;"></iframe>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+            <div>
+              <h3 style="color: var(--primary-dark); font-size: 1.8rem; margin-bottom: 1rem;"><i
+                  class="fas fa-bullseye"></i> Visi</h3>
+              <p style="font-size: 1.1rem; line-height: 1.7; font-weight: 600;">"Mewujudkan Lulusan Yang Kompeten,
+                Berkarakter, Berdaya Saing, Siap Menghadapi Dunia Kerja Dan Perkembangan Teknologi Berlandaskan
+                Nilai-nilai Luhur Pancasila"</p>
+            </div>
+            <div>
+              <h3 style="color: var(--primary-dark); font-size: 1.8rem; margin-bottom: 1rem;"><i
+                  class="fas fa-tasks"></i>
+                Misi</h3>
+              <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 12px; display: flex; gap: 10px; font-weight: 500;">
+                  <i class="fas fa-check-circle" style="color: var(--primary); margin-top: 4px;"></i>
+                  Mewujudkan Peserta Didik Yang Memiliki Profil Pelajar Pancasila Dan Budaya Kerja.
+                </li>
+                <li style="margin-bottom: 12px; display: flex; gap: 10px; font-weight: 500;">
+                  <i class="fas fa-check-circle" style="color: var(--primary); margin-top: 4px;"></i>
+                  Melaksanakan Program Pendidikan Inklusif.
+                </li>
+                <li style="margin-bottom: 12px; display: flex; gap: 10px; font-weight: 500;">
+                  <i class="fas fa-check-circle" style="color: var(--primary); margin-top: 4px;"></i>
+                  Mengembangkan Manajemen Berbasis Data Dan Digital Yang Mendukung Efektivitas Layanan.
+                </li>
+                <li style="margin-bottom: 12px; display: flex; gap: 10px; font-weight: 500;">
+                  <i class="fas fa-check-circle" style="color: var(--primary); margin-top: 4px;"></i>
+                  Menyediakan Sarana Dan Prasarana Yang Sesuai Dengan Standar Dunia Kerja Dan Perkembangan Teknologi
+                </li>
+                <li style="margin-bottom: 12px; display: flex; gap: 10px; font-weight: 500;">
+                  <i class="fas fa-check-circle" style="color: var(--primary); margin-top: 4px;"></i>
+                  Memperkuat Kemitraan Dengan Dunia Kerja Dan Stakeholder.
+                </li>
+                <li style="margin-bottom: 12px; display: flex; gap: 10px; font-weight: 500;">
+                  <i class="fas fa-check-circle" style="color: var(--primary); margin-top: 4px;"></i>
+                  Memfasilitasi Lulusan Memiliki Sertifikat Uji Kompetensi Vang Diterbitkan Oleh BNSP.
+                </li>
+                <li style="margin-bottom: 12px; display: flex; gap: 10px; font-weight: 500;">
+                  <i class="fas fa-check-circle" style="color: var(--primary); margin-top: 4px;"></i>
+                  Menumbuhkan Wawasan Dan Kepedulian Warga Sekolah Terhadap Lingkungan Hidup Dan Budaya Lokal.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <p
+            style="margin-top:2.5rem; text-align: center; font-size:0.85rem; color:var(--text-muted); font-style:italic; border-top: 1px dashed var(--border-color); padding-top: 1.5rem;">
+            Portal ini dirancang oleh Tim OSIS untuk memudahkan akses informasi seluruh warga sekolah.
+          </p>
+        </section>
+
+        <!-- Timeline / Acara -->
+        <section class="section" id="timeline">
+          <h3><i class="fas fa-calendar-alt"></i> Agenda & Kegiatan</h3>
+          <p style="margin-bottom: 2rem; color: var(--text-muted);">Pantau terus jadwal kegiatan penting di lingkungan
+            SMKN 4 Banjarmasin.</p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-icon"><i class="fas fa-flag"></i></div>
+              <div class="timeline-content">
+                <div class="timeline-date">Juli 2025</div>
+                <h4 class="timeline-title">MPLS Skenpat</h4>
+                <p>Masa Pengenalan Lingkungan Sekolah bagi siswa baru angkatan 2025.</p>
+                <div class="timeline-details" id="event-mpls">
+                  Kegiatan ini meliputi pengenalan kurikulum, tata tertib sekolah, dan berbagai demonstrasi
+                  ekstrakurikuler untuk membantu siswa baru beradaptasi.
+                </div>
+                <button class="timeline-toggle" data-target="event-mpls">Selengkapnya <i
+                    class="fas fa-chevron-down"></i></button>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-icon"><i class="fas fa-user-shield"></i></div>
+              <div class="timeline-content">
+                <div class="timeline-date">Agustus 2025</div>
+                <h4 class="timeline-title">LDKS OSIS</h4>
+                <p>Pelatihan kepemimpinan bagi pengurus OSIS dan MPK terpilih.</p>
+                <div class="timeline-details" id="event-ldks">
+                  Latihan Dasar Kepemimpinan Siswa bertujuan mengasah kemampuan manajerial, kedisiplinan, dan tanggung
+                  jawab calon pemimpin organisasi intra sekolah.
+                </div>
+                <button class="timeline-toggle" data-target="event-ldks">Selengkapnya <i
+                    class="fas fa-chevron-down"></i></button>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-icon"><i class="fas fa-star"></i></div>
+              <div class="timeline-content">
+                <div class="timeline-date">Desember 2025</div>
+                <h4 class="timeline-title">Class Meeting & Expo</h4>
+                <p>Pekan olahraga, seni, dan pameran karya kreativitas siswa.</p>
+                <div class="timeline-details" id="event-expo">
+                  Ajang kompetisi antar kelas dan pameran produk unggulan dari setiap jurusan di SMKN 4 Banjarmasin.
+                </div>
+                <button class="timeline-toggle" data-target="event-expo">Selengkapnya <i
+                    class="fas fa-chevron-down"></i></button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Music Player -->
+        <section class="music-player-section" id="music-player">
+          <div class="soundcloud-player">
+            <!-- Artwork Section -->
+            <div class="player-artwork-info">
+              <div class="artwork-container">
+                <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760687917/faviconV2_s4utef.png"
+                  alt="Album Art" class="artwork-img" id="player-artwork">
+                <div class="disc-center"></div>
+              </div>
+            </div>
+
+            <!-- Info Section -->
+            <div class="player-info">
+              <span class="player-track-title" id="track-title">Mars Skenpat</span>
+              <span class="player-track-artist" id="track-artist">SMKN 4 Banjarmasin</span>
+            </div>
+
+            <!-- Controls Section -->
+            <div class="player-controls">
+              <button id="shuffle-btn" class="control-btn" title="Shuffle"><i class="fas fa-random"></i></button>
+              <button id="prev-btn" class="control-btn" title="Previous"><i class="fas fa-step-backward"></i></button>
+              <button class="main-play-btn" id="play-pause-btn" title="Play/Pause"><i class="fas fa-play"></i></button>
+              <button id="next-btn" class="control-btn" title="Next"><i class="fas fa-step-forward"></i></button>
+              <button id="repeat-btn" class="control-btn" title="Repeat"><i class="fas fa-redo"></i></button>
+            </div>
+
+            <!-- Progress Section -->
+            <div class="player-progress-container">
+              <div class="progress-labels">
+                <span id="current-time">0:00</span>
+                <div class="equalizer-container">
+                  <div class="eq-bar"></div>
+                  <div class="eq-bar"></div>
+                  <div class="eq-bar"></div>
+                  <div class="eq-bar"></div>
+                </div>
+                <span id="total-time">0:00</span>
+              </div>
+              <div class="player-progress-bar-wrapper" id="progress-wrapper">
+                <div class="player-progress-fill" id="progress-fill"></div>
+                <input type="range" class="player-progress-bar" id="progress-bar" value="0" max="100">
+              </div>
+            </div>
+
+            <!-- Extra Actions Section -->
+            <div class="player-extra-actions">
+              <button class="action-btn" id="download-btn">
+                <i class="fas fa-download"></i> Unduh
+              </button>
+              <button class="action-btn" id="show-lyrics-modal-btn">
+                <i class="fas fa-align-left"></i> Lirik
+              </button>
+
+              <div class="volume-container">
+                <button id="volume-btn" class="control-btn" style="font-size: 1.1rem; width: 30px; height: 30px;">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+                <input type="range" id="volume-slider" class="volume-slider" min="0" max="1" step="0.1" value="1">
+              </div>
+            </div>
+          </div>
+
+          <!-- Playlist -->
+          <div class="playlist-section">
+            <div class="playlist-header" id="playlist-toggle">
+              <span style="font-weight:700; color:var(--text-main);">Daftar Putar</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="playlist-items" id="playlist-items">
+              <!-- Playlist items will be populated/managed here -->
+              <div class="playlist-item active"
+                data-src="https://rawcdn.githack.com/skenpat/skenpat/refs/heads/main/aset/marsskenpat.mp3"
+                data-title="Mars Skenpat" data-artist="SMKN 4 Banjarmasin"
+                data-img="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760687917/faviconV2_s4utef.png">
+                <i class="fas fa-music" style="margin-right:10px;"></i>
+                <div>
+                  <div style="font-weight:700;">Mars Skenpat</div>
+                  <div style="font-size:0.8rem;">SMKN 4 Banjarmasin</div>
+                </div>
+              </div>
+              <div class="playlist-item"
+                data-src="https://rawcdn.githack.com/skenpat/skenpat/refs/heads/main/aset/soundmars.mp3"
+                data-title="Backsound Mars" data-artist="SMKN 4 Banjarmasin"
+                data-img="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760687917/faviconV2_s4utef.png">
+                <i class="fas fa-music" style="margin-right:10px;"></i>
+                <div>
+                  <div style="font-weight:700;">Backsound Mars</div>
+                  <div style="font-size:0.8rem;">SMKN 4 Banjarmasin</div>
+                </div>
+              </div>
+            </div>
+          </div>
       </div>
 
-      <!-- Links Section -->
-      <section class="section" id="links">
-        <h3><i class="fas fa-link" style="color:var(--primary);"></i> Kumpulan Link Terkait</h3>
-        <div class="grid">
-          <a href="https://smkn4bjm.sch.id/berita" class="btn" rel="noopener">
-            <i class="fa-solid fa-newspaper icon"></i> Berita
-          </a>
-          <a href="https://smkn4bjm.sch.id/perpustakaan-sekolah" class="btn" rel="noopener">
-            <i class="fa-solid fa-book icon"></i> Perpus
-          </a>
-          <a href="https://smkn4bjm.sch.id/prestasi" class="btn" rel="noopener">
-            <i class="fa-solid fa-trophy icon"></i> Prestasi
-          </a>
-          <a href="https://smkn4bjm.sch.id/sejarah-sekolah" class="btn" rel="noopener">
-            <i class="fa-solid fa-history icon"></i> Sejarah
-          </a>
-          <a href="/spin" class="btn" rel="noopener">
-            <i class="fa-solid fa-dharmachakra icon"></i> Wheel
-          </a>
-          <a href="/feedback" class="btn" rel="noopener">
-            <i class="fa-solid fa-comments icon"></i> Umpan Balik
-          </a>
-        </div>
-      </section>
+      <!-- Tentang Section (New Tab) -->
+      <div id="tab-tentang" class="tab-content">
+        <header class="header">
+          <div class="header-badge">📖 Profil Organisasi</div>
+          <h1>Tentang <span>Skenpat</span> Digital</h1>
+          <p>Mengenal lebih jauh visi, misi, dan tim di balik pengembangan platform digital OSIS SMKN 4 Banjarmasin.</p>
+        </header>
 
-      <!-- Team Section -->
-      <section class="section" id="team">
-        <h3><i class="fas fa-users" style="color:var(--primary);"></i> Skenpat Team</h3>
-        <div class="grid">
-          <a href="https://smkn4bjm.sch.id/tim-manajemen" class="btn" rel="noopener">
-            <i class="fa-solid fa-users icon"></i> Tim Inti
-          </a>
-          <a href="https://smkn4bjm.sch.id/tentang-kami/tenaga-pendidik" class="btn" rel="noopener">
-            <i class="fa-solid fa-chalkboard-user icon"></i> Pendidik
-          </a>
-          <a href="https://smkn4bjm.sch.id/tentang-kami/tenaga-kependidikan" class="btn" rel="noopener">
-            <i class="fa-solid fa-user-tie icon"></i> Kependidikan
-          </a>
-          <a href="https://smkn4bjm.sch.id/wp-content/uploads/2024/12/Struktur-Sekolah-2024-november.jpg" class="btn"
-            rel="noopener">
-            <i class="fa-solid fa-sitemap icon"></i> Struktur
-          </a>
-          <a href="/osis" class="btn">
-            <i class="fa-solid fa-layer-group icon"></i> OSIS
-          </a>
-          <a href="/green" class="btn">
-            <i class="fa-solid fa-leaf icon"></i> GG
-          </a>
-        </div>
-      </section>
-
-      <!-- Visi Misi / Profile -->
-      <section class="visi-misi" id="profile">
-        <h2>Profil SMK Negeri 4 Banjarmasin</h2>
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/XQKoNTQTrkM?mute=1" title="Profil SMKN 4 Banjarmasin"
-            allowfullscreen loading="lazy"></iframe>
-        </div>
-
-        <h3>Visi</h3>
-        <p style="margin-bottom:20px;">Mewujudkan Lulusan Yang Kompeten, Berkarakter, Berdaya Saing, Siap Menghadapi
-          Dunia Kerja Dan Perkembangan
-          Teknologi Berlandaskan Nilai-nilai Luhur Pancasila</p>
-
-        <h3>Misi</h3>
-        <ul style="list-style: disc; padding-left: 20px; color: #666;">
-          <li>Mewujudkan Peserta Didik Yang Memiliki Profil Pelajar Pancasila Dan Budaya Kerja.</li>
-          <li>Melaksanakan Program Pendidikan Inklusif.</li>
-          <li>Melaksanakan Pembelajaran Berbasis Teaching Factory (ТЕFА).</li>
-          <li>Mengembangkan Manajemen Berbasis Data Dan Digital Yang Mendukung Efektivitas Layanan.</li>
-          <li>Menyediakan Sarana Dan Prasarana Yang Sesuai Dengan Standar Dunia Kerja Dan Perkembangan Teknologi</li>
-          <li>Memperkuat Kemitraan Dengan Dunia Kerja Dan Stakeholder.</li>
-          <li>Memfasilitasi Lulusan Memiliki Sertifikat Uji Kompetensi Vang Diterbitkan Oleh BNSP.</li>
-          <li>Menumbuhkan Wawasan Dan Kepedulian Warga Sekolah Terhadap Lingkungan Hidup Dan Budaya Lokal.</li>
-        </ul>
-        <p style="margin-top:20px; font-size:0.8rem; color:#888; font-style:italic;">- This website is not the school's
-          official website.</p>
-      </section>
-
-      <!-- Music Player -->
-      <section class="music-player-section" id="music-player">
-        <div class="soundcloud-player">
-          <div class="player-artwork-info">
-            <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760687917/faviconV2_s4utef.png"
-              alt="Album Art">
-            <div>
-              <span class="player-track-title">Mars Skenpat</span><br>
-              <span class="player-track-artist">SMKN 4 Banjarmasin</span>
+        <section class="section">
+          <h3><i class="fas fa-info-circle"></i> Apa itu Skenpat Digital?</h3>
+          <p style="margin-bottom: 1.5rem;">Skenpat Digital adalah inisiatif mandiri dari tim kreatif OSIS SMKN 4
+            Banjarmasin untuk menghadirkan pusat informasi terpadu yang modern, interaktif, dan mudah diakses oleh
+            seluruh warga sekolah.</p>
+          <div class="portal-grid">
+            <div class="portal-card">
+              <div class="icon-wrapper"><i class="fas fa-bullseye"></i></div>
+              <h3>Visi Digital</h3>
+              <p>Mewujudkan ekosistem informasi sekolah yang transparan dan inklusif melalui teknologi.</p>
+            </div>
+            <div class="portal-card">
+              <div class="icon-wrapper"><i class="fas fa-code"></i></div>
+              <h3>Inovasi Siswa</h3>
+              <p>Dikembangkan sepenuhnya oleh siswa untuk mendukung literasi digital di sekolah.</p>
             </div>
           </div>
+        </section>
 
-          <button class="download-btn" id="download-btn">
-            <i class="fas fa-download"></i> Unduh
-          </button>
+        <section class="section">
+          <h3><i class="fas fa-users-viewfinder"></i> Tim Pengembang</h3>
+          <p style="margin-bottom: 2rem;">Platform ini tidak akan terwujud tanpa dedikasi dari orang-orang hebat
+            berikut:</p>
+          <div class="portal-grid">
+            <a href="https://smkn4bjm.sch.id/gallery/" target="_blank">
+              <div class="portal-card">
+                <div class="icon-wrapper"><i class="fas fa-user"></i></div>
+                <h3>Siswa/i SMKN4BJM</h3>
+                <p>Pengguna dan Kontributor</p>
+              </div>
+            </a>
+            <a href="https://github.com/skenpat" target="_blank">
+              <div class="portal-card">
+                <img src="https://avatars.githubusercontent.com/u/242902454?s=200&v=4" alt="Thio"
+                  style="width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--primary); margin-bottom: 15px;">
+                <h3>Skenpat-People</h3>
+                <p>Core Contributor</p>
+              </div>
+            </a>
+            <a href="https://id.wikipedia.org/wiki/Pengguna:Flessan" target="_blank">
+              <div class="portal-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Flessan.png/460px-Flessan.png"
+                  alt="Thio"
+                  style="width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--primary); margin-bottom: 15px;">
+                <h3>Thio Saputra</h3>
+                <p>Lead Developer & Architect</p>
+              </div>
+            </a>
+          </div>
+        </section>
+      </div>
 
-          <div style="flex-grow:1; margin:0 15px;">
-            <div style="display:flex; justify-content:center; gap:15px; margin-bottom:10px;">
-              <button id="prev-btn" class="main-play-btn" style="width:40px; height:40px; font-size:1rem;"><i
-                  class="fas fa-backward"></i></button>
-              <button class="main-play-btn" id="play-pause-btn"><i class="fas fa-play"></i></button>
-              <button id="next-btn" class="main-play-btn" style="width:40px; height:40px; font-size:1rem;"><i
-                  class="fas fa-forward"></i></button>
+      <!-- Skenpat Muslim Tab -->
+      <div id="tab-muslim" class="tab-content">
+        <header class="header">
+          <div class="header-badge">🕌 Kerohanian Islam</div>
+          <h1>Skenpat <span>Muslim</span></h1>
+          <p>Wadah pembinaan karakter religius dan penguatan nilai-nilai keislaman di lingkungan SMKN 4 Banjarmasin.</p>
+        </header>
+
+        <section class="section">
+          <h3><i class="fas fa-tasks"></i> Program Kerja Unggulan</h3>
+          <p style="margin-bottom: 2rem;">Kegiatan rutin penguatan spiritualitas siswa Muslim SMKN 4 Banjarmasin.</p>
+          <div class="portal-grid">
+            <div class="portal-card">
+              <div class="icon-wrapper"><i class="fas fa-quran"></i></div>
+              <h3>Tadarus Al-Qur'an</h3>
+              <p>Pembiasaan membaca Al-Qur'an bersama setiap pagi sebelum memulai pelajaran.</p>
             </div>
-            <div style="display:flex; align-items:center; gap:10px; font-size:0.8rem;">
-              <span id="current-time">0:00</span>
-              <input type="range" class="player-progress-bar" id="progress-bar" value="0" max="100">
-              <span id="total-time">0:00</span>
+            <div class="portal-card">
+              <div class="icon-wrapper"><i class="fas fa-hands-holding-circle"></i></div>
+              <h3>PHBI Islam</h3>
+              <p>Peringatan Hari Besar Islam seperti Maulid Nabi, Isra Mi'raj, dan Tahun Baru Hijriah.</p>
+            </div>
+            <div class="portal-card">
+              <div class="icon-wrapper"><i class="fas fa-box-open"></i></div>
+              <h3>Jumat Berkah</h3>
+              <p>Program infaq sukarela setiap hari Jumat untuk kegiatan sosial dan masjid sekolah.</p>
             </div>
           </div>
+        </section>
 
-          <div style="display:flex; gap:10px;">
-            <button id="volume-btn"
-              style="background:none; border:none; cursor:pointer; font-size:1.2rem; color:var(--text-main);"><i
-                class="fas fa-volume-up"></i></button>
-            <button id="show-lyrics-modal-btn"
-              style="background:none; border:none; cursor:pointer; font-size:1.2rem; color:var(--text-main);"><i
-                class="fas fa-align-left"></i></button>
-          </div>
-        </div>
-
-        <!-- Playlist -->
-        <div class="playlist-section">
-          <div class="playlist-header" id="playlist-toggle">
-            <span style="font-weight:700; color:var(--text-main);">Playlist Lagu</span>
-            <i class="fas fa-chevron-down"></i>
-          </div>
-          <div class="playlist-items" id="playlist-items">
-            <div class="playlist-item active"
-              data-src="https://rawcdn.githack.com/skenpat/skenpat/refs/heads/main/aset/marsskenpat.mp3">
-              <i class="fas fa-music" style="margin-right:10px;"></i>
-              <div>
-                <div style="font-weight:700;">Mars Skenpat</div>
-                <div style="font-size:0.8rem;">SMKN 4 Banjarmasin</div>
+        <section class="section">
+          <h3><i class="fas fa-clock"></i> Jadwal Rutin</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-icon"><i class="fas fa-sun"></i></div>
+              <div class="timeline-content">
+                <div class="timeline-date">Setiap Hari</div>
+                <h4 class="timeline-title">Sholat Dzuhur Berjamaah</h4>
+                <p>Dilaksanakan di musholla sekolah sesuai jadwal istirahat masing-masing jurusan.</p>
               </div>
             </div>
-            <div class="playlist-item"
-              data-src="https://rawcdn.githack.com/skenpat/skenpat/refs/heads/main/aset/soundmars.mp3">
-              <i class="fas fa-music" style="margin-right:10px;"></i>
-              <div>
-                <div style="font-weight:700;">Backsound Mars</div>
-                <div style="font-size:0.8rem;">SMKN 4 Banjarmasin</div>
+            <div class="timeline-item">
+              <div class="timeline-icon"><i class="fas fa-calendar-day"></i></div>
+              <div class="timeline-content">
+                <div class="timeline-date">Jumat Siang</div>
+                <h4 class="timeline-title">Sholat Jumat & Kultum</h4>
+                <p>Khusus siswa laki-laki, disertai dengan ceramah singkat (kultum) pembinaan karakter.</p>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
-      <!-- Timeline -->
-      <section class="timeline-section" id="timeline">
-        <h2 class="section-title">Timeline Kegiatan</h2>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-icon"><i class="fas fa-palette"></i></div>
-            <div class="timeline-content">
-              <div class="timeline-date">13 - 28 Oktober 2025</div>
-              <h3 style="font-family:var(--font-head); margin-bottom:5px;">Hari Sumpah Pemuda Dan Duta Sekolah</h3>
-              <p>Berdeskripsi awoakok</p>
-              <div class="timeline-toggle" data-target="details-3">Selengkapnya <i class="fas fa-chevron-down"></i>
-              </div>
-              <div class="timeline-details" id="details-3">
-                <p>langit bumi bersaksi~ derits skrekess sekerekess</p>
+      <!-- Christ Skenpat Tab -->
+      <div id="tab-kristen" class="tab-content">
+        <header class="header">
+          <div class="header-badge">⛪ Kerohanian Kristen</div>
+          <h1>Christ <span>Skenpat</span></h1>
+          <p>Wadah persekutuan dan pembinaan iman bagi siswa-siswi beragama Kristen di SMKN 4 Banjarmasin.</p>
+        </header>
+
+        <section class="section">
+          <h3><i class="fas fa-tasks"></i> Program Kerja Unggulan</h3>
+          <p style="margin-bottom: 2rem;">Kegiatan rutin untuk mempererat tali persaudaraan dan iman Kristiani.</p>
+          <div class="portal-grid">
+            <div class="portal-card">
+              <div class="icon-wrapper"><i class="fas fa-bible"></i></div>
+              <h3>Persekutuan Siswa</h3>
+              <p>Ibadah bersama dan pendalaman Alkitab antar siswa Kristen secara rutin.</p>
+            </div>
+            <div class="portal-card">
+              <div class="icon-wrapper"><i class="fas fa-church"></i></div>
+              <h3>PHBK Kristen</h3>
+              <p>Peringatan Hari Besar Kristiani seperti Natal dan Paskah bersama warga sekolah.</p>
+            </div>
+            <div class="portal-card">
+              <div class="icon-wrapper"><i class="fas fa-heart"></i></div>
+              <h3>Aksi Kasih</h3>
+              <p>Kegiatan sosial dan kunjungan kasih untuk membantu sesama yang membutuhkan.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h3><i class="fas fa-clock"></i> Jadwal Rutin</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-icon"><i class="fas fa-users-rays"></i></div>
+              <div class="timeline-content">
+                <div class="timeline-date">Setiap Jumat</div>
+                <h4 class="timeline-title">Ibadah Padang / Indoor</h4>
+                <p>Pertemuan rutin untuk memuji Tuhan dan mendengarkan firman di ruang khusus agama.</p>
               </div>
             </div>
           </div>
-
-          <div class="timeline-item">
-            <div class="timeline-icon"><i class="fas fa-chalkboard-teacher"></i></div>
-            <div class="timeline-content">
-              <div class="timeline-date">25 November 2025</div>
-              <h3 style="font-family:var(--font-head); margin-bottom:5px;">Hari Guru</h3>
-              <p>Undangan Lomba Guru Antar Sekolah Berkolaborasi dengan: SMK Negeri 2 Banjarmasin</p>
-              <div class="timeline-toggle" data-target="details-4">Selengkapnya <i class="fas fa-chevron-down"></i>
-              </div>
-              <div class="timeline-details" id="details-4">
-                <p>Rangkaian Acara:<br>&#x25CF; Guru tingkat Kota Banjarmasin<br>&#x25CF; Pertunjukan drama musikal oleh
-                  perwakilan OSIS<br>&#x25CF; Penampilan unggulan ekstrakurikuler siswa</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-icon"><i class="fas fa-calendar-check"></i></div>
-            <div class="timeline-content">
-              <div class="timeline-date">15 - 16 Desember 2025</div>
-              <h3 style="font-family:var(--font-head); margin-bottom:5px;">SCETING</h3>
-              <p>Skenpat Classmeeting</p>
-              <div class="timeline-toggle" data-target="details-5">Selengkapnya <i class="fas fa-chevron-down"></i>
-              </div>
-              <div class="timeline-details" id="details-5">
-                <p>Skenpat Classmeeting.. <b></b>Selengkapnya..</b></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       <!-- Footer -->
       <footer class="footer">
@@ -1325,7 +625,8 @@
           <a href="#" onclick="showTermsOfService()">Terms of Service</a>
         </div>
         <div style="margin-top:15px;">
-          &copy; 2026 <a href="https://id.wikipedia.org/wiki/SMK_Negeri_4_Banjarmasin" rel="noopener">Skenpat Pages</a>
+          &copy; 2026 <a href="https://id.wikipedia.org/wiki/SMK_Negeri_4_Banjarmasin" rel="noopener">Skenpat
+            Pages</a>
           | OSIS SMKN 4 Banjarmasin
         </div>
       </footer>
@@ -1345,14 +646,14 @@
       if (themeToggle) {
         const icon = themeToggle.querySelector('i');
         if (icon) {
-          icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+          icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
         }
       }
     };
 
     const toggleTheme = () => {
       const currentTheme = document.documentElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
       document.documentElement.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
       updateThemeIcon(newTheme);
@@ -1370,6 +671,82 @@
     // Navigation & Mobile Menu
     document.addEventListener('DOMContentLoaded', () => {
       initTheme();
+
+      // Tab Management
+      const switchTab = (tabName) => {
+        const tabs = document.querySelectorAll('.tab-content');
+        const navLinks = document.querySelectorAll('.navbar-menu a');
+
+        let found = false;
+        tabs.forEach(tab => {
+          if (tab.id === `tab-${tabName}`) {
+            tab.classList.add('active');
+            found = true;
+          } else {
+            tab.classList.remove('active');
+          }
+        });
+
+        // Fallback to home if tab not found
+        if (!found) {
+          document.getElementById('tab-beranda').classList.add('active');
+          tabName = 'beranda';
+        }
+
+        // Update active class in navbar
+        navLinks.forEach(link => {
+          const href = link.getAttribute('href');
+          if (href.includes(`tab=${tabName}`)) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      };
+
+      // Initial tab check
+      const urlParams = new URLSearchParams(window.location.search);
+      const initialTab = urlParams.get('tab') || 'beranda';
+      switchTab(initialTab);
+
+      // Handle tab switching without reload
+      document.querySelectorAll('.navbar-menu a').forEach(link => {
+        link.addEventListener('click', (e) => {
+          const href = link.getAttribute('href');
+
+          if (href.includes('tab=')) {
+            e.preventDefault();
+            const urlParams = new URLSearchParams(href.split('?')[1]);
+            const tabName = urlParams.get('tab');
+            switchTab(tabName);
+            const newUrl = window.location.pathname + '?tab=' + tabName;
+            window.history.pushState({ tab: tabName }, '', newUrl);
+          } else if (href.startsWith('#')) {
+            // Anchor link handling
+            const currentTab = document.querySelector('.tab-content.active').id;
+            if (currentTab !== 'tab-beranda') {
+              // Switch to beranda if clicking home anchors from another tab
+              switchTab('beranda');
+              const newUrl = window.location.pathname + '?tab=beranda' + href;
+              window.history.pushState({ tab: 'beranda' }, '', newUrl);
+              // Small timeout to allow tab to show before browser handles scroll
+              setTimeout(() => {
+                const target = document.querySelector(href);
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+              }, 100);
+            }
+          }
+        });
+      });
+
+      // Handle browser back/forward
+      window.addEventListener('popstate', (e) => {
+        const tab = (e.state && e.state.tab) || 'beranda';
+        switchTab(tab);
+      });
 
       const navbarToggle = document.getElementById('navbar-toggle');
       const navbarMenu = document.getElementById('navbar-menu');
@@ -1394,6 +771,12 @@
         });
       });
 
+      // Navbar Scroll Effect
+      window.addEventListener('scroll', () => {
+        const nav = document.querySelector('.navbar');
+        if (window.scrollY > 50) nav.classList.add('scrolled');
+        else nav.classList.remove('scrolled');
+      });
       // Scroll Back to Top
       window.addEventListener('scroll', () => {
         if (window.scrollY > 300) {
@@ -1412,9 +795,9 @@
         const funFacts = [
           "👨‍💻 Website ini dibuat oleh seorang siswa RPL kelas 10, dengan semangat dan bantuan dari AI, haha. Enggak ada yang istimewa, cuma hobi dan belajar aja nih.",
           "🌐 Pemilik subdomain ini adalah murid dari sekolah, tanpa ada perintah atau arahan dari siapapun. Ini murni hasil kerja keras sendiri dan semangat belajar.",
-          "✨ Tanpa menggunakan framework apa pun, cuma HTML, CSS, dan JavaScript. Situs ini dibuat dari nol, HTML statis aja, biar simpel dan mudah dideploy.",
-          "♻️ Situs ini selalu dalam proses update. Kalau mau tanya-tanya atau saran, langsung aja hubungi <a href='https://flessan.pages.dev/#contact' target='_blank' style='color:#ffd966;text-decoration:underline;'>Klik aku!</a>. Jangan sungkan, ya!",
-          "🚀 Ditenagai oleh orang baik—siapa lagi kalau bukan Github dan Cloudflare, yang membantu situs ini tetap berjalan lancar dan aman. Tanpa mereka, mungkin nggak bisa kayak gini.",
+          "✨ Tanpa menggunakan framework apa pun, cuma HTML, CSS, dan JavaScript. Murni. Situs ini dibuat awalnya bermodalkan hp, dan ini situs berdasar HTML statis, biar simpel dan mudah dideploy.",
+          "♻️ Situs ini selalu dalam proses update. Kalau mau tanya-tanya atau mempunyai  saran, langsung aja hubungi <a href='https://flessan.pages.dev/#contact' target='_blank' style='color:#ffd966;text-decoration:underline;'>Klik aku!</a>. Jangan sungkan, ya!",
+          "🚀 Ditenagai oleh dua platform: GitHub dan Cloudflare, yang membantu situs ini tetap berjalan lancar dan aman. Tanpa mereka, mungkin nggak bisa kayak gini.",
           "🧑‍💻 Admin ini rela mengorbankan waktu dan tenaga tanpa bayaran, buat bikin situs ini tetap eksis dan bermanfaat. Jadi, ya, ini benar-benar hasil kerja sukarela dan passion.",
           "😄 Kamu nyoba bacain semua fakta menarik di sini? wkwk, nih reward : *(Kesempatan mendapatkan chat langka turun 1% buat yang baca sampai habis)*",
           "🎉 Mendukung SMKN 4 Banjarmasin, mari sebarkan energi positif dan semangat belajar buat semua!",
@@ -1424,72 +807,177 @@
           "🔥 DAMN! Aku banget suka sama Skenpat!",
           "SMK Negeri 4 Banjarmasin, tempat aku belajar dan berkarya!",
           "🌟 DAMN! Aku cinta banget sama Banjarmasin!",
-          "Kayuh Baimbai Waja Sampai Kaputing",
-          "🤪 Situs ini dulunya nggak pernah loading, lho! Jadi aku tambahin fitur dan optimasi biar makin maksimal dan nyaman dipakai, hehe.",
+          "🛶 Kayuh Baimbai Waja Sampai Kaputing",
           "📱 UI desainku dibuat supaya enak dipakai scrolling di hape, jadi nggak bikin capek dan tetap keren dilihat."
         ];
         const randomFact = funFacts[Math.floor(Math.random() * funFacts.length)];
         showModal("Fun Fact /\ Fakta Unik ", `<p style="text-align: center; padding: 20px;">${randomFact}</p>`);
       });
 
-      // Music Player Logic (Retained)
+      // --- REFACTORED MUSIC PLAYER LOGIC ---
       const audioPlayer = document.getElementById('audio-player');
       const playPauseBtn = document.getElementById('play-pause-btn');
       const prevBtn = document.getElementById('prev-btn');
       const nextBtn = document.getElementById('next-btn');
+      const shuffleBtn = document.getElementById('shuffle-btn');
+      const repeatBtn = document.getElementById('repeat-btn');
       const progressBar = document.getElementById('progress-bar');
+      const progressFill = document.getElementById('progress-fill');
       const currentTimeEl = document.getElementById('current-time');
       const totalTimeEl = document.getElementById('total-time');
       const volumeBtn = document.getElementById('volume-btn');
+      const volumeSlider = document.getElementById('volume-slider');
       const playlistToggle = document.getElementById('playlist-toggle');
-      const playlistItems = document.getElementById('playlist-items');
+      const playlistItemsContainer = document.getElementById('playlist-items');
       const playlistItemElements = document.querySelectorAll('.playlist-item');
+      const musicPlayerSection = document.querySelector('.music-player-section');
+      const trackTitle = document.getElementById('track-title');
+      const trackArtist = document.getElementById('track-artist');
+      const playerArtwork = document.getElementById('player-artwork');
 
-      const fmt = s => isNaN(s) ? '0:00' : `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+      let currentTrackIndex = 0;
+      let isShuffle = false;
+      let isRepeat = false;
 
-      audioPlayer.addEventListener('loadedmetadata', () => {
-        totalTimeEl.textContent = fmt(audioPlayer.duration);
-      });
+      const tracks = Array.from(playlistItemElements).map(item => ({
+        src: item.dataset.src,
+        title: item.dataset.title,
+        artist: item.dataset.artist,
+        img: item.dataset.img
+      }));
+
+      const fmtTime = s => isNaN(s) ? '0:00' : `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+
+      const updateTrackUI = () => {
+        const track = tracks[currentTrackIndex];
+        audioPlayer.src = track.src;
+        trackTitle.textContent = track.title;
+        trackArtist.textContent = track.artist;
+        playerArtwork.src = track.img;
+
+        playlistItemElements.forEach((el, idx) => {
+          el.classList.toggle('active', idx === currentTrackIndex);
+        });
+
+        // Reset progress
+        progressBar.value = 0;
+        progressFill.style.width = '0%';
+        currentTimeEl.textContent = '0:00';
+      };
+
+      const playTrack = () => {
+        audioPlayer.play();
+        playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        musicPlayerSection.classList.add('playing');
+      };
+
+      const pauseTrack = () => {
+        audioPlayer.pause();
+        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        musicPlayerSection.classList.remove('playing');
+      };
 
       playPauseBtn.addEventListener('click', () => {
-        if (audioPlayer.paused) {
-          audioPlayer.play();
-          playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-          playPauseBtn.classList.add('playing');
+        audioPlayer.paused ? playTrack() : pauseTrack();
+      });
+
+      const nextTrack = () => {
+        if (isShuffle) {
+          currentTrackIndex = Math.floor(Math.random() * tracks.length);
         } else {
-          audioPlayer.pause();
-          playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-          playPauseBtn.classList.remove('playing');
+          currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
+        }
+        updateTrackUI();
+        playTrack();
+      };
+
+      const prevTrack = () => {
+        currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
+        updateTrackUI();
+        playTrack();
+      };
+
+      nextBtn.addEventListener('click', nextTrack);
+      prevBtn.addEventListener('click', prevTrack);
+
+      audioPlayer.addEventListener('ended', () => {
+        if (isRepeat) {
+          playTrack();
+        } else {
+          nextTrack();
         }
       });
 
       audioPlayer.addEventListener('timeupdate', () => {
         const pct = (audioPlayer.currentTime / audioPlayer.duration) * 100;
         progressBar.value = pct || 0;
-        currentTimeEl.textContent = fmt(audioPlayer.currentTime);
+        progressFill.style.width = `${pct || 0}%`;
+        currentTimeEl.textContent = fmtTime(audioPlayer.currentTime);
+      });
+
+      audioPlayer.addEventListener('loadedmetadata', () => {
+        totalTimeEl.textContent = fmtTime(audioPlayer.duration);
       });
 
       progressBar.addEventListener('input', () => {
-        audioPlayer.currentTime = (progressBar.value / 100) * audioPlayer.duration;
+        const time = (progressBar.value / 100) * audioPlayer.duration;
+        audioPlayer.currentTime = time;
+        progressFill.style.width = `${progressBar.value}%`;
+      });
+
+      // Volume Control
+      volumeSlider.addEventListener('input', (e) => {
+        const vol = e.target.value;
+        audioPlayer.volume = vol;
+        const icon = volumeBtn.querySelector('i');
+        if (vol == 0) icon.className = 'fas fa-volume-mute';
+        else if (vol < 0.5) icon.className = 'fas fa-volume-down';
+        else icon.className = 'fas fa-volume-up';
+      });
+
+      volumeBtn.addEventListener('click', () => {
+        if (audioPlayer.muted) {
+          audioPlayer.muted = false;
+          volumeSlider.value = audioPlayer.volume;
+          updateVolumeIcon(audioPlayer.volume);
+        } else {
+          audioPlayer.muted = true;
+          volumeSlider.value = 0;
+          volumeBtn.querySelector('i').className = 'fas fa-volume-mute';
+        }
+      });
+
+      const updateVolumeIcon = (vol) => {
+        const icon = volumeBtn.querySelector('i');
+        if (vol == 0) icon.className = 'fas fa-volume-mute';
+        else if (vol < 0.5) icon.className = 'fas fa-volume-down';
+        else icon.className = 'fas fa-volume-up';
+      };
+
+      // Shuffle & Repeat
+      shuffleBtn.addEventListener('click', () => {
+        isShuffle = !isShuffle;
+        shuffleBtn.style.color = isShuffle ? 'var(--primary)' : 'inherit';
+      });
+
+      repeatBtn.addEventListener('click', () => {
+        isRepeat = !isRepeat;
+        repeatBtn.style.color = isRepeat ? 'var(--primary)' : 'inherit';
       });
 
       // Playlist Toggle
       playlistToggle.addEventListener('click', () => {
-        playlistItems.classList.toggle('active');
+        playlistItemsContainer.classList.toggle('active');
         const icon = playlistToggle.querySelector('i');
-        icon.className = playlistItems.classList.contains('active') ? 'fas fa-chevron-up' : 'fas fa-chevron-down';
+        icon.className = playlistItemsContainer.classList.contains('active') ? 'fas fa-chevron-up' : 'fas fa-chevron-down';
       });
 
-      // Playlist Selection
-      playlistItemElements.forEach(item => {
+      // Playlist Item Selection
+      playlistItemElements.forEach((item, index) => {
         item.addEventListener('click', () => {
-          playlistItemElements.forEach(i => i.classList.remove('active'));
-          item.classList.add('active');
-          audioPlayer.src = item.dataset.src;
-          audioPlayer.load();
-          audioPlayer.play();
-          playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-          playPauseBtn.classList.add('playing');
+          currentTrackIndex = index;
+          updateTrackUI();
+          playTrack();
         });
       });
 
@@ -1497,11 +985,11 @@
       document.getElementById('download-btn').addEventListener('click', () => {
         const a = document.createElement('a');
         a.href = audioPlayer.src;
-        a.download = 'Mars_SMKN_4_Banjarmasin.mp3';
+        a.download = `${tracks[currentTrackIndex].title}.mp3`;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
-        showModal("Unduhan Dimulai", `<p style="text-align: center; padding: 20px;">Lagu Mars SMKN 4 Banjarmasin sedang diunduh.</p>`);
+        showModal("Unduhan Dimulai", `<p style="text-align: center; padding: 20px;">Lagu ${tracks[currentTrackIndex].title} sedang diunduh.</p>`);
       });
 
       // Lyrics Modal

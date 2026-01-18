@@ -110,32 +110,6 @@ a {
 }
 
 /* ================================
-   LAYOUT CONTAINERS
-   ================================ */
-
-.app-container {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-}
-
-.app {
-    width: 100%;
-    max-width: var(--container-max-width);
-    padding: 1.5rem;
-    margin: 0 auto;
-}
-
-.content-wrapper {
-    max-width: var(--content-max-width);
-    margin: 0 auto;
-    width: 100%;
-}
-
-/* ================================
    ENHANCED NAVIGATION
    ================================ */
 
@@ -553,119 +527,40 @@ a {
 }
 
 /* ================================
-   MUSIC PLAYER MOBILE TWEAKS
-   ================================ */
-@media (max-width: 768px) {
-    .soundcloud-player {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .player-artwork-info {
-        width: 100%;
-        justify-content: center;
-        margin-bottom: 10px;
-    }
-
-    .player-controls-progress {
-        width: 100%;
-        order: 3;
-    }
-
-    .player-extras {
-        width: 100%;
-        justify-content: center;
-        order: 2;
-        margin-top: 5px;
-    }
-
-    .player-track-title {
-        max-width: 200px;
-    }
-}
-
-/* ================================
    ENHANCED RESPONSIVE BREAKPOINTS
    ================================ */
 
-/* Small devices (landscape phones) */
-@media (min-width: 676px) {
-    .grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    }
+/* --- UPDATED RESPONSIVE BREAKPOINTS --- */
 
-    .card-balance .actions a {
-        min-width: 180px;
+@media (max-width: 992px) {
+    .navbar-container {
+        padding: 0 1rem;
     }
 }
 
-/* Medium devices (tablets) */
-@media (min-width: 868px) {
-    :root {
-        --section-gap: 3.5rem;
-        --card-padding: 2.5rem;
-    }
-
-    .app {
-        padding: 2rem;
-    }
-
-    .header {
-        margin: 7rem 0 4rem;
-    }
-
+@media (max-width: 768px) {
     .grid {
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-        gap: 1.5rem;
-    }
-
-    .grid .btn {
-        min-height: 160px;
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 1rem;
     }
 
     .card-balance .actions {
-        flex-wrap: nowrap;
+        flex-direction: column;
     }
 
-    .navbar-menu {
-        display: flex !important;
-    }
-
-    .navbar-toggle {
-        display: none !important;
+    .card-balance .actions a {
+        width: 100%;
     }
 }
 
-/* Large devices (desktops) */
-@media (min-width: 992px) {
-    :root {
-        --section-gap: 4rem;
-        --card-padding: 3rem;
-    }
-
-    .app {
-        padding: 2.5rem;
-    }
-
-    .header {
-        margin: 8rem 0 5rem;
-    }
-
+@media (max-width: 480px) {
     .grid {
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-        gap: 2rem;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
     }
 
-    .grid .btn {
-        padding: 2rem 1.25rem;
-        min-height: 180px;
-    }
-}
-
-/* Extra large devices */
-@media (min-width: 1200px) {
-    .grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    .visi-misi {
+        padding: 1.5rem;
     }
 }
 

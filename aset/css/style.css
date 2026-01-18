@@ -1,0 +1,19 @@
+/* 
+   SKENPAT MAIN STYLES
+   Structure:
+   1. core.css       - Variables, Reset, Global
+   2. navbar.css     - Navigation
+   3. header.css     - Hero / Header Section
+   4. dashboard.css  - Portal Cards, Links Grid
+   5. music-player.css - Music Player Component
+   6. components.css - Modals, Icons, Footer, Timeline, FAB
+   7. responsive.css - Media Queries
+*/
+
+@import "core.css";
+@import "navbar.css";
+@import "header.css";
+@import "dashboard.css";
+@import "music-player.css";
+@import "components.css";
+@import "responsive.css";

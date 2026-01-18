@@ -1,0 +1,125 @@
+/* skenpat-redesign: Responsive Breakpoints */
+
+/* Small Tablets & Mobile Landscape */
+@media (max-width: 992px) {
+    .navbar-menu {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: min(100%, 400px);
+        height: 100vh;
+        background: var(--surface);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+        transition: var(--ease-out-expo) 0.8s;
+        border-right: var(--border-thin) solid var(--border-color);
+        z-index: 998;
+    }
+
+    .navbar-menu.active {
+        left: 0;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+
+    .header {
+        padding: 100px 0 40px;
+    }
+
+    .header h1 {
+        font-size: clamp(2.5rem, 8vw, 3.5rem);
+    }
+}
+
+/* Tablets & Large Phones */
+@media (max-width: 768px) {
+    .portal-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .links-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+
+    .section {
+        border-radius: var(--radius-md);
+    }
+
+    .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 2.2rem;
+    }
+
+    .header p {
+        font-size: 1rem;
+    }
+
+    .cta-pill {
+        width: 100%;
+        justify-content: center;
+        padding: 14px 20px;
+    }
+
+    .portal-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .links-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .music-player-section {
+        padding: 1.5rem;
+    }
+
+    .soundcloud-player {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "artwork"
+            "info"
+            "controls"
+            "progress"
+            "extra";
+        text-align: center;
+    }
+
+    .player-artwork-info {
+        width: 140px;
+        height: 140px;
+        margin: 0 auto;
+    }
+
+    .player-info {
+        text-align: center;
+    }
+
+    .player-controls {
+        justify-content: center;
+    }
+
+    .navbar-logo span {
+        font-size: 1rem;
+    }
+
+    .navbar-logo img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .volume-container {
+        display: none;
+        /* Hide volume on small mobile to save space */
+    }
+}
