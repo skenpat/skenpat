@@ -45,6 +45,35 @@
         grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     }
 
+    .music-player-section {
+        padding: 1.5rem;
+    }
+
+    .soundcloud-player {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "artwork"
+            "info"
+            "controls"
+            "progress"
+            "extra";
+        text-align: center;
+    }
+
+    .player-artwork-info {
+        width: 140px;
+        height: 140px;
+        margin: 0 auto;
+    }
+
+    .player-info {
+        text-align: center;
+    }
+
+    .player-controls {
+        justify-content: center;
+    }
+
     .section {
         border-radius: var(--radius-md);
     }
@@ -78,35 +107,6 @@
 
     .links-grid {
         grid-template-columns: repeat(2, 1fr);
-    }
-
-    .music-player-section {
-        padding: 1.5rem;
-    }
-
-    .soundcloud-player {
-        grid-template-columns: 1fr;
-        grid-template-areas:
-            "artwork"
-            "info"
-            "controls"
-            "progress"
-            "extra";
-        text-align: center;
-    }
-
-    .player-artwork-info {
-        width: 140px;
-        height: 140px;
-        margin: 0 auto;
-    }
-
-    .player-info {
-        text-align: center;
-    }
-
-    .player-controls {
-        justify-content: center;
     }
 
     .navbar-logo span {
