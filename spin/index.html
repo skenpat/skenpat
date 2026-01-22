@@ -518,7 +518,7 @@
                 <div class="setting-group"
                     style="margin-top:20px; border-top:1px dashed var(--border-light); padding-top:15px;">
                     <h4 style="margin:0 0 10px 0; color:var(--text-muted);">Manage Shortcuts</h4>
-                    <input type="text" id="newShortcutName" placeholder="Shortcut Name (e.g. Class 10A)"
+                    <input type="text" id="newShortcutName" placeholder="Nama Shortcut (e.g. X RPL 1)"
                         style="width:100%; padding:8px; margin-bottom:8px; border:1px solid var(--border-light); border-radius:6px;">
                     <textarea id="newShortcutContent" placeholder="Items (one per line)"
                         style="width:100%; height:80px; padding:8px; margin-bottom:8px; border:1px solid var(--border-light); border-radius:6px; resize:none;"></textarea>
@@ -532,8 +532,9 @@
                 </div>
 
                 <div class="action-grid" style="margin-top:20px;">
-                    <button class="btn btn-secondary" onclick="loadTemplate('yesno')">Yes/No</button>
+                    <button class="btn btn-secondary" onclick="loadTemplate('yesno')">Ya / Tidak</button>
                     <button class="btn btn-secondary" onclick="loadTemplate('numbers')">1-6</button>
+                    <button class="btn btn-secondary" onclick="loadTemplate('xrpl1')">X RPL 1</button>
                 </div>
             </div>
         </aside>
@@ -543,7 +544,7 @@
     <div class="modal-backdrop" id="resultModal">
         <div class="modal-card">
             <div style="font-size: 3rem;">🎉</div>
-            <h3 style="color:var(--text-muted); margin:0;">The Winner Is</h3>
+            <h3 style="color:var(--text-muted); margin:0;">Putaran Menunjukkk</h3>
             <div id="winnerName" style="font-size: 2rem; font-weight: 800; color: var(--primary); margin: 20px 0;">Name
             </div>
             <div style="display: flex; gap: 10px; justify-content: center;">
@@ -779,20 +780,31 @@
         }
 
         function clearAll() {
-            if (confirm('Clear all?')) {
+            if (confirm('Hapus semua konten dan reset putaran?')) {
                 textInput.value = '';
+                state.rotation = 0;
+                wheelImg.style.transition = 'none';
+                wheelImg.style.transform = 'rotate(0deg)';
+                // Force a reflow to make the transition 'none' apply immediately
+                void wheelImg.offsetHeight;
+                wheelImg.style.transition = `transform ${state.duration}s cubic-bezier(0.15, 0, 0.15, 1)`;
+
                 parseInput();
                 updateWheelImage();
                 saveState();
+                showToast("Dibersihkan!");
             }
         }
 
         function loadTemplate(type) {
-            if (type === 'yesno') textInput.value = "Yes\nNo";
+            if (type === 'yesno') textInput.value = "Ya\nTidak";
             if (type === 'numbers') textInput.value = "1\n2\n3\n4\n5\n6";
+            if (type === 'xrpl1') textInput.value = "Alya\nReza\nAmel\nRezki\nFadil\nRazen\nAnggun\nFarel\nRirin\nSyva\nAdit\nYorda\nRaisya\nArsidi\nSyilla\nDaus\nAisyah\nNiko\nAlisya\nThio\nNaura\nDanuri\nMarsya\nHamka\nAwa\nRaffa\nAurel\nKarim\nUlfa\nIbnu\nKeyrel\nJaffar\nHafizh\nHafi\nAnshori";
             parseInput();
             updateWheelImage();
             saveState();
+            switchTab('input', document.querySelector('.tab-btn:first-child'));
+            showToast("Template dimuat!");
         }
 
         function updateDuration(val) {
@@ -808,7 +820,7 @@
             const content = document.getElementById('newShortcutContent').value.trim();
 
             if (!name || !content) {
-                showToast("Name and Content required!");
+                showToast("Nama dan Isi konten diperlukan!");
                 return;
             }
 
@@ -820,11 +832,11 @@
             document.getElementById('newShortcutContent').value = '';
 
             renderShortcuts();
-            showToast("Shortcut Saved!");
+            showToast("Shortcut Tersimpan!");
         }
 
         function deleteShortcut(index) {
-            if (confirm("Delete this shortcut?")) {
+            if (confirm("Hapus shortcut berikut?")) {
                 const shortcuts = JSON.parse(localStorage.getItem('spinShortcuts') || '[]');
                 shortcuts.splice(index, 1);
                 localStorage.setItem('spinShortcuts', JSON.stringify(shortcuts));
