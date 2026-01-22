@@ -127,6 +127,44 @@
           </div>
         </header>
 
+        <!-- Global Advanced Search Bar -->
+        <section class="global-search-section">
+          <div class="search-container-v2">
+            <div class="search-input-group">
+              <i class="fas fa-search main-search-icon"></i>
+              <input type="text" id="global-search-input" placeholder="Cari layanan, tim, atau acara..."
+                autocomplete="off">
+              <button id="voice-search-btn" class="voice-btn" title="Cari dengan suara">
+                <i class="fas fa-microphone"></i>
+                <div class="pulse-ring"></div>
+              </button>
+            </div>
+
+            <!-- Preview Pane / Results Overlay -->
+            <div id="search-preview-pane" class="search-preview-pane">
+              <div class="preview-sections">
+                <div class="preview-group" id="recent-searches">
+                  <h4><i class="fas fa-history"></i> Terbaru</h4>
+                  <div class="suggestion-list"></div>
+                </div>
+                <div class="preview-group" id="trending-searches">
+                  <h4><i class="fas fa-fire"></i> Populer</h4>
+                  <div class="suggestion-list">
+                    <span class="trend-tag">Jadwal Mapel</span>
+                    <span class="trend-tag">Eskul</span>
+                    <span class="trend-tag">OSIS</span>
+                    <span class="trend-tag">Mars</span>
+                  </div>
+                </div>
+                <div class="preview-group" id="instant-results">
+                  <h4><i class="fas fa-bolt"></i> Hasil Instan</h4>
+                  <div class="instant-grid" id="instant-results-grid"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <!-- Portal Utama Dashboard -->
         <section class="card-balance">
           <h2>Portal Utama</h2>
@@ -142,6 +180,12 @@
               <h3>Jadwal Mapel</h3>
               <p>Akses jadwal mata pelajaran harian dan kalender akademik SMK.</p>
             </a>
+            <a href="?tab=alat" class="portal-card">
+              <div class="icon-wrapper"><i class="fas fa-tools"></i></div>
+              <h3>Alat Bantu</h3>
+              <p>Alat bantu untuk memudahkan pekerjaan anda.</p>
+            </a>
+
             <a href="#music-player" class="portal-card">
               <div class="icon-wrapper"><i class="fas fa-music"></i></div>
               <h3>Mars Skenpat</h3>
@@ -617,20 +661,96 @@
         </section>
       </div>
 
-      <!-- Footer -->
-      <footer class="footer">
-        <div class="footer-links">
-          <a href="https://flessan.pages.dev" rel="noopener">Developer</a>
-          <a href="#" onclick="showPrivacyPolicy()">Privacy Policy</a>
-          <a href="#" onclick="showTermsOfService()">Terms of Service</a>
+  </div>
+
+  <!-- Alat & Layanan Section (New Tab) -->
+  <div id="tab-alat" class="tab-content">
+    <header class="header">
+      <div class="header-badge">🛠️ Pusat Layanan & Alat</div>
+      <h1>Eksplorasi <span>Alat</span> Skenpat</h1>
+      <p>Temukan berbagai layanan digital, alat bantu belajar, dan sarana informasi siswa dalam satu tempat.</p>
+    </header>
+
+    <section class="section">
+      <!-- Search & Filter Controls -->
+      <div class="search-filter-container">
+        <div class="search-wrapper">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="alat-search" placeholder="Cari layanan atau alat..." aria-label="Cari alat">
         </div>
-        <div style="margin-top:15px;">
-          &copy; 2026 <a href="https://id.wikipedia.org/wiki/SMK_Negeri_4_Banjarmasin" rel="noopener">Skenpat
-            Pages</a>
-          | OSIS SMKN 4 Banjarmasin
+
+        <div class="category-filters" id="category-filters">
+          <button class="filter-btn active" data-category="semua">Semua</button>
+          <button class="filter-btn" data-category="umum">Umum</button>
+          <button class="filter-btn" data-category="akademik">Akademik</button>
+          <button class="filter-btn" data-category="kreatif">Kreatif</button>
+          <button class="filter-btn" data-category="religi">Religi</button>
         </div>
-      </footer>
-    </main>
+      </div>
+
+      <!-- Tools Grid -->
+      <div class="portal-grid" id="alat-grid">
+        <!-- Items will be managed by JavaScript but initially populated for SEO/Static fallback -->
+        <a href="/eskul" class="portal-card" data-category="umum" data-keywords="ekstrakurikuler eskul organisasi">
+          <div class="icon-wrapper"><i class="fas fa-users-cog"></i></div>
+          <h3>Ekstrakurikuler</h3>
+          <p>Daftar organisasi dan info pengembangan diri.</p>
+        </a>
+        <a href="/mapel" class="portal-card" data-category="akademik" data-keywords="jadwal mata pelajaran mapel guru">
+          <div class="icon-wrapper"><i class="fas fa-graduation-cap"></i></div>
+          <h3>Jadwal Mapel</h3>
+          <p>Akses jadwal mata pelajaran dan kalender akademik.</p>
+        </a>
+        <a href="/spin" class="portal-card" data-category="kreatif" data-keywords="wheel spin roda keberuntungan">
+          <div class="icon-wrapper"><i class="fa-solid fa-dharmachakra"></i></div>
+          <h3>Skenpat Wheel</h3>
+          <p>Roda keberuntungan untuk pembagian tugas atau game.</p>
+        </a>
+        <a href="#music-player" class="portal-card" data-category="umum" data-keywords="musik mars lagu radio">
+          <div class="icon-wrapper"><i class="fas fa-music"></i></div>
+          <h3>Mars Skenpat</h3>
+          <p>Pemutar musik resmi lagu kebangsaan sekolah.</p>
+        </a>
+        <a href="?tab=muslim" class="portal-card" data-category="religi" data-keywords="islam muslim agama mengaji">
+          <div class="icon-wrapper" style="color: #27ae60;"><i class="fas fa-star-and-crescent"></i></div>
+          <h3>Skenpat Muslim</h3>
+          <p>Layanan kerohanian Islam dan mutaba'ah.</p>
+        </a>
+        <a href="?tab=kristen" class="portal-card" data-category="religi"
+          data-keywords="kristen gereja alkitab persekutuan">
+          <div class="icon-wrapper" style="color: #3498db;"><i class="fas fa-cross"></i></div>
+          <h3>Christ Skenpat</h3>
+          <p>Layanan kerohanian Kristen dan ibadah.</p>
+        </a>
+        <a href="/feedback" class="portal-card" data-category="umum" data-keywords="saran kritik feedback lapor">
+          <div class="icon-wrapper"><i class="fa-solid fa-comments"></i></div>
+          <h3>Feedback</h3>
+          <p>Kirim saran atau laporan untuk perbaikan sekolah.</p>
+        </a>
+        <a href="https://smkn4bjm.sch.id/perpustakaan-sekolah" class="portal-card" data-category="akademik"
+          data-keywords="buku perpustakaan perpus baca">
+          <div class="icon-wrapper"><i class="fa-solid fa-book"></i></div>
+          <h3>Perpustakaan</h3>
+          <p>Akses portal perpustakaan digital sekolah.</p>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="https://flessan.pages.dev" rel="noopener">Developer</a>
+      <a href="#" onclick="showPrivacyPolicy()">Privacy Policy</a>
+      <a href="#" onclick="showTermsOfService()">Terms of Service</a>
+    </div>
+    <div style="margin-top:15px;">
+      &copy; 2026 <a href="https://id.wikipedia.org/wiki/SMK_Negeri_4_Banjarmasin" rel="noopener">Skenpat
+        Pages</a>
+      | OSIS SMKN 4 Banjarmasin
+    </div>
+  </footer>
+  </main>
   </div>
 
   <script>
@@ -1017,6 +1137,169 @@
             toggle.innerHTML = 'Selengkapnya <i class="fas fa-chevron-down"></i>';
           }
         });
+      });
+
+      // --- ALAT TAB LOGIC ---
+      const alatSearch = document.getElementById('alat-search');
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const alatCards = document.querySelectorAll('#alat-grid .portal-card');
+
+      const filterAlat = () => {
+        const searchTerm = alatSearch.value.toLowerCase();
+        const activeFilter = document.querySelector('.filter-btn.active').dataset.category;
+
+        alatCards.forEach(card => {
+          const title = card.querySelector('h3').textContent.toLowerCase();
+          const desc = card.querySelector('p').textContent.toLowerCase();
+          const keywords = card.dataset.keywords ? card.dataset.keywords.toLowerCase() : "";
+          const category = card.dataset.category;
+
+          const matchesSearch = title.includes(searchTerm) || desc.includes(searchTerm) || keywords.includes(searchTerm);
+          const matchesCategory = activeFilter === 'semua' || category === activeFilter;
+
+          if (matchesSearch && matchesCategory) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      };
+
+      if (alatSearch) {
+        alatSearch.addEventListener('input', filterAlat);
+      }
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          filterAlat();
+        });
+      });
+    });
+
+    // --- GLOBAL ADVANCED SEARCH V2 LOGIC ---
+    const globalSearchInput = document.getElementById('global-search-input');
+    const searchPreviewPane = document.getElementById('search-preview-pane');
+    const voiceSearchBtn = document.getElementById('voice-search-btn');
+    const recentList = document.querySelector('#recent-searches .suggestion-list');
+    const instantGrid = document.getElementById('instant-results-grid');
+
+    // Searchable Data Source
+    const searchData = [
+      { title: "Jadwal Mapel", desc: "Jadwal pelajaran harian SMK", icon: "fa-graduation-cap", link: "/mapel", cat: "Akademik", kw: ["jadwal", "belajar", "guru", "kelas"] },
+      { title: "Ekstrakurikuler", desc: "Latihan dan info organisasi", icon: "fa-users-cog", link: "/eskul", cat: "Umum", kw: ["osis", "pramuka", "seni", "olahraga"] },
+      { title: "Mars Skenpat", desc: "Lagu kebangsaan sekolah", icon: "fa-music", link: "#music-player", cat: "Umum", kw: ["musik", "nyanyi", "lirik"] },
+      { title: "Skenpat Wheel", desc: "Roda keberuntungan digital", icon: "fa-dharmachakra", link: "/spin", cat: "Kreatif", kw: ["game", "acak", "spin"] },
+      { title: "Skenpat Muslim", desc: "Layanan kerohanian Islam", icon: "fa-star-and-crescent", link: "?tab=muslim", cat: "Religi", kw: ["ngaji", "sholat", "agama"] },
+      { title: "Christ Skenpat", desc: "Layanan kerohanian Kristen", icon: "fa-cross", link: "?tab=kristen", cat: "Religi", kw: ["ibadah", "kristen", "alkitab"] },
+      { title: "Manajemen", desc: "Profil pimpinan sekolah", icon: "fa-users", link: "https://smkn4bjm.sch.id/tim-manajemen", cat: "Team", kw: ["kepala", "sekolah", "wakil"] },
+      { title: "Perpustakaan", desc: "Portal perpus digital", icon: "fa-book", link: "https://smkn4bjm.sch.id/perpustakaan-sekolah", cat: "Akademik", kw: ["buku", "baca", "digital"] },
+    ];
+
+    const saveRecentSearch = (term) => {
+      let recents = JSON.parse(localStorage.getItem('recentSearches') || '[]');
+      if (!recents.includes(term) && term.length > 2) {
+        recents.unshift(term);
+        if (recents.length > 5) recents.pop();
+        localStorage.setItem('recentSearches', JSON.stringify(recents));
+        renderRecentSearches();
+      }
+    };
+
+    const renderRecentSearches = () => {
+      const recents = JSON.parse(localStorage.getItem('recentSearches') || '[]');
+      recentList.innerHTML = recents.map(r => `<span class="recent-item">${r}</span>`).join('');
+      document.querySelectorAll('.recent-item').forEach(item => {
+        item.addEventListener('click', () => {
+          globalSearchInput.value = item.textContent;
+          performSearch(item.textContent);
+        });
+      });
+    };
+
+    const performSearch = (query) => {
+      if (!query) {
+        searchPreviewPane.classList.remove('active');
+        return;
+      }
+
+      const q = query.toLowerCase();
+      const results = searchData.filter(item =>
+        item.title.toLowerCase().includes(q) ||
+        item.desc.toLowerCase().includes(q) ||
+        item.kw.some(k => k.includes(q))
+      ).slice(0, 4);
+
+      if (results.length > 0) {
+        instantGrid.innerHTML = results.map(res => `
+            <div class="instant-card" onclick="handleSearchClick('${res.link}')">
+              <div class="icon-small"><i class="fas ${res.icon}"></i></div>
+              <div class="info">
+                <h5>${res.title}</h5>
+                <p>${res.desc}</p>
+              </div>
+              <i class="fas fa-chevron-right" style="font-size: 0.8rem; color: var(--text-muted);"></i>
+            </div>
+          `).join('');
+        searchPreviewPane.classList.add('active');
+      } else {
+        instantGrid.innerHTML = '<p style="text-align:center; padding: 20px; font-size: 0.9rem; color: var(--text-muted);">Tidak ada hasil ditemukan.</p>';
+        searchPreviewPane.classList.add('active');
+      }
+    };
+
+    window.handleSearchClick = (link) => {
+      saveRecentSearch(globalSearchInput.value);
+      if (link.startsWith('?tab=')) {
+        const tabName = link.split('=')[1];
+        // Use the existing switchTab function if available or reload
+        window.location.href = link;
+      } else if (link.startsWith('#')) {
+        window.location.hash = link;
+        searchPreviewPane.classList.remove('active');
+      } else {
+        window.open(link, '_blank');
+      }
+    };
+
+    globalSearchInput.addEventListener('input', (e) => performSearch(e.target.value));
+    globalSearchInput.addEventListener('focus', () => {
+      if (globalSearchInput.value) performSearch(globalSearchInput.value);
+      else searchPreviewPane.classList.add('active');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.search-container-v2')) {
+        searchPreviewPane.classList.remove('active');
+      }
+    });
+
+    // Voice Search Integration
+    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const recognition = new SpeechRecognition();
+      recognition.lang = 'id-ID';
+
+      recognition.onstart = () => voiceSearchBtn.classList.add('listening');
+      recognition.onend = () => voiceSearchBtn.classList.remove('listening');
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        globalSearchInput.value = transcript;
+        performSearch(transcript);
+      };
+
+      voiceSearchBtn.addEventListener('click', () => recognition.start());
+    } else {
+      voiceSearchBtn.style.display = 'none';
+    }
+
+    // Initial Render
+    renderRecentSearches();
+    document.querySelectorAll('.trend-tag').forEach(tag => {
+      tag.addEventListener('click', () => {
+        globalSearchInput.value = tag.textContent;
+        performSearch(tag.textContent);
       });
     });
 

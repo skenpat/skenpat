@@ -619,6 +619,10 @@
       padding: 25px;
       width: 100%;
       max-width: 480px;
+      max-height: 90vh;
+      /* Limit height to 90% of viewport */
+      overflow-y: auto;
+      /* Enable vertical scrolling */
       border: 4px solid var(--border-color);
       box-shadow: 0 10px 0px rgba(0, 0, 0, 0.2);
       position: relative;
@@ -736,15 +740,312 @@
       background: var(--secondary);
     }
 
-    .no-results {
-      text-align: center;
-      padding: 40px;
+    /* Today Highlights */
+    .today-highlights {
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 4px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-hard);
+      animation: slideDown 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-20px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .highlights-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      border-bottom: 3px dashed var(--border-color);
+      padding-bottom: 10px;
+    }
+
+    .highlights-title {
+      font-family: var(--font-head);
+      font-size: 1.4rem;
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 15px;
+    }
+
+    @media (max-width: 600px) {
+      .highlights-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .highlights-header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+
+      .highlights-title {
+        font-size: 1.2rem;
+        justify-content: center;
+      }
+
+      .highlight-card {
+        padding-top: 45px;
+        /* Space for absolute badge */
+      }
+    }
+
+    .highlight-card {
+      background: var(--white);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+      transition: 0.3s;
+    }
+
+    .highlight-card:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .highlight-card.featured {
+      background: linear-gradient(135deg, #FFF 0%, #FFE0B2 100%);
+      border-width: 3px;
+      grid-column: span 1;
+    }
+
+    .status-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      border: 2px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .status-active {
+      background: var(--success);
+      color: white;
+    }
+
+    .status-upcoming {
+      background: var(--info);
+      color: white;
+    }
+
+    .status-finished {
+      background: #BDBDBDBd;
+      color: white;
+    }
+
+    .pulse {
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulseAnim 1.5s infinite;
+    }
+
+    @keyframes pulseAnim {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+      }
+
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+      }
+
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+      }
+    }
+
+    .highlight-name {
+      font-family: var(--font-head);
+      font-size: 1.2rem;
+      color: var(--text-main);
+    }
+
+    .highlight-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      font-size: 0.9rem;
       color: #6D4C41;
       font-weight: 600;
-      grid-column: 1/-1;
+    }
+
+    .highlight-meta i {
+      width: 20px;
+      color: var(--primary);
+    }
+
+    .no-highlights {
+      text-align: center;
+      padding: 20px;
       background: #FFE0B2;
       border-radius: var(--radius-lg);
       border: 2px dashed var(--border-color);
+      color: #6D4C41;
+      font-style: italic;
+      grid-column: 1/-1;
+    }
+
+    /* Countdown Styles */
+    .countdown-container {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 20px;
+      border-radius: var(--radius-md);
+      margin-bottom: 15px;
+      border: 3px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .countdown-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .countdown-label {
+      font-family: var(--font-head);
+      font-size: 0.9rem;
+      opacity: 0.9;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .countdown-timer {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .countdown-segment {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      min-width: 50px;
+    }
+
+    .countdown-value {
+      font-family: var(--font-head);
+      font-size: 1.5rem;
+      font-weight: 800;
+      display: block;
+      line-height: 1;
+    }
+
+    .countdown-unit {
+      font-size: 0.65rem;
+      opacity: 0.8;
+      text-transform: uppercase;
+      margin-top: 2px;
+      display: block;
+    }
+
+    .countdown-separator {
+      font-size: 1.2rem;
+      font-weight: 700;
+      opacity: 0.6;
+    }
+
+    .progress-bar-container {
+      background: rgba(255, 255, 255, 0.2);
+      height: 8px;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 10px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: white;
+      border-radius: 10px;
+      transition: width 1s linear;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    .activity-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 2px dashed rgba(255, 255, 255, 0.3);
+    }
+
+    .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+    }
+
+    .detail-item i {
+      width: 20px;
+      opacity: 0.9;
+    }
+
+    .detail-value {
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      .countdown-timer {
+        justify-content: center;
+        width: 100%;
+      }
+
+      .countdown-segment {
+        min-width: 45px;
+        padding: 6px 8px;
+      }
+
+      .countdown-value {
+        font-size: 1.2rem;
+      }
+
+      .activity-details {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* Responsive */
@@ -867,6 +1168,9 @@
       </div>
     </div>
 
+    <!-- Today's Highlights Container -->
+    <div id="today-highlights-container"></div>
+
     <div class="toolbar">
       <div class="search-container">
         <i class="fas fa-search"></i>
@@ -957,48 +1261,232 @@
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal('add-activity-modal')"><i class="fas fa-times"></i></button>
       <h2><i class="fas fa-plus-circle"></i> Tambah Kegiatan Baru</h2>
+      <p style="color: #6D4C41; font-size: 0.9rem; margin-bottom: 1.5rem;">Isi formulir di bawah untuk menambahkan
+        kegiatan ekstrakurikuler baru</p>
+
       <form class="modal-form" onsubmit="addActivity(event)">
-        <div>
-          <label for="activity-name">Nama Kegiatan</label>
-          <input type="text" id="activity-name" required />
+        <!-- Grid Layout for better organization -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+          <div style="grid-column: 1/-1;">
+            <label for="activity-name">
+              <i class="fas fa-tag"></i> Nama Kegiatan
+            </label>
+            <input type="text" id="activity-name" placeholder="Contoh: Basket, Dance, Pramuka" required />
+          </div>
+
+          <div>
+            <label for="activity-day">
+              <i class="fas fa-calendar-day"></i> Hari
+            </label>
+            <select id="activity-day" required>
+              <option value="">-- Pilih Hari --</option>
+              <option value="Senin">Senin</option>
+              <option value="Selasa">Selasa</option>
+              <option value="Rabu">Rabu</option>
+              <option value="Kamis">Kamis</option>
+              <option value="Jumat">Jumat</option>
+              <option value="Sabtu">Sabtu</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="activity-category">
+              <i class="fas fa-layer-group"></i> Kategori
+            </label>
+            <select id="activity-category" required onchange="updateIconPreview()">
+              <option value="">-- Pilih Kategori --</option>
+              <option value="olahraga">🏃 Olahraga</option>
+              <option value="seni">🎨 Seni</option>
+              <option value="akademik">📚 Akademik</option>
+              <option value="keagamaan">🕌 Keagamaan</option>
+              <option value="sosial">🤝 Sosial</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="activity-time-start">
+              <i class="fas fa-clock"></i> Waktu Mulai
+            </label>
+            <input type="time" id="activity-time-start" required />
+          </div>
+
+          <div>
+            <label for="activity-time-end">
+              <i class="fas fa-clock"></i> Waktu Selesai
+            </label>
+            <input type="time" id="activity-time-end" required />
+          </div>
+
+          <div style="grid-column: 1/-1;">
+            <label for="activity-location">
+              <i class="fas fa-map-marker-alt"></i> Lokasi
+            </label>
+            <input type="text" id="activity-location" placeholder="Contoh: Lapangan sekolah, Aula" required />
+          </div>
+
+          <div style="grid-column: 1/-1;">
+            <label>
+              <i class="fas fa-icons"></i> Pilih Ikon
+            </label>
+            <div class="icon-picker">
+              <div class="icon-option" data-icon="fas fa-basketball-ball" onclick="selectIcon(this)">
+                <i class="fas fa-basketball-ball"></i>
+              </div>
+              <div class="icon-option" data-icon="fas fa-futbol" onclick="selectIcon(this)">
+                <i class="fas fa-futbol"></i>
+              </div>
+              <div class="icon-option" data-icon="fas fa-music" onclick="selectIcon(this)">
+                <i class="fas fa-music"></i>
+              </div>
+              <div class="icon-option" data-icon="fas fa-palette" onclick="selectIcon(this)">
+                <i class="fas fa-palette"></i>
+              </div>
+              <div class="icon-option" data-icon="fas fa-book" onclick="selectIcon(this)">
+                <i class="fas fa-book"></i>
+              </div>
+              <div class="icon-option" data-icon="fas fa-mosque" onclick="selectIcon(this)">
+                <i class="fas fa-mosque"></i>
+              </div>
+              <div class="icon-option" data-icon="fas fa-campground" onclick="selectIcon(this)">
+                <i class="fas fa-campground"></i>
+              </div>
+              <div class="icon-option" data-icon="fas fa-flag" onclick="selectIcon(this)">
+                <i class="fas fa-flag"></i>
+              </div>
+              <div class="icon-option" data-icon="fas fa-running" onclick="selectIcon(this)">
+                <i class="fas fa-running"></i>
+              </div>
+              <div class="icon-option" data-icon="fas fa-microphone-alt" onclick="selectIcon(this)">
+                <i class="fas fa-microphone-alt"></i>
+              </div>
+              <div class="icon-option" data-icon="fas fa-vest" onclick="selectIcon(this)">
+                <i class="fas fa-vest"></i>
+              </div>
+              <div class="icon-option" data-icon="fas fa-cat" onclick="selectIcon(this)">
+                <i class="fas fa-cat"></i>
+              </div>
+              <div class="icon-option" data-icon="fa-solid fa-heart-circle-plus" onclick="selectIcon(this)">
+                <i class="fa-solid fa-heart-circle-plus"></i>
+              </div>
+              <div class="icon-option" data-icon="fa-solid fa-masks-theater" onclick="selectIcon(this)">
+                <i class="fa-solid fa-masks-theater"></i>
+              </div>
+              <div class="icon-option" data-icon="fas fa-user-tie" onclick="selectIcon(this)">
+                <i class="fas fa-user-tie"></i>
+              </div>
+              <div class="icon-option" data-icon="fas fa-language" onclick="selectIcon(this)">
+                <i class="fas fa-language"></i>
+              </div>
+            </div>
+            <input type="hidden" id="activity-icon" value="fas fa-star" />
+          </div>
         </div>
-        <div>
-          <label for="activity-day">Hari</label>
-          <select id="activity-day" required>
-            <option value="Senin">Senin</option>
-            <option value="Selasa">Selasa</option>
-            <option value="Rabu">Rabu</option>
-            <option value="Kamis">Kamis</option>
-            <option value="Jumat">Jumat</option>
-            <option value="Sabtu">Sabtu</option>
-          </select>
-        </div>
-        <div>
-          <label for="activity-time-start">Waktu Mulai</label>
-          <input type="time" id="activity-time-start" required />
-        </div>
-        <div>
-          <label for="activity-time-end">Waktu Selesai</label>
-          <input type="time" id="activity-time-end" required />
-        </div>
-        <div>
-          <label for="activity-location">Lokasi</label>
-          <input type="text" id="activity-location" required />
-        </div>
-        <div>
-          <label for="activity-category">Kategori</label>
-          <select id="activity-category" required>
-            <option value="olahraga">Olahraga</option>
-            <option value="seni">Seni</option>
-            <option value="akademik">Akademik</option>
-            <option value="keagamaan">Keagamaan</option>
-            <option value="sosial">Sosial</option>
-          </select>
-        </div>
-        <button type="submit">Tambah Kegiatan</button>
+
+        <button type="submit" style="margin-top: 10px;">
+          <i class="fas fa-plus"></i> Tambah Kegiatan
+        </button>
       </form>
     </div>
   </div>
+
+  <style>
+    /* Icon Picker Styles */
+    .icon-picker {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .icon-option {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #FFF3E0;
+      border: 2px solid var(--border-color);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 1.3rem;
+      color: var(--primary);
+    }
+
+    .icon-option:hover {
+      background: var(--primary);
+      color: white;
+      transform: scale(1.1);
+    }
+
+    .icon-option.selected {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary-dark);
+      box-shadow: 0 0 0 3px rgba(255, 159, 67, 0.3);
+    }
+
+    /* Enhanced form labels */
+    .modal-form label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .modal-form label i {
+      color: var(--primary);
+      font-size: 0.9rem;
+    }
+
+    /* Better input styling */
+    .modal-form input[type="text"],
+    .modal-form input[type="time"],
+    .modal-form select {
+      transition: all 0.2s;
+    }
+
+    .modal-form input[type="text"]:focus,
+    .modal-form input[type="time"]:focus,
+    .modal-form select:focus {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      .modal-form>div>div {
+        grid-template-columns: 1fr !important;
+      }
+
+      .icon-picker {
+        grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+      }
+    }
+
+    /* Custom scrollbar for modal */
+    .modal-content::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .modal-content::-webkit-scrollbar-track {
+      background: #FFF3E0;
+      border-radius: 10px;
+    }
+
+    .modal-content::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 10px;
+      border: 2px solid #FFF3E0;
+    }
+
+    .modal-content::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-dark);
+    }
+
+    /* Smooth scroll behavior */
+    .modal-content {
+      scroll-behavior: smooth;
+    }
+  </style>
 
   <div class="modal" id="export-modal">
     <div class="modal-content">
@@ -1135,10 +1623,228 @@
         todayEl.classList.add('today');
         todayEl.querySelector('.activities').style.display = 'grid';
       }
-      document.querySelectorAll('.day:not(.today) .activities').forEach(el => {
+      document.querySelectorAll(`.day:not([data-day="${todayName}"]) .activities`).forEach(el => {
         el.style.display = 'none';
         el.previousElementSibling.querySelector('.toggle').classList.add('collapsed');
       });
+    }
+
+    // Dynamic Today Highlights with Complex Countdown (Optimized for smooth updates)
+    let lastRenderedState = null; // Track last render to avoid unnecessary updates
+
+    function updateTodayHighlights() {
+      const container = document.getElementById('today-highlights-container');
+      const today = new Date();
+      const dayNames = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+      const todayName = dayNames[today.getDay()];
+      const dayData = activitiesData.find(d => d.day === todayName);
+
+      if (!dayData || dayData.activities.length === 0) {
+        container.innerHTML = '';
+        return;
+      }
+
+      const currentTime = today.getHours() * 60 + today.getMinutes();
+      const currentSeconds = today.getSeconds();
+
+      const processedActivities = dayData.activities.map(act => {
+        const [startStr, endStr] = act.time.split(' - ');
+        const [startH, startM] = startStr.split(':').map(Number);
+        const [endH, endM] = endStr.split(':').map(Number);
+        const startTotal = startH * 60 + startM;
+        const endTotal = endH * 60 + endM;
+        const duration = endTotal - startTotal;
+
+        let status = 'upcoming';
+        let statusLabel = 'Mendatang';
+        let timeRemaining = 0;
+        let progressPercent = 0;
+
+        if (currentTime >= startTotal && currentTime <= endTotal) {
+          status = 'active';
+          statusLabel = 'Sedang Berlangsung';
+          timeRemaining = endTotal - currentTime;
+          progressPercent = ((currentTime - startTotal) / duration) * 100;
+        } else if (currentTime > endTotal) {
+          status = 'finished';
+          statusLabel = 'Selesai';
+          progressPercent = 100;
+        } else {
+          timeRemaining = startTotal - currentTime;
+        }
+
+        return { ...act, startTotal, endTotal, status, statusLabel, timeRemaining, progressPercent, duration, startH, startM, endH, endM };
+      });
+
+      // Sort: Active first, then Upcoming, then Finished
+      processedActivities.sort((a, b) => {
+        const order = { active: 0, upcoming: 1, finished: 2 };
+        return order[a.status] - order[b.status];
+      });
+
+      // Find the featured activity (active or next upcoming)
+      const featuredActivity = processedActivities.find(a => a.status === 'active') ||
+        processedActivities.find(a => a.status === 'upcoming');
+
+      // Create state signature to detect if full re-render is needed
+      const currentState = JSON.stringify({
+        day: todayName,
+        featured: featuredActivity ? featuredActivity.name : null,
+        activities: processedActivities.map(a => a.name + a.status)
+      });
+
+      // Check if we need full re-render or just update countdown
+      const needsFullRender = lastRenderedState !== currentState;
+
+      if (needsFullRender) {
+        // Full render (only when activities change)
+        renderFullHighlights(todayName, featuredActivity, processedActivities, currentSeconds);
+        lastRenderedState = currentState;
+      } else {
+        // Quick update (just countdown and clock)
+        updateCountdownOnly(featuredActivity, currentSeconds, today);
+      }
+    }
+
+    // Full render function (called only when structure changes)
+    function renderFullHighlights(todayName, featuredActivity, processedActivities, currentSeconds) {
+      const container = document.getElementById('today-highlights-container');
+
+      let highlightsHTML = `
+        <div class="today-highlights">
+          <div class="highlights-header">
+            <h2 class="highlights-title"><i class="fas fa-bolt"></i> Sorotan Hari Ini (${todayName})</h2>
+            <div id="live-clock" style="font-weight: 700; color: var(--primary-dark);"></div>
+          </div>
+      `;
+
+      // Add countdown for featured activity
+      if (featuredActivity && (featuredActivity.status === 'active' || featuredActivity.status === 'upcoming')) {
+        const hours = Math.floor(featuredActivity.timeRemaining / 60);
+        const minutes = featuredActivity.timeRemaining % 60;
+        const categoryIcons = {
+          'olahraga': 'fa-running',
+          'seni': 'fa-palette',
+          'akademik': 'fa-book',
+          'keagamaan': 'fa-mosque',
+          'sosial': 'fa-hands-helping'
+        };
+
+        highlightsHTML += `
+          <div class="countdown-container">
+            <div class="countdown-header">
+              <div class="countdown-label">
+                <i class="fas ${categoryIcons[featuredActivity.category] || 'fa-star'}"></i>
+                ${featuredActivity.status === 'active' ? 'Sedang Berlangsung' : 'Dimulai Dalam'}
+              </div>
+              <div class="countdown-timer" id="countdown-timer">
+                ${hours > 0 ? `
+                  <div class="countdown-segment">
+                    <span class="countdown-value" id="hours-value">${String(hours).padStart(2, '0')}</span>
+                    <span class="countdown-unit">Jam</span>
+                  </div>
+                  <span class="countdown-separator">:</span>
+                ` : ''}
+                <div class="countdown-segment">
+                  <span class="countdown-value" id="minutes-value">${String(minutes).padStart(2, '0')}</span>
+                  <span class="countdown-unit">Menit</span>
+                </div>
+              </div>
+            </div>
+            <h3 style="margin: 0 0 10px 0; font-family: var(--font-head); font-size: 1.3rem;">
+              <i class="${featuredActivity.icon}"></i> ${featuredActivity.name}
+            </h3>
+            <div class="progress-bar-container">
+              <div class="progress-bar" id="progress-bar" style="width: ${featuredActivity.progressPercent}%"></div>
+            </div>
+            <div class="activity-details">
+              <div class="detail-item">
+                <i class="fas fa-clock"></i>
+                <div>
+                  <div style="opacity: 0.8; font-size: 0.75rem;">Waktu</div>
+                  <div class="detail-value">${featuredActivity.time}</div>
+                </div>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                  <div style="opacity: 0.8; font-size: 0.75rem;">Lokasi</div>
+                  <div class="detail-value">${featuredActivity.location}</div>
+                </div>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-hourglass-half"></i>
+                <div>
+                  <div style="opacity: 0.8; font-size: 0.75rem;">Durasi</div>
+                  <div class="detail-value">${featuredActivity.duration} Menit</div>
+                </div>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-tag"></i>
+                <div>
+                  <div style="opacity: 0.8; font-size: 0.75rem;">Kategori</div>
+                  <div class="detail-value" style="text-transform: capitalize;">${featuredActivity.category}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      // Add grid of other activities
+      highlightsHTML += '<div class="highlights-grid">';
+
+      processedActivities.forEach((act, index) => {
+        // Skip the featured activity in the grid
+        if (act === featuredActivity) return;
+
+        highlightsHTML += `
+          <div class="highlight-card">
+            <div class="status-badge status-${act.status}">
+              ${act.status === 'active' ? '<span class="pulse"></span>' : ''}
+              ${act.statusLabel}
+            </div>
+            <div class="highlight-name">${act.name}</div>
+            <div class="highlight-meta">
+              <span><i class="fas fa-clock"></i> ${act.time}</span>
+              <span><i class="fas fa-map-marker-alt"></i> ${act.location}</span>
+              ${act.status === 'upcoming' ? `<span><i class="fas fa-hourglass-start"></i> ${Math.floor(act.timeRemaining / 60)}j ${act.timeRemaining % 60}m lagi</span>` : ''}
+            </div>
+          </div>
+        `;
+      });
+
+      highlightsHTML += `
+          </div>
+        </div>
+      `;
+
+      container.innerHTML = highlightsHTML;
+    }
+
+    // Quick update function (called every second, only updates countdown values)
+    function updateCountdownOnly(featuredActivity, currentSeconds, today) {
+      // Update clock
+      const clockEl = document.getElementById('live-clock');
+      if (clockEl) {
+        clockEl.textContent = today.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      }
+
+      if (!featuredActivity) return;
+
+      // Update countdown values without re-rendering
+      const hours = Math.floor(featuredActivity.timeRemaining / 60);
+      const minutes = featuredActivity.timeRemaining % 60;
+
+      const hoursEl = document.getElementById('hours-value');
+      const minutesEl = document.getElementById('minutes-value');
+      const secondsEl = document.getElementById('seconds-value');
+      const progressBar = document.getElementById('progress-bar');
+
+      if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+      if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+      if (secondsEl) secondsEl.textContent = String(currentSeconds).padStart(2, '0');
+      if (progressBar) progressBar.style.width = `${featuredActivity.progressPercent}%`;
     }
 
     // Filter
@@ -1448,12 +2154,16 @@
 
       // Today's activities
       const today = new Date();
-      const dayNames = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'][today.getDay()];
-      const todayActivities = document.querySelectorAll(`.day[data-day="${dayNames[today.getDay()]} .activity`).length;
+      const dayNames = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+      const todayName = dayNames[today.getDay()];
+      const todayActivities = document.querySelectorAll(`.day[data-day="${todayName}"] .activity`).length;
       document.getElementById('today-activities').textContent = todayActivities;
 
       // Favorite count
       document.getElementById('favorite-count').textContent = favorites.length;
+
+      // Update Today Highlights
+      updateTodayHighlights();
     }
 
     // Populate reminder activities
@@ -1482,6 +2192,21 @@
     function showReminderModal() { showModal('reminder-modal'); }
     function showAddActivityModal() { showModal('add-activity-modal'); }
     function showExportModal() { showModal('export-modal'); }
+
+    // Icon selection function
+    window.selectIcon = function (element) {
+      // Remove selected class from all icons
+      document.querySelectorAll('.icon-option').forEach(opt => {
+        opt.classList.remove('selected');
+      });
+
+      // Add selected class to clicked icon
+      element.classList.add('selected');
+
+      // Update hidden input value
+      const iconClass = element.getAttribute('data-icon');
+      document.getElementById('activity-icon').value = iconClass;
+    };
 
     // Set reminder
     function setReminder(event) {
@@ -1708,15 +2433,13 @@
       // Highlight today
       highlightToday();
 
-      // Animate cards on load
-      document.querySelectorAll('.day').forEach((day, i) => {
-        setTimeout(() => {
-          day.style.opacity = '1';
-          day.style.transform = 'translateY(0)';
-        }, i * 100);
-      });
+      // Update highlights every second for real-time countdown
+      setInterval(updateTodayHighlights, 1000);
     });
   </script>
+  <!-- Cloudflare Pages Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+    data-cf-beacon='{"token": "e56e4c655d7d46eb92b63879fc60e50f"}'></script><!-- Cloudflare Pages Analytics -->
 </body>
 
 </html>
