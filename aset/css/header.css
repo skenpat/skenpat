@@ -35,7 +35,8 @@
     }
 }
 
-.header h1 {
+.header h1,
+.hero-title {
     font-family: var(--font-head);
     font-size: clamp(2.2rem, 10vw, 5rem);
     line-height: 1.1;
@@ -44,7 +45,8 @@
     font-weight: 800;
 }
 
-.header h1 span {
+.header h1 span,
+.hero-title span {
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
     background-clip: text;
