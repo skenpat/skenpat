@@ -1,505 +1,771 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kebijakan Privasi & Informasi Situs | skenpat.pages.dev</title>
+
+  <!-- Fonts: Fredoka for headings (Cartoon feel), Nunito for body -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
     :root {
-      --primary: #E34D09;
-      --primary-dark: #D8441D;
-      --secondary: #CE1A00;
-      --tertiary: #FF7A45;
-      --background: #0a0a0a;
-      --card-bg: #1e1e1e;
-      --card-hover: #252525;
-      --text: #FFD6CB;
-      --text-light: #CECDCD;
-      --border: #2a2a2a;
-      --shadow: rgba(0, 0, 0, 0.6);
-      --accent-shadow: rgba(227, 77, 9, 0.2);
-      --font-family: 'Poppins', sans-serif;
-      --border-radius: 12px;
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      /* Vibrant Pop Palette */
+      --pop-orange: #FF6B35;
+      --pop-yellow: #FFD166;
+      --pop-blue: #06D6A0;
+      --pop-red: #EF476F;
+      --pop-bg: #FFFFFF;
+      --pop-text: #264653;
+      --pop-black: #1D1D1D;
+
+      /* Effects */
+      --shadow-hard: 5px 5px 0px var(--pop-black);
+      --shadow-hover: 8px 8px 0px var(--pop-black);
+      --border-bold: 3px solid var(--pop-black);
+      --border-radius-lg: 24px;
+      --border-radius-md: 16px;
+      --transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      /* Bouncy transition */
     }
-    
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewport="0 0 100 100" style="fill:black;font-size:24px;"><text y="50%">👆</text></svg>'), auto;
+      /* Fallback cursor logic handled in simple CSS usually, using emoji pointer for fun */
+      cursor: pointer;
     }
-    
+
     body {
-      font-family: var(--font-family);
-      background-color: var(--background);
-      color: var(--text);
-      line-height: 1.6;
-      padding: 0;
-      margin: 0;
-      background-image: 
-        radial-gradient(circle at 10% 20%, rgba(227, 77, 9, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 90% 80%, rgba(206, 26, 0, 0.05) 0%, transparent 50%);
-      min-height: 100vh;
+      font-family: 'Nunito', sans-serif;
+      background-color: var(--pop-bg);
+      background-image: radial-gradient(#FF6B35 1px, transparent 1px), radial-gradient(#FF6B35 1px, transparent 1px);
+      background-size: 30px 30px;
+      background-position: 0 0, 15px 15px;
+      color: var(--pop-text);
+      line-height: 1.7;
+      overflow-x: hidden;
     }
-    
-    /* Scrollbar styling */
-    ::-webkit-scrollbar {
-      width: 10px;
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Fredoka', sans-serif;
+      color: var(--pop-black);
     }
-    
-    ::-webkit-scrollbar-track {
-      background: var(--card-bg);
+
+    /* Custom Cursor */
+    .cursor-dot,
+    .cursor-outline {
+      position: fixed;
+      top: 0;
+      left: 0;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      z-index: 9999;
+      pointer-events: none;
     }
-    
-    ::-webkit-scrollbar-thumb {
-      background: var(--primary);
-      border-radius: 5px;
+
+    .cursor-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--pop-orange);
     }
-    
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--primary-dark);
+
+    .cursor-outline {
+      width: 40px;
+      height: 40px;
+      border: 2px solid var(--pop-orange);
+      transition: width 0.1s, height 0.1s;
     }
-    
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 20px;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .nav-pill {
+      background: var(--pop-yellow);
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      border: var(--border-bold);
+      box-shadow: var(--shadow-hard);
+      display: flex;
+      gap: 20px;
+      transition: var(--transition);
+    }
+
+    .nav-pill:hover {
+      transform: scale(1.02);
+    }
+
+    .nav-pill a {
+      text-decoration: none;
+      color: var(--pop-black);
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      position: relative;
+    }
+
+    .nav-pill a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--pop-black);
+      transition: var(--transition);
+      border-radius: 2px;
+    }
+
+    .nav-pill a:hover::after {
+      width: 100%;
+    }
+
     /* Container */
     .container {
-      max-width: 1000px;
+      max-width: 900px;
       margin: 0 auto;
-      padding: 2rem;
+      padding: 1rem 2rem 4rem 2rem;
+      position: relative;
     }
-    
+
     /* Header */
     header {
       text-align: center;
-      margin-bottom: 3rem;
-      padding: 2rem 0;
+      padding: 4rem 0;
       position: relative;
     }
-    
-    header::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      border-radius: 3px;
-    }
-    
-    header h1 {
-      font-size: 3rem;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      font-weight: 700;
-      margin-bottom: 0.8rem;
-      letter-spacing: -0.5px;
-      animation: fadeInDown 0.8s ease-out;
-    }
-    
-    header p {
-      font-size: 1.2rem;
-      color: var(--text-light);
-      font-weight: 400;
-      animation: fadeInUp 0.8s ease-out;
-    }
-    
-    /* Badge */
-    .badge {
+
+    .header-content {
       display: inline-block;
-      background: rgba(227, 77, 9, 0.15);
-      color: var(--primary);
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      margin-left: 0.5rem;
-      vertical-align: middle;
-      border: 1px solid rgba(227, 77, 9, 0.3);
+      position: relative;
+      z-index: 2;
     }
-    
-    /* Card style for sections */
-    section {
-      background-color: var(--card-bg);
+
+    header h1 {
+      font-size: 3.5rem;
+      background: var(--pop-orange);
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      border: var(--border-bold);
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--shadow-hard);
+      transform: rotate(-2deg);
+      margin-bottom: 1.5rem;
+      transition: var(--transition);
+      color: white;
+      text-shadow: 2px 2px 0px var(--pop-black);
+    }
+
+    header h1:hover {
+      transform: rotate(2deg) scale(1.05);
+    }
+
+    header p {
+      font-size: 1.3rem;
+      font-weight: 700;
+      background: white;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border: var(--border-bold);
+      border-radius: 12px;
+      box-shadow: 3px 3px 0px var(--pop-black);
+    }
+
+    .badge-unofficial {
+      background-color: var(--pop-red);
+      color: white;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      vertical-align: middle;
+      margin-left: 8px;
+      border: 2px solid var(--pop-black);
+      box-shadow: 2px 2px 0px var(--pop-black);
+    }
+
+    /* Cards (Pop Style) */
+    .card-grid {
+      display: grid;
+      gap: 2.5rem;
+    }
+
+    .card {
+      background: white;
       padding: 2.5rem;
-      margin-bottom: 2rem;
-      border-radius: var(--border-radius);
-      box-shadow: 0 10px 25px var(--shadow);
-      border: 1px solid var(--border);
+      border: var(--border-bold);
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--shadow-hard);
       transition: var(--transition);
       position: relative;
       overflow: hidden;
-      animation: fadeIn 0.8s ease-out;
     }
-    
-    section::before {
-      content: '';
+
+    .card:hover {
+      transform: translate(-5px, -5px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--pop-orange);
+    }
+
+    /* Icon decorations */
+    .card-icon {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 5px;
-      height: 100%;
-      background: linear-gradient(to bottom, var(--primary), var(--secondary));
-      border-radius: 3px 0 0 3px;
-    }
-    
-    section:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px var(--shadow);
-      background-color: var(--card-hover);
-    }
-    
-    h2 {
-      font-size: 1.9rem;
-      margin-bottom: 1.5rem;
-      position: relative;
-      display: inline-block;
-      color: var(--text);
-      font-weight: 600;
-    }
-    
-    h2::after {
-      content: '';
-      display: block;
-      width: 70px;
-      height: 4px;
-      margin-top: 10px;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      border-radius: 2px;
-    }
-    
-    p {
-      margin-bottom: 1.2rem;
-      font-weight: 400;
-      color: var(--text-light);
-    }
-    
-    strong {
-      color: var(--primary-dark);
-      font-weight: 600;
-    }
-    
-    a {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 500;
+      top: -20px;
+      right: -20px;
+      font-size: 8rem;
+      color: rgba(255, 107, 53, 0.1);
+      transform: rotate(15deg);
       transition: var(--transition);
+      z-index: 0;
+    }
+
+    .card:hover .card-icon {
+      color: rgba(255, 107, 53, 0.2);
+      transform: rotate(25deg) scale(1.1);
+    }
+
+    .card-content {
       position: relative;
+      z-index: 1;
     }
-    
-    a::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background-color: var(--secondary);
-      transition: width 0.3s ease;
-    }
-    
-    a:hover {
-      color: var(--secondary);
-    }
-    
-    a:hover::after {
-      width: 100%;
-    }
-    
-    /* List styling */
-    ul {
-      margin: 1.2rem 0;
-      padding-left: 1.8rem;
-    }
-    
-    li {
-      margin-bottom: 0.8rem;
-      position: relative;
-      color: var(--text-light);
-    }
-    
-    li::marker {
-      color: var(--primary);
-    }
-    
-    /* Contact list styling */
-    .contact-list {
-      list-style: none;
-      margin-top: 1.5rem;
-      padding-left: 0;
-    }
-    
-    .contact-list li {
+
+    .card h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
       display: flex;
       align-items: center;
+      gap: 15px;
+    }
+
+    .card h2 i {
+      background: var(--pop-yellow);
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: var(--border-bold);
+      box-shadow: 3px 3px 0px var(--pop-black);
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      font-size: 1.1rem;
       margin-bottom: 1.2rem;
-      padding: 1rem;
-      background-color: rgba(255, 255, 255, 0.03);
-      border-radius: 8px;
+      position: relative;
+      padding-left: 1rem;
+    }
+
+    .card ul {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .card li {
+      position: relative;
+      padding-left: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .card li::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      color: var(--pop-orange);
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    /* Special Card Styles */
+    .card.highlight {
+      background-color: var(--pop-orange);
+      color: white;
+      border-color: var(--pop-black);
+    }
+
+    .card.highlight h2 {
+      color: white;
+    }
+
+    .card.highlight h2 i {
+      background: white;
+      color: var(--pop-orange);
+    }
+
+    .card.highlight p {
+      color: white;
+    }
+
+    /* Contact Buttons */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      padding: 1.2rem;
+      background: white;
+      border: var(--border-bold);
+      border-radius: var(--border-radius-md);
+      text-decoration: none;
+      color: var(--pop-black);
+      font-weight: 700;
+      font-size: 1.1rem;
+      box-shadow: var(--shadow-hard);
       transition: var(--transition);
     }
-    
-    .contact-list li:hover {
-      background-color: rgba(227, 77, 9, 0.1);
-      transform: translateX(5px);
+
+    .contact-btn i {
+      font-size: 1.8rem;
     }
-    
-    .contact-list i {
-      font-size: 1.5rem;
-      margin-right: 1rem;
-      color: var(--primary);
-      width: 30px;
-      text-align: center;
+
+    /* Specific Button Colors */
+    .wa-btn:hover {
+      background: #25D366;
+      color: white;
+      transform: translate(-3px, -3px);
+      box-shadow: 6px 6px 0px var(--pop-black);
     }
-    
-    /* Footer styling */
+
+    .dc-btn:hover {
+      background: #5865F2;
+      color: white;
+      transform: translate(-3px, -3px);
+      box-shadow: 6px 6px 0px var(--pop-black);
+    }
+
+    .tg-btn:hover {
+      background: #0088cc;
+      color: white;
+      transform: translate(-3px, -3px);
+      box-shadow: 6px 6px 0px var(--pop-black);
+    }
+
+    .em-btn:hover {
+      background: var(--pop-red);
+      color: white;
+      transform: translate(-3px, -3px);
+      box-shadow: 6px 6px 0px var(--pop-black);
+    }
+
+    /* Footer */
     footer {
-      margin-top: 4rem;
-      padding: 2rem 0;
-      border-top: 1px solid var(--border);
       text-align: center;
-      font-size: 0.95rem;
-      color: var(--text-light);
-      animation: fadeIn 1s ease-out;
+      margin-top: 4rem;
+      padding: 2rem;
+      background: var(--pop-black);
+      color: white;
+      border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+      position: relative;
     }
-    
-    footer p {
-      margin-bottom: 0.5rem;
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 40px;
+      background: white;
+      border: var(--border-bold);
+      border-bottom: none;
+      border-radius: 20px 20px 0 0;
     }
-    
-    /* Animations */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+
+    /* Floating Background Shapes */
+    .shape {
+      position: fixed;
+      z-index: -1;
+      opacity: 0.6;
+      animation: float 10s infinite ease-in-out;
     }
-    
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+
+    .shape-1 {
+      top: 10%;
+      left: 5%;
+      font-size: 5rem;
+      color: var(--pop-yellow);
+      animation-delay: 0s;
+      transform: rotate(-15deg);
     }
-    
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+
+    .shape-2 {
+      bottom: 20%;
+      right: 5%;
+      font-size: 8rem;
+      color: var(--pop-red);
+      animation-delay: 2s;
+      transform: rotate(10deg);
     }
-    
-    /* Responsive */
-    @media(max-width: 768px) {
-      .container {
-        padding: 1.5rem;
-      }
-      
-      header h1 {
-        font-size: 2.2rem;
-      }
-      
-      header p {
-        font-size: 1rem;
-      }
-      
-      section {
-        padding: 1.8rem;
-      }
-      
-      h2 {
-        font-size: 1.6rem;
-      }
+
+    .shape-3 {
+      top: 40%;
+      right: 15%;
+      font-size: 4rem;
+      color: var(--pop-blue);
+      animation-delay: 4s;
+      transform: rotate(20deg);
     }
-    
-    @media(max-width: 480px) {
-      header h1 {
-        font-size: 1.9rem;
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(var(--rot, 0deg));
       }
-      
-      h2 {
-        font-size: 1.4rem;
-      }
-      
-      section {
-        padding: 1.5rem;
-      }
-      
-      .contact-list li {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      
-      .contact-list i {
-        margin-bottom: 0.5rem;
+
+      50% {
+        transform: translateY(-20px) rotate(var(--rot, 5deg));
       }
     }
-    
-    /* Loading animation */
-    .loader {
+
+    /* Animations Classes */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s cubic-bezier(0.5, 0, 0, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Loader */
+    .loader-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: var(--background);
+      background: var(--pop-yellow);
       display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 9999;
-      transition: opacity 0.5s, visibility 0.5s;
+      z-index: 10000;
+      transition: opacity 0.5s ease-out, visibility 0.5s;
     }
-    
-    .loader.hidden {
+
+    .loader-overlay.hidden {
       opacity: 0;
       visibility: hidden;
     }
-    
-    .loader-circle {
-      width: 50px;
-      height: 50px;
-      border: 5px solid rgba(227, 77, 9, 0.2);
-      border-top-color: var(--primary);
+
+    .loader-box {
+      background: white;
+      padding: 2rem;
+      border: var(--border-bold);
+      border-radius: var(--border-radius-md);
+      box-shadow: var(--shadow-hard);
+      text-align: center;
+    }
+
+    .spinner {
+      width: 60px;
+      height: 60px;
+      border: 6px solid var(--pop-black);
+      border-top-color: var(--pop-orange);
       border-radius: 50%;
       animation: spin 1s linear infinite;
+      margin: 0 auto 1rem;
     }
-    
+
     @keyframes spin {
       to {
         transform: rotate(360deg);
       }
     }
+
+    /* Responsive */
+    @media(max-width: 768px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+
+      .card {
+        padding: 1.8rem;
+      }
+
+      .card-icon {
+        display: none;
+      }
+
+      /* Hide big decorative icons on mobile */
+      .card h2 {
+        font-size: 1.5rem;
+      }
+
+      .nav-pill {
+        padding: 0.6rem 1.2rem;
+        width: 90%;
+        justify-content: space-around;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <div class="loader" id="loader">
-    <div class="loader-circle"></div>
+
+  <!-- Custom Cursor Elements -->
+  <div class="cursor-dot" data-cursor-dot></div>
+  <div class="cursor-outline" data-cursor-outline></div>
+
+  <!-- Floating Background Shapes -->
+  <div class="shape shape-1">✦</div>
+  <div class="shape shape-2">⚡</div>
+  <div class="shape shape-3">⚪</div>
+
+  <!-- Loader -->
+  <div class="loader-overlay" id="loader">
+    <div class="loader-box">
+      <div class="spinner"></div>
+      <h2 style="font-size: 1.2rem;">Memuat...</h2>
+    </div>
   </div>
-  
+
+  <!-- Navigation -->
+  <nav class="reveal">
+    <div class="nav-pill">
+      <a href="#info">Info</a>
+      <a href="#privacy">Privasi</a>
+      <a href="#contact">Kontak</a>
+    </div>
+  </nav>
+
   <div class="container">
-    <header>
-      <h1>Kebijakan Privasi & Informasi Situs</h1>
-      <p>skenpat.pages.dev <span class="badge">Tidak Resmi</span></p>
+    <header class="reveal">
+      <div class="header-content">
+        <h1>KEBIJAKAN & INFO</h1>
+        <p>skenpat.pages.dev <span class="badge-unofficial">Tidak Resmi</span></p>
+      </div>
     </header>
-    
-    <section>
-      <h2><i class="fas fa-info-circle" style="margin-right: 10px; color: var(--primary);"></i>Informasi Umum</h2>
-      <p>
-        Situs <strong>skenpat.pages.dev</strong> adalah website <strong>tidak resmi</strong> yang dikembangkan oleh siswa SMK Negeri 4 Banjarmasin dengan tujuan menyediakan informasi terkini seputar kegiatan sekolah, pengumuman, jadwal, dan informasi akademik lainnya bagi siswa, guru, dan masyarakat.
-      </p>
-    </section>
-    
-    <section>
-      <h2><i class="fas fa-shield-alt" style="margin-right: 10px; color: var(--primary);"></i>Kebijakan Privasi</h2>
-      <p>
-        Kami sangat menghargai privasi pengunjung situs ini. Situs ini <strong>tidak mengumpulkan, menyimpan, atau memproses data pribadi</strong>. Semua konten dapat diakses secara terbuka tanpa memerlukan pendaftaran atau login.
-      </p>
-      <p>
-        Kami tidak meminta atau menyimpan informasi seperti nama, alamat email, nomor telepon, atau data identitas lainnya. Semua informasi yang disajikan bersifat publik dan bertujuan informatif.
-      </p>
-    </section>
-    
-    <section>
-      <h2><i class="fas fa-plug" style="margin-right: 10px; color: var(--primary);"></i>Integrasi Pihak Ketiga</h2>
-      <p>
-        Situs ini menggunakan layanan <strong>Cloudflare</strong> untuk manajemen DNS, keamanan, dan optimasi performa. Cloudflare mungkin mengumpulkan data teknis standar seperti alamat IP, tipe perangkat, dan informasi koneksi untuk tujuan keamanan dan analitik.
-      </p>
-    </section>
-    
-    <section>
-      <h2><i class="fas fa-copyright" style="margin-right: 10px; color: var(--primary);"></i>Perizinan & Hak Cipta</h2>
-      <p>
-        Seluruh konten dalam situs ini merupakan hak milik SMK Negeri 4 Banjarmasin. Penggunaan konten untuk keperluan komersial atau distribusi tanpa izin tertulis dari pihak sekolah dilarang.
-      </p>
-      <p>
-        Penggunaan subdomain <strong>"skenpat"</strong> telah mendapatkan izin dari:
-      </p>
-      <ul>
-        <li>Ibu A'fifah Desiyanti S.Pd.</li>
-        <li>Bapak M. Aziz Insana S.Kom.</li>
-      </ul>
-      <p>
-        Jika terdapat konten yang perlu diperbaiki atau dihapus, silakan hubungi kami melalui informasi kontak yang tersedia.
-      </p>
-    </section>
-    
-    <section>
-      <h2><i class="fas fa-users" style="margin-right: 10px; color: var(--primary);"></i>Target Audiens</h2>
-      <p>
-        Situs ini ditujukan untuk seluruh civitas akademika SMK Negeri 4 Banjarmasin termasuk siswa, guru, staf, alumni, serta masyarakat umum yang membutuhkan informasi tentang sekolah.
-      </p>
-    </section>
-    
-    <section>
-      <h2><i class="fas fa-address-book" style="margin-right: 10px; color: var(--primary);"></i>Kontak</h2>
-      <p>Hubungi pengembang situs melalui:</p>
-      <ul class="contact-list">
-        <li>
-          <i class="fab fa-whatsapp"></i>
-          <a href="https://wa.me/qr/GCWWEYIQQ6UQI1" target="_blank" rel="noopener noreferrer">
-            WhatsApp: +62 895-2323-4160
-          </a>
-        </li>
-        <li>
-          <i class="fab fa-discord"></i>
-          <a href="https://discordapp.com/users/776722084030054421" target="_blank" rel="noopener noreferrer">
-            Discord: Flessan
-          </a>
-        </li>
-        <li>
-          <i class="fab fa-telegram"></i>
-          <a href="https://t.me/flethio" target="_blank" rel="noopener noreferrer">
-            Telegram: Thio Saputra
-          </a>
-        </li>
-        <li>
-          <i class="fas fa-envelope"></i>
-          <a href="mailto:kambinghirang2@gmail.com">
-            Email: flessan@yahoo.com
-          </a>
-        </li>
-      </ul>
-    </section>
-    
-    <footer>
+
+    <main class="card-grid">
+      <!-- Informasi Umum -->
+      <section id="info" class="card reveal">
+        <i class="fas fa-school card-icon"></i>
+        <div class="card-content">
+          <h2><i class="fas fa-info-circle"></i>Informasi Umum</h2>
+          <p>
+            Situs <strong>skenpat.pages.dev</strong> adalah website <strong>tidak resmi</strong> yang dikembangkan oleh
+            siswa SMK Negeri 4 Banjarmasin dengan tujuan menyediakan informasi terkini seputar kegiatan sekolah,
+            pengumuman, jadwal, dan informasi akademik lainnya bagi siswa, guru, dan masyarakat.
+          </p>
+        </div>
+      </section>
+
+      <!-- Kebijakan Privasi (Highlight Card) -->
+      <section id="privacy" class="card highlight reveal">
+        <i class="fas fa-shield-alt card-icon"></i>
+        <div class="card-content">
+          <h2><i class="fas fa-user-secret"></i>Kebijakan Privasi</h2>
+          <p>
+            Kami sangat menghargai privasi pengunjung situs ini. Situs ini <strong>tidak mengumpulkan, menyimpan, atau
+              memproses data pribadi</strong>. Semua konten dapat diakses secara terbuka tanpa memerlukan pendaftaran
+            atau login.
+          </p>
+          <div
+            style="background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 12px; border: 2px dashed white; margin-top: 1rem;">
+            <p style="margin:0; font-weight:700;"><i class="fas fa-check-circle"></i> Data Anda Aman!</p>
+            <p style="margin:0; font-size: 0.9rem;">Kami tidak meminta atau menyimpan informasi seperti nama, alamat
+              email, nomor telepon, atau data identitas lainnya.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Integrasi & Target -->
+      <section class="card reveal">
+        <i class="fas fa-cloud card-icon"></i>
+        <div class="card-content">
+          <h2><i class="fas fa-plug"></i>Teknologi & Audiens</h2>
+          <p>
+            Situs ini menggunakan layanan <strong>Cloudflare</strong> untuk manajemen DNS, keamanan, dan optimasi
+            performa. Cloudflare mungkin mengumpulkan data teknis standar seperti alamat IP, tipe perangkat, dan
+            informasi koneksi untuk tujuan keamanan dan analitik.
+          </p>
+          <p>
+            <strong>Target Audiens:</strong> Situs ini ditujukan untuk seluruh civitas akademika SMK Negeri 4
+            Banjarmasin termasuk siswa, guru, staf, alumni, serta masyarakat umum.
+          </p>
+        </div>
+      </section>
+
+      <!-- Hak Cipta -->
+      <section class="card reveal">
+        <i class="fas fa-copyright card-icon"></i>
+        <div class="card-content">
+          <h2><i class="fas fa-balance-scale"></i>Perizinan & Hak Cipta</h2>
+          <p>
+            Seluruh konten dalam situs ini merupakan hak milik SMK Negeri 4 Banjarmasin. Penggunaan konten untuk
+            keperluan komersial atau distribusi tanpa izin tertulis dari pihak sekolah dilarang.
+          </p>
+          <p>
+            Penggunaan subdomain <strong>"skenpat"</strong> telah mendapatkan izin dari:
+          </p>
+          <ul>
+            <li>Ibu A'fifah Desiyanti S.Pd.</li>
+            <li>Bapak M. Aziz Insana S.Kom.</li>
+          </ul>
+          <p>
+            Jika terdapat konten yang perlu diperbaiki atau dihapus, silakan hubungi kami melalui informasi kontak yang
+            tersedia.
+          </p>
+        </div>
+      </section>
+
+      <!-- Kontak -->
+      <section id="contact" class="card reveal">
+        <i class="fas fa-comments card-icon"></i>
+        <div class="card-content">
+          <h2><i class="fas fa-address-book"></i>Hubungi Pengembang</h2>
+          <p>Ada pertanyaan atau saran? Jangan ragu untuk menghubungi kami melalui platform berikut:</p>
+
+          <div class="contact-grid">
+            <a href="https://wa.me/qr/GCWWEYIQQ6UQI1" target="_blank" rel="noopener noreferrer"
+              class="contact-btn wa-btn">
+              <i class="fab fa-whatsapp"></i>
+              <span>WhatsApp</span>
+            </a>
+
+            <a href="https://discordapp.com/users/776722084030054421" target="_blank" rel="noopener noreferrer"
+              class="contact-btn dc-btn">
+              <i class="fab fa-discord"></i>
+              <span>Discord: Flessan</span>
+            </a>
+
+            <a href="https://t.me/flethio" target="_blank" rel="noopener noreferrer" class="contact-btn tg-btn">
+              <i class="fab fa-telegram"></i>
+              <span>Telegram: Thio</span>
+            </a>
+
+            <a href="mailto:kambinghirang2@gmail.com" class="contact-btn em-btn">
+              <i class="fas fa-envelope"></i>
+              <span>Email</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="reveal">
       <p>&copy; 2025 SMK Negeri 4 Banjarmasin. Semua Hak Dilindungi.</p>
-      <p>Situs Tidak Resmi - skenpat.pages.dev</p>
+      <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.8;">Situs Tidak Resmi - Dibuat dengan gaya Pop!</p>
     </footer>
   </div>
-  
+
   <script>
-    // Hide loader when page is fully loaded
-    window.addEventListener('load', function() {
-      setTimeout(function() {
-        document.getElementById('loader').classList.add('hidden');
-      }, 500);
+    // Loader Logic
+    window.addEventListener('load', function () {
+      const loader = document.getElementById('loader');
+      setTimeout(() => {
+        loader.classList.add('hidden');
+      }, 800); // Slight delay for effect
     });
-    
-    // Add staggered animation to sections
-    document.addEventListener('DOMContentLoaded', function() {
-      const sections = document.querySelectorAll('section');
-      sections.forEach((section, index) => {
-        section.style.animationDelay = `${0.1 * index}s`;
+
+    // Custom Cursor Logic
+    const cursorDot = document.querySelector('[data-cursor-dot]');
+    const cursorOutline = document.querySelector('[data-cursor-outline]');
+
+    window.addEventListener("mousemove", function (e) {
+      const posX = e.clientX;
+      const posY = e.clientY;
+
+      // Dot follows instantly
+      cursorDot.style.left = `${posX}px`;
+      cursorDot.style.top = `${posY}px`;
+
+      // Outline follows with slight delay (animation handled by CSS transition)
+      cursorOutline.animate({
+        left: `${posX}px`,
+        top: `${posY}px`
+      }, { duration: 500, fill: "forwards" });
+    });
+
+    // Add hover effect to cursor when hovering over clickable elements
+    const clickables = document.querySelectorAll('a, button, .card, .nav-pill');
+    clickables.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursorOutline.style.width = '60px';
+        cursorOutline.style.height = '60px';
+        cursorOutline.style.backgroundColor = 'rgba(255, 107, 53, 0.2)';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursorOutline.style.width = '40px';
+        cursorOutline.style.height = '40px';
+        cursorOutline.style.backgroundColor = 'transparent';
       });
     });
+
+    // Scroll Reveal Animation using Intersection Observer
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          // Optional: Stop observing once revealed
+          // observer.unobserve(entry.target); 
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.15, // Trigger when 15% visible
+      rootMargin: "0px 0px -50px 0px"
+    });
+
+    revealElements.forEach(el => {
+      revealObserver.observe(el);
+    });
+
+    // Add a fun "shake" effect to the header on click
+    const headerTitle = document.querySelector('header h1');
+    headerTitle.addEventListener('click', () => {
+      headerTitle.style.animation = 'none';
+      headerTitle.offsetHeight; /* trigger reflow */
+      headerTitle.style.animation = 'shake 0.5s ease-in-out';
+    });
+
+    // Define shake keyframes in JS since they are only used here
+    const styleSheet = document.createElement("style");
+    styleSheet.innerText = `
+      @keyframes shake {
+        0% { transform: rotate(-2deg) scale(1); }
+        25% { transform: rotate(2deg) scale(1.05); }
+        50% { transform: rotate(-2deg) scale(1); }
+        75% { transform: rotate(2deg) scale(1.05); }
+        100% { transform: rotate(-2deg) scale(1); }
+      }
+    `;
+    document.head.appendChild(styleSheet);
   </script>
 </body>
 
