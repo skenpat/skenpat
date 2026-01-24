@@ -6,35 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
         content="Green Generation – Loading ke halaman utama aplikasi lingkungan SMKN 4 Banjarmasin" />
-    <title>Green Generation – Loading...</title>
-    <link rel="preconnect" href="https://green.wasmer.app">
+    <title>Green Generation – Memuat...</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@600;800&display=swap"
+        rel="stylesheet">
 
     <style>
         :root {
-            /* Morning Colors */
-            --morning-top: #87CEEB;
-            --morning-bottom: #98FB98;
+            /* Vibrant Green Palette */
+            --pop-green-light: #B9F6CA;
+            --pop-green-main: #69F0AE;
+            --pop-green-dark: #00C853;
+            --pop-leaf: #2E7D32;
+            --pop-sky: #4FC3F7;
+            --pop-sun: #FFD54F;
+            --pop-moon: #7E57C2;
+            --pop-text: #1B5E20;
+            --pop-black: #212121;
 
-            /* Afternoon Colors */
-            --afternoon-top: #1E90FF;
-            --afternoon-bottom: #32CD32;
-
-            /* Night Colors */
-            --night-top: #191970;
-            --night-bottom: #006400;
-
-            /* Common Colors */
-            --gg-green-900: #1b5e20;
-            --gg-green-700: #388e3c;
-            --gg-green-500: #4caf50;
-            --white: #ffffff;
-            --shadow: rgba(0, 0, 0, 0.2);
+            /* Pop Style Effects */
+            --shadow-hard: 4px 4px 0px var(--pop-black);
+            --shadow-hover: 6px 6px 0px var(--pop-black);
+            --border-bold: 3px solid var(--pop-black);
+            --radius-lg: 20px;
+            --radius-md: 12px;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            cursor: pointer;
+            /* Fun cursor */
         }
 
         body {
@@ -43,138 +49,251 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-family: 'Fredoka', sans-serif;
             overflow: hidden;
             position: relative;
-            color: var(--white);
-            padding: 1rem;
+            color: var(--pop-text);
+            transition: background 1s ease;
         }
 
-        /* Time-based backgrounds */
+        /* --- Time Based Backgrounds --- */
         .morning {
-            background: linear-gradient(to bottom, var(--morning-top), var(--morning-bottom));
+            background: linear-gradient(180deg, #81D4FA 0%, #C8E6C9 100%);
         }
 
         .afternoon {
-            background: linear-gradient(to bottom, var(--afternoon-top), var(--afternoon-bottom));
+            background: linear-gradient(180deg, #29B6F6 0%, #66BB6A 100%);
         }
 
         .night {
-            background: linear-gradient(to bottom, var(--night-top), var(--night-bottom));
+            background: linear-gradient(180deg, #1A237E 0%, #1B5E20 100%);
         }
 
-        /* Main container */
-        .container {
+        /* --- Landscape Layers --- */
+        .landscape-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
             width: 100%;
-            max-width: 400px;
+            height: 15vh;
+            background: #43A047;
+            border-top: var(--border-bold);
+            z-index: 2;
+        }
+
+        .landscape-hills {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 20vh;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%232E7D32' fill-opacity='1' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: bottom;
+            z-index: 1;
+        }
+
+        /* --- Main Card --- */
+        .container {
+            width: 90%;
+            max-width: 420px;
+            background: #ffffff;
             text-align: center;
             z-index: 10;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
-            border-radius: 1rem;
-            padding: 2rem;
-            box-shadow: 0 8px 32px var(--shadow);
+            border: var(--border-bold);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: bounceEntry 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         h1 {
-            font-size: 2rem;
-            font-weight: 800;
+            font-size: 2.2rem;
             margin-bottom: 0.5rem;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            color: var(--pop-leaf);
+            line-height: 1.2;
+        }
+
+        .emoji-title {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 0.5rem;
+            animation: wiggle 3s infinite ease-in-out;
         }
 
         .loading-message {
+            font-family: 'Nunito', sans-serif;
             font-size: 1.1rem;
-            margin-bottom: 1.5rem;
+            color: #555;
+            margin-bottom: 2rem;
             min-height: 1.5em;
+            font-weight: 700;
         }
 
-        /* Progress bar */
+        /* --- Pop Progress Bar --- */
         .progress-container {
             width: 100%;
-            height: 12px;
-            background: rgba(255, 255, 255, 0.3);
+            height: 24px;
+            background: #E8F5E9;
+            border: var(--border-bold);
             border-radius: 50px;
             overflow: hidden;
-            margin-bottom: 0.5rem;
+            position: relative;
+            margin-bottom: 0.8rem;
         }
 
         .progress-fill {
             height: 100%;
             width: 0;
-            background: var(--gg-green-500);
+            background: var(--pop-green-main);
+            background-image: linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+            background-size: 1rem 1rem;
+            border-right: 3px solid var(--pop-black);
             border-radius: 50px;
-            transition: width 0.3s ease;
+            /* Only effective if width < 100% */
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .progress-fill::after {
+            content: '🍃';
+            position: absolute;
+            right: -14px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            animation: spinLeaf 1s linear infinite;
+            display: none;
+            /* Show only when loading */
+        }
+
+        .progress-fill.active::after {
+            display: block;
         }
 
         .progress-text {
-            font-size: 0.9rem;
-            font-weight: 600;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--pop-black);
         }
 
-        /* Decorative elements */
+        /* --- Decorative Elements --- */
         .time-element {
             position: absolute;
-            font-size: 2.5rem;
-            z-index: 1;
+            font-size: 4rem;
+            z-index: 0;
+            filter: drop-shadow(3px 3px 0px rgba(0, 0, 0, 0.2));
         }
 
         .sun {
-            top: 10%;
+            top: 8%;
             right: 10%;
             animation: pulse 4s infinite ease-in-out;
         }
 
         .moon {
-            top: 10%;
+            top: 8%;
             right: 10%;
             animation: float 6s infinite ease-in-out;
         }
 
         .cloud {
-            top: 20%;
-            left: 10%;
-            animation: float 8s infinite ease-in-out;
-            opacity: 0.8;
+            font-size: 3rem;
+            top: 15%;
+            left: 5%;
+            opacity: 0.9;
+            animation: float 12s infinite ease-in-out;
+        }
+
+        .cloud-2 {
+            top: 10%;
+            left: 60%;
+            font-size: 2rem;
+            animation: float 18s infinite ease-in-out reverse;
         }
 
         .star {
             position: absolute;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
+            z-index: 0;
             animation: twinkle 3s infinite ease-in-out;
         }
 
-        .tree {
+        /* --- Student on Bike --- */
+        .student-bike {
             position: absolute;
-            bottom: 0;
-            font-size: 3rem;
-            z-index: 1;
+            bottom: 6vh;
+            /* Positioned on the grass */
+            left: -100px;
+            z-index: 5;
+            animation: ride 6s linear infinite;
+            font-size: 2.5rem;
+            filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.3));
         }
 
-        /* Skip button */
+        /* --- Skip Button --- */
         .skip-btn {
-            position: fixed;
-            bottom: 1.5rem;
-            right: 1.5rem;
-            background: rgba(255, 255, 255, 0.2);
-            color: var(--white);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--pop-sun);
+            color: var(--pop-black);
+            border: var(--border-bold);
             border-radius: 50px;
-            padding: 0.7rem 1.2rem;
+            padding: 0.8rem 1.5rem;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
             font-size: 1rem;
-            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: var(--shadow-hard);
             z-index: 20;
-            backdrop-filter: blur(4px);
         }
 
         .skip-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
+            transform: translate(-3px, -3px);
+            box-shadow: var(--shadow-hover);
+            background: #FFF176;
         }
 
-        /* Animations */
+        .skip-btn:active {
+            transform: translate(1px, 1px);
+            box-shadow: 2px 2px 0px var(--pop-black);
+        }
+
+        /* --- Keyframes --- */
+        @keyframes bounceEntry {
+            0% {
+                transform: scale(0.8) translateY(50px);
+                opacity: 0;
+            }
+
+            60% {
+                transform: scale(1.05) translateY(-10px);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes wiggle {
+
+            0%,
+            100% {
+                transform: rotate(-5deg);
+            }
+
+            50% {
+                transform: rotate(5deg);
+            }
+        }
+
         @keyframes pulse {
 
             0%,
@@ -195,7 +314,7 @@
             }
 
             50% {
-                transform: translateY(-10px);
+                transform: translateY(-15px);
             }
         }
 
@@ -204,57 +323,59 @@
             0%,
             100% {
                 opacity: 0.3;
+                transform: scale(0.8);
             }
 
             50% {
                 opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes spinLeaf {
+            to {
+                transform: translateY(-50%) rotate(360deg);
             }
         }
 
         @keyframes ride {
-            from {
+            0% {
                 transform: translateX(-150px) scaleX(-1);
             }
 
-            to {
+            100% {
                 transform: translateX(calc(100vw + 150px)) scaleX(-1);
             }
         }
 
-        /* Student on bike */
-        .student-bike {
-            position: absolute;
-            bottom: 15%;
-            left: -100px;
-            z-index: 6;
-            animation: ride 4s linear forwards;
-            font-size: 1.8rem;
-            transform: scaleX(-1);
-        }
-
-        /* Responsive */
+        /* --- Responsive --- */
         @media (max-width: 600px) {
             h1 {
-                font-size: 1.7rem;
+                font-size: 1.8rem;
             }
 
-            .loading-message {
-                font-size: 1rem;
+            .emoji-title {
+                font-size: 2.5rem;
             }
 
             .container {
                 padding: 1.5rem;
+                width: 95%;
             }
 
             .skip-btn {
                 bottom: 1rem;
                 right: 1rem;
-                padding: 0.5rem 1rem;
-                font-size: 0.9rem;
+                padding: 0.6rem 1.2rem;
+            }
+
+            .time-element {
+                transform: scale(0.7);
+                transform-origin: top right;
             }
         }
 
-        /* Reduced motion */
+        /* Accessibility */
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation: none !important;
@@ -269,93 +390,95 @@
 </head>
 
 <body>
+    <!-- Landscape Background -->
+    <div class="landscape-hills"></div>
+    <div class="landscape-bottom"></div>
+
+    <!-- Main Content Card -->
     <div class="container">
-        <h1>🌱 Green Generation</h1>
-        <p class="loading-message" id="loadingMessage">Menanam harapan, memetik keberlanjutan...</p>
+        <span class="emoji-title">🌱</span>
+        <h1>Green Generation</h1>
+        <p class="loading-message" id="loadingMessage">Menyiapkan kebun sekolah...</p>
 
         <div class="progress-container">
-            <div class="progress-fill" id="progressFill"></div>
+            <div class="progress-fill active" id="progressFill"></div>
         </div>
         <div class="progress-text" id="progressText">0%</div>
     </div>
 
-    <div class="student-bike">🚴‍♀️</div>
+    <!-- Animated Decorations -->
+    <div class="student-bike">🚲</div> <!-- Changed to Bike alone or generic, adjusted in JS -->
 
-    <button class="skip-btn" id="skipBtn">Lewati</button>
+    <button class="skip-btn" id="skipBtn">Lewati <i class="fas fa-forward"></i></button>
 
     <script>
-        // Determine time of day
-        function getTimeOfDay() {
-            const hour = new Date().getHours();
+        const TARGET_URL = 'https://green.wasmer.app/smkn4bjm/';
+        const messages = [
+            "Menyiram tanaman...",
+            "Mengurangi plastik...",
+            "Membuat kompos...",
+            "Menanam pohon baru...",
+            "Menghemat listrik...",
+            "Membersihkan lingkungan..."
+        ];
 
-            if (hour >= 6 && hour < 12) {
-                return 'morning';
-            } else if (hour >= 12 && hour < 18) {
-                return 'afternoon';
-            } else {
-                return 'night';
-            }
-        }
+        // --- DOM Elements ---
+        const skipBtn = document.getElementById('skipBtn');
+        const progressFill = document.getElementById('progressFill');
+        const progressText = document.getElementById('progressText');
+        const messageEl = document.getElementById('loadingMessage');
+        const emojiTitle = document.querySelector('.emoji-title');
+        const bikeEl = document.querySelector('.student-bike');
 
-        // Apply time-based theme
+        // --- State ---
+        let progress = 0;
+        let lastMessageChange = 0;
+
+        // --- Prefetch ---
+        const preload = document.createElement('link');
+        preload.rel = 'prefetch';
+        preload.href = TARGET_URL;
+        document.head.appendChild(preload);
+
+        // --- Time Based Theming Logic ---
         function applyTimeTheme() {
-            const timeOfDay = getTimeOfDay();
+            const hour = new Date().getHours();
+            let timeOfDay = 'morning'; // Default
+
+            if (hour >= 6 && hour < 12) timeOfDay = 'morning';
+            else if (hour >= 12 && hour < 17) timeOfDay = 'afternoon';
+            else timeOfDay = 'night';
+
             document.body.className = timeOfDay;
 
-            // Clear existing time elements
-            document.querySelectorAll('.time-element, .tree, .star').forEach(el => el.remove());
+            // Cleanup previous elements
+            document.querySelectorAll('.time-element, .star').forEach(el => el.remove());
 
-            // Add time-specific elements
+            // Inject Elements based on Time
             if (timeOfDay === 'morning') {
-                // Morning: Sun and birds
-                const sun = document.createElement('div');
-                sun.className = 'time-element sun';
-                sun.textContent = '☀️';
-                document.body.appendChild(sun);
+                emojiTitle.textContent = '🌱';
+                bikeEl.textContent = '🧑‍🌾🚲'; // Farmer on bike
 
-                const bird1 = document.createElement('div');
-                bird1.className = 'time-element';
-                bird1.style.top = '15%';
-                bird1.style.left = '20%';
-                bird1.textContent = '🕊️';
-                document.body.appendChild(bird1);
-
-                const bird2 = document.createElement('div');
-                bird2.className = 'time-element';
-                bird2.style.top = '12%';
-                bird2.style.left = '30%';
-                bird2.textContent = '🦅';
-                document.body.appendChild(bird2);
+                createEl('div', 'time-element sun', '☀️');
+                createEl('div', 'time-element cloud', '☁️');
+                createEl('div', 'time-element cloud-2', '⛅');
 
             } else if (timeOfDay === 'afternoon') {
-                // Afternoon: Sun and clouds
-                const sun = document.createElement('div');
-                sun.className = 'time-element sun';
-                sun.textContent = '☀️';
-                document.body.appendChild(sun);
+                emojiTitle.textContent = '🌻';
+                bikeEl.textContent = '👨‍🎓🚲'; // Student on bike
 
-                const cloud1 = document.createElement('div');
-                cloud1.className = 'time-element cloud';
-                cloud1.textContent = '☁️';
-                document.body.appendChild(cloud1);
-
-                const cloud2 = document.createElement('div');
-                cloud2.className = 'time-element';
-                cloud2.style.top = '25%';
-                cloud2.style.right = '20%';
-                cloud2.textContent = '☁️';
-                cloud2.style.animation = 'float 10s infinite ease-in-out';
-                document.body.appendChild(cloud2);
+                createEl('div', 'time-element sun', '☀️');
+                createEl('div', 'time-element cloud', '☁️');
 
             } else {
-                // Night: Moon and stars
-                const moon = document.createElement('div');
-                moon.className = 'time-element moon';
-                moon.textContent = '🌙';
-                document.body.appendChild(moon);
+                emojiTitle.textContent = '🌙';
+                bikeEl.textContent = '🦇'; // No bike at night, maybe bat? Or just bike with light? Let's do bike with light
+                bikeEl.textContent = '🚲💡';
 
-                // Create stars
-                for (let i = 0; i < 15; i++) {
+                createEl('div', 'time-element moon', '🌙');
+
+                // Stars
+                for (let i = 0; i < 20; i++) {
                     const star = document.createElement('div');
                     star.className = 'star';
                     star.textContent = '✨';
@@ -365,74 +488,57 @@
                     document.body.appendChild(star);
                 }
             }
-
-            // Add trees (common for all times)
-            const tree1 = document.createElement('div');
-            tree1.className = 'tree';
-            tree1.style.left = '5%';
-            tree1.textContent = '🌳';
-            document.body.appendChild(tree1);
-
-            const tree2 = document.createElement('div');
-            tree2.className = 'tree';
-            tree2.style.right = '5%';
-            tree2.textContent = '🌲';
-            document.body.appendChild(tree2);
         }
 
-        const TARGET_URL = 'https://green.wasmer.app/smkn4bjm/';
-        const messages = [
-            "Mengurangi sampah plastik...",
-            "Menanam pohon hari ini...",
-            "Mendaur ulang...",
-            "Menghemat air & energi...",
-            "Membangun sekolah hijau..."
-        ];
+        // Helper to create elements
+        function createEl(tag, className, text) {
+            const el = document.createElement(tag);
+            el.className = className;
+            el.textContent = text;
+            document.body.appendChild(el);
+        }
 
-        const skipBtn = document.getElementById('skipBtn');
-        const progressFill = document.getElementById('progressFill');
-        const progressText = document.getElementById('progressText');
-        const messageEl = document.getElementById('loadingMessage');
-
-        let progress = 0;
-        let lastMessageChange = 0;
-
-        const preload = document.createElement('link');
-        preload.rel = 'prefetch';
-        preload.href = TARGET_URL;
-        document.head.appendChild(preload);
-
-        // Update progress
+        // --- Progress Logic ---
         const interval = setInterval(() => {
-            progress += Math.random() * 3 + 1;
-            if (progress > 100) progress = 100;
+            // Random increment for natural feel
+            progress += Math.random() * 2 + 0.5;
+
+            if (progress >= 100) {
+                progress = 100;
+                clearInterval(interval);
+                progressFill.classList.remove('active'); // Stop spinning leaf
+                setTimeout(redirect, 500);
+            }
 
             progressFill.style.width = `${progress}%`;
             progressText.textContent = `${Math.round(progress)}%`;
 
-            // Change message periodically
-            if (progress - lastMessageChange > 20 && progress > 5 && progress < 95) {
+            // Rotate messages
+            if (progress - lastMessageChange > 18 && progress > 5 && progress < 95) {
                 const randomMsg = messages[Math.floor(Math.random() * messages.length)];
-                messageEl.textContent = randomMsg;
+
+                // Text transition effect
+                messageEl.style.opacity = 0;
+                setTimeout(() => {
+                    messageEl.textContent = randomMsg;
+                    messageEl.style.opacity = 1;
+                }, 200);
+
                 lastMessageChange = progress;
             }
 
-            // Complete loading
-            if (progress >= 100) {
-                clearInterval(interval);
-                setTimeout(redirect, 300);
-            }
-        }, 150);
+        }, 50); // Faster ticks for smoother animation
 
-        // Redirect function
+        // --- Redirect ---
         function redirect() {
             document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.4s ease';
+            document.body.style.transition = 'opacity 0.5s ease';
             setTimeout(() => {
                 window.location.href = TARGET_URL;
-            }, 400);
+            }, 500);
         }
 
+        // --- Event Listeners ---
         skipBtn.addEventListener('click', () => {
             clearInterval(interval);
             redirect();
@@ -445,6 +551,10 @@
             }
         });
 
+        // --- Initialization ---
+        applyTimeTheme();
+
+        // Failsafe timeout (5 seconds max)
         setTimeout(() => {
             if (progress < 100) {
                 clearInterval(interval);
@@ -452,7 +562,6 @@
             }
         }, 5000);
 
-        applyTimeTheme();
     </script>
 </body>
 
