@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /arsip/private/
+Disallow: /tesdatabaseguru/
+
+# Reference to the sitemap
+Sitemap: https://skenpat.pages.dev/sitemap.xml
