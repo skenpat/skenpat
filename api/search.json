@@ -1,0 +1,100 @@
+[
+    {
+        "title": "Jadwal Mapel",
+        "desc": "Jadwal pelajaran harian SMK",
+        "icon": "fa-graduation-cap",
+        "link": "/mapel",
+        "cat": "Akademik",
+        "kw": [
+            "jadwal",
+            "belajar",
+            "guru",
+            "kelas"
+        ]
+    },
+    {
+        "title": "Ekstrakurikuler",
+        "desc": "Latihan dan info organisasi",
+        "icon": "fa-users-cog",
+        "link": "/eskul",
+        "cat": "Umum",
+        "kw": [
+            "osis",
+            "pramuka",
+            "seni",
+            "olahraga"
+        ]
+    },
+    {
+        "title": "Mars Skenpat",
+        "desc": "Lagu kebangsaan sekolah",
+        "icon": "fa-music",
+        "link": "#music-player",
+        "cat": "Umum",
+        "kw": [
+            "musik",
+            "nyanyi",
+            "lirik"
+        ]
+    },
+    {
+        "title": "Skenpat Wheel",
+        "desc": "Roda keberuntungan digital",
+        "icon": "fa-dharmachakra",
+        "link": "/spin",
+        "cat": "Kreatif",
+        "kw": [
+            "game",
+            "acak",
+            "spin"
+        ]
+    },
+    {
+        "title": "Skenpat Muslim",
+        "desc": "Layanan kerohanian Islam",
+        "icon": "fa-star-and-crescent",
+        "link": "?tab=muslim",
+        "cat": "Religi",
+        "kw": [
+            "ngaji",
+            "sholat",
+            "agama"
+        ]
+    },
+    {
+        "title": "Christ Skenpat",
+        "desc": "Layanan kerohanian Kristen",
+        "icon": "fa-cross",
+        "link": "?tab=kristen",
+        "cat": "Religi",
+        "kw": [
+            "ibadah",
+            "kristen",
+            "alkitab"
+        ]
+    },
+    {
+        "title": "Manajemen",
+        "desc": "Profil pimpinan sekolah",
+        "icon": "fa-users",
+        "link": "https://smkn4bjm.sch.id/tim-manajemen",
+        "cat": "Team",
+        "kw": [
+            "kepala",
+            "sekolah",
+            "wakil"
+        ]
+    },
+    {
+        "title": "Perpustakaan",
+        "desc": "Portal perpus digital",
+        "icon": "fa-book",
+        "link": "https://smkn4bjm.sch.id/perpustakaan-sekolah",
+        "cat": "Akademik",
+        "kw": [
+            "buku",
+            "baca",
+            "digital"
+        ]
+    }
+]

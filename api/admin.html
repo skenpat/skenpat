@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Skenpat JSON Editor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #FF9F43;
+            --primary-dark: #e67e22;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #2d3436;
+            --text-muted: #636e72;
+            --border-color: #dfe6e9;
+            --radius: 12px;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        [data-theme="dark"] {
+            --bg: #1a1a1a;
+            --card-bg: #2d2d2d;
+            --text-main: #f8f9fa;
+            --text-muted: #b2bec3;
+            --border-color: #404040;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .admin-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-family: 'Fredoka', sans-serif;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        .admin-nav {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .nav-btn {
+            padding: 10px 20px;
+            border: none;
+            background: var(--card-bg);
+            color: var(--text-main);
+            border-radius: var(--radius);
+            cursor: pointer;
+            white-space: nowrap;
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s;
+        }
+
+        .nav-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .editor-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .actions {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            font-family: 'Fredoka', sans-serif;
+            transition: transform 0.2s;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: var(--text-muted);
+            color: white;
+        }
+
+        .btn-success {
+            background: #27ae60;
+            color: white;
+        }
+
+        textarea {
+            width: 100%;
+            height: 400px;
+            font-family: monospace;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: var(--bg);
+            color: var(--text-main);
+            resize: vertical;
+        }
+
+        #status-msg {
+            margin-top: 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .file-info {
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin-container">
+        <header>
+            <h1>Skenpat Admin Panel</h1>
+            <a href="index.html" style="text-decoration:none; color:var(--primary); font-weight:700;"><i
+                    class="fas fa-home"></i> Lihat Situs</a>
+        </header>
+
+        <div class="admin-nav">
+            <button class="nav-btn active" data-file="search.json">Search Data</button>
+            <button class="nav-btn" data-file="facts.json">Fun Facts</button>
+            <button class="nav-btn" data-file="playlist.json">Playlist</button>
+            <button class="nav-btn" data-file="links.json">Links & Team</button>
+            <button class="nav-btn" data-file="articles.json">Evergreen Articles</button>
+            <button class="nav-btn" data-file="agenda.json">Agenda</button>
+        </div>
+
+        <div class="editor-card">
+            <div class="file-info" id="file-path">Editing: /api/search.json</div>
+            <textarea id="json-editor"></textarea>
+
+            <div class="actions">
+                <button class="btn btn-secondary" id="format-btn">Rapikan JSON</button>
+                <button class="btn btn-primary" id="download-btn"><i class="fas fa-download"></i> Simpan &
+                    Download</button>
+                <div style="flex-grow:1;"></div>
+                <input type="file" id="upload-input" style="display:none;" accept=".json">
+                <button class="btn btn-success" id="upload-trigger"><i class="fas fa-upload"></i> Unggah File</button>
+            </div>
+            <div id="status-msg"></div>
+        </div>
+
+        <div style="margin-top:20px; font-size:0.8rem; color:var(--text-muted); text-align:center;">
+            <p>Petunjuk: Edit konten di atas, lalu tekan Download. Unggah file hasil download ke folder /api/ di
+                server/github Anda.</p>
+        </div>
+    </div>
+
+    <script>
+        const editor = document.getElementById('json-editor');
+        const navBtns = document.querySelectorAll('.nav-btn');
+        const statusMsg = document.getElementById('status-msg');
+        const filePathDisplay = document.getElementById('file-path');
+        let currentFile = 'search.json';
+
+        // Load Initial File
+        const loadFile = async (filename) => {
+            currentFile = filename;
+            filePathDisplay.textContent = `Editing: /api/${filename}`;
+            try {
+                const res = await fetch(`/api/${filename}`);
+                const data = await res.json();
+                editor.value = JSON.stringify(data, null, 2);
+                showStatus('File dimuat berhasil', 'success');
+            } catch (err) {
+                showStatus('Gagal memuat file. Pastikan file ada di folder /api/', 'error');
+                editor.value = '[]';
+            }
+        };
+
+        const showStatus = (msg, type) => {
+            statusMsg.textContent = msg;
+            statusMsg.style.color = type === 'success' ? '#27ae60' : '#e74c3c';
+            setTimeout(() => statusMsg.textContent = '', 3000);
+        };
+
+        navBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                navBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                loadFile(btn.dataset.file);
+            });
+        });
+
+        document.getElementById('format-btn').addEventListener('click', () => {
+            try {
+                const obj = JSON.parse(editor.value);
+                editor.value = JSON.stringify(obj, null, 2);
+                showStatus('JSON dirapikan', 'success');
+            } catch (err) {
+                showStatus('JSON tidak valid!', 'error');
+            }
+        });
+
+        document.getElementById('download-btn').addEventListener('click', () => {
+            try {
+                const obj = JSON.parse(editor.value);
+                const blob = new Blob([JSON.stringify(obj, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = currentFile;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                showStatus('File siap diunduh. Silakan unggah ke server.', 'success');
+            } catch (err) {
+                showStatus('Gagal: JSON tidak valid!', 'error');
+            }
+        });
+
+        // Upload functionality (local preview)
+        const uploadTrigger = document.getElementById('upload-trigger');
+        const uploadInput = document.getElementById('upload-input');
+
+        uploadTrigger.addEventListener('click', () => uploadInput.click());
+        uploadInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const content = e.target.result;
+                    JSON.parse(content); // Validate
+                    editor.value = content;
+                    showStatus('File berhasil diunggah ke editor. Jangan lupa "Simpan & Download" jika perlu.', 'success');
+                } catch (err) {
+                    showStatus('Gagal: File bukan JSON yang valid!', 'error');
+                }
+            };
+            reader.readAsText(file);
+        });
+
+        // Initialize
+        loadFile('search.json');
+    </script>
+</body>
+
+</html>

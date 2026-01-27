@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#FF9F43" />
+
+    <title>Arsip Artikel | Skenpat OSIS SMKN 4 Banjarmasin</title>
+    <meta name="description"
+        content="Kumpulan artikel bermanfaat, panduan religi, dan tata cara untuk warga SMKN 4 Banjarmasin." />
+
+    <link rel="icon" href="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760687917/faviconV2_s4utef.png"
+        type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./aset/css/style.css" />
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1766196359/osis4_100x_vnzamj.png"
+                    alt="Logo">
+                <span>OSIS SMKN4BJM</span>
+            </a>
+            <ul class="navbar-menu" id="navbar-menu">
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="articles.html" class="active">Artikel</a></li>
+                <li><a href="index.html?tab=tentang">Tentang</a></li>
+            </ul>
+            <div class="navbar-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Kembali ke atas">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <div class="app-container" style="margin-top: 100px;">
+        <header class="header">
+            <div class="header-badge">📚 Ruang Literasi</div>
+            <h2 class="hero-title">Artikel <span>Skenpat</span></h2>
+            <p>Kumpulan panduan, artikel religi, dan informasi bermanfaat yang selalu relevan bagi warga sekolah.</p>
+        </header>
+
+        <section class="articles-search-section" style="margin-top: -1.5rem; margin-bottom: 3.5rem;">
+            <div class="search-container-v2">
+                <div class="search-input-group">
+                    <i class="fas fa-search main-search-icon"></i>
+                    <input type="text" id="article-search" placeholder="Cari artikel bermanfaat..." autocomplete="off">
+                </div>
+                <div class="category-filters" id="article-filters" style="margin-top: 1.5rem;">
+                    <button class="filter-btn active" data-category="Semua">Semua</button>
+                    <button class="filter-btn" data-category="Religi">Religi</button>
+                    <button class="filter-btn" data-category="Tata Cara">Tata Cara</button>
+                    <button class="filter-btn" data-category="Edukasi">Edukasi</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="portal-grid" id="article-grid">
+                <div
+                    style="text-align: center; padding: 2rem; width: 100%; color: var(--text-muted); grid-column: 1 / -1;">
+                    Memuat artikel...</div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="https://flessan.pages.dev" rel="noopener">Developer</a>
+            <a href="index.html#links">Links</a>
+        </div>
+        <div style="margin-top:15px;">
+            &copy; 2026 Skenpat Pages | OSIS SMKN 4 Banjarmasin
+        </div>
+    </footer>
+
+    <script>
+        // Theme Management
+        const initTheme = () => {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            const icon = document.querySelector('#theme-toggle i');
+            if (icon) icon.className = savedTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+        };
+
+        const toggleTheme = () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            const icon = document.querySelector('#theme-toggle i');
+            if (icon) icon.className = newTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+        };
+
+        document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+        document.getElementById('navbar-toggle').addEventListener('click', () => {
+            const menu = document.getElementById('navbar-menu');
+            menu.classList.toggle('active');
+            const icon = document.querySelector('#navbar-toggle i');
+            icon.className = menu.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+        });
+
+        // Navbar & Scroll Logic
+        const backBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.navbar');
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+
+            if (window.scrollY > 300) backBtn.classList.add('visible');
+            else backBtn.classList.remove('visible');
+        });
+
+        backBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Article Logic
+        const articleGrid = document.getElementById('article-grid');
+        const articleSearch = document.getElementById('article-search');
+        const articleFilterBtns = document.querySelectorAll('#article-filters .filter-btn');
+        let articlesData = [];
+
+        const renderArticles = (articles) => {
+            if (!articleGrid) return;
+            if (articles.length === 0) {
+                articleGrid.innerHTML = '<div style="text-align: center; padding: 2rem; width: 100%; color: var(--text-muted); grid-column: 1 / -1;">Tidak ada artikel ditemukan.</div>';
+                return;
+            }
+            articleGrid.innerHTML = articles.map(art => `
+                <a href="artikel.html?id=${art.id}" class="portal-card" style="text-decoration:none; color:inherit; flex-direction: column; align-items: flex-start;">
+                    <span class="badge" style="background: var(--primary); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; margin-bottom: 8px;">${art.category}</span>
+                    <h4 style="margin:0; font-size: 1.1rem;">${art.title}</h4>
+                    <p style="margin: 8px 0; font-size: 0.85rem; line-height: 1.4;">${art.summary}</p>
+                    <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: auto;">
+                        <i class="fas fa-user"></i> ${art.author} &bull; ${art.date}
+                    </div>
+                </a>
+            `).join('');
+        };
+
+        const filterArticles = () => {
+            const query = articleSearch.value.toLowerCase();
+            const category = document.querySelector('#article-filters .filter-btn.active').dataset.category;
+
+            const filtered = articlesData.filter(art => {
+                const matchesSearch = art.title.toLowerCase().includes(query) || art.summary.toLowerCase().includes(query);
+                const matchesCategory = category === 'Semua' || art.category === category;
+                return matchesSearch && matchesCategory;
+            });
+            renderArticles(filtered);
+        };
+
+        fetch('./api/articles.json')
+            .then(res => res.json())
+            .then(data => {
+                articlesData = data;
+                renderArticles(articlesData);
+            })
+            .catch(err => console.error('Error loading articles:', err));
+
+        if (articleSearch) articleSearch.addEventListener('input', filterArticles);
+        articleFilterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                articleFilterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                filterArticles();
+            });
+        });
+
+        initTheme();
+    </script>
+</body>
+
+</html>
