@@ -1,128 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Main Page -->
   <url>
     <loc>https://skenpat.pages.dev/</loc>
-    <lastmod>2026-01-24</lastmod>
+    <lastmod>2026-01-24T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-
-  <!-- Main Tabs (Parameters) -->
-  <url>
-    <loc>https://skenpat.pages.dev/?tab=beranda</loc>
-    <lastmod>2026-01-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://skenpat.pages.dev/?tab=tentang</loc>
-    <lastmod>2026-01-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://skenpat.pages.dev/?tab=muslim</loc>
-    <lastmod>2026-01-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://skenpat.pages.dev/?tab=kristen</loc>
-    <lastmod>2026-01-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://skenpat.pages.dev/?tab=alat</loc>
-    <lastmod>2026-01-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Root Pages -->
   <url>
     <loc>https://skenpat.pages.dev/inf</loc>
-    <lastmod>2026-01-24</lastmod>
+    <lastmod>2026-01-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://skenpat.pages.dev/green</loc>
-    <lastmod>2026-01-24</lastmod>
+    <lastmod>2026-01-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://skenpat.pages.dev/osis</loc>
-    <lastmod>2026-01-24</lastmod>
+    <lastmod>2026-01-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://skenpat.pages.dev/catur</loc>
-    <lastmod>2026-01-24</lastmod>
+    <lastmod>2026-01-24T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  <!--
-  <url>
-    <loc>https://skenpat.pages.dev/guru</loc>
-    <lastmod>2026-01-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://skenpat.pages.dev/oktama</loc>
-    <lastmod>2026-01-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://skenpat.pages.dev/7archon</loc>
-    <lastmod>2026-01-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://skenpat.pages.dev/struk</loc>
-    <lastmod>2026-01-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  -->
-
-  <!-- Directories -->
   <url>
     <loc>https://skenpat.pages.dev/eskul</loc>
-    <lastmod>2026-01-24</lastmod>
+    <lastmod>2026-01-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://skenpat.pages.dev/mapel</loc>
-    <lastmod>2026-01-24</lastmod>
+    <lastmod>2026-01-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://skenpat.pages.dev/spin</loc>
-    <lastmod>2026-01-24</lastmod>
+    <lastmod>2026-01-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://skenpat.pages.dev/feedback</loc>
-    <lastmod>2026-01-24</lastmod>
+    <lastmod>2026-01-24T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <!--
-  <url>
-    <loc>https://skenpat.pages.dev/tesdatabaseguru</loc>
-    <lastmod>2026-01-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  -->
 </urlset>
