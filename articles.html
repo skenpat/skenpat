@@ -58,17 +58,20 @@
             <p>Kumpulan panduan, artikel religi, dan informasi bermanfaat yang selalu relevan bagi warga sekolah.</p>
         </header>
 
-        <section class="articles-search-section" style="margin-top: -1.5rem; margin-bottom: 3.5rem;">
-            <div class="search-container-v2">
+        <section class="articles-search-section">
+            <div class="search-container-v2 premium-search-card glass-effect shadow-premium">
                 <div class="search-input-group">
                     <i class="fas fa-search main-search-icon"></i>
                     <input type="text" id="article-search" placeholder="Cari artikel bermanfaat..." autocomplete="off">
                 </div>
-                <div class="category-filters" id="article-filters" style="margin-top: 1.5rem;">
+                <div class="category-filters" id="article-filters">
                     <button class="filter-btn active" data-category="Semua">Semua</button>
-                    <button class="filter-btn" data-category="Religi">Religi</button>
-                    <button class="filter-btn" data-category="Tata Cara">Tata Cara</button>
-                    <button class="filter-btn" data-category="Edukasi">Edukasi</button>
+                    <button class="filter-btn" data-category="Religi"
+                        style="--cat-color: var(--cat-religi)">Religi</button>
+                    <button class="filter-btn" data-category="Tata Cara" style="--cat-color: var(--cat-tata-cara)">Tata
+                        Cara</button>
+                    <button class="filter-btn" data-category="Edukasi"
+                        style="--cat-color: var(--cat-edukasi)">Edukasi</button>
                 </div>
             </div>
         </section>
@@ -140,22 +143,45 @@
         const articleFilterBtns = document.querySelectorAll('#article-filters .filter-btn');
         let articlesData = [];
 
+        const getCategoryColor = (cat) => {
+            switch (cat) {
+                case 'Religi': return 'var(--cat-religi)';
+                case 'Tata Cara': return 'var(--cat-tata-cara)';
+                case 'Edukasi': return 'var(--cat-edukasi)';
+                default: return 'var(--primary)';
+            }
+        };
+
+        const calculateReadTime = (html) => {
+            const text = html.replace(/<[^>]*>/g, '');
+            const words = text.split(/\s+/).length;
+            const time = Math.ceil(words / 200);
+            return time;
+        };
+
         const renderArticles = (articles) => {
             if (!articleGrid) return;
             if (articles.length === 0) {
                 articleGrid.innerHTML = '<div style="text-align: center; padding: 2rem; width: 100%; color: var(--text-muted); grid-column: 1 / -1;">Tidak ada artikel ditemukan.</div>';
                 return;
             }
-            articleGrid.innerHTML = articles.map(art => `
-                <a href="artikel.html?id=${art.id}" class="portal-card" style="text-decoration:none; color:inherit; flex-direction: column; align-items: flex-start;">
-                    <span class="badge" style="background: var(--primary); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; margin-bottom: 8px;">${art.category}</span>
-                    <h4 style="margin:0; font-size: 1.1rem;">${art.title}</h4>
-                    <p style="margin: 8px 0; font-size: 0.85rem; line-height: 1.4;">${art.summary}</p>
-                    <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: auto;">
-                        <i class="fas fa-user"></i> ${art.author} &bull; ${art.date}
+            articleGrid.innerHTML = articles.map(art => {
+                const color = getCategoryColor(art.category);
+                const readTime = calculateReadTime(art.content);
+                return `
+                <a href="artikel.html?id=${art.id}" class="portal-card" style="text-decoration:none; color:inherit; flex-direction: column; align-items: flex-start; border-left: 5px solid ${color};">
+                    <div style="display: flex; justify-content: space-between; width: 100%; align-items: center; margin-bottom: 8px;">
+                        <span class="badge" style="background: ${color}; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem;">${art.category}</span>
+                        <span style="font-size: 0.7rem; color: var(--text-muted);"><i class="far fa-clock"></i> ${readTime} mnt baca</span>
+                    </div>
+                    <h4 style="margin:0; font-size: 1.15rem; font-family: var(--font-head); color: var(--text-main);">${art.title}</h4>
+                    <p style="margin: 10px 0; font-size: 0.85rem; line-height: 1.5; color: var(--text-muted);">${art.summary}</p>
+                    <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: auto; display: flex; gap: 15px;">
+                        <span><i class="fas fa-user" style="color: ${color}"></i> ${art.author}</span>
+                        <span><i class="fas fa-calendar-alt"></i> ${art.date}</span>
                     </div>
                 </a>
-            `).join('');
+            `}).join('');
         };
 
         const filterArticles = () => {
@@ -170,7 +196,7 @@
             renderArticles(filtered);
         };
 
-        fetch('./api/articles.json')
+        fetch('https://muslim-api-json.vercel.app/api/skenpat/articles.json')
             .then(res => res.json())
             .then(data => {
                 articlesData = data;

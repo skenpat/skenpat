@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arsip Digital OSIS SMKN 4 Banjarmasin</title>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Fonts: Fredoka (Cartoon feel) & Nunito (Readable) -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* --- CSS VARIABLES (THEME CARTOON ORANGE) --- */
+        :root {
+            --primary: #FF8C42;
+            /* Orange Karakter */
+            --primary-dark: #E06922;
+            --secondary: #FFC845;
+            /* Kuning Cerah */
+            --accent: #4C9F70;
+            /* Hijau Aksen */
+            --danger: #FF6B6B;
+
+            --bg-body: #FFF9F0;
+            /* Krem sangat muda */
+            --bg-card: #FFFFFF;
+
+            --text-main: #2D3436;
+            --text-light: #636E72;
+
+            --border-color: #2D3436;
+            --border-width: 3px;
+            --radius-xl: 30px;
+            --radius-md: 18px;
+
+            --shadow-hard: 6px 6px 0px var(--border-color);
+            /* Bayangan gaya pop-art/cartoon */
+            --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Dark Mode Cartoon Style */
+        body.dark-mode {
+            --bg-body: #1E1E24;
+            --bg-card: #2B2B36;
+            --text-main: #F0F0F0;
+            --text-light: #A0A0A0;
+            --border-color: #FFFFFF;
+            --shadow-hard: 6px 6px 0px rgba(255, 255, 255, 0.2);
+        }
+
+        /* --- RESET & BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background 0.3s ease;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .brand h1 {
+            font-family: 'Fredoka', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        button,
+        select,
+        input {
+            font-family: 'Nunito', sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: var(--bg-card);
+            padding: 1.5rem 0;
+            border-bottom: var(--border-width) solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .brand h1 {
+            font-size: 2rem;
+            color: var(--primary);
+            text-shadow: 2px 2px 0px var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .brand span {
+            font-size: 1rem;
+            color: var(--text-light);
+            font-weight: 700;
+            background: var(--secondary);
+            padding: 2px 10px;
+            border-radius: 20px;
+            border: 2px solid var(--border-color);
+        }
+
+        .nav-group {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            border: var(--border-width) solid var(--border-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--radius-md);
+            font-weight: 800;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-card);
+            box-shadow: 4px 4px 0px var(--border-color);
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-transform: uppercase;
+        }
+
+        .btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px var(--border-color);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-icon-only {
+            padding: 0.8rem;
+            border-radius: 7px;
+        }
+
+        /* --- SEARCH & STATS --- */
+        .search-hero {
+            text-align: center;
+            padding: 3rem 0;
+            background-image: radial-gradient(var(--primary) 1px, transparent 1px);
+            background-size: 20px 20px;
+            margin-bottom: 2rem;
+        }
+
+        .search-box {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1.2rem 3.5rem;
+            font-size: 1.1rem;
+            border: var(--border-width) solid var(--border-color);
+            border-radius: 50px;
+            outline: none;
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg-card);
+            color: var(--text-main);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .stats-counter {
+            margin-top: 1.5rem;
+            display: inline-block;
+            background: var(--bg-card);
+            border: var(--border-width) solid var(--border-color);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            box-shadow: 3px 3px 0px var(--border-color);
+        }
+
+        /* --- TABS & FILTERS --- */
+        .controls-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .tabs-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .tab-btn {
+            border: var(--border-width) solid var(--border-color);
+            background: var(--bg-card);
+            padding: 1rem 2rem;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            font-family: 'Fredoka', sans-serif;
+            cursor: pointer;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            box-shadow: 4px 4px 0px var(--border-color);
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px var(--border-color);
+        }
+
+        .filters-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            background: var(--bg-card);
+            padding: 1rem;
+            border: var(--border-width) solid var(--border-color);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .select-cartoon {
+            border: var(--border-width) solid var(--border-color);
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            background: var(--bg-body);
+            color: var(--text-main);
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* --- GRID CARDS --- */
+        .archive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: var(--border-width) solid var(--border-color);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-image {
+            height: 200px;
+            width: 100%;
+            background-color: var(--secondary);
+            position: relative;
+            border-bottom: var(--border-width) solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .card:hover .card-image img {
+            transform: scale(1.1);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            border: 2px solid var(--border-color);
+            font-weight: 800;
+            font-size: 0.8rem;
+            box-shadow: 3px 3px 0px var(--border-color);
+        }
+
+        .card-body {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-meta {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            color: var(--text-main);
+            margin-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+
+        .card-preview {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .card-footer {
+            margin-top: auto;
+        }
+
+        .btn-block {
+            width: 100%;
+            justify-content: center;
+            background-color: var(--secondary);
+            color: var(--text-main);
+        }
+
+        /* --- PAGINATION --- */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 4rem;
+        }
+
+        .page-btn {
+            width: 50px;
+            height: 50px;
+            border: var(--border-width) solid var(--border-color);
+            border-radius: 50%;
+            background: var(--bg-card);
+            font-weight: 800;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 3px 3px 0px var(--border-color);
+            transition: transform 0.1s;
+        }
+
+        .page-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px var(--border-color);
+        }
+
+        .page-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .page-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* --- MODAL (DETAIL ARTICLE) --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            border-radius: var(--radius-xl);
+            border: var(--border-width) solid var(--border-color);
+            box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.2);
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            position: relative;
+            height: 250px;
+            border-bottom: var(--border-width) solid var(--border-color);
+        }
+
+        .modal-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--danger);
+            color: white;
+            border: 2px solid var(--border-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            box-shadow: 3px 3px 0px var(--border-color);
+            z-index: 10;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-tags {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background: var(--secondary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            border: 2px solid var(--border-color);
+        }
+
+        .article-section {
+            margin-bottom: 2rem;
+        }
+
+        .article-section h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            border-bottom: 2px dashed var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .article-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .article-list li {
+            background: var(--bg-body);
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid var(--border-color);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .article-list li i {
+            color: var(--primary);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--bg-card);
+            border-top: var(--border-width) solid var(--border-color);
+            padding: 3rem 0;
+            text-align: center;
+            position: relative;
+            margin-top: auto;
+        }
+
+        .footer-logo {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* --- UTILS --- */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            border: var(--border-width) solid var(--border-color);
+            box-shadow: 4px 4px 0px var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 90;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s;
+        }
+
+        #backToTop.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--text-main);
+            color: var(--bg-card);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            box-shadow: 4px 4px 0px var(--border-color);
+            z-index: 2000;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .filters-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .modal-header {
+                height: 180px;
+            }
+
+            .article-list {
+                grid-template-columns: 1fr;
+            }
+
+            .btn {
+                font-size: 0.8rem;
+                padding: 0.6rem 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="brand">
+                <h1><i class="ph ph-scroll"></i> Arsip OSIS</h1>
+                <span>SMK Negeri 4 Banjarmasin</span>
+            </div>
+            <div class="nav-group">
+                <button class="btn btn-icon-only" id="darkModeToggle" aria-label="Mode Gelap">
+                    <i class="ph ph-moon-stars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Search Section -->
+        <section class="search-hero">
+            <h2 style="font-family: 'Fredoka'; font-size: 2.5rem; margin-bottom: 1rem; color: var(--text-main);">
+                Temukan Dokumen <span style="color: var(--primary)">Kegiatan</span>
+            </h2>
+            <div class="search-box">
+                <i class="ph ph-magnifying-glass search-icon"></i>
+                <input type="text" id="searchInput" class="search-input"
+                    placeholder="Cari nama kegiatan, tahun, atau ketua pelaksana...">
+            </div>
+            <div class="stats-counter" id="statsInfo">
+                Menampilkan 0 Arsip
+            </div>
+        </section>
+
+        <!-- Controls -->
+        <section class="controls-container">
+            <!-- Tabs -->
+            <div class="tabs-wrapper">
+                <button class="tab-btn active" data-tab="periode">
+                    <i class="ph ph-users-three"></i> Arsip Periode
+                </button>
+                <button class="tab-btn" data-tab="pembina">
+                    <i class="ph ph-chalkboard-teacher"></i> Arsip Pembina
+                </button>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters-row">
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <select id="filterPeriod" class="select-cartoon">
+                        <option value="all">Semua Periode</option>
+                        <option value="2023">2023/2024</option>
+                        <option value="2022">2022/2023</option>
+                        <option value="2021">2021/2022</option>
+                    </select>
+                    <select id="filterStatus" class="select-cartoon">
+                        <option value="all">Semua Status</option>
+                        <option value="active">Aktif</option>
+                        <option value="locked">Terkunci</option>
+                    </select>
+                </div>
+                <select id="sortBy" class="select-cartoon">
+                    <option value="newest">Terbaru</option>
+                    <option value="oldest">Terlama</option>
+                    <option value="az">Judul A-Z</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Grid -->
+        <section id="archiveGrid" class="archive-grid">
+            <!-- Cards injected via JS -->
+        </section>
+
+        <!-- Pagination -->
+        <nav id="pagination" class="pagination"></nav>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo"><i class="ph ph-student"></i> OSIS SMKN 4</div>
+            <p>Membangun Karakter, Meraih Prestasi, Berkarya Tanpa Batas.</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-light);">
+                &copy;
+                <script>document.write(new Date().getFullYear())</script> Divisi Kominfo OSIS SMKN 4 Banjarmasin.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Modal Detail Artikel -->
+    <div class="modal-overlay" id="detailModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-modal" onclick="closeModal()">
+                    <i class="ph ph-x"></i>
+                </button>
+                <img src="" alt="Cover" id="modalImg">
+            </div>
+            <div class="modal-body">
+                <div class="modal-tags">
+                    <span class="tag" id="modalType">Type</span>
+                    <span class="tag" id="modalPeriod">Periode</span>
+                    <span class="tag" id="modalStatus" style="background: var(--accent); color: white;">Status</span>
+                </div>
+                <h2 id="modalTitle" style="font-size: 2rem; margin-bottom: 1rem; color: var(--primary);">Judul Dokumen
+                </h2>
+                <p id="modalDate" style="font-weight: 700; margin-bottom: 1rem; color: var(--text-light);">Tanggal</p>
+
+                <div class="article-section">
+                    <h3><i class="ph ph-info"></i> Deskripsi Kegiatan</h3>
+                    <p id="modalDesc" style="line-height: 1.8;">Deskripsi...</p>
+                </div>
+
+                <div class="article-section" id="pengurusSection">
+                    <h3><i class="ph ph-crown"></i> Struktur Pelaksana</h3>
+                    <ul class="article-list" id="modalPengurus">
+                        <!-- List Items -->
+                    </ul>
+                </div>
+
+                <div class="article-section" id="anggotaSection">
+                    <h3><i class="ph ph-users"></i> Anggota Terlibat</h3>
+                    <ul class="article-list" id="modalAnggota">
+                        <!-- List Items -->
+                    </ul>
+                </div>
+
+                <div style="margin-top: 2rem; text-align: right;">
+                    <button class="btn btn-primary" onclick="showToast('Dokumen berhasil diunduh!')">
+                        <i class="ph ph-download-simple"></i> Unduh Dokumen Lengkap
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top -->
+    <button id="backToTop" aria-label="Ke Atas">
+        <i class="ph ph-arrow-fat-line-up"></i>
+    </button>
+
+    <!-- Toast -->
+    <div id="toast" class="toast">Notifikasi</div>
+
+    <script>
+        // --- DATA DUMMY LENGKAP (Detail Oriented) ---
+        const archivesData = [
+            {
+                id: 1,
+                type: 'periode',
+                title: 'Laporan Pertanggungjawaban (LPJ) Akhir Masa Bakti',
+                period: '2023',
+                date: '2024-02-15',
+                status: 'active',
+                desc: 'Dokumen lengkap LPJ yang memuat seluruh kegiatan OSIS periode 2023/2024 mulai dari bidang 1 hingga bidang 10. Termasuk laporan keuangan teraudit dan dokumentasi visual.',
+                imgId: '1',
+                pengurus: [
+                    { role: 'Ketua Pelaksana', name: 'Ahmad Rizky' },
+                    { role: 'Sekretaris', name: 'Siti Aminah' },
+                    { role: 'Bendahara', name: 'Budi Santoso' },
+                    { role: 'Koordinator Bidang', name: 'Dewi Sartika' }
+                ],
+                anggota: [
+                    'Rina Wati', 'Joko Anwar', 'Eka Pertiwi', 'Fajar Nugraha',
+                    'Lestari Ayu', 'Bayu Pradana', 'Citra Kirana', 'Dimas Anggara'
+                ]
+            },
+            {
+                id: 2,
+                type: 'periode',
+                title: 'Dokumentasi Kegiatan LDKS 2023',
+                period: '2023',
+                date: '2023-09-10',
+                status: 'active',
+                desc: 'Kumpulan foto dan video kegiatan Latihan Dasar Kepemimpinan Siswa yang diadakan di Bumi Perkemahan. Meliputi materi outbond, ceramah kepemimpinan, dan api unggun.',
+                imgId: '2',
+                pengurus: [
+                    { role: 'Ketua Panitia', name: 'Fajar Nugraha' },
+                    { role: 'Sekretaris', name: 'Lestari Ayu' }
+                ],
+                anggota: [
+                    'Tim Humas', 'Tim Konsumsi', 'Tim Perlengkapan', 'Tim Dokumentasi'
+                ]
+            },
+            {
+                id: 3,
+                type: 'periode',
+                title: 'Proposal Classmeeting Semester Ganjil',
+                period: '2022',
+                date: '2022-11-01',
+                status: 'locked',
+                desc: 'Proposal rinci kegiatan Classmeeting yang berisi jadwal pertandingan, daftar pertandingan antar kelas, budgeting, dan susunan panitia pertandingan.',
+                imgId: '3',
+                pengurus: [
+                    { role: 'Ketua Porsek', name: 'Rian Hidayat' },
+                    { role: 'Wakil Ketua', name: 'Maya Safira' }
+                ],
+                anggota: [
+                    'X IPA 1', 'X IPA 2', 'XI IPS 1', 'XI BHS', 'XII MM'
+                ]
+            },
+            {
+                id: 4,
+                type: 'pembina',
+                title: 'Program Kerja Tahunan Pembina 2023',
+                period: '2023',
+                date: '2023-02-01',
+                status: 'active',
+                desc: 'Dokumen strategi pembinaan OSIS untuk satu tahun ajaran, mencakup jadwal rutin, evaluasi kinerja mingguan, dan target pencapaian prestasi sekolah.',
+                imgId: '9',
+                pengurus: [
+                    { role: 'Pembina Utama', name: 'Bapak H. Suherman, S.Pd' },
+                    { role: 'Wakil Pembina', name: 'Ibu Ratna Sari, S.Pd' }
+                ],
+                anggota: []
+            },
+            {
+                id: 5,
+                type: 'periode',
+                title: 'Rekap Inventaris & Aset Sekretariat',
+                period: '2021',
+                date: '2021-12-20',
+                status: 'locked',
+                desc: 'Daftar seluruh barang inventaris ruang OSIS, mulai dari komputer, printer, meja, hingga perlengkapan kegiatan outdoor. Dilengkapi dengan kondisi fisik barang.',
+                imgId: '6',
+                pengurus: [
+                    { role: 'Kabid Sarpras', name: 'Doni Tata' }
+                ],
+                anggota: [
+                    'Staf Inventaris'
+                ]
+            },
+            {
+                id: 6,
+                type: 'periode',
+                title: 'Notulensi Rapat Pleno Anggaran',
+                period: '2023',
+                date: '2023-08-15',
+                status: 'active',
+                desc: 'Hasil rapat pleno pembahasan Rencana Anggaran Pendapatan dan Belanja OSIS yang dihadiri seluruh pengurus inti dan perwakilan kelas.',
+                imgId: '4',
+                pengurus: [
+                    { role: 'Ketua OSIS', name: 'Ahmad Rizky' },
+                    { role: 'Notulis', name: 'Siti Aminah' }
+                ],
+                anggota: [
+                    'Seluruh Perwakilan Kelas X-XII'
+                ]
+            },
+            {
+                id: 7,
+                type: 'pembina',
+                title: 'SK Pengurus OSIS Terpilih 2023',
+                period: '2023',
+                date: '2023-08-20',
+                status: 'active',
+                desc: 'Surat Keputusan Kepala Sekolah mengenai pengesahan struktur kepengurusan OSIS SMKN 4 Banjarmasin masa bakti 2023/2024.',
+                imgId: '5',
+                pengurus: [
+                    { role: 'Kepala Sekolah', name: 'Drs. H. Purnomo' },
+                    { role: 'Pembina', name: 'Bpk. Suherman' }
+                ],
+                anggota: [
+                    '52 Pengurus Terpilih'
+                ]
+            },
+            {
+                id: 8,
+                type: 'periode',
+                title: 'Jadwal Kegiatan Dies Natalis Sekolah',
+                period: '2022',
+                date: '2022-10-01',
+                status: 'locked',
+                desc: 'Run down acara Dies Natalis sekolah ke-45, mencakup lomba antar kelas, pentas seni, dan resepsi.',
+                imgId: '8',
+                pengurus: [
+                    { role: 'Panitia Inti', name: 'Tim Dies Natalis' }
+                ],
+                anggota: [
+                    'Panitia Acara', 'Panitia Dekorasi'
+                ]
+            }
+        ];
+
+        // --- APP STATE ---
+        const AppState = {
+            currentTab: 'periode',
+            searchQuery: '',
+            filterPeriod: 'all',
+            filterStatus: 'all',
+            sortBy: 'newest',
+            currentPage: 1,
+            itemsPerPage: 6,
+            darkMode: false
+        };
+
+        // --- DOM ELEMENTS ---
+        const gridEl = document.getElementById('archiveGrid');
+        const paginationEl = document.getElementById('pagination');
+        const searchInput = document.getElementById('searchInput');
+        const filterPeriodEl = document.getElementById('filterPeriod');
+        const filterStatusEl = document.getElementById('filterStatus');
+        const sortByEl = document.getElementById('sortBy');
+        const statsEl = document.getElementById('statsInfo');
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const modalEl = document.getElementById('detailModal');
+        const backToTopBtn = document.getElementById('backToTop');
+        const toastEl = document.getElementById('toast');
+
+        // --- LOGIC ---
+
+        function init() {
+            setupEventListeners();
+            checkTheme();
+            render();
+        }
+
+        function setupEventListeners() {
+            searchInput.addEventListener('input', (e) => {
+                AppState.searchQuery = e.target.value.toLowerCase();
+                AppState.currentPage = 1;
+                render();
+            });
+
+            filterPeriodEl.addEventListener('change', (e) => {
+                AppState.filterPeriod = e.target.value;
+                AppState.currentPage = 1;
+                render();
+            });
+
+            filterStatusEl.addEventListener('change', (e) => {
+                AppState.filterStatus = e.target.value;
+                AppState.currentPage = 1;
+                render();
+            });
+
+            sortByEl.addEventListener('change', (e) => {
+                AppState.sortBy = e.target.value;
+                render();
+            });
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    AppState.currentTab = btn.dataset.tab;
+                    AppState.currentPage = 1;
+                    render();
+                });
+            });
+
+            // Close modal on outside click
+            modalEl.addEventListener('click', (e) => {
+                if (e.target === modalEl) closeModal();
+            });
+
+            // Dark Mode
+            document.getElementById('darkModeToggle').addEventListener('click', toggleTheme);
+
+            // Scroll
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) backToTopBtn.classList.add('visible');
+                else backToTopBtn.classList.remove('visible');
+            });
+
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        function checkTheme() {
+            const isDark = localStorage.getItem('darkMode') === 'true';
+            if (isDark) toggleTheme(false); // false means don't save again, just apply
+        }
+
+        function toggleTheme(save = true) {
+            AppState.darkMode = !AppState.darkMode;
+            if (AppState.darkMode) {
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('darkMode', 'true');
+            } else {
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('darkMode', 'false');
+            }
+        }
+
+        function getFilteredData() {
+            let data = archivesData.filter(item => item.type === AppState.currentTab);
+
+            // Search (Title, Desc, Pengurus Name)
+            if (AppState.searchQuery) {
+                data = data.filter(item => {
+                    const inMain = item.title.toLowerCase().includes(AppState.searchQuery) ||
+                        item.desc.toLowerCase().includes(AppState.searchQuery);
+                    const inPengurus = item.pengurus.some(p => p.name.toLowerCase().includes(AppState.searchQuery));
+                    return inMain || inPengurus;
+                });
+            }
+
+            if (AppState.filterPeriod !== 'all') {
+                data = data.filter(item => item.period === AppState.filterPeriod);
+            }
+
+            if (AppState.filterStatus !== 'all') {
+                data = data.filter(item => item.status === AppState.filterStatus);
+            }
+
+            // Sorting
+            data.sort((a, b) => {
+                switch (AppState.sortBy) {
+                    case 'newest': return new Date(b.date) - new Date(a.date);
+                    case 'oldest': return new Date(a.date) - new Date(b.date);
+                    case 'az': return a.title.localeCompare(b.title);
+                    default: return 0;
+                }
+            });
+
+            return data;
+        }
+
+        function render() {
+            const data = getFilteredData();
+            const total = data.length;
+            const totalPages = Math.ceil(total / AppState.itemsPerPage);
+
+            // Update Tabs
+            tabBtns.forEach(btn => {
+                if (btn.dataset.tab === AppState.currentTab) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+
+            // Stats
+            statsEl.textContent = `Menampilkan ${total} Arsip`;
+
+            // Render Grid
+            gridEl.innerHTML = '';
+            if (total === 0) {
+                gridEl.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 3rem;">
+                        <i class="ph ph-files" style="font-size: 4rem; color: var(--text-light);"></i>
+                        <h3 style="margin-top: 1rem;">Arsip tidak ditemukan</h3>
+                    </div>
+                `;
+            } else {
+                const start = (AppState.currentPage - 1) * AppState.itemsPerPage;
+                const end = start + AppState.itemsPerPage;
+                const pageData = data.slice(start, end);
+
+                pageData.forEach(item => {
+                    const card = document.createElement('article');
+                    card.className = 'card';
+                    card.innerHTML = `
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/${item.imgId}/400/300.jpg" alt="${item.title}" loading="lazy">
+                            <div class="card-badge">${item.status === 'active' ? 'AKTIF' : 'TERKUNCI'}</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <i class="ph ph-calendar"></i> ${item.period} 
+                                <span style="margin: 0 5px">•</span>
+                                <i class="ph ph-users"></i> ${item.pengurus[0].name.split(' ')[0]} et al.
+                            </div>
+                            <h3 class="card-title">${item.title}</h3>
+                            <p class="card-preview">${item.desc}</p>
+                            <div class="card-footer">
+                                <button class="btn btn-block" onclick="openModal(${item.id})">
+                                    Lihat Detail Lengkap
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    gridEl.appendChild(card);
+                });
+            }
+
+            // Render Pagination
+            renderPagination(totalPages);
+        }
+
+        function renderPagination(totalPages) {
+            paginationEl.innerHTML = '';
+            if (totalPages <= 1) return;
+
+            // Prev
+            const prev = document.createElement('button');
+            prev.className = 'page-btn';
+            prev.innerHTML = '<i class="ph ph-caret-left"></i>';
+            prev.disabled = AppState.currentPage === 1;
+            prev.onclick = () => { AppState.currentPage--; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+            paginationEl.appendChild(prev);
+
+            for (let i = 1; i <= totalPages; i++) {
+                const btn = document.createElement('button');
+                btn.className = `page-btn ${i === AppState.currentPage ? 'active' : ''}`;
+                btn.textContent = i;
+                btn.onclick = () => { AppState.currentPage = i; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+                paginationEl.appendChild(btn);
+            }
+
+            // Next
+            const next = document.createElement('button');
+            next.className = 'page-btn';
+            next.innerHTML = '<i class="ph ph-caret-right"></i>';
+            next.disabled = AppState.currentPage === totalPages;
+            next.onclick = () => { AppState.currentPage++; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+            paginationEl.appendChild(next);
+        }
+
+        // --- MODAL LOGIC (FULL ARTICLE) ---
+        window.openModal = function (id) {
+            const item = archivesData.find(x => x.id === id);
+            if (!item) return;
+
+            document.getElementById('modalImg').src = `https://picsum.photos/seed/${item.imgId}/800/400.jpg`;
+            document.getElementById('modalTitle').textContent = item.title;
+            document.getElementById('modalDesc').textContent = item.desc;
+
+            // Dates & Tags
+            const dateOpts = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('modalDate').textContent = `Diterbitkan: ${new Date(item.date).toLocaleDateString('id-ID', dateOpts)}`;
+            document.getElementById('modalType').textContent = item.type.toUpperCase();
+            document.getElementById('modalPeriod').textContent = item.period !== 'all' ? `Periode ${item.period}` : 'Umum';
+            document.getElementById('modalStatus').textContent = item.status === 'active' ? 'DOKUMEN TERBUKA' : 'DOKUMEN TERKUNCI';
+
+            // Render Lists
+            const pengurusList = document.getElementById('modalPengurus');
+            pengurusList.innerHTML = item.pengurus.map(p => `
+                <li>
+                    <i class="ph ph-identification-card"></i>
+                    <div>
+                        <div style="font-size:0.8rem; color:var(--text-light)">${p.role}</div>
+                        <div>${p.name}</div>
+                    </div>
+                </li>
+            `).join('');
+
+            const anggotaList = document.getElementById('modalAnggota');
+            // Toggle section visibility if no members
+            const anggotaSection = document.getElementById('anggotaSection');
+            if (item.anggota && item.anggota.length > 0) {
+                anggotaSection.style.display = 'block';
+                anggotaList.innerHTML = item.anggota.map(a => `
+                    <li><i class="ph ph-user"></i> ${a}</li>
+                `).join('');
+            } else {
+                anggotaSection.style.display = 'none';
+            }
+
+            modalEl.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scroll
+        };
+
+        window.closeModal = function () {
+            modalEl.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        };
+
+        // --- TOAST ---
+        window.showToast = function (msg) {
+            toastEl.textContent = msg;
+            toastEl.classList.add('show');
+            setTimeout(() => {
+                toastEl.classList.remove('show');
+            }, 3000);
+        };
+
+        // Init
+        document.addEventListener('DOMContentLoaded', init);
+
+    </script>
+</body>
+
+</html>

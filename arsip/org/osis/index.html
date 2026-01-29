@@ -1,63 +1,60 @@
 <!doctype html>
-<html lang="id">
+<html lang="id" data-theme="light">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Arsip OSIS — SMK Negeri 4 Banjarmasin</title>
+
+  <!-- Fonts: Fredoka (Cartoon Headings) & Nunito (Readable Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
-    /* CSS remains unchanged - all your existing styles */
+    /* --- CSS CARTOON THEME --- */
     :root {
-      /* Orange color scheme */
-      --primary: #FF4000;
-      --primary-light: #FF6A33;   /* lighter tint */
-      --primary-dark: #CC3300;    /* darker shade */
-      --secondary: #f59e0b;
-      --success: #10b981;
-      --danger: #ef4444;
-      --warning: #f59e0b;
-      --info: #06b6d4;
-      
-      --gray-50: #f9fafb;
-      --gray-100: #f3f4f6;
-      --gray-200: #e5e7eb;
-      --gray-300: #d1d5db;
-      --gray-400: #9ca3af;
-      --gray-500: #6b7280;
-      --gray-600: #4b5563;
-      --gray-700: #374151;
-      --gray-800: #1f2937;
-      --gray-900: #111827;
-      
-      --bg: var(--gray-50);
-      --surface: white;
-      --text: var(--gray-900);
-      --text-muted: var(--gray-600);
-      --border: var(--gray-200);
-      --border-light: var(--gray-100);
-      
-      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-      --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-      
-      --radius: 0.75rem;
-      --radius-sm: 0.5rem;
-      --radius-lg: 1rem;
-      
-      --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      /* Palette */
+      --primary: #FF6B35;
+      /* Vibrant Orange */
+      --primary-hover: #E85D2A;
+      --secondary: #FFD93D;
+      /* Cartoon Yellow */
+      --accent: #00B4D8;
+      /* Sky Blue */
+      --bg-body: #FFF8F0;
+      /* Warm Cream */
+      --bg-card: #FFFFFF;
+      --text-main: #2D3436;
+      --text-muted: #636E72;
+
+      /* Cartoon Style Variables */
+      --border-color: #000000;
+      --border-width: 3px;
+      --shadow-hard: 5px 5px 0px var(--border-color);
+      --shadow-hover: 7px 7px 0px var(--border-color);
+      --shadow-active: 2px 2px 0px var(--border-color);
+
+      --radius-xl: 25px;
+      --radius-lg: 18px;
+      --radius-md: 12px;
     }
 
+    /* Dark Mode Override */
     [data-theme="dark"] {
-      --bg: var(--gray-900);
-      --surface: var(--gray-800);
-      --text: var(--gray-100);
-      --text-muted: var(--gray-400);
-      --border: var(--gray-700);
-      --border-light: var(--gray-800);
+      --bg-body: #1E1E24;
+      --bg-card: #2B2B36;
+      --text-main: #F0F0F0;
+      --text-muted: #A0A0A0;
+      --border-color: #FFFFFF;
+      --shadow-hard: 5px 5px 0px rgba(255, 255, 255, 0.2);
+      --shadow-hover: 7px 7px 0px rgba(255, 255, 255, 0.3);
+      --shadow-active: 2px 2px 0px rgba(255, 255, 255, 0.2);
     }
 
     * {
@@ -68,44 +65,82 @@
 
     html {
       scroll-behavior: smooth;
-      color-scheme: light dark;
     }
 
     body {
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      font-family: 'Nunito', sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
       line-height: 1.6;
       min-height: 100vh;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      font-family: 'Fredoka', sans-serif;
+      letter-spacing: 0.5px;
     }
 
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 1rem;
+      padding: 1.5rem;
     }
 
-    /* Header */
+    /* --- HEADER --- */
     .header {
-      background: var(--surface);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 2rem 1rem;
-      margin-bottom: 2rem;
+      background: var(--bg-card);
+      border: var(--border-width) solid var(--border-color);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-hard);
+      padding: 2.5rem 1.5rem;
+      margin-bottom: 2.5rem;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative Circle */
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 150px;
+      height: 150px;
+      background: var(--secondary);
+      border-radius: 50%;
+      border: var(--border-width) solid var(--border-color);
+      z-index: 0;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
     }
 
     .header h1 {
-      font-size: 2.5rem;
+      font-size: 3rem;
       font-weight: 700;
       color: var(--primary);
       margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 0px var(--border-color);
     }
 
     .header .subtitle {
+      font-size: 1.25rem;
+      font-weight: 700;
       color: var(--text-muted);
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
+      background: var(--bg-body);
+      display: inline-block;
+      padding: 5px 15px;
+      border-radius: 20px;
+      border: 2px solid var(--border-color);
     }
 
     .header-actions {
@@ -115,159 +150,158 @@
       flex-wrap: wrap;
     }
 
-    /* Buttons */
+    /* --- BUTTONS --- */
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: var(--radius-sm);
-      font-weight: 500;
+      padding: 0.8rem 1.5rem;
+      border: var(--border-width) solid var(--border-color);
+      border-radius: var(--radius-md);
+      font-weight: 800;
+      font-size: 1rem;
       cursor: pointer;
-      transition: var(--transition);
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       text-decoration: none;
-      font-size: 0.875rem;
-      color: inherit;
+      font-family: 'Fredoka', sans-serif;
+      background: var(--bg-card);
+      box-shadow: var(--shadow-hard);
+      text-transform: uppercase;
     }
 
-    .btn:focus {
-      outline: 2px solid var(--primary);
-      outline-offset: 2px;
+    .btn:active {
+      transform: translate(3px, 3px);
+      box-shadow: var(--shadow-active);
     }
 
     .btn-primary {
-      background: var(--primary);
+      background-color: var(--primary);
       color: white;
     }
 
     .btn-primary:hover {
-      background: var(--primary-dark);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-md);
+      background-color: var(--primary-hover);
+      transform: translate(-2px, -2px);
+      box-shadow: var(--shadow-hover);
     }
 
     .btn-outline {
-      background: transparent;
-      color: var(--primary);
-      border: 1px solid var(--primary);
+      background-color: white;
+      color: var(--text-main);
+    }
+
+    [data-theme="dark"] .btn-outline {
+      background-color: var(--bg-card);
     }
 
     .btn-outline:hover {
-      background: var(--primary);
-      color: white;
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--text-muted);
-      border: 1px solid var(--border);
-    }
-
-    .btn-ghost:hover {
-      background: var(--gray-100);
-      color: var(--text);
-    }
-
-    [data-theme="dark"] .btn-ghost:hover {
-      background: var(--gray-700);
+      background-color: var(--secondary);
+      transform: translate(-2px, -2px);
+      box-shadow: var(--shadow-hover);
     }
 
     .btn-sm {
       padding: 0.5rem 1rem;
-      font-size: 0.75rem;
+      font-size: 0.85rem;
+      border-radius: var(--radius-md);
     }
 
-    /* Search Section */
+    /* --- SEARCH SECTION --- */
     .search-section {
-      background: var(--surface);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 1.5rem;
+      background: var(--bg-card);
+      border: var(--border-width) solid var(--border-color);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-hard);
+      padding: 2rem;
       margin-bottom: 2rem;
     }
 
     .search-container {
       position: relative;
-      max-width: 400px;
+      max-width: 500px;
       margin: 0 auto;
     }
 
     .search-input {
       width: 100%;
-      padding: 1rem 1rem 1rem 3rem;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      font-size: 1rem;
-      background: var(--bg);
-      transition: var(--transition);
-      color: var(--text);
-    }
-
-    .search-input::placeholder {
-      color: var(--text-muted);
-      opacity: 1;
-    }
-
-    [data-theme="dark"] .search-input {
-      color: var(--gray-100);
-    }
-
-    [data-theme="dark"] .search-input::placeholder {
-      color: var(--gray-400);
+      padding: 1rem 1.2rem 1rem 3.5rem;
+      border: var(--border-width) solid var(--border-color);
+      border-radius: 50px;
+      font-size: 1.1rem;
+      background: var(--bg-body);
+      color: var(--text-main);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      outline: none;
+      box-shadow: inset 3px 3px 0px rgba(0, 0, 0, 0.1);
+      transition: border-color 0.2s;
     }
 
     .search-input:focus {
-      outline: none;
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(255, 64, 0, 0.2);
     }
 
     .search-icon {
       position: absolute;
-      left: 1rem;
+      left: 1.2rem;
       top: 50%;
       transform: translateY(-50%);
-      color: var(--text-muted);
-      pointer-events: none;
+      color: var(--primary);
+      font-size: 1.2rem;
     }
 
     .search-stats {
       text-align: center;
       margin-top: 1rem;
+      font-weight: 700;
       color: var(--text-muted);
-      font-size: 0.875rem;
+      background: var(--bg-body);
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      border-radius: 20px;
+      border: 2px solid var(--border-color);
     }
 
-    /* Tab Navigation */
+    /* --- TABS --- */
     .tab-nav {
       display: flex;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-      border-bottom: 1px solid var(--border);
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      justify-content: center;
     }
 
     .tab-btn {
-      background: none;
-      border: none;
-      padding: 0.75rem 1rem;
-      font-weight: 500;
+      background: var(--bg-card);
+      border: var(--border-width) solid var(--border-color);
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-weight: 700;
       color: var(--text-muted);
       cursor: pointer;
-      border-bottom: 2px solid transparent;
-      transition: var(--transition);
-      white-space: nowrap;
-    }
-
-    .tab-btn:hover {
-      color: var(--text);
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.1rem;
+      box-shadow: var(--shadow-hard);
+      transition: all 0.2s;
     }
 
     .tab-btn.active {
-      color: var(--primary);
-      border-bottom-color: var(--primary);
+      background: var(--primary);
+      color: white;
+      transform: translateY(-4px);
+      box-shadow: 0 0 0 var(--border-color);
+      /* Remove shadow to look "pressed up" */
+    }
+
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 10px;
+      background: var(--primary);
+      border-radius: 50%;
     }
 
     .tab-content {
@@ -276,215 +310,370 @@
 
     .tab-content.active {
       display: block;
+      animation: fadeIn 0.5s ease;
     }
 
-    /* Filter Container */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* --- FILTERS --- */
     .filter-container {
       display: flex;
       gap: 1rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
+      justify-content: center;
       flex-wrap: wrap;
     }
 
     .filter-select {
-      padding: 0.5rem 1rem;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      background: var(--surface);
-      color: var(--text);
-      font-family: inherit;
-      font-size: 0.875rem;
+      padding: 0.7rem 1.5rem;
+      border: var(--border-width) solid var(--border-color);
+      border-radius: 50px;
+      background: var(--bg-card);
+      color: var(--text-main);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
       cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .filter-select:focus {
       outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(255, 64, 0, 0.2);
+      box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
     }
 
-    /* Archive Grid */
+    /* --- CARDS --- */
     .archive-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
       margin-bottom: 2rem;
     }
 
     .archive-card {
-      background: var(--surface);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      background: var(--bg-card);
+      border: var(--border-width) solid var(--border-color);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-hard);
       overflow: hidden;
-      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
     }
 
     .archive-card:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
     }
 
     .archive-header {
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      background: var(--primary);
       color: white;
-      padding: 1rem;
+      padding: 1.2rem;
+      border-bottom: var(--border-width) solid var(--border-color);
     }
 
     .archive-title {
-      font-size: 1.125rem;
-      font-weight: 600;
+      font-size: 1.4rem;
+      font-weight: 700;
       margin-bottom: 0.25rem;
     }
 
     .archive-subtitle {
-      font-size: 0.875rem;
+      font-size: 0.95rem;
       opacity: 0.9;
+      font-weight: 600;
     }
 
     .archive-image {
       width: 100%;
       height: 200px;
       object-fit: cover;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .archive-image:hover {
-      opacity: 0.9;
+      border-bottom: var(--border-width) solid var(--border-color);
+      background-color: var(--bg-body);
     }
 
     .archive-content {
       padding: 1.5rem;
-    }
-
-    .archive-content p {
-      margin-bottom: 1rem;
-      color: var(--text-muted);
-    }
-
-    .archive-details {
-      margin-bottom: 1rem;
-    }
-
-    .archive-detail {
+      flex: 1;
       display: flex;
-      margin-bottom: 0.5rem;
+      flex-direction: column;
     }
 
-    .archive-detail-label {
-      font-weight: 500;
-      margin-right: 0.5rem;
-      min-width: 100px;
+    .archive-desc-preview {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     .archive-actions {
-      display: flex;
-      gap: 0.5rem;
+      margin-top: auto;
     }
 
     .archive-actions .btn {
-      flex: 1;
+      width: 100%;
       justify-content: center;
     }
 
-    /* Pagination */
+    /* --- PAGINATION --- */
     .pagination {
       display: flex;
       justify-content: center;
-      gap: 0.5rem;
-      margin-top: 2rem;
+      gap: 0.8rem;
+      margin-top: 3rem;
     }
 
     .page-btn {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 2.5rem;
-      height: 2.5rem;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text);
-      border-radius: var(--radius-sm);
+      width: 45px;
+      height: 45px;
+      border: var(--border-width) solid var(--border-color);
+      background: var(--bg-card);
+      color: var(--text-main);
+      border-radius: 50%;
+      font-weight: 700;
       cursor: pointer;
-      transition: var(--transition);
+      box-shadow: 3px 3px 0px var(--border-color);
+      transition: all 0.2s;
     }
 
-    .page-btn:hover {
-      background: var(--gray-100);
+    .page-btn:hover:not(:disabled) {
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0px var(--border-color);
     }
 
-    [data-theme="dark"] .page-btn:hover {
-      background: var(--gray-700);
+    .page-btn:active:not(:disabled) {
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0px var(--border-color);
     }
 
     .page-btn.active {
-      background: var(--primary);
-      color: white;
-      border-color: var(--primary);
+      background: var(--secondary);
+      border-color: var(--border-color);
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px var(--border-color);
     }
 
     .page-btn:disabled {
       opacity: 0.5;
       cursor: not-allowed;
+      box-shadow: none;
     }
 
-    /* Footer */
+    /* --- FOOTER --- */
     .footer {
-      background: var(--surface);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      background: var(--bg-card);
+      border: var(--border-width) solid var(--border-color);
+      border-radius: var(--radius-xl);
       padding: 2rem;
       text-align: center;
-      color: var(--text-muted);
-      margin-top: 2rem;
+      margin-top: 4rem;
+      box-shadow: var(--shadow-hard);
     }
 
-    /* Back to Top Button */
-    .back-to-top {
+    /* --- MODAL (ARTICLE) --- */
+    .modal-overlay {
       position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      width: 3rem;
-      height: 3rem;
-      background-color: var(--primary);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 2000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      background: var(--bg-card);
+      width: 100%;
+      max-width: 800px;
+      max-height: 90vh;
+      border-radius: var(--radius-xl);
+      border: var(--border-width) solid var(--border-color);
+      box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.3);
+      overflow-y: auto;
+      transform: scale(0.9) translateY(20px);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: scale(1) translateY(0);
+    }
+
+    .modal-header {
+      position: relative;
+      height: 250px;
+      border-bottom: var(--border-width) solid var(--border-color);
+    }
+
+    .modal-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: var(--danger);
       color: white;
-      border: none;
+      border: 2px solid var(--border-color);
+      width: 45px;
+      height: 45px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      font-size: 1.5rem;
+      font-weight: 700;
+      box-shadow: 3px 3px 0px var(--border-color);
+      z-index: 10;
+      transition: transform 0.2s;
+    }
+
+    .close-modal:hover {
+      transform: scale(1.1);
+    }
+
+    .close-modal:active {
+      transform: scale(0.95) translate(2px, 2px);
+      box-shadow: 1px 1px 0px var(--border-color);
+    }
+
+    .modal-body {
+      padding: 2rem;
+    }
+
+    .modal-tag {
+      display: inline-block;
+      background: var(--secondary);
+      padding: 5px 15px;
+      border-radius: 20px;
+      border: 2px solid var(--border-color);
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+
+    .article-section {
+      margin-bottom: 2rem;
+    }
+
+    .article-section h3 {
+      color: var(--primary);
+      font-size: 1.5rem;
+      border-bottom: 3px dashed var(--border-color);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    .article-text {
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .article-text strong {
+      color: var(--text-main);
+    }
+
+    .member-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .member-item {
+      background: var(--bg-body);
+      padding: 10px;
+      border-radius: 10px;
+      border: 2px solid var(--border-color);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* --- UTILS --- */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 3.5rem;
+      height: 3.5rem;
+      background-color: var(--primary);
+      color: white;
+      border: var(--border-width) solid var(--border-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.5rem;
+      box-shadow: var(--shadow-hard);
+      z-index: 999;
       opacity: 0;
       visibility: hidden;
-      transition: var(--transition);
-      z-index: 999;
+      transition: all 0.3s;
     }
 
     .back-to-top.visible {
       opacity: 1;
       visibility: visible;
+      transform: translateY(0);
     }
 
     .back-to-top:hover {
-      background-color: var(--primary-dark);
-      transform: translateY(-3px);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
     }
 
-    /* Toast Notification */
     .toast {
       position: fixed;
       bottom: 2rem;
       left: 50%;
       transform: translateX(-50%) translateY(100px);
-      background-color: var(--surface);
-      color: var(--text);
-      padding: 1rem 1.5rem;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-lg);
-      z-index: 1001;
+      background: var(--bg-card);
+      color: var(--text-main);
+      padding: 1rem 2rem;
+      border: var(--border-width) solid var(--border-color);
+      border-radius: 50px;
+      font-weight: 700;
+      box-shadow: var(--shadow-hard);
+      z-index: 3000;
       opacity: 0;
-      transition: var(--transition);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
     .toast.show {
@@ -492,135 +681,80 @@
       opacity: 1;
     }
 
-    .toast.success {
-      border-left: 4px solid var(--success);
+    .toast.success i {
+      color: var(--success);
     }
 
-    .toast.error {
-      border-left: 4px solid var(--danger);
-    }
-
-    .toast.info {
-      border-left: 4px solid var(--info);
+    .toast.info i {
+      color: var(--accent);
     }
 
     /* Responsive */
     @media (max-width: 768px) {
-      .container {
-        padding: 0.5rem;
-      }
-      
       .header h1 {
         font-size: 2rem;
       }
-      
-      .header .subtitle {
-        font-size: 1rem;
-      }
-      
+
       .archive-grid {
         grid-template-columns: 1fr;
       }
-    }
 
-    @media (max-width: 480px) {
-      .header-actions {
-        flex-direction: column;
-        width: 100%;
+      .modal-header {
+        height: 180px;
       }
-      
-      .btn {
-        width: 100%;
-        justify-content: center;
+
+      .member-list {
+        grid-template-columns: 1fr;
       }
-      
+
       .filter-container {
         flex-direction: column;
+        align-items: stretch;
       }
-      
-      .filter-select {
-        width: 100%;
-      }
-    }
-
-    /* Accessibility */
-    .visually-hidden {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border-width: 0;
-    }
-
-    /* Empty State */
-    .empty-state {
-      text-align: center;
-      padding: 3rem 1rem;
-      color: var(--text-muted);
-    }
-
-    .empty-state i {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      color: var(--gray-400);
-    }
-
-    .empty-state h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-      color: var(--text);
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <header class="header">
-      <h1>Arsip OSIS Skenpat</h1>
-      <p class="subtitle">SMK Negeri 4 Banjarmasin · Periode 2025/2026</p>
-      <div class="header-actions">
-        <a href="/" class="btn btn-primary" aria-label="Ke menu utama skenpat">
-          <i class="fas fa-home" aria-hidden="true"></i>
-          <span>Menu Utama</span>
-        </a>
-        <button class="btn btn-primary" id="themeToggle" aria-label="Alihkan mode gelap">
-          <i class="fas fa-moon" aria-hidden="true"></i>
-          <span>Mode Gelap</span>
-        </button>
+      <div class="header-content">
+        <h1><i class="fas fa-scroll"></i> Arsip OSIS Skenpat</h1>
+        <p class="subtitle">SMK Negeri 4 Banjarmasin · Periode 2025/2026</p>
+        <div class="header-actions">
+          <a href="/" class="btn btn-outline" aria-label="Ke menu utama skenpat">
+            <i class="fas fa-home" aria-hidden="true"></i>
+            <span>Menu Utama</span>
+          </a>
+          <button class="btn btn-primary" id="themeToggle" aria-label="Alihkan mode gelap">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+            <span>Mode Gelap</span>
+          </button>
+        </div>
       </div>
     </header>
 
     <!-- Search -->
     <section class="search-section" aria-labelledby="searchHeading">
-      <h2 id="searchHeading" class="visually-hidden">Pencarian Arsip</h2>
       <div class="search-container">
         <div class="search-icon" aria-hidden="true">
           <i class="fas fa-search"></i>
         </div>
-        <input 
-          type="search" 
-          class="search-input" 
-          id="searchInput" 
-          placeholder="Cari arsip, nama, atau periode..."
-          autocomplete="off"
-          aria-label="Cari arsip OSIS"
-        >
+        <input type="search" class="search-input" id="searchInput"
+          placeholder="Cari nama ketua, periode, atau pembina..." autocomplete="off" aria-label="Cari arsip OSIS">
       </div>
       <div class="search-stats" id="searchStats" aria-live="polite">
-        Total: <strong>69</strong> Periode OSIS · <strong>2</strong> Ter-arsipkan
+        Memuat data...
       </div>
     </section>
 
     <!-- Tab Navigation -->
     <div class="tab-nav">
       <button class="tab-btn active" data-tab="period">
-        <i class="fas fa-calendar-alt"></i> Arsip Periode
+        <i class="fas fa-users"></i> Arsip Periode
       </button>
       <button class="tab-btn" data-tab="supervisor">
-        <i class="fas fa-user-tie"></i> Arsip Pembina OSIS
+        <i class="fas fa-chalkboard-teacher"></i> Arsip Pembina
       </button>
     </div>
 
@@ -637,19 +771,14 @@
           <option value="oldest">Terlama</option>
           <option value="name">Nama Ketua</option>
         </select>
-        <button class="btn btn-ghost btn-sm" id="resetFilters">
-          <i class="fas fa-redo"></i> Reset Filter
+        <button class="btn btn-sm btn-outline" id="resetFilters">
+          <i class="fas fa-redo"></i> Reset
         </button>
       </div>
 
-      <div class="archive-grid" id="periodArchiveGrid">
-      </div>
+      <div class="archive-grid" id="periodArchiveGrid"></div>
 
-      <div class="pagination" id="periodPagination">
-        <button class="page-btn" disabled><i class="fas fa-chevron-left"></i></button>
-        <button class="page-btn active">1</button>
-        <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
-      </div>
+      <div class="pagination" id="periodPagination"></div>
     </div>
 
     <!-- Supervisor Archive Tab Content -->
@@ -663,30 +792,62 @@
         <select class="filter-select" id="sortBySupervisor">
           <option value="name">Nama</option>
           <option value="period">Periode</option>
-          <option value="duration">Lama Masa Bakti</option>
         </select>
-        <button class="btn btn-ghost btn-sm" id="resetSupervisorFilters">
-          <i class="fas fa-redo"></i> Reset Filter
+        <button class="btn btn-sm btn-outline" id="resetSupervisorFilters">
+          <i class="fas fa-redo"></i> Reset
         </button>
       </div>
 
-      <div class="archive-grid" id="supervisorArchiveGrid">
-      </div>
+      <div class="archive-grid" id="supervisorArchiveGrid"></div>
 
-      <div class="pagination" id="supervisorPagination">
-        <button class="page-btn" disabled><i class="fas fa-chevron-left"></i></button>
-        <button class="page-btn active">1</button>
-        <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
-      </div>
+      <div class="pagination" id="supervisorPagination"></div>
     </div>
 
     <!-- Footer -->
     <footer class="footer" role="contentinfo">
-      <p>© 2026 Organisasi Siswa Intra Sekolah | SMK Negeri 4 Banjarmasin</p>
-      <p style="margin-top: 0.5rem;">
-        Sistem informasi arsip digital OSIS
-      </p>
+      <h3 style="color: var(--primary); margin-bottom: 0.5rem;">OSIS SMK Negeri 4 Banjarmasin</h3>
+      <p style="color: var(--text-muted);">© 2026 Membangun Karakter, Meraih Prestasi.</p>
     </footer>
+  </div>
+
+  <!-- MODAL DETAIL (New Feature) -->
+  <div class="modal-overlay" id="detailModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close-modal" onclick="App.closeModal()">
+          <i class="fas fa-times"></i>
+        </button>
+        <img src="" alt="Detail Image" class="modal-img" id="modalImg">
+      </div>
+      <div class="modal-body">
+        <div id="modalTags"></div>
+        <h2 id="modalTitle" style="font-size: 2.2rem; margin-bottom: 1rem; color: var(--primary);">Judul</h2>
+
+        <div class="article-section">
+          <h3><i class="fas fa-info-circle"></i> Informasi Utama</h3>
+          <div id="modalKeyInfo" style="margin-bottom: 1rem;"></div>
+        </div>
+
+        <div class="article-section">
+          <h3><i class="fas fa-align-left"></i> Deskripsi Lengkap</h3>
+          <div class="article-text" id="modalDesc"></div>
+        </div>
+
+        <div class="article-section" id="modalMembersSection" style="display:none;">
+          <h3><i class="fas fa-users-cog"></i> Struktur & Anggota</h3>
+          <ul class="member-list" id="modalMembers"></ul>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+          <a href="#" class="btn btn-primary" id="modalMembersBtn">
+            <i class="fas fa-users"></i> Cek Anggota
+          </a>
+          <button class="btn btn-outline" onclick="App.closeModal()">
+            <i class="fas fa-check"></i> Tutup Detail
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Back to Top Button -->
@@ -698,25 +859,15 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    // App State Management
+    // --- APP STATE & DATA ---
     const AppState = {
       currentTab: 'period',
-      currentPage: {
-        period: 1,
-        supervisor: 1
-      },
+      currentPage: { period: 1, supervisor: 1 },
       filters: {
-        period: {
-          search: '',
-          period: 'all',
-          sortBy: 'newest'
-        },
-        supervisor: {
-          search: '',
-          status: 'all',
-          sortBy: 'name'
-        }
+        period: { search: '', periodFilter: 'all', sortBy: 'newest' },
+        supervisor: { search: '', status: 'all', sortBy: 'name' }
       },
+      // Data dari snippet pengguna, ditambahkan placeholder gambar
       data: {
         periods: [
           {
@@ -727,9 +878,10 @@
             sekretaris: 'Muhammad Syahrul & Anandha Raisya Oktama Putri',
             bendahara: 'Muhammad Dede Riyadhi & Leonardus Dwi Noverianto',
             pembina: 'Ade Fitriyadi S.Pd.',
-            description: '<i>"Bersatu kita wujudkan GARUDA! (Generasi aktif, unggul dan berdaya)"</i></br> </br><b>VISI :</b> Menjadikan OSIS SMK Negeri 4 Banjarmasin sebagai organisasi yag inspiratif, inovatif, dan berkualitas, serta menjadi wadah bagi seluuruh siswa untuk belajar, berkembang, dan berlatih bersama membentuk jiwa kepemimpinan yang berintegritas.</br> </br><b>Misi :</b> 1. Menanamkan keimanan sebagai pondasi pembentukan karakter yang jujur, disiplin, dan bertanggung jawab.<br>2. Meneruskan serta mengoptimalkan program kerja yang telah maupun yang belum terlaksana dengan cara yang lebih efektif.<br>3. Menampung dan menyalurkan aspirasi siswa/i sebagai bentuk partisipasi aktif dalam meningkatkan kinerja OSIS SMK Negeri 4 Banjarmasin.<br>4. Merangkul dan menjalin kerja sama antar ekskul, untuk mengembangkan potensi dan minat bakat siswa/i SMK Negeri 4 Banjarmasin.<hr>',
-            image: 'https://imgpx.com/en/MG49z9tdmMbg.png',
-            url: '/arsip/org/osis/2025-2026'
+            description: '<i>"Bersatu kita wujudkan GARUDA! (Generasi aktif, unggul dan berdaya)"</i></br> </br><b>VISI :</b> Menjadikan OSIS SMK Negeri 4 Banjarmasin sebagai organisasi yag inspiratif, inovatif, dan berkualitas, serta menjadi wadah bagi seluuruh siswa untuk belajar, berkembang, dan berlatih bersama membentuk jiwa kepemimpinan yang berintegritas.</br> </br><b>MISI :</b> <br>1. Menanamkan keimanan sebagai pondasi pembentukan karakter yang jujur, disiplin, dan bertanggung jawab.<br>2. Meneruskan serta mengoptimalkan program kerja yang telah maupun yang belum terlaksana dengan cara yang lebih efektif.<br>3. Menampung dan menyalurkan aspirasi siswa/i sebagai bentuk partisipasi aktif dalam meningkatkan kinerja OSIS SMK Negeri 4 Banjarmasin.<br>4. Merangkul dan menjalin kerja sama antar ekskul, untuk mengembangkan potensi dan minat bakat siswa/i SMK Negeri 4 Banjarmasin.',
+            image: 'https://res.cloudinary.com/dahcxjdbl/image/upload/v1769563595/IMG_0102_zgkvji_tuvi9t.webp',
+            url: '#',
+            modalMembersBtn: '../arsip/org/osis/2025-2026'
           },
           {
             id: 'period-2024-2025',
@@ -739,9 +891,10 @@
             sekretaris: 'Amalia Rahmania & Nur Almira Putri',
             bendahara: 'Arya Tri Nugraha & Muhammad Dede Riyadhi',
             pembina: 'Ade Fitriyadi S.Pd.',
-            description: '<hr>',
-            image: 'https://imgpx.com/en/KXyr2uPAGAbZ.jpg',
-            url: '/arsip/org/osis/2024-2025'
+            description: 'Periode transisi yang berfokus pada stabilitas organisasi pasca pandemi. Mencanangkan program digitalisasi administrasi OSIS.',
+            image: 'https://res.cloudinary.com/dahcxjdbl/image/upload/v1766220516/reno_hermawan-min-compressed_wbdlnr.jpg',
+            url: '#',
+            modalMembersBtn: '../arsip/org/osis/2024-2025'
           }
         ],
         supervisors: [
@@ -750,24 +903,24 @@
             name: 'Ade Fitriyadi S.Pd.',
             period: '2024 - Sekarang',
             status: 'active',
-            description: 'Fokus pada pengembangan leadership dan digital literacy.',
-            image: 'https://imgpx.com/en/BAcuytpRW7DL.jpg',
-            url: '/arsip/org/osis/pembina/ade-fitriyadi.htm'
+            description: 'Fokus pada pengembangan leadership dan digital literacy. Beliau sangat aktif dalam mendampingi setiap kegiatan ekstrakurikuler dan intra sekolah.',
+            image: 'https://res.cloudinary.com/dahcxjdbl/image/upload/v1766220516/ibusilvi_bapaade_ibueka-min-compressed_lrauxz.jpg',
+            url: '#'
           },
           {
             id: 'supervisor-nurul',
             name: 'Alm. Nurulmawadah',
             period: '2015 - 2024',
             status: 'former',
-            description: 'Mengembangkan program ekstrakurikuler unggulan sekolah.',
-            image: 'https://picsum.photos/seed/bambang/800/400.jpg',
-            url: '/arsip/org/osis/pembina/bambang-supriyadi'
+            description: 'Mengembangkan program ekstrakurikuler unggulan sekolah. Beliau adalah sosok panutan yang sangat disiplin dan berdedikasi tinggi.',
+            image: 'https://picsum.photos/seed/nurul/800/400.jpg',
+            url: '#'
           }
         ]
       }
     };
 
-    // DOM Elements
+    // --- DOM ELEMENTS ---
     const DOM = {
       themeToggle: document.getElementById('themeToggle'),
       searchInput: document.getElementById('searchInput'),
@@ -785,543 +938,293 @@
       periodPagination: document.getElementById('periodPagination'),
       supervisorPagination: document.getElementById('supervisorPagination'),
       backToTop: document.getElementById('backToTop'),
-      toast: document.getElementById('toast')
+      toast: document.getElementById('toast'),
+      // Modal Elements
+      modal: document.getElementById('detailModal'),
+      modalImg: document.getElementById('modalImg'),
+      modalTitle: document.getElementById('modalTitle'),
+      modalDesc: document.getElementById('modalDesc'),
+      modalTags: document.getElementById('modalTags'),
+      modalKeyInfo: document.getElementById('modalKeyInfo'),
+      modalMembersSection: document.getElementById('modalMembersSection'),
+      modalMembersBtn: document.getElementById('modalMembersBtn'),
+      modalMembers: document.getElementById('modalMembers')
     };
 
-    // Data Service
-    const DataService = {
-      filterPeriodData() {
-        const { search, period } = AppState.filters.period;
-        
-        return AppState.data.periods.filter(item => {
-          // Search filter
-          if (search && !(
-            item.period.toLowerCase().includes(search) ||
-            item.ketua.toLowerCase().includes(search) ||
-            item.wakil.toLowerCase().includes(search) ||
-            item.pembina.toLowerCase().includes(search) ||
-            item.description.toLowerCase().includes(search)
-          )) {
-            return false;
-          }
-          
-          // Period filter
-          if (period !== 'all' && item.period !== period) {
-            return false;
-          }
-          
-          return true;
-        });
+    // --- MODAL LOGIC (NEW FEATURE) ---
+    const App = {
+      openModal(id, type) {
+        const data = AppState.data[type === 'period' ? 'periods' : 'supervisors'].find(item => item.id === id);
+        if (!data) return;
+
+        DOM.modalImg.src = data.image;
+        DOM.modalTitle.textContent = type === 'period' ? `Periode ${data.period}` : data.name;
+
+        // Set HTML Content
+        DOM.modalDesc.innerHTML = data.description;
+
+        // Render Tags & Info
+        let infoHTML = '';
+        let membersHTML = '';
+
+        if (type === 'period') {
+          DOM.modalTags.innerHTML = `<span class="modal-tag">${data.period}</span> <span class="modal-tag">Ketua: ${data.ketua}</span>`;
+
+          infoHTML = `
+                <p><i class="fas fa-user-shield" style="color:var(--primary); width:25px;"></i> <strong>Pembina:</strong> ${data.pembina}</p>
+            `;
+
+          membersHTML = `
+                <li class="member-item"><i class="fas fa-crown" style="color: gold;"></i> Ketua: ${data.ketua}</li>
+                <li class="member-item"><i class="fas fa-user-tie" style="color: var(--accent);"></i> Wakil: ${data.wakil}</li>
+                <li class="member-item"><i class="fas fa-pen-nib" style="color: var(--secondary);"></i> Sekretaris: ${data.sekretaris}</li>
+                <li class="member-item"><i class="fas fa-coins" style="color: var(--success);"></i> Bendahara: ${data.bendahara}</li>
+            `;
+          DOM.modalMembersSection.style.display = 'block';
+        } else {
+          const statusLabel = data.status === 'active' ? 'Masih Aktif' : 'Mantan Pembina';
+          DOM.modalTags.innerHTML = `<span class="modal-tag" style="background:${data.status === 'active' ? 'var(--success)' : 'var(--text-muted)'}">${statusLabel}</span>`;
+
+          infoHTML = `
+                <p><i class="fas fa-calendar-alt" style="color:var(--primary); width:25px;"></i> <strong>Masa Bakti:</strong> ${data.period}</p>
+            `;
+          DOM.modalMembersSection.style.display = 'none'; // No detailed list for supervisor in this data
+        }
+
+        DOM.modalKeyInfo.innerHTML = infoHTML;
+        DOM.modalMembers.innerHTML = membersHTML;
+
+        DOM.modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
       },
 
-      filterSupervisorData() {
-        const { search, status } = AppState.filters.supervisor;
-        
-        return AppState.data.supervisors.filter(item => {
-          // Search filter
-          if (search && !(
-            item.name.toLowerCase().includes(search) ||
-            item.period.toLowerCase().includes(search) ||
-            item.description.toLowerCase().includes(search)
-          )) {
-            return false;
-          }
-          
-          // Status filter
-          if (status !== 'all' && item.status !== status) {
-            return false;
-          }
-          
-          return true;
-        });
-      },
-
-      sortPeriodData(data) {
-        const { sortBy } = AppState.filters.period;
-        
-        return [...data].sort((a, b) => {
-          switch (sortBy) {
-            case 'newest':
-              return b.period.localeCompare(a.period);
-            case 'oldest':
-              return a.period.localeCompare(b.period);
-            case 'name':
-              return a.ketua.localeCompare(b.ketua);
-            default:
-              return 0;
-          }
-        });
-      },
-
-      sortSupervisorData(data) {
-        const { sortBy } = AppState.filters.supervisor;
-        
-        return [...data].sort((a, b) => {
-          switch (sortBy) {
-            case 'name':
-              return a.name.localeCompare(b.name);
-            case 'period':
-              return b.period.localeCompare(a.period);
-            case 'duration':
-              // This is a simplified sort, in a real app you'd calculate actual duration
-              return a.status === 'active' ? -1 : 1;
-            default:
-              return 0;
-          }
-        });
-      },
-
-      paginateData(data, page) {
-        const itemsPerPage = 6;
-        const startIndex = (page - 1) * itemsPerPage;
-        return data.slice(startIndex, startIndex + itemsPerPage);
+      closeModal() {
+        DOM.modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
       }
     };
 
-    // View Service
+    // --- DATA & VIEW SERVICE ---
+    const DataService = {
+      filterPeriodData() {
+        const { search, periodFilter } = AppState.filters.period;
+        return AppState.data.periods.filter(item => {
+          const query = search.toLowerCase();
+          const matchSearch = !search ||
+            item.period.toLowerCase().includes(query) ||
+            item.ketua.toLowerCase().includes(query) ||
+            item.wakil.toLowerCase().includes(query) ||
+            item.pembina.toLowerCase().includes(query) ||
+            item.description.toLowerCase().includes(query);
+          const matchFilter = periodFilter === 'all' || item.period === periodFilter;
+          return matchSearch && matchFilter;
+        });
+      },
+      filterSupervisorData() {
+        const { search, status } = AppState.filters.supervisor;
+        return AppState.data.supervisors.filter(item => {
+          const query = search.toLowerCase();
+          const matchSearch = !search ||
+            item.name.toLowerCase().includes(query) ||
+            item.period.toLowerCase().includes(query) ||
+            item.description.toLowerCase().includes(query);
+          const matchFilter = status === 'all' || item.status === status;
+          return matchSearch && matchFilter;
+        });
+      },
+      sortData(data, sortBy, type) {
+        return [...data].sort((a, b) => {
+          if (type === 'period') {
+            if (sortBy === 'newest') return b.period.localeCompare(a.period);
+            if (sortBy === 'oldest') return a.period.localeCompare(b.period);
+            if (sortBy === 'name') return a.ketua.localeCompare(b.ketua);
+          } else {
+            if (sortBy === 'name') return a.name.localeCompare(b.name);
+            if (sortBy === 'period') return b.period.localeCompare(a.period);
+          }
+          return 0;
+        });
+      }
+    };
+
     const ViewService = {
       renderPeriodCards() {
-        const filteredData = DataService.filterPeriodData();
-        const sortedData = DataService.sortPeriodData(filteredData);
-        const paginatedData = DataService.paginateData(sortedData, AppState.currentPage.period);
-        
-        if (paginatedData.length === 0) {
-          DOM.periodArchiveGrid.innerHTML = `
-            <div class="empty-state">
-              <i class="fas fa-folder-open"></i>
-              <h3>Tidak ada arsip ditemukan</h3>
-              <p>Coba ubah filter atau kata kunci pencarian Anda</p>
-            </div>
-          `;
-          return;
-        }
-        
-        DOM.periodArchiveGrid.innerHTML = paginatedData.map(period => `
-          <div class="archive-card" data-period="${period.period}" data-name="${period.ketua}">
+        const data = DataService.sortData(DataService.filterPeriodData(), AppState.filters.period.sortBy, 'period');
+        const start = (AppState.currentPage.period - 1) * 6;
+        const pageData = data.slice(start, start + 6);
+
+        DOM.periodArchiveGrid.innerHTML = pageData.length ? pageData.map(p => `
+          <div class="archive-card">
             <div class="archive-header">
-              <div class="archive-title">Periode ${period.period}</div>
-              <div class="archive-subtitle">Ketua: ${period.ketua}</div>
+              <div class="archive-title">Periode ${p.period}</div>
+              <div class="archive-subtitle">Ketua: ${p.ketua}</div>
             </div>
-            <img src="${period.image}" alt="Foto OSIS Periode ${period.period}" class="archive-image" loading="lazy" data-url="${period.url}">
+            <img src="${p.image}" alt="Foto OSIS ${p.period}" class="archive-image" loading="lazy">
             <div class="archive-content">
-              <p>${period.description}</p>
-              <div class="archive-details">
-                <div class="archive-detail">
-                  <span class="archive-detail-label">Wakil Ketua:</span>
-                  <span>${period.wakil}</span>
-                </div>
-                <div class="archive-detail">
-                  <span class="archive-detail-label">Sekretaris:</span>
-                  <span>${period.sekretaris}</span>
-                </div>
-                <div class="archive-detail">
-                  <span class="archive-detail-label">Bendahara:</span>
-                  <span>${period.bendahara}</span>
-                </div>
-                <div class="archive-detail">
-                  <span class="archive-detail-label">Pembina:</span>
-                  <span>${period.pembina}</span>
-                </div>
-              </div>
+              <p class="archive-desc-preview">${p.description.replace(/<[^>]*>?/gm, '')}</p>
               <div class="archive-actions">
-                <a href="${period.url}" class="btn btn-primary">Lihat Detail</a>
+                <button class="btn btn-primary" onclick="App.openModal('${p.id}', 'period')">
+                  <i class="fas fa-book-open"></i> Lihat Detail
+                </button>
               </div>
             </div>
           </div>
-        `).join('');
+        `).join('') : `<div style="grid-column:1/-1; text-align:center; padding:2rem;">Tidak ada data ditemukan.</div>`;
+
+        this.renderPagination(data.length, AppState.currentPage.period, DOM.periodPagination, 'period');
       },
 
       renderSupervisorCards() {
-        const filteredData = DataService.filterSupervisorData();
-        const sortedData = DataService.sortSupervisorData(filteredData);
-        const paginatedData = DataService.paginateData(sortedData, AppState.currentPage.supervisor);
-        
-        if (paginatedData.length === 0) {
-          DOM.supervisorArchiveGrid.innerHTML = `
-            <div class="empty-state">
-              <i class="fas fa-user-tie"></i>
-              <h3>Tidak ada pembina ditemukan</h3>
-              <p>Coba ubah filter atau kata kunci pencarian Anda</p>
+        const data = DataService.sortData(DataService.filterSupervisorData(), AppState.filters.supervisor.sortBy, 'supervisor');
+        const start = (AppState.currentPage.supervisor - 1) * 6;
+        const pageData = data.slice(start, start + 6);
+
+        DOM.supervisorArchiveGrid.innerHTML = pageData.length ? pageData.map(s => `
+          <div class="archive-card">
+            <div class="archive-header" style="background: var(--accent);">
+              <div class="archive-title">${s.name}</div>
+              <div class="archive-subtitle">${s.period}</div>
             </div>
-          `;
-          return;
-        }
-        
-        DOM.supervisorArchiveGrid.innerHTML = paginatedData.map(supervisor => `
-          <div class="archive-card" data-status="${supervisor.status}" data-name="${supervisor.name}">
-            <div class="archive-header">
-              <div class="archive-title">${supervisor.name}</div>
-              <div class="archive-subtitle">${supervisor.period}</div>
-            </div>
-            <img src="${supervisor.image}" alt="Foto ${supervisor.name}" class="archive-image" loading="lazy" data-url="${supervisor.url}">
+            <img src="${s.image}" alt="Foto ${s.name}" class="archive-image" loading="lazy">
             <div class="archive-content">
-              <p>${supervisor.description}</p>
-              <div class="archive-details">
-                <div class="archive-detail">
-                  <span class="archive-detail-label">Status:</span>
-                  <span>${supervisor.status === 'active' ? 'Masih Aktif' : 'Mantan Pembina'}</span>
-                </div>
-                <div class="archive-detail">
-                  <span class="archive-detail-label">Prestasi:</span>
-                  <span>Pembina Terbaik Tingkat Kota 2025</span>
-                </div>
-              </div>
+              <p class="archive-desc-preview">${s.description}</p>
               <div class="archive-actions">
-                <a href="${supervisor.url}" class="btn btn-primary">Lihat Detail</a>
+                <button class="btn btn-primary" onclick="App.openModal('${s.id}', 'supervisor')">
+                  <i class="fas fa-user-circle"></i> Profil Lengkap
+                </button>
               </div>
             </div>
           </div>
-        `).join('');
+        `).join('') : `<div style="grid-column:1/-1; text-align:center; padding:2rem;">Tidak ada data ditemukan.</div>`;
+
+        this.renderPagination(data.length, AppState.currentPage.supervisor, DOM.supervisorPagination, 'supervisor');
       },
 
-      updatePeriodPagination() {
-        const filteredData = DataService.filterPeriodData();
-        const totalPages = Math.ceil(filteredData.length / 6);
-        const currentPage = AppState.currentPage.period;
-        
-        let paginationHTML = `
-          <button class="page-btn" ${currentPage === 1 ? 'disabled' : ''}>
-            <i class="fas fa-chevron-left"></i>
-          </button>
-        `;
-        
-        // Add page numbers
+      renderPagination(totalItems, currentPage, container, type) {
+        const totalPages = Math.ceil(totalItems / 6);
+        let html = '';
+
+        // Prev
+        html += `<button class="page-btn" ${currentPage === 1 ? 'disabled' : ''} onclick="EventController.changePage('${type}', -1)"><i class="fas fa-chevron-left"></i></button>`;
+
+        // Numbers (Simple version)
         for (let i = 1; i <= totalPages; i++) {
-          // Show first page, last page, current page, and pages around current page
-          if (
-            i === 1 || 
-            i === totalPages || 
-            (i >= currentPage - 1 && i <= currentPage + 1)
-          ) {
-            paginationHTML += `
-              <button class="page-btn ${i === currentPage ? 'active' : ''}">${i}</button>
-            `;
-          } else if (
-            (i === currentPage - 2 && i > 1) || 
-            (i === currentPage + 2 && i < totalPages)
-          ) {
-            paginationHTML += `<span class="page-ellipsis">...</span>`;
+          if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
+            html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="EventController.setPage('${type}', ${i})">${i}</button>`;
+          } else if (i === currentPage - 2 || i === currentPage + 2) {
+            html += `<span style="align-self:center; font-weight:bold;">...</span>`;
           }
         }
-        
-        paginationHTML += `
-          <button class="page-btn" ${currentPage === totalPages ? 'disabled' : ''}>
-            <i class="fas fa-chevron-right"></i>
-          </button>
-        `;
-        
-        DOM.periodPagination.innerHTML = paginationHTML;
+
+        // Next
+        html += `<button class="page-btn" ${currentPage === totalPages ? 'disabled' : ''} onclick="EventController.changePage('${type}', 1)"><i class="fas fa-chevron-right"></i></button>`;
+
+        container.innerHTML = html;
       },
 
-      updateSupervisorPagination() {
-        const filteredData = DataService.filterSupervisorData();
-        const totalPages = Math.ceil(filteredData.length / 6);
-        const currentPage = AppState.currentPage.supervisor;
-        
-        let paginationHTML = `
-          <button class="page-btn" ${currentPage === 1 ? 'disabled' : ''}>
-            <i class="fas fa-chevron-left"></i>
-          </button>
-        `;
-        
-        // Add page numbers
-        for (let i = 1; i <= totalPages; i++) {
-          // Show first page, last page, current page, and pages around current page
-          if (
-            i === 1 || 
-            i === totalPages || 
-            (i >= currentPage - 1 && i <= currentPage + 1)
-          ) {
-            paginationHTML += `
-              <button class="page-btn ${i === currentPage ? 'active' : ''}">${i}</button>
-            `;
-          } else if (
-            (i === currentPage - 2 && i > 1) || 
-            (i === currentPage + 2 && i < totalPages)
-          ) {
-            paginationHTML += `<span class="page-ellipsis">...</span>`;
-          }
-        }
-        
-        paginationHTML += `
-          <button class="page-btn" ${currentPage === totalPages ? 'disabled' : ''}>
-            <i class="fas fa-chevron-right"></i>
-          </button>
-        `;
-        
-        DOM.supervisorPagination.innerHTML = paginationHTML;
+      updateStats() {
+        const type = AppState.currentTab;
+        const total = type === 'period' ? AppState.data.periods.length : AppState.data.supervisors.length;
+        const filtered = type === 'period' ? DataService.filterPeriodData().length : DataService.filterSupervisorData().length;
+
+        DOM.searchStats.innerHTML = `Total: <strong>${total}</strong> ${type === 'period' ? 'Periode' : 'Pembina'} · <strong>${filtered}</strong> Ditampilkan`;
       },
 
-      updateSearchStats() {
-        let total, archived;
-        
-        if (AppState.currentTab === 'period') {
-          total = AppState.data.periods.length;
-          archived = DataService.filterPeriodData().length;
-        } else {
-          total = AppState.data.supervisors.length;
-          archived = DataService.filterSupervisorData().length;
-        }
-        
-        DOM.searchStats.innerHTML = `Total: <strong>69</strong> Periode OSIS · <strong>${archived}</strong> ${AppState.currentTab === 'period' ? 'Periode OSIS Ter-arsipkan' : 'Pembina OSIS Diarsipkan'}`;
-      },
-
-      showToast(message, type = 'info') {
-        DOM.toast.textContent = message;
-        DOM.toast.className = `toast ${type}`;
-        DOM.toast.classList.add('show');
-        
-        setTimeout(() => {
-          DOM.toast.classList.remove('show');
-        }, 3000);
+      showToast(msg, type = 'info') {
+        DOM.toast.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'}"></i> <span>${msg}</span>`;
+        DOM.toast.className = `toast show ${type}`;
+        setTimeout(() => DOM.toast.className = 'toast', 3000);
       }
     };
 
-    // Event Controller
+    // --- CONTROLLER ---
     const EventController = {
-      setupEventListeners() {
-        // Theme Toggle
-        DOM.themeToggle.addEventListener('click', this.toggleTheme);
-        
+      setupListeners() {
+        // Theme
+        DOM.themeToggle.addEventListener('click', () => {
+          const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+          const newTheme = isDark ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', newTheme);
+          DOM.themeToggle.innerHTML = `<i class="fas fa-${isDark ? 'moon' : 'sun'}"></i> <span>${isDark ? 'Mode Gelap' : 'Mode Terang'}</span>`;
+          ViewService.showToast('Tema berhasil diubah!', 'success');
+        });
+
         // Search
-        DOM.searchInput.addEventListener('input', this.handleSearch);
-        
-        // Tab Navigation
-        DOM.tabButtons.forEach(button => {
-          button.addEventListener('click', () => this.switchTab(button.getAttribute('data-tab')));
+        DOM.searchInput.addEventListener('input', (e) => {
+          AppState.filters[AppState.currentTab].search = e.target.value;
+          AppState.currentPage[AppState.currentTab] = 1;
+          this.refreshView();
         });
-        
-        // Filters
-        DOM.periodFilter.addEventListener('change', this.handlePeriodFilter);
-        DOM.sortBy.addEventListener('change', this.handlePeriodSort);
-        DOM.supervisorFilter.addEventListener('change', this.handleSupervisorFilter);
-        DOM.sortBySupervisor.addEventListener('change', this.handleSupervisorSort);
-        
-        // Reset Filters
-        DOM.resetFilters.addEventListener('click', this.resetPeriodFilters);
-        DOM.resetSupervisorFilters.addEventListener('click', this.resetSupervisorFilters);
-        
-        // Back to Top
-        DOM.backToTop.addEventListener('click', this.scrollToTop);
-        window.addEventListener('scroll', this.checkScrollPosition);
-        
-        // Keyboard Shortcuts
-        document.addEventListener('keydown', this.handleKeyboardShortcuts);
-        
-        // Image clicks for navigation
-        document.addEventListener('click', (e) => {
-          if (e.target.classList.contains('archive-image')) {
-            const url = e.target.getAttribute('data-url');
-            if (url) {
-              window.location.href = url;
-            }
-          }
-        });
-        
-        // Pagination (using event delegation)
-        document.addEventListener('click', (e) => {
-          if (e.target.classList.contains('page-btn') && !e.target.disabled) {
-            if (e.target.closest('#periodPagination')) {
-              this.handlePeriodPagination(e.target);
-            } else if (e.target.closest('#supervisorPagination')) {
-              this.handleSupervisorPagination(e.target);
-            }
-          }
-        });
-      },
 
-      toggleTheme() {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        
-        // Update button text and icon
-        if (newTheme === 'dark') {
-          DOM.themeToggle.innerHTML = '<i class="fas fa-sun" aria-hidden="true"></i><span>Mode Terang</span>';
-        } else {
-          DOM.themeToggle.innerHTML = '<i class="fas fa-moon" aria-hidden="true"></i><span>Mode Gelap</span>';
-        }
-        
-        ViewService.showToast('Tema berhasil diubah', 'success');
-      },
-
-      handleSearch(e) {
-        const searchTerm = e.target.value;
-        AppState.filters[AppState.currentTab].search = searchTerm.toLowerCase();
-        this.applyFilters();
-      },
-
-      switchTab(tabName) {
-        // Update active states
+        // Tabs
         DOM.tabButtons.forEach(btn => {
-          btn.classList.toggle('active', btn.getAttribute('data-tab') === tabName);
+          btn.addEventListener('click', () => {
+            DOM.tabButtons.forEach(b => b.classList.remove('active'));
+            DOM.tabContents.forEach(c => c.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById(`${btn.dataset.tab}-tab`).classList.add('active');
+            AppState.currentTab = btn.dataset.tab;
+            DOM.searchInput.placeholder = AppState.currentTab === 'period' ? 'Cari nama ketua, periode...' : 'Cari nama pembina...';
+            this.refreshView();
+          });
         });
-        
-        DOM.tabContents.forEach(content => {
-          content.classList.toggle('active', content.id === `${tabName}-tab`);
+
+        // Filters
+        DOM.periodFilter.addEventListener('change', (e) => { AppState.filters.period.periodFilter = e.target.value; AppState.currentPage.period = 1; this.refreshView(); });
+        DOM.sortBy.addEventListener('change', (e) => { AppState.filters.period.sortBy = e.target.value; this.refreshView(); });
+        DOM.supervisorFilter.addEventListener('change', (e) => { AppState.filters.supervisor.status = e.target.value; AppState.currentPage.supervisor = 1; this.refreshView(); });
+        DOM.sortBySupervisor.addEventListener('change', (e) => { AppState.filters.supervisor.sortBy = e.target.value; this.refreshView(); });
+
+        // Reset
+        DOM.resetFilters.addEventListener('click', () => {
+          AppState.filters.period = { search: '', periodFilter: 'all', sortBy: 'newest' };
+          DOM.periodFilter.value = 'all'; DOM.sortBy.value = 'newest'; DOM.searchInput.value = '';
+          AppState.currentPage.period = 1; this.refreshView(); ViewService.showToast('Filter direset', 'info');
         });
-        
-        // Update app state
-        AppState.currentTab = tabName;
-        
-        // Update search placeholder based on active tab
-        if (tabName === 'period') {
-          DOM.searchInput.placeholder = 'Cari arsip, nama, atau periode...';
-        } else {
-          DOM.searchInput.placeholder = 'Cari nama pembina atau periode...';
-        }
-        
-        // Apply current search and filters
-        this.applyFilters();
-      },
+        DOM.resetSupervisorFilters.addEventListener('click', () => {
+          AppState.filters.supervisor = { search: '', status: 'all', sortBy: 'name' };
+          DOM.supervisorFilter.value = 'all'; DOM.sortBySupervisor.value = 'name'; DOM.searchInput.value = '';
+          AppState.currentPage.supervisor = 1; this.refreshView(); ViewService.showToast('Filter direset', 'info');
+        });
 
-      handlePeriodFilter(e) {
-        AppState.filters.period.period = e.target.value;
-        this.applyFilters();
-      },
+        // Back to top
+        window.addEventListener('scroll', () => {
+          DOM.backToTop.classList.toggle('visible', window.scrollY > 300);
+        });
+        DOM.backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-      handlePeriodSort(e) {
-        AppState.filters.period.sortBy = e.target.value;
-        this.applyFilters();
-      },
-
-      handleSupervisorFilter(e) {
-        AppState.filters.supervisor.status = e.target.value;
-        this.applyFilters();
-      },
-
-      handleSupervisorSort(e) {
-        AppState.filters.supervisor.sortBy = e.target.value;
-        this.applyFilters();
-      },
-
-      resetPeriodFilters() {
-        AppState.filters.period = {
-          search: '',
-          period: 'all',
-          sortBy: 'newest'
-        };
-        
-        DOM.searchInput.value = '';
-        DOM.periodFilter.value = 'all';
-        DOM.sortBy.value = 'newest';
-        
-        this.applyFilters();
-        ViewService.showToast('Filter berhasil direset', 'info');
-      },
-
-      resetSupervisorFilters() {
-        AppState.filters.supervisor = {
-          search: '',
-          status: 'all',
-          sortBy: 'name'
-        };
-        
-        DOM.searchInput.value = '';
-        DOM.supervisorFilter.value = 'all';
-        DOM.sortBySupervisor.value = 'name';
-        
-        this.applyFilters();
-        ViewService.showToast('Filter berhasil direset', 'info');
-      },
-
-      applyFilters() {
-        if (AppState.currentTab === 'period') {
-          ViewService.renderPeriodCards();
-          ViewService.updatePeriodPagination();
-        } else {
-          ViewService.renderSupervisorCards();
-          ViewService.updateSupervisorPagination();
-        }
-        
-        ViewService.updateSearchStats();
-      },
-
-      handlePeriodPagination(button) {
-        if (button.querySelector('.fa-chevron-left')) {
-          AppState.currentPage.period = Math.max(1, AppState.currentPage.period - 1);
-        } else if (button.querySelector('.fa-chevron-right')) {
-          const filteredData = DataService.filterPeriodData();
-          const totalPages = Math.ceil(filteredData.length / 6);
-          AppState.currentPage.period = Math.min(totalPages, AppState.currentPage.period + 1);
-        } else {
-          AppState.currentPage.period = parseInt(button.textContent);
-        }
-        
-        ViewService.renderPeriodCards();
-        ViewService.updatePeriodPagination();
-        this.scrollToTop();
-      },
-
-      handleSupervisorPagination(button) {
-        if (button.querySelector('.fa-chevron-left')) {
-          AppState.currentPage.supervisor = Math.max(1, AppState.currentPage.supervisor - 1);
-        } else if (button.querySelector('.fa-chevron-right')) {
-          const filteredData = DataService.filterSupervisorData();
-          const totalPages = Math.ceil(filteredData.length / 6);
-          AppState.currentPage.supervisor = Math.min(totalPages, AppState.currentPage.supervisor + 1);
-        } else {
-          AppState.currentPage.supervisor = parseInt(button.textContent);
-        }
-        
-        ViewService.renderSupervisorCards();
-        ViewService.updateSupervisorPagination();
-        this.scrollToTop();
-      },
-
-      scrollToTop() {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
+        // Close Modal
+        DOM.modal.addEventListener('click', (e) => {
+          if (e.target === DOM.modal) App.closeModal();
         });
       },
 
-      checkScrollPosition() {
-        if (window.scrollY > 300) {
-          DOM.backToTop.classList.add('visible');
-        } else {
-          DOM.backToTop.classList.remove('visible');
-        }
+      refreshView() {
+        if (AppState.currentTab === 'period') ViewService.renderPeriodCards();
+        else ViewService.renderSupervisorCards();
+        ViewService.updateStats();
       },
 
-      handleKeyboardShortcuts(e) {
-        // Alt + T: Toggle theme
-        if (e.altKey && e.key === 't') {
-          this.toggleTheme();
-        }
-        
-        // Alt + S: Focus search
-        if (e.altKey && e.key === 's') {
-          e.preventDefault();
-          DOM.searchInput.focus();
-        }
+      changePage(type, dir) {
+        AppState.currentPage[type] += dir;
+        this.refreshView();
+        window.scrollTo({ top: DOM.searchInput.offsetTop - 100, behavior: 'smooth' });
+      },
+
+      setPage(type, num) {
+        AppState.currentPage[type] = num;
+        this.refreshView();
+        window.scrollTo({ top: DOM.searchInput.offsetTop - 100, behavior: 'smooth' });
       }
     };
 
-    // Initialize App
-    function init() {
-      // Load user preferences
-      const savedTheme = localStorage.getItem('theme') || 'light';
-      document.documentElement.setAttribute('data-theme', savedTheme);
-      
-      if (savedTheme === 'dark') {
-        DOM.themeToggle.innerHTML = '<i class="fas fa-sun" aria-hidden="true"></i><span>Mode Terang</span>';
-      }
-      
-      // Setup event listeners
-      EventController.setupEventListeners();
-      
-      // Initial render
-      EventController.applyFilters();
-      
-      // Check scroll position
-      EventController.checkScrollPosition();
-    }
-
-    // Initialize the app when DOM is ready
-    document.addEventListener('DOMContentLoaded', init);
+    // --- INIT ---
+    document.addEventListener('DOMContentLoaded', () => {
+      EventController.setupListeners();
+      ViewService.renderPeriodCards();
+      ViewService.updateStats();
+    });
   </script>
 </body>
+
 </html>

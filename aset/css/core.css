@@ -13,6 +13,13 @@
     --accent: #6c5ce7;
     --danger: #FF6B6B;
 
+    /* Category Colors */
+    --cat-religi: #10B981;
+    --cat-tata-cara: #3B82F6;
+    --cat-edukasi: #8B5CF6;
+    --cat-umum: var(--primary);
+    --glass-border: rgba(255, 255, 255, 0.2);
+
     /* Backgrounds & Surfaces */
     --bg-color: #FFFBF5;
     --surface: #FFFFFF;
@@ -64,6 +71,7 @@
     --border-color: var(--primary);
     --shadow-flat: 4px 4px 0px #000;
     --shadow-flat-lg: 8px 8px 0px #000;
+    --glass-border: rgba(255, 255, 255, 0.1);
 }
 
 /* --- RESET & GLOBAL --- */
@@ -153,6 +161,17 @@ img {
 }
 
 /* Utilities */
+.glass-effect {
+    background: var(--glass);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border: var(--border-thin) solid var(--glass-border);
+}
+
+.shadow-premium {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 0 5px 15px rgba(0, 0, 0, 0.04);
+}
+
 .visually-hidden {
     position: absolute;
     width: 1px;
