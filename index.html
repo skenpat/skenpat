@@ -12,7 +12,7 @@
   <meta name="description"
     content="Portal Digital Terpadu OSIS SMKN 4 Banjarmasin. Akses jadwal mapel, ekstrakurikuler, informasi sekolah, religi, dan forum kreativitas siswa Skenpat dalam satu pintu." />
   <meta name="keywords"
-    content="Skenpat, OSIS SMKN 4 Banjarmasin, SMKN 4 Banjarmasin, Sekolah Menengah Kejuruan, Banjarmasin, Ekstrakurikuler Skenpat, Jadwal Mapel Skenpat, Portal Siswa, Pendidikan Banjarmasin, Thio Saputra" />
+    content="portal skenpat, smkn 4 banjarmasin, osis smkn 4 banjarmasin, skenpatbjm, skenpat osis, skenpat.pages.dev, profil smkn 4 banjarmasin, jurusan smkn 4 banjarmasin, rpl smkn 4 banjarmasin, jadwal mapel skenpat, eskul skenpat, kegiatan osis skenpat, arsip osis skenpat, berita sekolah banjarmasin, smk pusat keunggulan, pendidikan vokasi banjarmasin, thio saputra, flessan, skenpat people, tata tertib sekolah, pengumuman sekolah, forum siswa, kreativitas siswa, sektor religi skenpat, green generation skenpat, info banjarmasin, kalsel, sekolah rujukan banjarmasin, smk favorit banjarmasin, ppdb smkn 4 banjarmasin" />
   <meta name="author" content="Thio Saputra, Skenpat-People Team" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://skenpat.pages.dev/" />
@@ -183,6 +183,9 @@
             <a href="?tab=tentang" class="cta-pill secondary">Tentang Kami</a>
           </div>
         </header>
+
+        <!-- Search Focus Overlay -->
+        <div class="search-overlay" id="search-overlay"></div>
 
         <!-- Global Advanced Search Bar -->
         <section class="global-search-section">
@@ -1280,9 +1283,13 @@
       });
     };
 
+    let selectedResultIndex = -1;
+
     const performSearch = (query) => {
       if (!query) {
         searchPreviewPane.classList.remove('active');
+        document.body.classList.remove('search-focused');
+        selectedResultIndex = -1;
         return;
       }
 
@@ -1291,19 +1298,26 @@
         item.title.toLowerCase().includes(q) ||
         item.desc.toLowerCase().includes(q) ||
         item.kw.some(k => k.includes(q))
-      ).slice(0, 4);
+      ).slice(0, 5);
 
       if (results.length > 0) {
-        instantGrid.innerHTML = results.map(res => `
-            <div class="instant-card" onclick="handleSearchClick('${res.link}')">
+        document.body.classList.add('search-focused');
+        instantGrid.innerHTML = results.map((res, idx) => {
+          const highlight = (text) => text.replace(new RegExp(q, 'gi'), match => `<span class="search-highlight">${match}</span>`);
+          return `
+            <div class="instant-card ${idx === selectedResultIndex ? 'selected' : ''}" 
+                 onclick="handleSearchClick('${res.link}')" 
+                 data-index="${idx}"
+                 data-link="${res.link}">
               <div class="icon-small"><i class="fas ${res.icon}"></i></div>
               <div class="info">
-                <h5>${res.title}</h5>
-                <p>${res.desc}</p>
+                <h5>${highlight(res.title)}</h5>
+                <p>${highlight(res.desc)}</p>
               </div>
-              <i class="fas fa-chevron-right" style="font-size: 0.8rem; color: var(--text-muted);"></i>
+              <i class="fas fa-arrow-right" style="font-size: 0.8rem; color: var(--primary);"></i>
             </div>
-          `).join('');
+          `;
+        }).join('');
         searchPreviewPane.classList.add('active');
       } else {
         instantGrid.innerHTML = '<p style="text-align:center; padding: 20px; font-size: 0.9rem; color: var(--text-muted);">Tidak ada hasil ditemukan.</p>';
@@ -1323,17 +1337,64 @@
       }
     };
 
-    globalSearchInput.addEventListener('input', (e) => performSearch(e.target.value));
-    globalSearchInput.addEventListener('focus', () => {
-      if (globalSearchInput.value) performSearch(globalSearchInput.value);
-      else searchPreviewPane.classList.add('active');
+    globalSearchInput.addEventListener('input', (e) => {
+      selectedResultIndex = -1;
+      performSearch(e.target.value);
     });
 
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.search-container-v2')) {
-        searchPreviewPane.classList.remove('active');
+    globalSearchInput.addEventListener('focus', () => {
+      if (globalSearchInput.value) {
+        performSearch(globalSearchInput.value);
+      } else {
+        searchPreviewPane.classList.add('active');
+        document.body.classList.add('search-focused');
       }
     });
+
+    globalSearchInput.addEventListener('keydown', (e) => {
+      const items = instantGrid.querySelectorAll('.instant-card');
+      if (items.length === 0) return;
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        selectedResultIndex = (selectedResultIndex + 1) % items.length;
+        updateSelection(items);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        selectedResultIndex = (selectedResultIndex - 1 + items.length) % items.length;
+        updateSelection(items);
+      } else if (e.key === 'Enter' && selectedResultIndex > -1) {
+        e.preventDefault();
+        const link = items[selectedResultIndex].getAttribute('data-link');
+        handleSearchClick(link);
+      } else if (e.key === 'Escape') {
+        globalSearchInput.blur();
+        closeSearch();
+      }
+    });
+
+    const updateSelection = (items) => {
+      items.forEach((item, idx) => {
+        item.classList.toggle('selected', idx === selectedResultIndex);
+        if (idx === selectedResultIndex) {
+          item.scrollIntoView({ block: 'nearest' });
+        }
+      });
+    };
+
+    const closeSearch = () => {
+      searchPreviewPane.classList.remove('active');
+      document.body.classList.remove('search-focused');
+      selectedResultIndex = -1;
+    };
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.search-container-v2') && !e.target.closest('.trend-tag') && !e.target.closest('.recent-item')) {
+        closeSearch();
+      }
+    });
+
+    document.getElementById('search-overlay')?.addEventListener('click', closeSearch);
 
     // Voice Search Integration
     if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {

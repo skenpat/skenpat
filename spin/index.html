@@ -135,6 +135,7 @@
             aspect-ratio: 1/1;
             /* Drop shadow for the wheel */
             filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.2));
+            cursor: pointer;
         }
 
         /* THE MAIN IMAGE - Using CSS Transform for rotation */
@@ -440,26 +441,102 @@
                 transform: translateX(0);
             }
         }
+
+        /* --- TOGGLE SWITCH --- */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--border-light);
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: var(--primary);
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(20px);
+        }
+
+        /* --- HISTORY STYLES --- */
+        .history-item {
+            background: var(--bg-body);
+            padding: 10px 15px;
+            border-radius: var(--radius-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid var(--border-light);
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .history-time {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
     </style>
 </head>
 
 <body>
 
     <header class="app-header">
-        <div class="brand"><i class="fas fa-dharmachakra"></i> Skenpat Wheel</div>
+        <div class="brand"><a style="color: var(--primary);" href="https://skenpat.pages.dev" target="_blank"><i
+                    class="fas fa-dharmachakra"></i> Skenpat Wheel</a></div>
         <div class="header-actions">
-            <button class="icon-btn" onclick="toggleTheme()"><i class="fas fa-moon" id="theme-icon"></i></button>
-            <button class="icon-btn" onclick="toggleSound()"><i class="fas fa-volume-up" id="sound-icon"></i></button>
+            <button class="icon-btn" onclick="toggleFullscreen()" title="Fullscreen"><i class="fas fa-expand"
+                    id="fullscreen-icon"></i></button>
+            <button class="icon-btn" onclick="toggleTheme()" title="Ganti Tema"><i class="fas fa-moon"
+                    id="theme-icon"></i></button>
+            <button class="icon-btn" onclick="toggleSound()" title="Suara"><i class="fas fa-volume-up"
+                    id="sound-icon"></i></button>
         </div>
     </header>
 
     <div class="app-container">
         <!-- MAIN IMAGE WHEEL -->
         <main class="wheel-stage">
-            <div class="canvas-container">
+            <div class="canvas-container" onclick="spin()" title="Klik untuk memutar!">
                 <div class="wheel-pointer"></div>
                 <!-- The visible Image Element -->
                 <img id="wheelImage" src="" alt="Wheel Spinner" draggable="false">
+            </div>
+            <div class="interaction-hint"
+                style="margin-top: 20px; font-size: 0.85rem; color: var(--text-muted); opacity: 0.8;">
+                <kbd
+                    style="background: var(--bg-surface); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border-light);">Space</kbd>
+                atau <kbd
+                    style="background: var(--bg-surface); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border-light);">Klik
+                    Roda</kbd> untuk memutar!
             </div>
         </main>
 
@@ -472,40 +549,62 @@
             <div class="controls-header">
                 <div class="tabs">
                     <button class="tab-btn active" onclick="switchTab('input', this)">Input</button>
-                    <!-- Dynamic shortcuts container -->
-                    <div id="shortcutsContainer" style="display:contents">
-                        <!-- Custom shortcuts will be injected here -->
-                    </div>
-                    <!-- Default tools -->
-                    <button class="shortcut-btn" onclick="shuffleWheel()" aria-label="Acak item">
-                        <i class="fas fa-random"></i>
-                    </button>
-                    <button class="shortcut-btn" onclick="sortWheel()" aria-label="Urutkan item A-Z">
-                        <i class="fas fa-sort-alpha-down"></i>
-                    </button>
+                    <button class="tab-btn" onclick="switchTab('history', this)">History</button>
                     <button class="tab-btn" onclick="switchTab('settings', this)">Settings</button>
                 </div>
             </div>
 
-            <!-- Tab 1 -->
             <div id="tab-input" class="tab-content active">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                    <div id="entryCount" style="font-weight:700; font-size:0.9rem; color:var(--primary);">Entries: 0
+                    </div>
+                    <div style="display:flex; gap:8px;">
+                        <button class="icon-btn" onclick="shuffleWheel()" title="Shuffle"><i
+                                class="fas fa-random"></i></button>
+                        <button class="icon-btn" onclick="sortWheel()" title="Sort A-Z"><i
+                                class="fas fa-sort-alpha-down"></i></button>
+                    </div>
+                </div>
                 <textarea id="textInput" placeholder="Add names here...&#10;Hafizh&#10;Arsidi&#10;Daus"></textarea>
+
+                <div id="shortcutsContainer"
+                    style="margin-top:10px; display:flex; gap:8px; overflow-x:auto; padding-bottom:5px;">
+                    <!-- Custom shortcuts buttons will be injected here -->
+                </div>
+
                 <div class="action-grid">
-                    <button class="btn btn-secondary" onclick="shuffleWheel()"><i class="fas fa-random"></i>
-                        Shuffle</button>
-                    <button class="btn btn-secondary" onclick="sortWheel()"><i class="fas fa-sort-alpha-down"></i>
-                        Urutkan</button>
                     <button class="btn btn-danger" onclick="clearAll()"><i class="fas fa-trash"></i> Clear</button>
                     <button class="btn btn-primary" onclick="spin()"><i class="fas fa-play"></i> SPIN</button>
                 </div>
+            </div>
+
+            <!-- Tab History -->
+            <div id="tab-history" class="tab-content">
+                <div id="historyList" style="display:flex; flex-direction:column; gap:8px;">
+                    <div style="text-align:center; color:var(--text-muted); font-style:italic; padding:20px;">Belum ada
+                        pemenang</div>
+                </div>
+                <button class="btn btn-danger" onclick="clearHistory()" style="margin-top:15px; width:100%"><i
+                        class="fas fa-history"></i> Hapus History</button>
             </div>
 
             <!-- Tab 2 -->
             <div id="tab-settings" class="tab-content">
                 <div class="setting-row" style="display:flex; justify-content:space-between; padding:10px 0;">
                     <span>Durasi-Spin</span>
-                    <input type="range" id="durationRange" min="1" max="10" value="5"
-                        oninput="updateDuration(this.value)">
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <input type="range" id="durationRange" min="1" max="10" value="5"
+                            oninput="updateDuration(this.value)">
+                        <span id="durationValue">5s</span>
+                    </div>
+                </div>
+
+                <div class="setting-row" style="display:flex; justify-content:space-between; padding:10px 0;">
+                    <span>Hapus otomatis pemenang</span>
+                    <label class="switch">
+                        <input type="checkbox" id="autoRemoveToggle">
+                        <span class="slider"></span>
+                    </label>
                 </div>
 
                 <div class="setting-group"
@@ -571,7 +670,9 @@
             rotation: 0, // In degrees
             isSpinning: false,
             soundEnabled: true,
-            duration: 5
+            duration: 5,
+            history: [],
+            autoRemove: false
         };
 
         /* --- DOM ELEMENTS --- */
@@ -600,8 +701,30 @@
             parseInput();
             updateWheelImage(); // Generates the image
 
+            // Load history and settings
+            state.history = JSON.parse(localStorage.getItem('spinHistory') || '[]');
+            renderHistory();
+
+            const autoRemoveCheck = document.getElementById('autoRemoveToggle');
+            state.autoRemove = JSON.parse(localStorage.getItem('spinAutoRemove') || 'false');
+            autoRemoveCheck.checked = state.autoRemove;
+            autoRemoveCheck.addEventListener('change', (e) => {
+                state.autoRemove = e.target.checked;
+                localStorage.setItem('spinAutoRemove', JSON.stringify(state.autoRemove));
+            });
+
             // Apply initial rotation from storage
             wheelImg.style.transform = `rotate(${state.rotation}deg)`;
+
+            // Handle Fullscreen button state
+            document.addEventListener('fullscreenchange', () => {
+                const icon = document.getElementById('fullscreen-icon');
+                if (document.fullscreenElement) {
+                    icon.className = 'fas fa-compress';
+                } else {
+                    icon.className = 'fas fa-expand';
+                }
+            });
 
             // Event Listeners
             textInput.addEventListener('input', debounce(() => {
@@ -614,12 +737,34 @@
                 state.isSpinning = false;
                 calculateWinner();
             });
+
+            // Keyboard Shortcuts
+            window.addEventListener('keydown', (e) => {
+                // Ignore global Space if typing in textarea
+                if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT') {
+                    // Allow Ctrl+Enter even in textarea
+                    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+                        spin();
+                    }
+                    return;
+                }
+
+                if (e.code === 'Space') {
+                    e.preventDefault(); // Prevent scrolling
+                    spin();
+                }
+
+                if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+                    spin();
+                }
+            });
         });
 
         /* --- CORE LOGIC --- */
         function parseInput() {
             const lines = textInput.value.split('\n').filter(line => line.trim() !== '');
             state.segments = lines;
+            document.getElementById('entryCount').textContent = `Entries: ${lines.length}`;
         }
 
         // 1. Draw on hidden Canvas
@@ -689,21 +834,30 @@
             }
 
             state.isSpinning = true;
-            playSound('click');
+
+            // Ticking Sound Logic
+            let tickCount = 0;
+            const totalTime = state.duration * 1000;
+            const startTime = Date.now();
+
+            const playTick = () => {
+                const elapsed = Date.now() - startTime;
+                if (elapsed < totalTime) {
+                    playSound('click');
+                    // Ease out ticking frequency
+                    const progress = elapsed / totalTime;
+                    const nextTick = 50 + (progress * 400); // Start fast, end slow
+                    setTimeout(playTick, nextTick);
+                }
+            };
+            playTick();
 
             // Calculate new rotation
-            // Add at least 5 full spins (1800 deg) + random offset
             const extraSpins = 5 + Math.floor(Math.random() * 5);
             const randomOffset = Math.floor(Math.random() * 360);
-
-            // We need to add to the CURRENT rotation so it doesn't snap back
             const totalRotation = state.rotation + (extraSpins * 360) + randomOffset;
 
-            // Apply CSS Transform
             wheelImg.style.transform = `rotate(${totalRotation}deg)`;
-
-            // Update state for calculation later
-            // We normalize it modulo 360 for storage, but keep the large number for the CSS transition
             state.rotation = totalRotation;
         }
 
@@ -739,9 +893,26 @@
         function announceWinner(name) {
             document.getElementById('winnerName').textContent = name;
             resultModal.classList.add('active');
+
+            // Add to History
+            const now = new Date();
+            const timeStr = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+            state.history.unshift({ name, time: timeStr });
+            if (state.history.length > 50) state.history.pop();
+            localStorage.setItem('spinHistory', JSON.stringify(state.history));
+            renderHistory();
+
             playSound('win');
             fireConfetti();
             saveState();
+
+            // Auto Remove logic
+            if (state.autoRemove) {
+                setTimeout(() => {
+                    removeWinner();
+                    showToast("Winner removed automatically");
+                }, 1000);
+            }
         }
 
         function closeModal() {
@@ -861,14 +1032,13 @@
             const container = document.getElementById('shortcutsContainer');
             const list = document.getElementById('customShortcutsList');
 
-            // 1. Render Buttons in Header
+            // 1. Render Buttons in Input Tab
             container.innerHTML = '';
             shortcuts.forEach(s => {
                 const btn = document.createElement('button');
-                btn.className = 'shortcut-btn';
+                btn.style.cssText = 'padding:6px 12px; font-size:0.75rem; background:var(--bg-body); border:1px solid var(--border-light); border-radius:15px; cursor:pointer; white-space:nowrap;';
                 btn.title = s.name;
-                // Generate a pseudo-random icon or Initial
-                btn.innerHTML = `<span style="font-weight:800">${s.name.substring(0, 2).toUpperCase()}</span>`;
+                btn.textContent = s.name;
                 btn.onclick = () => loadShortcut(s.content);
                 container.appendChild(btn);
             });
@@ -954,9 +1124,49 @@
         }
 
         function togglePanel() {
-            document.getElementById('controlsPanel').classList.toggle('open');
-            document.getElementById('panelChevron').classList.toggle('fa-chevron-down');
-            document.getElementById('panelChevron').classList.toggle('fa-chevron-up');
+            const panel = document.getElementById('controlsPanel');
+            const chevron = document.getElementById('panelChevron');
+            panel.classList.toggle('open');
+            if (panel.classList.contains('open')) {
+                chevron.className = 'fas fa-chevron-down';
+            } else {
+                chevron.className = 'fas fa-chevron-up';
+            }
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    showToast(`Error: ${err.message}`, "error");
+                });
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+
+        function renderHistory() {
+            const list = document.getElementById('historyList');
+            if (state.history.length === 0) {
+                list.innerHTML = '<div style="text-align:center; color:var(--text-muted); font-style:italic; padding:20px;">Belum ada pemenang</div>';
+            } else {
+                list.innerHTML = state.history.map(h => `
+                    <div class="history-item">
+                        <span style="font-weight:700;">${h.name}</span>
+                        <span class="history-time">${h.time}</span>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function clearHistory() {
+            if (confirm("Hapus semua riwayat pemenang?")) {
+                state.history = [];
+                localStorage.removeItem('spinHistory');
+                renderHistory();
+                showToast("History cleared");
+            }
         }
 
         function saveState() {
@@ -976,37 +1186,46 @@
             osc.connect(gain);
             gain.connect(audioCtx.destination);
             if (type === 'click') {
-                osc.frequency.value = 600; osc.type = 'sine';
-                gain.gain.setValueAtTime(0.1, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
-                osc.start(); osc.stop(audioCtx.currentTime + 0.1);
+                osc.frequency.value = 800; osc.type = 'sine';
+                gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+                osc.start(); osc.stop(audioCtx.currentTime + 0.05);
             } else {
-                osc.frequency.value = 880; osc.type = 'triangle';
+                osc.frequency.value = 440; osc.type = 'triangle';
+                osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.5);
                 gain.gain.setValueAtTime(0.2, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
                 osc.start(); osc.stop(audioCtx.currentTime + 0.5);
             }
         }
 
         function fireConfetti() {
-            // Simple DOM confetti for visual flair
-            for (let i = 0; i < 50; i++) {
+            const colors = ['#FF6B35', '#F7931E', '#FFC947', '#4CC9F0', '#F72585'];
+            for (let i = 0; i < 100; i++) {
                 const c = document.createElement('div');
                 c.style.position = 'fixed';
-                c.style.left = '50%'; c.style.top = '50%';
-                c.style.width = '10px'; c.style.height = '10px';
+                c.style.left = '50%';
+                c.style.top = '50%';
+                c.style.width = Math.random() * 12 + 4 + 'px';
+                c.style.height = Math.random() * 12 + 4 + 'px';
+                c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
                 c.style.background = colors[Math.floor(Math.random() * colors.length)];
-                c.style.transition = '1s ease-out';
                 c.style.zIndex = '9999';
+                c.style.pointerEvents = 'none';
                 document.body.appendChild(c);
 
-                // Explosion
-                setTimeout(() => {
-                    const x = (Math.random() - 0.5) * window.innerWidth;
-                    const y = (Math.random() - 0.5) * window.innerHeight;
-                    c.style.transform = `translate(${x}px, ${y}px) rotate(${Math.random() * 360}deg)`;
-                    c.style.opacity = 0;
-                }, 10);
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * 200 + 50;
+                const tx = Math.cos(angle) * distance;
+                const ty = Math.sin(angle) * distance - 100;
 
-                setTimeout(() => c.remove(), 1000);
+                c.animate([
+                    { transform: 'translate(0,0) rotate(0)', opacity: 1 },
+                    { transform: `translate(${tx}px, ${ty}px) rotate(${Math.random() * 720}deg)`, opacity: 1, offset: 0.4 },
+                    { transform: `translate(${tx}px, ${ty + 500}px) rotate(${Math.random() * 1440}deg)`, opacity: 0 }
+                ], {
+                    duration: Math.random() * 2000 + 1000,
+                    easing: 'cubic-bezier(0, .9, .57, 1)'
+                }).onfinish = () => c.remove();
             }
         }
     </script>
