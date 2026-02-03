@@ -41,7 +41,7 @@
       "@context": "https://schema.org",
       "@type": "EducationalOrganization",
       "name": "OSIS SMKN 4 Banjarmasin",
-      "alternateName": "Skenpat",
+      "alternateName": "Skenpat People",
       "url": "https://skenpat.pages.dev/",
       "logo": "https://res.cloudinary.com/dahcxjdbl/image/upload/v1766196359/osis4_100x_vnzamj.png",
       "description": "Portal Digital Terpadu OSIS SMKN 4 Banjarmasin untuk mempermudah akses informasi siswa.",
@@ -189,7 +189,7 @@
 
         <!-- Global Advanced Search Bar -->
         <section class="global-search-section">
-          <div class="search-container-v2">
+          <div class="search-container-v2 premium-search-card">
             <div class="search-input-group">
               <i class="fas fa-search main-search-icon"></i>
               <input type="text" id="global-search-input" placeholder="Cari layanan, tim, atau acara..."
@@ -1237,8 +1237,8 @@
     const loadSearchData = async () => {
       try {
         const [searchRes, articlesRes] = await Promise.all([
-          fetch('./api/search.json'),
-          fetch('./api/articles.json')
+          fetch('https://muslim-api-json.vercel.app/api/skenpat/search.json'),
+          fetch('https://muslim-api-json.vercel.app/api/skenpat/articles.json')
         ]);
         const sData = await searchRes.json();
         const aData = await articlesRes.json();
@@ -1414,6 +1414,41 @@
     } else {
       voiceSearchBtn.style.display = 'none';
     }
+
+    // --- SEARCH STICKY & COMPACT SYNC ---
+    const globalSearchSection = document.querySelector('.global-search-section');
+    const navbar = document.querySelector('.navbar');
+
+    const syncSearchSticky = () => {
+      if (globalSearchSection && navbar) {
+        // Sticky offset sync
+        if (navbar.classList.contains('scrolled')) {
+          globalSearchSection.style.top = '65px';
+        } else {
+          globalSearchSection.style.top = '75px';
+        }
+
+        // Compact state sync
+        if (window.scrollY > 150 && document.activeElement !== globalSearchInput) {
+          globalSearchSection.classList.add('compact');
+        } else {
+          globalSearchSection.classList.remove('compact');
+        }
+      }
+    };
+
+    // Expand when focused
+    globalSearchInput?.addEventListener('focus', () => {
+      globalSearchSection?.classList.remove('compact');
+    });
+
+    // Re-check when blurred
+    globalSearchInput?.addEventListener('blur', () => {
+      setTimeout(syncSearchSticky, 100); // Small delay to allow blur to complete
+    });
+
+    window.addEventListener('scroll', syncSearchSticky);
+    syncSearchSticky(); // Initial check
 
     // Initial Render
     renderRecentSearches();
