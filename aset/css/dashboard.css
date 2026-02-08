@@ -595,3 +595,287 @@ body.search-focused .search-container-v2 {
         transform: translateY(0);
     }
 }
+
+/* --- NEW TAB SECTION STYLES --- */
+
+/* Common Section Headers */
+.section-header-centered {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header-centered h3 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-head);
+}
+
+.section-header-centered .subtitle {
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* TENTANG SECTION */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    z-index: 2;
+    position: relative;
+    max-width: 400px;
+}
+
+.stat-card {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: var(--border-thin) solid var(--glass-border);
+    padding: 20px;
+    border-radius: var(--radius-md);
+    text-align: center;
+    box-shadow: var(--shadow-flat);
+    transition: var(--transition);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    background: var(--surface);
+}
+
+.stat-num {
+    display: block;
+    font-family: var(--font-head);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.about-text-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.mission-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mission-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: var(--surface);
+    padding: 24px;
+    border-radius: var(--radius-md);
+    border: var(--border-thin) solid var(--border-color);
+    box-shadow: var(--shadow-flat);
+    transition: var(--transition);
+}
+
+.mission-item:hover {
+    transform: translateX(10px);
+    background: var(--primary-light);
+}
+
+.mission-item .icon-box {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-light);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    color: var(--primary-dark);
+}
+
+.team-showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.team-premium-card {
+    background: var(--surface);
+    border: var(--border-thin) solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: var(--transition);
+    box-shadow: var(--shadow-flat);
+}
+
+.team-premium-card:hover {
+    transform: translate(-5px, -5px);
+    box-shadow: 10px 10px 0px var(--border-color);
+}
+
+.team-premium-card.featured {
+    border-color: var(--primary);
+    background: linear-gradient(135deg, var(--surface), var(--primary-light));
+}
+
+.team-premium-card.featured:hover {
+    box-shadow: 10px 10px 0px var(--primary);
+}
+
+.team-avatar-wrapper {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--primary);
+}
+
+.team-icon-header {
+    width: 70px;
+    height: 70px;
+    background: var(--bg-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: var(--text-muted);
+    border: 2px solid var(--border-color);
+}
+
+/* RELIGI SECTIONS (MUSLIM & KRISTEN) */
+.religi-badge {
+    background: var(--cat-religi-light, rgba(16, 185, 129, 0.1)) !important;
+    color: var(--cat-religi, #10B981) !important;
+    border-color: var(--cat-religi, #10B981) !important;
+}
+
+#tab-kristen .religi-badge {
+    background: rgba(59, 130, 246, 0.1) !important;
+    color: #3B82F6 !important;
+    border-color: #3B82F6 !important;
+}
+
+.religi-hero-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: var(--radius-lg);
+    position: relative;
+    z-index: 2;
+    animation: hero-bounce 6s ease-in-out infinite;
+}
+
+.muslim-card {
+    border: 4px solid #10B981;
+    background: linear-gradient(135deg, #10B981, #059669);
+}
+
+.kristen-card {
+    border: 4px solid #3B82F6;
+    background: linear-gradient(135deg, #3B82F6, #2563EB);
+}
+
+.card-glass {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-md);
+    padding: 25px;
+    text-align: center;
+    color: white;
+}
+
+.religi-hero-card .main-icon {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.verse-text {
+    font-style: italic;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.verse-ref {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    font-weight: 700;
+}
+
+.religi-premium-card {
+    background: var(--surface);
+    border: var(--border-thin) solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 25px;
+    display: flex;
+    gap: 20px;
+    transition: var(--transition);
+    box-shadow: var(--shadow-flat);
+}
+
+.religi-premium-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 8px 8px 0px var(--border-color);
+}
+
+.religi-premium-card.muslim:hover {
+    border-color: #10B981;
+}
+
+.religi-premium-card.kristen:hover {
+    border-color: #3B82F6;
+}
+
+.religi-premium-card .icon-wrap {
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    flex-shrink: 0;
+}
+
+.religi-premium-card.muslim .icon-wrap {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10B981;
+}
+
+.religi-premium-card.kristen .icon-wrap {
+    background: rgba(59, 130, 246, 0.1);
+    color: #3B82F6;
+}
+
+.card-text h4 {
+    font-family: var(--font-head);
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+}
+
+@media (max-width: 992px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+        margin: 0 auto;
+    }
+}
