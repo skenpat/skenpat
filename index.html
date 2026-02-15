@@ -1351,7 +1351,7 @@
       };
 
       // Load tools data
-      fetch('https://muslim-api-json.vercel.app/api/skenpat/alat.json')
+      fetch('./aset/api/alat.json')
         .then(res => res.json())
         .then(data => {
           toolsData = data;
@@ -1385,8 +1385,8 @@
     const loadSearchData = async () => {
       try {
         const [searchRes, articlesRes] = await Promise.all([
-          fetch('https://muslim-api-json.vercel.app/api/skenpat/search.json'),
-          fetch('https://muslim-api-json.vercel.app/api/skenpat/articles.json')
+          fetch('./aset/api/search.json'),
+          fetch('./aset/api/articles.json')
         ]);
         const sData = await searchRes.json();
         const aData = await articlesRes.json();

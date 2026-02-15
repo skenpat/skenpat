@@ -504,6 +504,22 @@
             font-size: 0.75rem;
             color: var(--text-muted);
         }
+
+        /* --- IDLE SPINNING --- */
+        @keyframes idle-spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .idle-spinning {
+            animation: idle-spin 20s linear infinite !important;
+            transition: none !important;
+        }
     </style>
 </head>
 
@@ -716,6 +732,9 @@
             // Apply initial rotation from storage
             wheelImg.style.transform = `rotate(${state.rotation}deg)`;
 
+            // Start idle spin
+            startIdleSpin();
+
             // Handle Fullscreen button state
             document.addEventListener('fullscreenchange', () => {
                 const icon = document.getElementById('fullscreen-icon');
@@ -827,13 +846,52 @@
         }
 
         /* --- SPINNING --- */
+        function startIdleSpin() {
+            if (state.isSpinning) return;
+            // Get current rotation to ensure we restart from current position if possible
+            // But for simplicity with keyframes, we just add the class
+            // The !important in CSS ensures it takes over
+            wheelImg.classList.add('idle-spinning');
+        }
+
+        function stopIdleSpin() {
+            const currDeg = getCurrentRotation(wheelImg);
+            wheelImg.classList.remove('idle-spinning');
+
+            // Set the transform explicitly to the current position to avoid Jump
+            wheelImg.style.transform = `rotate(${currDeg}deg)`;
+            state.rotation = currDeg;
+
+            // Force a reflow
+            void wheelImg.offsetWidth;
+        }
+
+        function getCurrentRotation(el) {
+            const st = window.getComputedStyle(el, null);
+            const tr = st.getPropertyValue("transform");
+            if (tr === "none") return 0;
+
+            const values = tr.split('(')[1].split(')')[0].split(',');
+            const a = values[0];
+            const b = values[1];
+            let angle = Math.round(Math.atan2(b, a) * (180 / Math.PI));
+            if (angle < 0) angle += 360;
+            return angle;
+        }
+
         function spin() {
             if (state.isSpinning || state.segments.length === 0) {
                 if (state.segments.length === 0) showToast("Add entries first!", "error");
                 return;
             }
 
+            // Stop idle animation before starting real spin
+            stopIdleSpin();
+
             state.isSpinning = true;
+
+            // Reset transition for the spin
+            wheelImg.style.transition = `transform ${state.duration}s cubic-bezier(0.15, 0, 0.15, 1)`;
 
             // Ticking Sound Logic
             let tickCount = 0;
@@ -917,6 +975,8 @@
 
         function closeModal() {
             resultModal.classList.remove('active');
+            // Resume idle spin after closing modal
+            setTimeout(startIdleSpin, 500);
         }
 
         /* --- UTILS --- */
@@ -965,6 +1025,7 @@
                 parseInput();
                 updateWheelImage();
                 saveState();
+                startIdleSpin();
                 showToast("Dibersihkan!");
             }
         }
