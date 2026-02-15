@@ -809,11 +809,6 @@
             }
 
             const sliceAngle = (2 * Math.PI) / state.segments.length;
-            const fontSize = Math.max(30, 400 / state.segments.length); // Responsive font size
-
-            ctx.font = `bold ${fontSize}px 'Plus Jakarta Sans'`;
-            ctx.textAlign = 'right';
-            ctx.textBaseline = 'middle';
 
             state.segments.forEach((segment, i) => {
                 const startAngle = i * sliceAngle;
@@ -830,14 +825,52 @@
                 ctx.lineWidth = 4;
                 ctx.stroke();
 
-                // Draw Text
+                // Draw Text with Smart Logic
                 ctx.save();
                 ctx.translate(centerX, centerY);
                 ctx.rotate(startAngle + sliceAngle / 2);
+
+                // --- SMART TEXT SCALING & TRUNCATION ---
+                let textToDraw = segment;
+
+                // 1. Word Count Truncation (Limit to 15 words)
+                const words = textToDraw.split(/\s+/);
+                if (words.length > 10) {
+                    textToDraw = words.slice(0, 10).join(' ') + '...';
+                }
+
+                const maxTextWidth = radius * 0.7; // 80% of radius is usable
+                // Increased base font size for better readability
+                let currentFontSize = Math.max(25, 450 / state.segments.length);
+                const minFontSize = 17; // Increased min font size
+
+                // Initial check
+                ctx.font = `bold ${currentFontSize}px 'Plus Jakarta Sans'`;
+                let textWidth = ctx.measureText(textToDraw).width;
+
+                // 2. Scale down font size if too wide
+                while (textWidth > maxTextWidth && currentFontSize > minFontSize) {
+                    currentFontSize -= 2;
+                    ctx.font = `bold ${currentFontSize}px 'Plus Jakarta Sans'`;
+                    textWidth = ctx.measureText(textToDraw).width;
+                }
+
+                // 3. Fallback Character Truncation (if still too wide at min size)
+                if (textWidth > maxTextWidth) {
+                    while (textWidth > maxTextWidth && textToDraw.length > 0) {
+                        textToDraw = textToDraw.slice(0, -1);
+                        textWidth = ctx.measureText(textToDraw + '...').width;
+                    }
+                    if (!textToDraw.endsWith('...')) textToDraw += '...';
+                }
+
                 ctx.fillStyle = 'white';
                 ctx.shadowColor = 'rgba(0,0,0,0.2)';
                 ctx.shadowBlur = 4;
-                ctx.fillText(segment, radius - 30, 0);
+                ctx.textAlign = 'right';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(textToDraw, radius - 30, 0);
+
                 ctx.restore();
             });
 
