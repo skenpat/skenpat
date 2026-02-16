@@ -413,7 +413,7 @@
             }
 
             try {
-                const res = await fetch('https://muslim-api-json.vercel.app/api/skenpat/articles.json');
+                const res = await fetch('./aset/api/articles.json');
                 const articles = await res.json();
                 const article = articles.find(a => a.id === articleId);
 

@@ -33,6 +33,12 @@
     .header h1 {
         font-size: clamp(2.5rem, 8vw, 3.5rem);
     }
+
+    .team-avatar-wrapper {
+        width: 70px;
+        height: auto;
+        object-fit: cover;
+    }
 }
 
 /* Tablets & Large Phones */
@@ -82,6 +88,12 @@
         display: flex;
         flex-direction: column;
         gap: 15px;
+    }
+
+    .team-avatar-wrapper {
+        width: 50px;
+        height: auto;
+        object-fit: cover;
     }
 }
 

@@ -62,33 +62,36 @@
         ]
     },
     {
-        "title": "Skenpat Muslim",
-        "desc": "Layanan kerohanian Islam",
-        "icon": "fa-star-and-crescent",
-        "link": "?tab=muslim",
+        "title": "Keagamaan Skenpat",
+        "desc": "Layanan kerohanian Muslim & Kristen",
+        "icon": "fa-hands-praying",
+        "link": "?tab=keagamaan",
         "cat": "Religi",
         "kw": [
             "ngaji",
             "islam",
-            "habsyi",
-            "sholat",
-            "alquran",
-            "al-qur'an",
-            "agama"
-        ]
-    },
-    {
-        "title": "Christ Skenpat",
-        "desc": "Layanan kerohanian Kristen",
-        "icon": "fa-cross",
-        "link": "?tab=kristen",
-        "cat": "Religi",
-        "kw": [
+            "kristen",
             "ibadah",
             "agama",
             "rohani",
-            "kristen",
-            "alkitab"
+            "alkitab",
+            "alquran"
+        ]
+    },
+    {
+        "title": "Sektor Humas",
+        "desc": "Social media & info publik OSIS",
+        "icon": "fa-bullhorn",
+        "link": "?tab=humas",
+        "cat": "Team",
+        "kw": [
+            "humas",
+            "instagram",
+            "tiktok",
+            "whatsapp",
+            "media",
+            "sosial",
+            "osis"
         ]
     },
     {

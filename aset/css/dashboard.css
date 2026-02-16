@@ -739,8 +739,8 @@ body.search-focused .search-container-v2 {
 
 .team-avatar-wrapper {
     width: 70px;
-    height: 70px;
-    border-radius: 50%;
+    height: auto;
+    border-radius: 10%;
     overflow: hidden;
     border: 3px solid var(--primary);
 }
@@ -807,6 +807,8 @@ body.search-focused .search-container-v2 {
 }
 
 .verse-text {
+    background-color: var(--primary);
+    color: var(--primary-light);
     font-style: italic;
     font-size: 1.2rem;
     font-weight: 600;
@@ -814,6 +816,8 @@ body.search-focused .search-container-v2 {
 }
 
 .verse-ref {
+    background-color: white;
+    color: var(--primary-light);
     font-size: 0.9rem;
     opacity: 0.9;
     font-weight: 700;
@@ -843,6 +847,10 @@ body.search-focused .search-container-v2 {
     border-color: #3B82F6;
 }
 
+.religi-premium-card.humas:hover {
+    border-color: #8e44ad;
+}
+
 .religi-premium-card .icon-wrap {
     width: 60px;
     height: 60px;
@@ -864,11 +872,34 @@ body.search-focused .search-container-v2 {
     color: #3B82F6;
 }
 
+.religi-premium-card.humas .icon-wrap {
+    background: rgba(142, 68, 173, 0.1);
+    color: #8e44ad;
+}
+
+
 .card-text h4 {
     font-family: var(--font-head);
     font-size: 1.25rem;
     margin-bottom: 8px;
 }
+
+.humas-badge {
+    background: rgba(155, 89, 182, 0.1) !important;
+    color: #9b59b6 !important;
+    border-color: #9b59b6 !important;
+}
+
+.religi-combined-header {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(59, 130, 246, 0.05));
+    border-bottom: var(--border-thin) solid var(--border-color);
+}
+
+.humas-header {
+    background: linear-gradient(135deg, rgba(155, 89, 182, 0.05), transparent);
+    border-bottom: var(--border-thin) solid var(--border-color);
+}
+
 
 @media (max-width: 992px) {
     .about-grid {

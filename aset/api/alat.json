@@ -32,22 +32,22 @@
         "keywords": "musik mars lagu radio"
     },
     {
-        "title": "Skenpat Muslim",
-        "desc": "Layanan kerohanian Islam and mutaba'ah.",
-        "icon": "fa-star-and-crescent",
-        "link": "?tab=muslim",
+        "title": "Keagamaan Skenpat",
+        "desc": "Layanan rohani Muslim & Kristen Skenpat.",
+        "icon": "fa-hands-praying",
+        "link": "?tab=keagamaan",
         "category": "religi",
-        "keywords": "islam muslim agama mengaji",
-        "style": "color: #27ae60;"
+        "keywords": "islam muslim kristen agama mengaji ibadah",
+        "style": "color: #10B981;"
     },
     {
-        "title": "Christ Skenpat",
-        "desc": "Layanan kerohanian Kristen dan ibadah.",
-        "icon": "fa-cross",
-        "link": "?tab=kristen",
-        "category": "religi",
-        "keywords": "kristen gereja alkitab persekutuan",
-        "style": "color: #3498db;"
+        "title": "Humas Skenpat",
+        "desc": "Kanal sosial media dan info publik OSIS.",
+        "icon": "fa-bullhorn",
+        "link": "?tab=humas",
+        "category": "umum",
+        "keywords": "humas instagram tiktok whatsapp media osis",
+        "style": "color: #9b59b6;"
     },
     {
         "title": "Feedback",

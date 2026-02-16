@@ -55,12 +55,11 @@
     gap: 8px;
     background: rgba(0, 0, 0, 0.03);
     padding: 6px;
-    border-radius: var(--radius-full);
     border: 1.5px solid rgba(0, 0, 0, 0.05);
 }
 
 [data-theme="dark"] .navbar-menu {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(185, 80, 0, 0.79);
 }
 
 .navbar-menu li a {
