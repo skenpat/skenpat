@@ -66,11 +66,11 @@ Mewujudkan Lulusan Yang Kompeten, Berkarakter, Berdaya Saing, Siap Menghadapi Du
 ## 🚀 Teknologi yang Digunakan
 
 - **Frontend**: HTML5, CSS3, JavaScript
-- **Framework**: Bootstrap
-- **Backend**: PHP
-- **Database**: MySQL
-- **Hosting**: Server lokal dan GitHub/CloudFlare Pages
-- **CMS**: Custom CMS
+- **Framework**: Tanpa Framework
+- **Backend**: Tanpa Backend
+- **Database**: Tanpa Database
+- **Hosting**: CloudFlare Pages
+- **CMS**: Nah, I'm Not Using It.
 
 ## 📱 Fitur Mobile
 
@@ -78,7 +78,7 @@ Website ini dioptimalkan untuk penggunaan mobile dengan fitur:
 - Responsive design
 - Navigasi yang mudah
 - Akses cepat ke jadwal pelajaran
-- Informasi kontak sekolah
+- Dll
 
 ## 🛠️ Cara Kontribusi
 
