@@ -117,10 +117,7 @@ Proyek ini dilisensikan under MIT License - lihat file [LICENSE](LICENSE) untuk 
 ## 🙏 Terima Kasih
 
 Terima kasih kepada semua pihak yang telah berkontribusi dalam pengembangan website ini:
-- Tim IT SMK Negeri 4 Banjarmasin
-- Seluruh tenaga pendidik dan kependidikan
-- Siswa dan alumni SMK Negeri 4 Banjarmasin
-- Komite sekolah dan orang tua/wali
+- yaitu saya sendiri (Thio Saputra)
 
 ---
 
