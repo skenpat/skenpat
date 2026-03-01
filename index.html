@@ -16,6 +16,11 @@
   <meta name="author" content="Thio Saputra, Skenpat-People Team" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://skenpat.pages.dev/" />
+  <link rel="dns-prefetch" href="//res.cloudinary.com" />
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+  <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
 
   <!-- Open Graph / Facebook / Discord -->
   <meta property="og:type" content="website" />
@@ -87,6 +92,8 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="./aset/css/style.css" />
+
+</head>
 
 <body>
 
@@ -197,7 +204,7 @@
               <div class="hero-image-glow"></div>
               <img
                 src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1770476862/WhatsApp_Image_2026-02-07_at_20.42.39_umweyy.webp"
-                alt="Hero Skenpat" class="hero-img">
+                alt="Hero Skenpat" class="hero-img" fetchpriority="high" decoding="async">
               <div class="floating-icons">
                 <div class="float-icon icon-1"><i class="fas fa-graduation-cap"></i></div>
                 <div class="float-icon icon-2"><i class="fas fa-code"></i></div>
@@ -376,11 +383,11 @@
               <i class="fa-solid fa-sitemap"></i>
               <span>Struktur</span>
             </a>
-            <a href="./osis" class="link-btn">
+            <a href="./osis.html" class="link-btn">
               <i class="fa-solid fa-layer-group"></i>
               <span>OSIS</span>
             </a>
-            <a href="./green" class="link-btn">
+            <a href="./green.html" class="link-btn">
               <i class="fa-solid fa-leaf"></i>
               <span>Green</span>
             </a>
@@ -508,7 +515,7 @@
             <div class="player-artwork-info">
               <div class="artwork-container">
                 <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760687917/faviconV2_s4utef.png"
-                  alt="Album Art" class="artwork-img" id="player-artwork">
+                  alt="Album Art" class="artwork-img" id="player-artwork" loading="lazy" decoding="async">
                 <div class="disc-center"></div>
               </div>
             </div>
@@ -693,7 +700,7 @@
             </a>
             <a href="https://github.com/skenpat" target="_blank" class="team-premium-card">
               <div class="team-avatar-wrapper">
-                <img src="https://avatars.githubusercontent.com/u/242902454?s=200&v=4" alt="Skenpat-People">
+                <img src="https://avatars.githubusercontent.com/u/242902454?s=200&v=4" alt="Skenpat-People" loading="lazy" decoding="async">
               </div>
               <div class="team-info">
                 <h4>Skenpat-People</h4>
@@ -703,7 +710,7 @@
             <a href="https://id.wikipedia.org/wiki/Pengguna:Flessan" target="_blank" class="team-premium-card featured">
               <div class="team-avatar-wrapper">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Flessan.png/460px-Flessan.png"
-                  alt="Thio Saputra">
+                  alt="Thio Saputra" loading="lazy" decoding="async">
               </div>
               <div class="team-info">
                 <h4>Thio Saputra</h4>
@@ -868,7 +875,7 @@
               <div class="team-avatar-wrapper">
                 <img
                   src="https://sf0.market.xiaomi.com/thumbnail/png/w300/https://file.market.xiaomi.com/download/AppStore/0be213516ff78481ea9d2016f0b43f1564072e2c9"
-                  alt="Instagram">
+                  alt="Instagram" loading="lazy" decoding="async">
               </div>
               <div class="team-info">
                 <h4>Instagram</h4>
@@ -877,7 +884,7 @@
             </a>
             <a href="https://www.tiktok.com/@osissmkn4bjm" target="_blank" class="team-premium-card">
               <div class="team-avatar-wrapper">
-                <img src="https://freelogopng.com/images/all_img/1655894889tiktok-logo.png" alt="Tiktok">
+                <img src="https://freelogopng.com/images/all_img/1655894889tiktok-logo.png" alt="Tiktok" loading="lazy" decoding="async">
               </div>
               <div class="team-info">
                 <h4>Tiktok</h4>
@@ -887,7 +894,7 @@
             <a href="https://whatsapp.com/channel/0029VazafASEAKWJNcQzlS0U" target="_blank" class="team-premium-card">
               <div class="team-avatar-wrapper">
                 <img src="https://img.freepik.com/premium-vector/vector-whatsapp-social-media-logo_1093524-447.jpg"
-                  alt="Thio Saputra">
+                  alt="WhatsApp" loading="lazy" decoding="async">
               </div>
               <div class="team-info">
                 <h4>WhatsApp</h4>
