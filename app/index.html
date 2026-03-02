@@ -1411,8 +1411,8 @@
     const loadSearchData = async () => {
       try {
         const [searchRes, articlesRes] = await Promise.all([
-          fetch('./aset/api/search.json'),
-          fetch('./aset/api/articles.json')
+          fetch('../aset/api/search.json'),
+          fetch('../aset/api/articles.json')
         ]);
         const sData = await searchRes.json();
         const aData = await articlesRes.json();
