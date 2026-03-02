@@ -16,75 +16,13 @@
   <meta name="author" content="Thio Saputra, Skenpat-People Team" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://skenpat.pages.dev/" />
-  <link rel="dns-prefetch" href="//res.cloudinary.com" />
-  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-  <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
-  <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
-
-  <!-- Open Graph / Facebook / Discord -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://skenpat.pages.dev/" />
-  <meta property="og:title" content="Skenpat People | OSIS SMKN 4 Banjarmasin - Portal Digital Terpadu" />
-  <meta property="og:description"
-    content="Portal Digital Terpadu OSIS SMKN 4 Banjarmasin. Akses jadwal, eskul, dan info sekolah dalam satu pintu." />
-  <meta property="og:image"
-    content="https://res.cloudinary.com/dahcxjdbl/image/upload/v1766196359/osis4_100x_vnzamj.png" />
-
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://skenpat.pages.dev/" />
-  <meta property="twitter:title" content="Skenpat People | OSIS SMKN 4 Banjarmasin" />
-  <meta property="twitter:description"
-    content="Portal Digital Terpadu OSIS SMKN 4 Banjarmasin. Akses semua informasi sekolah dalam satu pintu." />
-  <meta property="twitter:image"
-    content="https://res.cloudinary.com/dahcxjdbl/image/upload/v1766196359/osis4_100x_vnzamj.png" />
-
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "EducationalOrganization",
-      "name": "OSIS SMKN 4 Banjarmasin",
-      "alternateName": "Skenpat People",
-      "url": "https://skenpat.pages.dev/",
-      "logo": "https://res.cloudinary.com/dahcxjdbl/image/upload/v1766196359/osis4_100x_vnzamj.png",
-      "description": "Portal Digital Terpadu OSIS SMKN 4 Banjarmasin untuk mempermudah akses informasi siswa.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Banjarmasin",
-        "addressRegion": "Kalimantan Selatan",
-        "addressCountry": "ID"
-      }
-    }
-  </script>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "url": "https://skenpat.pages.dev/",
-      "name": "Skenpat Portal",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://skenpat.pages.dev/?tab=beranda&q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    }
-  </script>
-
-  <script src="/config-atur-maintenance.js"></script>
-  <script>
-    if (MAINTENANCE_MODE) {
-      window.location.replace("/maintenance.html");
-    }
-  </script>
-
+  
   <!-- Favicon & Icons -->
   <link rel="icon"
     href="https://res.cloudinary.com/dahcxjdbl/image/upload/v1769351802/7372cb57-7f68-43c1-86d4-5e1243161fa0.png"
     type="image/png" />
 
-  <!-- Fonts: Fredoka & Quicksand for Cartoonish Pop look -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -112,10 +50,6 @@
       </a>
       <ul class="navbar-menu" id="navbar-menu">
         <li><a href="index.html?tab=beranda">Beranda</a></li>
-        <li><a href="#team">Tim</a></li>
-        <li><a href="#profile">Profil</a></li>
-        <li><a href="#music-player">Mars</a></li>
-        <li><a href="#timeline">Acara</a></li>
         <li><a href="./articles.html">Artikel</a></li>
         <li><a href="index.html?tab=tentang">Tentang</a></li>
       </ul>
@@ -139,49 +73,6 @@
   <button class="fab" id="fab" aria-label="Fun fact">
     <i class="fas fa-lightbulb"></i>
   </button>
-
-  <!-- Audio Element -->
-  <audio id="audio-player"
-    src="https://rawcdn.githack.com/flessan/skenpat/1e3207c528d4df56558ddd80b65e0cf893071a05/aset/marsskenpat.mp3"
-    preload="metadata"></audio>
-
-  <!-- Lyrics Modal -->
-  <div id="lyrics-modal" class="modal-overlay">
-    <div class="modal-content-wrapper">
-      <div class="modal-header">
-        <h2>Mars SMKN 4 Banjarmasin</h2>
-        <button class="modal-close-btn" id="close-lyrics-btn"><i class="fas fa-times"></i></button>
-      </div>
-      <div class="modal-body" style="text-align: center;">
-        <p><strong>MARS SMKN 4 BANJARMASIN</strong></p>
-        <br>
-        <p>SMK NEGERI 4 BANJARMASIN</p>
-        <p>SEKOLAH YANG ISTIMEWA</p>
-        <p>DENGAN STANDAR KUALITAS PRIMA</p>
-        <p>BAGI NUSA BANGSA DAN NEGARA</p>
-        <br>
-        <p>SMK NEGERI 4 BANJARMASIN</p>
-        <p>MENEMPA SISWA JUARA</p>
-        <p>DIDIDIK DENGAN PENUH SUKA CITA</p>
-        <p>MEMBANGUN BANUA KITA</p>
-        <br>
-        <p>SMK NEGERI 4 BANJARMASIN</p>
-        <p>TERUS BERKARYA BAGI BANGSA</p>
-        <p>SMK NEGERI 4 BANJARMASIN</p>
-        <p>S'MOGA S'LALU DALAM LINDUNGANNYA</p>
-        <br>
-        <p>SMK NEGERI 4 BANJARMASIN</p>
-        <p>BERLANDASKAN PANCASILA</p>
-        <p>BERBUDAYA, BERIMAN DAN BERTAKWA</p>
-        <p>MEMBANGUN INDONESIA</p>
-        <br>
-        <p>SMK NEGERI 4 BANJARMASIN</p>
-        <p>TERUS BERKARYA BAGI BANGSA</p>
-        <p>SMK NEGERI 4 BANJARMASIN</p>
-        <p>S'MOGA S'LALU DALAM LINDUNGANNYA</p>
-      </div>
-    </div>
-  </div>
 
   <div class="app-container">
     <h1 class="visually-hidden">OSIS SMKN 4 Banjarmasin - Portal Informasi Terpadu</h1>
@@ -214,391 +105,29 @@
           </div>
         </header>
 
-        <!-- Search Focus Overlay -->
-        <div class="search-overlay" id="search-overlay"></div>
-
-        <!-- Global Advanced Search Bar -->
-        <section class="global-search-section">
-          <div class="search-container-v2 premium-search-card">
-            <div class="search-input-group">
-              <i class="fas fa-search main-search-icon"></i>
-              <input type="text" id="global-search-input" placeholder="Cari layanan, tim, atau acara..."
-                autocomplete="off">
-              <button id="voice-search-btn" class="voice-btn" title="Cari dengan suara">
-                <i class="fas fa-microphone"></i>
-                <div class="pulse-ring"></div>
-              </button>
-            </div>
-
-            <!-- Preview Pane / Results Overlay -->
-            <div id="search-preview-pane" class="search-preview-pane">
-              <div class="preview-sections">
-                <div class="preview-group" id="recent-searches">
-                  <h5><i class="fas fa-history"></i> Terbaru</h5>
-                  <div class="suggestion-list"></div>
-                </div>
-                <div class="preview-group" id="trending-searches">
-                  <h5><i class="fas fa-fire"></i> Populer</h5>
-                  <div class="suggestion-list">
-                    <span class="trend-tag">Jadwal Mapel</span>
-                    <span class="trend-tag">Eskul</span>
-                    <span class="trend-tag">OSIS</span>
-                    <span class="trend-tag">Mars</span>
-                  </div>
-                </div>
-                <div class="preview-group" id="instant-results">
-                  <h5><i class="fas fa-bolt"></i> Hasil Instan</h5>
-                  <div class="instant-grid" id="instant-results-grid"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Portal Utama Dashboard -->
-<section class="card-balance">
-  <h2>Portal Utama</h2>
-  <p class="subtitle">Pusat Informasi Digital dan Layanan Terpadu untuk Menunjang Aktivitas Akademik Siswa SMKN 4 BJM.</p>
-  <div class="portal-grid">
-    <a href="https://l.instagram.com/?u=https%3A%2F%2Fforms.gle%2F7vwxuxU3iwuogYYi8%3Ffbclid%3DPAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnUpyz_3hduYIRZY78Oy-kpbtZ8OXI7lwtoashpnmuM0c5QhOybb00dBwHSek_aem_E0_xZ04lTSotesB5MCsHdA&e=AT3hhIMnwQ8o9kSYu1B5nwd2Zs5MFXwKmx7HpYX5wuV_N5FvOrMXED48koql6W0xhX8s30-CO_8O_dr97oMq-jSQoMVf-PlKFTjWxMYcTQ"
-      class="portal-card">
-      <div class="icon-wrapper"><i class="fas fa-heart"></i></div>
-      <h4>Te Amo!</h4>
-      <p>Halo Skenpat People! 👋🏻 Kalian punya cerita yang mengganjal atau masalah namun bingung mau cerita ke siapa? Pas banget! OSIS SMKN 4 BJM menghadirkan forum TEAMO (Tell Me About Something) sebagai wadah aman. Di sini kalian bebas berbagi cerita, menyampaikan keluhan pribadi, serta memberikan kritik dan saran membangun untuk kemajuan lingkungan sekolah. Tenang saja, privasi kalian dijamin aman 100% kerahasiaannya. Yuk, berani curhat dan berbagi di TEAMO sekarang‼️</p>
-    </a>
-    <a href="./eskul" class="portal-card">
-      <div class="icon-wrapper"><i class="fas fa-users-cog"></i></div>
-      <h4>Ekstrakurikuler</h4>
-      <p>Temukan informasi lengkap mengenai jadwal latihan rutin, daftar nama ekstrakurikuler yang tersedia, pengaturan fitur waktu kegiatan, serta berbagai detail penting lainnya untuk mengembangkan bakat dan minat kalian.</p>
-    </a>
-    <a href="./mapel" class="portal-card">
-      <div class="icon-wrapper"><i class="fas fa-graduation-cap"></i></div>
-      <h4>Jadwal Mapel</h4>
-      <p>Akses jadwal mata pelajaran kelas harian SMKN 4 BJM secara praktis. Pastikan kalian tidak melewatkan informasi pelajaran besok dan siap mempersiapkan diri untuk kegiatan belajar mengajar.</p>
-    </a>
-    <a href="?tab=alat" class="portal-card">
-      <div class="icon-wrapper"><i class="fas fa-tools"></i></div>
-      <h4>Alat Bantu</h4>
-      <p>Koleksi alat bantu online atauu digital yang dirancang khusus para siswa untuk memudahkan pekerjaan administratif maupun akademik kalian menjadi lebih efisien dan teratur.</p>
-    </a>
-
-    <a href="#music-player" class="portal-card">
-      <div class="icon-wrapper"><i class="fas fa-music"></i></div>
-      <h4>Mars Skenpat</h4>
-      <p>Dengarkan lagu kebangsaan sekolah (Mars Skenpat) untuk menumbuhkan semangat, hafalkan liriknya, dan nyanyikan bersama dengan penuh kebanggaan di setiap kesempatan.</p>
-    </a>
-  </div>
-</section>
-
-        <!-- Cbox Discussion Hub -->
-        <div class="cbox-wrapper" style="margin-bottom: 3rem;">
-          <div class="section-title" style="padding: 1rem 2rem 0; margin-bottom: 0;">
-            <i class="fas fa-comments"></i> Forum Diskusi
-          </div>
-          <div style="padding: 15px;">
-            <iframe src="https://www3.cbox.ws/box/?boxid=3549497&boxtag=18ooNP" width="100%" height="450" loading="lazy"
-              frameborder="0" title="ChitChat Skenpat"
-              style="display:block; border-radius: var(--radius-md); border: var(--border-thin) solid var(--border-color);"></iframe>
-          </div>
-        </div>
-
-        <!-- Religi & Spiritual -->
-        <section class="section" id="religi">
-          <h3><i class="fas fa-mosque"></i> Sektor Religi</h3>
-          <p style="margin-bottom: 1.5rem; color: var(--text-muted);">Layanan spiritual dan pembinaan karakter religius
-            bagi seluruh siswa.</p>
+        <!-- Portal Utama Dashboard (MODIFIED) -->
+        <section class="card-balance">
+          <h2>Portal Utama (Web Lite)</h2>
+          <p class="subtitle">Akses cepat informasi akademik. Untuk fitur lengkap, silakan install aplikasi.</p>
           <div class="portal-grid">
-            <a href="?tab=keagamaan" class="portal-card"
-              style="background: linear-gradient(135deg, rgba(39, 174, 96, 0.1), transparent);">
-              <div class="icon-wrapper" style="color: #27ae60;"><i class="fas fa-mosque"></i></div>
-              <h5>Sektor Keagamaan</h5>
-              <p>Layanan spiritual, pembinaan karakter Muslim & Kristiani Skenpat.</p>
+            
+            <!-- Fitur Penting: Jadwal Mapel (Dipertahankan) -->
+            <a href="./mapel" class="portal-card">
+              <div class="icon-wrapper"><i class="fas fa-graduation-cap"></i></div>
+              <h4>Jadwal Mapel</h4>
+              <p>Akses jadwal mata pelajaran kelas harian SMKN 4 BJM secara praktis. Pastikan kalian tidak melewatkan informasi pelajaran besok.</p>
             </a>
-            <a href="?tab=humas" class="portal-card"
-              style="background: linear-gradient(135deg, rgba(155, 89, 182, 0.1), transparent);">
-              <div class="icon-wrapper" style="color: #9b59b6;"><i class="fas fa-bullhorn"></i></div>
-              <h5>Sektor Humas</h5>
-              <p>Social media OSIS, informasi publik, dan kanal komunikasi.</p>
+
+            <!-- Fitur Baru: Install Aplikasi -->
+            <a href="https://github.com/gmdips/gmdips/releases/download/v1.0.5/Gdips_geode.apk" class="portal-card" download>
+              <div class="icon-wrapper" style="background: linear-gradient(135deg, #00b894, #00cec9);"><i class="fas fa-mobile-alt"></i></div>
+              <h4>Install Aplikasi</h4>
+              <p>Butuh fitur lengkap seperti Mars Skenpat, Ekstrakurikuler, & Forum? Download aplikasi sekarang untuk pengalaman maksimal!</p>
             </a>
+
           </div>
         </section>
 
-        <!-- Links Section -->
-        <section class="section" id="links">
-          <h3><i class="fas fa-link"></i> Link Penting</h3>
-          <p style="margin-bottom: 1.5rem; color: var(--text-muted);">Tautan resmi dan platform pendukung aktivitas
-            sekolah.</p>
-          <div class="links-grid">
-            <a href="https://smkn4bjm.sch.id/berita" class="link-btn" rel="noopener">
-              <i class="fa-solid fa-newspaper"></i>
-              <span>Berita</span>
-            </a>
-            <a href="https://smkn4bjm.sch.id/perpustakaan-sekolah" class="link-btn" rel="noopener">
-              <i class="fa-solid fa-book"></i>
-              <span>Perpus</span>
-            </a>
-            <a href="https://smkn4bjm.sch.id/prestasi" class="link-btn" rel="noopener">
-              <i class="fa-solid fa-trophy"></i>
-              <span>Prestasi</span>
-            </a>
-            <a href="https://smkn4bjm.sch.id/sejarah-sekolah" class="link-btn" rel="noopener">
-              <i class="fa-solid fa-history"></i>
-              <span>Sejarah</span>
-            </a>
-            <a href="./spin" class="link-btn" rel="noopener">
-              <i class="fa-solid fa-dharmachakra"></i>
-              <span>Wheel</span>
-            </a>
-            <a href="./feedback" class="link-btn" rel="noopener">
-              <i class="fa-solid fa-comments"></i>
-              <span>Feedback</span>
-            </a>
-          </div>
-        </section>
-
-        <!-- Team Section -->
-        <section class="section" id="team">
-          <h3><i class="fas fa-users"></i> Skenpat Team</h3>
-          <p style="margin-bottom: 1.5rem; color: var(--text-muted);">Mengenal lebih dekat tim manajemen dan pendidik
-            kami.</p>
-          <div class="links-grid">
-            <a href="https://smkn4bjm.sch.id/tim-manajemen" class="link-btn" rel="noopener">
-              <i class="fa-solid fa-users"></i>
-              <span>Manajemen</span>
-            </a>
-            <a href="https://smkn4bjm.sch.id/tentang-kami/tenaga-pendidik" class="link-btn" rel="noopener">
-              <i class="fa-solid fa-chalkboard-user"></i>
-              <span>Pendidik</span>
-            </a>
-            <a href="https://smkn4bjm.sch.id/tentang-kami/tenaga-kependidikan" class="link-btn" rel="noopener">
-              <i class="fa-solid fa-user-tie"></i>
-              <span>Staff</span>
-            </a>
-            <a href="https://smkn4bjm.sch.id/wp-content/uploads/2024/12/Struktur-Sekolah-2024-november.jpg"
-              class="link-btn" rel="noopener">
-              <i class="fa-solid fa-sitemap"></i>
-              <span>Struktur</span>
-            </a>
-            <a href="./osis.html" class="link-btn">
-              <i class="fa-solid fa-layer-group"></i>
-              <span>OSIS</span>
-            </a>
-            <a href="./green.html" class="link-btn">
-              <i class="fa-solid fa-leaf"></i>
-              <span>Green</span>
-            </a>
-          </div>
-        </section>
-
-        <!-- Visi Misi / Profile -->
-        <section class="section" id="profile" style="padding: 3rem 2rem;">
-          <h3 style="font-family: var(--font-head); font-size: 2.2rem; text-align: center; margin-bottom: 2rem;">Profil
-            SMKN 4 Banjarmasin</h3>
-          <div class="video-container"
-            style="border-radius: var(--radius-md); overflow: hidden; border: var(--border-thin) solid var(--border-color); box-shadow: var(--shadow-flat); margin-bottom: 3rem;">
-            <iframe src="https://www.youtube.com/embed/XQKoNTQTrkM?mute=1" title="Profil SMKN 4 Banjarmasin"
-              allowfullscreen loading="lazy" style="width: 100%; aspect-ratio: 16/9; border: none;"></iframe>
-          </div>
-
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
-            <div>
-              <h4 style="color: var(--primary-dark); font-size: 1.8rem; margin-bottom: 1rem;"><i
-                  class="fas fa-bullseye"></i> Visi</h4>
-              <p style="font-size: 1.1rem; line-height: 1.7; font-weight: 600;">"Mewujudkan Lulusan Yang Kompeten,
-                Berkarakter, Berdaya Saing, Siap Menghadapi Dunia Kerja Dan Perkembangan Teknologi Berlandaskan
-                Nilai-nilai Luhur Pancasila"</p>
-            </div>
-            <div>
-              <h4 style="color: var(--primary-dark); font-size: 1.8rem; margin-bottom: 1rem;"><i
-                  class="fas fa-tasks"></i>
-                Misi</h4>
-              <ul style="list-style: none; padding: 0;">
-                <li style="margin-bottom: 12px; display: flex; gap: 10px; font-weight: 500;">
-                  <i class="fas fa-check-circle" style="color: var(--primary); margin-top: 4px;"></i>
-                  Mewujudkan Peserta Didik Yang Memiliki Profil Pelajar Pancasila Dan Budaya Kerja.
-                </li>
-                <li style="margin-bottom: 12px; display: flex; gap: 10px; font-weight: 500;">
-                  <i class="fas fa-check-circle" style="color: var(--primary); margin-top: 4px;"></i>
-                  Melaksanakan Program Pendidikan Inklusif.
-                </li>
-                <li style="margin-bottom: 12px; display: flex; gap: 10px; font-weight: 500;">
-                  <i class="fas fa-check-circle" style="color: var(--primary); margin-top: 4px;"></i>
-                  Mengembangkan Manajemen Berbasis Data Dan Digital Yang Mendukung Efektivitas Layanan.
-                </li>
-                <li style="margin-bottom: 12px; display: flex; gap: 10px; font-weight: 500;">
-                  <i class="fas fa-check-circle" style="color: var(--primary); margin-top: 4px;"></i>
-                  Menyediakan Sarana Dan Prasarana Yang Sesuai Dengan Standar Dunia Kerja Dan Perkembangan Teknologi
-                </li>
-                <li style="margin-bottom: 12px; display: flex; gap: 10px; font-weight: 500;">
-                  <i class="fas fa-check-circle" style="color: var(--primary); margin-top: 4px;"></i>
-                  Memperkuat Kemitraan Dengan Dunia Kerja Dan Stakeholder.
-                </li>
-                <li style="margin-bottom: 12px; display: flex; gap: 10px; font-weight: 500;">
-                  <i class="fas fa-check-circle" style="color: var(--primary); margin-top: 4px;"></i>
-                  Memfasilitasi Lulusan Memiliki Sertifikat Uji Kompetensi Vang Diterbitkan Oleh BNSP.
-                </li>
-                <li style="margin-bottom: 12px; display: flex; gap: 10px; font-weight: 500;">
-                  <i class="fas fa-check-circle" style="color: var(--primary); margin-top: 4px;"></i>
-                  Menumbuhkan Wawasan Dan Kepedulian Warga Sekolah Terhadap Lingkungan Hidup Dan Budaya Lokal.
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <p
-            style="margin-top:2.5rem; text-align: center; font-size:0.85rem; color:var(--text-muted); font-style:italic; border-top: 1px dashed var(--border-color); padding-top: 1.5rem;">
-            Portal ini dirancang oleh Tim OSIS untuk memudahkan akses informasi seluruh warga sekolah.
-          </p>
-        </section>
-
-        <!-- Timeline / Acara -->
-        <section class="section" id="timeline">
-          <h3><i class="fas fa-calendar-alt"></i> Agenda & Kegiatan</h3>
-          <p style="margin-bottom: 2rem; color: var(--text-muted);">Pantau terus jadwal kegiatan penting di lingkungan
-            SMKN 4 Banjarmasin.</p>
-
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-icon"><i class="fas fa-flag"></i></div>
-              <div class="timeline-content">
-                <div class="timeline-date">Juli 2025</div>
-                <h4 class="timeline-title">MPLS Skenpat</h4>
-                <p>Masa Pengenalan Lingkungan Sekolah bagi siswa baru angkatan 2025.</p>
-                <div class="timeline-details" id="event-mpls">
-                  Kegiatan ini meliputi pengenalan kurikulum, tata tertib sekolah, dan berbagai demonstrasi
-                  ekstrakurikuler untuk membantu siswa baru beradaptasi.
-                </div>
-                <button class="timeline-toggle" data-target="event-mpls">Selengkapnya <i
-                    class="fas fa-chevron-down"></i></button>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-icon"><i class="fas fa-user-shield"></i></div>
-              <div class="timeline-content">
-                <div class="timeline-date">Agustus 2025</div>
-                <h4 class="timeline-title">LDKS OSIS</h4>
-                <p>Pelatihan kepemimpinan bagi pengurus OSIS dan MPK terpilih.</p>
-                <div class="timeline-details" id="event-ldks">
-                  Latihan Dasar Kepemimpinan Siswa bertujuan mengasah kemampuan manajerial, kedisiplinan, dan tanggung
-                  jawab calon pemimpin organisasi intra sekolah.
-                </div>
-                <button class="timeline-toggle" data-target="event-ldks">Selengkapnya <i
-                    class="fas fa-chevron-down"></i></button>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-icon"><i class="fas fa-star"></i></div>
-              <div class="timeline-content">
-                <div class="timeline-date">Desember 2025</div>
-                <h4 class="timeline-title">Class Meeting & Expo</h4>
-                <p>Pekan olahraga, seni, dan pameran karya kreativitas siswa.</p>
-                <div class="timeline-details" id="event-expo">
-                  Ajang kompetisi antar kelas dan pameran produk unggulan dari setiap jurusan di SMKN 4 Banjarmasin.
-                </div>
-                <button class="timeline-toggle" data-target="event-expo">Selengkapnya <i
-                    class="fas fa-chevron-down"></i></button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Music Player -->
-        <section class="music-player-section" id="music-player">
-          <div class="soundcloud-player">
-            <!-- Artwork Section -->
-            <div class="player-artwork-info">
-              <div class="artwork-container">
-                <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760687917/faviconV2_s4utef.png"
-                  alt="Album Art" class="artwork-img" id="player-artwork" loading="lazy" decoding="async">
-                <div class="disc-center"></div>
-              </div>
-            </div>
-
-            <!-- Info Section -->
-            <div class="player-info">
-              <span class="player-track-title" id="track-title">Mars Skenpat</span>
-              <span class="player-track-artist" id="track-artist">SMKN 4 Banjarmasin</span>
-            </div>
-
-            <!-- Controls Section -->
-            <div class="player-controls">
-              <button id="shuffle-btn" class="control-btn" title="Shuffle"><i class="fas fa-random"></i></button>
-              <button id="prev-btn" class="control-btn" title="Previous"><i class="fas fa-step-backward"></i></button>
-              <button class="main-play-btn" id="play-pause-btn" title="Play/Pause"><i class="fas fa-play"></i></button>
-              <button id="next-btn" class="control-btn" title="Next"><i class="fas fa-step-forward"></i></button>
-              <button id="repeat-btn" class="control-btn" title="Repeat"><i class="fas fa-redo"></i></button>
-            </div>
-
-            <!-- Progress Section -->
-            <div class="player-progress-container">
-              <div class="progress-labels">
-                <span id="current-time">0:00</span>
-                <div class="equalizer-container">
-                  <div class="eq-bar"></div>
-                  <div class="eq-bar"></div>
-                  <div class="eq-bar"></div>
-                  <div class="eq-bar"></div>
-                </div>
-                <span id="total-time">0:00</span>
-              </div>
-              <div class="player-progress-bar-wrapper" id="progress-wrapper">
-                <div class="player-progress-fill" id="progress-fill"></div>
-                <input type="range" class="player-progress-bar" id="progress-bar" value="0" max="100">
-              </div>
-            </div>
-
-            <!-- Extra Actions Section -->
-            <div class="player-extra-actions" style="color: var(--text-main);">
-              <button class="action-btn" id="download-btn" style="color: var(--text-main);">
-                <i class="fas fa-download"></i> Unduh
-              </button>
-              <button class="action-btn" id="show-lyrics-modal-btn" style="color: var(--text-main);">
-                <i class="fas fa-align-left"></i> Lirik
-              </button>
-            </div>
-
-            <div class="volume-container">
-              <button id="volume-btn" class="control-btn" style="font-size: 1.1rem; width: 30px; height: 30px;">
-                <i class="fas fa-volume-up"></i>
-              </button>
-              <input type="range" id="volume-slider" class="volume-slider" min="0" max="1" step="0.1" value="1">
-            </div>
-          </div>
-        </section>
-
-
-        <!-- Playlist -->
-        <div class="playlist-section">
-          <div class="playlist-header" id="playlist-toggle">
-            <span style="font-weight:700; color:var(--text-main);">Daftar Putar</span>
-            <i class="fas fa-chevron-down"></i>
-          </div>
-          <div class="playlist-items" id="playlist-items">
-            <!-- Playlist items will be populated/managed here -->
-            <div class="playlist-item active"
-              data-src="https://rawcdn.githack.com/skenpat/skenpat/refs/heads/main/aset/marsskenpat.mp3"
-              data-title="Mars Skenpat" data-artist="SMKN 4 Banjarmasin"
-              data-img="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760687917/faviconV2_s4utef.png">
-              <i class="fas fa-music" style="margin-right:10px;"></i>
-              <div>
-                <div style="font-weight:700;">Mars Skenpat</div>
-                <div style="font-size:0.8rem;">SMKN 4 Banjarmasin</div>
-              </div>
-            </div>
-            <div class="playlist-item"
-              data-src="https://rawcdn.githack.com/skenpat/skenpat/refs/heads/main/aset/soundmars.mp3"
-              data-title="Backsound Mars" data-artist="SMKN 4 Banjarmasin"
-              data-img="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760687917/faviconV2_s4utef.png">
-              <i class="fas fa-music" style="margin-right:10px;"></i>
-              <div>
-                <div style="font-weight:700;">Backsound Mars</div>
-                <div style="font-size:0.8rem;">SMKN 4 Banjarmasin</div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
       <!-- Tentang Section (New Tab) -->
@@ -610,331 +139,14 @@
               <h2 class="hero-title">Tentang <span>Skenpat</span> Digital</h2>
               <p>Mengenal lebih jauh visi, misi, dan tim di balik pengembangan platform digital OSIS SMKN 4 Banjarmasin.
               </p>
-              <div class="header-cta">
-                <a href="https://skenpat.pages.dev/inf" target="_blank" class="cta-pill primary">Detail Informasi</a>
-                <a href="https://flessan.pages.dev/donate" target="_blank" class="cta-pill secondary">&#x003C;a
-                  href>Donasi&#x003C;/a></a>
-              </div>
-            </div>
-            <div class="header-image-wrapper">
-              <div class="hero-image-glow"></div>
-              <div class="stats-grid">
-                <div class="stat-card">
-                  <span class="stat-num">9+</span>
-                  <span class="stat-label">Proyek Digital</span>
-                </div>
-                <div class="stat-card">
-                  <span class="stat-num">SMK</span>
-                  <span class="stat-label">Pusat Unggulan</span>
-                </div>
-                <div class="stat-card">
-                  <span class="stat-num">100%</span>
-                  <span class="stat-label">Karya Siswa</span>
-                </div>
-                <div class="stat-card">
-                  <span class="stat-num">RPL</span>
-                  <span class="stat-label">Inovasi Teknologi</span>
-                </div>
-              </div>
-              <div class="floating-icons">
-                <div class="float-icon icon-1"><i class="fas fa-book"></i></div>
-                <div class="float-icon icon-2"><i class="fas fa-heart"></i></div>
-                <div class="float-icon icon-3"><i class="fas fa-shield-alt"></i></div>
-              </div>
             </div>
           </div>
         </header>
-
-        <section class="section" id="vision">
-          <div class="section-header-centered">
-            <h3><i class="fas fa-info-circle"></i> Apa itu Skenpat Digital?</h3>
-            <p class="subtitle">Transformasi Digital untuk Kemudahan Bersama</p>
-          </div>
-          <div class="about-grid">
-            <div class="about-text-content">
-              <p>Skenpat Digital merupakan proyek kesembilan yang dikembangkan oleh <strong>Thio Saputra</strong>,
-                seorang
-                siswa dari kelas Rekayasa Perangkat Lunak (RPL) 1, sebagai inisiatif mandiri untuk mempermudah akses
-                informasi bagi seluruh warga SMKN 4 Banjarmasin.</p>
-              <br>
-              <p>Dengan mengatasnamakan OSIS sekolah, proyek ini bertujuan menghadirkan pusat informasi terpadu yang
-                modern,
-                interaktif, dan mudah diakses oleh siswa, guru, serta staf lainnya. Projek ini mencerminkan kreativitas
-                serta kesadaran akan pentingnya adaptasi teknologi di era digital.</p>
-            </div>
-            <div class="mission-cards">
-              <div class="mission-item">
-                <div class="icon-box"><i class="fas fa-bullseye"></i></div>
-                <div class="text-box">
-                  <h4>Visi Digital</h4>
-                  <p>Mewujudkan ekosistem informasi sekolah yang transparan dan inklusif melalui teknologi.</p>
-                </div>
-              </div>
-              <div class="mission-item">
-                <div class="icon-box"><i class="fas fa-code"></i></div>
-                <div class="text-box">
-                  <h4>Inovasi Siswa</h4>
-                  <p>Dikembangkan sepenuhnya oleh siswa untuk mendukung literasi digital di sekolah.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="section">
-          <div class="section-header-centered">
-            <h3><i class="fas fa-users-viewfinder"></i> Tim Pengembang</h3>
-            <p class="subtitle">Dedikasi di Balik Layar</p>
-          </div>
-          <div class="team-showcase-grid">
-            <a href="https://smkn4bjm.sch.id/gallery/" target="_blank" class="team-premium-card">
-              <div class="team-icon-header"><i class="fas fa-users"></i></div>
-              <div class="team-info">
-                <h4>Warga SMKN4BJM</h4>
-                <p>Pengguna & Kontributor</p>
-              </div>
-            </a>
-            <a href="https://github.com/skenpat" target="_blank" class="team-premium-card">
-              <div class="team-avatar-wrapper">
-                <img src="https://avatars.githubusercontent.com/u/242902454?s=200&v=4" alt="Skenpat-People" loading="lazy" decoding="async">
-              </div>
-              <div class="team-info">
-                <h4>Skenpat-People</h4>
-                <p>Core Contributor</p>
-              </div>
-            </a>
-            <a href="https://id.wikipedia.org/wiki/Pengguna:Flessan" target="_blank" class="team-premium-card featured">
-              <div class="team-avatar-wrapper">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Flessan.png/460px-Flessan.png"
-                  alt="Thio Saputra" loading="lazy" decoding="async">
-              </div>
-              <div class="team-info">
-                <h4>Thio Saputra</h4>
-                <p>Lead Developer & Architect</p>
-              </div>
-            </a>
-          </div>
+        <section class="section" style="padding: 2rem;">
+          <p>Portal ini dirancang oleh Tim OSIS untuk memudahkan akses informasi seluruh warga sekolah. Untuk fitur interaktif lainnya, mohon install aplikasi mobile kami.</p>
         </section>
       </div>
 
-      <!-- Skenpat Keagamaan Tab -->
-      <div id="tab-keagamaan" class="tab-content">
-        <header class="header religi-combined-header">
-          <div class="header-container">
-            <div class="header-content">
-              <div class="header-badge religi-badge">🙌 Sektor Keagamaan</div>
-              <h2 class="hero-title">Keagamaan <span>Skenpat</span></h2>
-              <p>Wadah pembinaan karakter religius dan penguatan nilai-nilai kerohanian bagi seluruh siswa di lingkungan
-                SMKN 4 Banjarmasin.</p>
-              <div class="header-cta">
-                <a href="https://danuar.pages.dev/projects/islam" class="cta-pill primary"><i
-                    class="fas fa-star-and-crescent"></i> Skenpat
-                  Muslim</a>
-                <a href="https://www.bible.com/bible/111/JHN.1.NIV" class="cta-pill secondary"><i
-                    class="fas fa-cross"></i> Christ Skenpat</a>
-              </div>
-            </div>
-            <div class="header-image-wrapper">
-              <div class="religi-hero-card combined-card"
-                style="background: linear-gradient(135deg, #10B981, #3B82F6);">
-                <div class="card-glass">
-                  <i class="fas fa-hands-praying main-icon"></i>
-                  <div class="verse-content">
-                    <p class="verse-text">"Indahnya Keberagaman dalam Iman"</p>
-                    <p class="verse-ref">SMKN 4 Banjarmasin</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </header>
-
-        <div class="religi-tabs-content">
-          <!-- Muslim Section -->
-          <section class="section" id="proker-muslim">
-            <div class="section-header-centered">
-              <h3><i class="fas fa-mosque"></i> Skenpat Muslim</h3>
-              <p class="subtitle">Pembinaan Iman & Taqwa Siswa Muslim</p>
-            </div>
-            <div class="portal-grid">
-              <div class="religi-premium-card muslim">
-                <div class="icon-wrap"><i class="fas fa-quran"></i></div>
-                <div class="card-text">
-                  <h4>Tadarus Al-Qur'an</h4>
-                  <p>Pembiasaan membaca Al-Qur'an bersama setiap pagi di kelas.</p>
-                </div>
-              </div>
-              <div class="religi-premium-card muslim">
-                <div class="icon-wrap"><i class="fas fa-hands-holding-circle"></i></div>
-                <div class="card-text">
-                  <h4>PHBI Islam</h4>
-                  <p>Peringatan Hari Besar Islam (Maulid, Isra Mi'raj, dll).</p>
-                </div>
-              </div>
-              <div class="religi-premium-card muslim">
-                <div class="icon-wrap"><i class="fas fa-box-open"></i></div>
-                <div class="card-text">
-                  <h4>Jumat Berkah</h4>
-                  <p>Program infaq sukarela setiap hari Jumat untuk sosial.</p>
-                </div>
-              </div>
-              <div class="religi-premium-card muslim">
-                <div class="icon-wrap"><i class="fas fa-users-rays"></i></div>
-                <div class="card-text">
-                  <h4>Sanlat & Istighosah</h4>
-                  <p>Pesantren Kilat dan doa bersama menjelang ujian.</p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <hr style="border: 0; border-top: 2px dashed var(--border-color); margin: 4rem 2rem;">
-
-          <!-- Kristen Section -->
-          <section class="section" id="proker-kristen">
-            <div class="section-header-centered">
-              <h3><i class="fas fa-cross"></i> Christ Skenpat</h3>
-              <p class="subtitle">Persekutuan & Pelayanan Kasih Siswa Kristiani</p>
-            </div>
-            <div class="portal-grid">
-              <div class="religi-premium-card kristen">
-                <div class="icon-wrap"><i class="fas fa-bible"></i></div>
-                <div class="card-text">
-                  <h4>Persekutuan Siswa</h4>
-                  <p>Pertemuan rutin untuk memuji Tuhan dan pendalaman Alkitab.</p>
-                </div>
-              </div>
-              <div class="religi-premium-card kristen">
-                <div class="icon-wrap"><i class="fas fa-church"></i></div>
-                <div class="card-text">
-                  <h4>PHBK Kristen</h4>
-                  <p>Peringatan Hari Besar Kristiani (Natal, Paskah, dll).</p>
-                </div>
-              </div>
-              <div class="religi-premium-card kristen">
-                <div class="icon-wrap"><i class="fas fa-heart"></i></div>
-                <div class="card-text">
-                  <h4>Aksi Kasih</h4>
-                  <p>Kunjungan panti asuhan dan aksi sosial diakonika.</p>
-                </div>
-              </div>
-              <div class="religi-premium-card kristen">
-                <div class="icon-wrap"><i class="fas fa-users-rays"></i></div>
-                <div class="card-text">
-                  <h4>Retreat</h4>
-                  <p>Kegiatan pembinaan iman tahunan di luar sekolah.</p>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-      </div>
-
-      <!-- Skenpat Humas Tab -->
-      <div id="tab-humas" class="tab-content">
-        <header class="header humas-header">
-          <div class="header-container">
-            <div class="header-content">
-              <div class="header-badge humas-badge">📢 Sektor Humas</div>
-              <h2 class="hero-title">Humas <span>Skenpat</span></h2>
-              <p>Pusat informasi publik dan engagement media sosial resmi OSIS SMKN 4 Banjarmasin. Terhubung dengan kami
-                di berbagai platform.</p>
-              <div class="header-cta">
-                <a href="https://www.instagram.com/smkn4banjarmasin" target="_blank" class="cta-pill primary">
-                  Instagram</a>
-                <a href="https://www.youtube.com/channel/UCxbHXnN7paUGIs_NRdTpc0Q" target="_blank"
-                  class="cta-pill secondary"> YouTube</a>
-              </div>
-            </div>
-            <div class="header-image-wrapper">
-              <div class="religi-hero-card humas-card"
-                style="background: linear-gradient(135deg, #9b59b6, #8e44ad); border: 4px solid #8e44ad;">
-                <div class="card-glass">
-                  <i class="fas fa-bullhorn main-icon"></i>
-                  <div class="verse-content">
-                    <p class="verse-text">"Stay Connected, Stay Updated!"</p>
-                    <p class="verse-ref">@smkn4banjarmasin</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </header>
-
-        <section class="section">
-          <div class="section-header-centered">
-            <h3><i class="fas fa-share-nodes"></i> Media Sosial & Kanal Informasi</h3>
-            <p class="subtitle">Klik untuk mengunjungi kanal resmi kami</p>
-          </div>
-          <div class="team-showcase-grid">
-            <a href="https://www.instagram.com/osissmkn4bjm/" target="_blank" class="team-premium-card featured">
-              <div class="team-avatar-wrapper">
-                <img
-                  src="https://sf0.market.xiaomi.com/thumbnail/png/w300/https://file.market.xiaomi.com/download/AppStore/0be213516ff78481ea9d2016f0b43f1564072e2c9"
-                  alt="Instagram" loading="lazy" decoding="async">
-              </div>
-              <div class="team-info">
-                <h4>Instagram</h4>
-                <p>Resmi OSIS SMKN 4 Banjarmasin</p>
-              </div>
-            </a>
-            <a href="https://www.tiktok.com/@osissmkn4bjm" target="_blank" class="team-premium-card">
-              <div class="team-avatar-wrapper">
-                <img src="https://freelogopng.com/images/all_img/1655894889tiktok-logo.png" alt="Tiktok" loading="lazy" decoding="async">
-              </div>
-              <div class="team-info">
-                <h4>Tiktok</h4>
-                <p>Resmi OSIS SMKN 4 Banjarmasin</p>
-              </div>
-            </a>
-            <a href="https://whatsapp.com/channel/0029VazafASEAKWJNcQzlS0U" target="_blank" class="team-premium-card">
-              <div class="team-avatar-wrapper">
-                <img src="https://img.freepik.com/premium-vector/vector-whatsapp-social-media-logo_1093524-447.jpg"
-                  alt="WhatsApp" loading="lazy" decoding="async">
-              </div>
-              <div class="team-info">
-                <h4>WhatsApp</h4>
-                <p>Resmi OSIS SMKN 4 Banjarmasin</p>
-              </div>
-            </a>
-          </div>
-        </section>
-      </div>
-  </div>
-
-
-
-  <!-- Alat & Layanan Section (New Tab) -->
-  <div id="tab-alat" class="tab-content">
-    <header class="header header-centered">
-      <div class="header-badge">🛠️ Pusat Layanan & Alat</div>
-      <h2 class="hero-title">Eksplorasi <span>Alat</span> Skenpat</h2>
-      <p>Temukan berbagai layanan digital, alat bantu belajar, dan sarana informasi siswa dalam satu tempat.</p>
-    </header>
-
-    <section class="section">
-      <!-- Search & Filter Controls -->
-      <div class="search-filter-container">
-        <div class="search-wrapper">
-          <i class="fas fa-search search-icon"></i>
-          <input type="text" id="alat-search" placeholder="Cari layanan atau alat..." aria-label="Cari alat">
-        </div>
-
-        <div class="category-filters" id="category-filters">
-          <button class="filter-btn active" data-category="semua">Semua</button>
-          <button class="filter-btn" data-category="umum">Umum</button>
-          <button class="filter-btn" data-category="akademik">Akademik</button>
-          <button class="filter-btn" data-category="kreatif">Kreatif</button>
-          <button class="filter-btn" data-category="religi">Religi</button>
-        </div>
-      </div>
-
-      <!-- Tools Grid -->
-      <div class="portal-grid" id="alat-grid">
-        <div style="text-align: center; padding: 2rem; width: 100%; color: var(--text-muted); grid-column: 1 / -1;">
-          Memuat data...</div>
-      </div>
-    </section>
   </div>
 
   <!-- Footer -->
@@ -942,7 +154,6 @@
     <div class="footer-links">
       <a href="https://flessan.pages.dev" rel="noopener">Developer</a>
       <a href="#" onclick="showPrivacyPolicy()">Privacy Policy</a>
-      <a href="#" onclick="showTermsOfService()">Terms of Service</a>
     </div>
     <div style="margin-top:15px;">
       &copy; 2026 <a href="https://id.wikipedia.org/wiki/SMK_Negeri_4_Banjarmasin" rel="noopener">Skenpat
@@ -954,7 +165,7 @@
   </div>
 
   <script>
-    // Theme Management (Retained functionality)
+    // Theme Management
     const initTheme = () => {
       const savedTheme = localStorage.getItem('theme') || 'light';
       document.documentElement.setAttribute('data-theme', savedTheme);
@@ -997,11 +208,6 @@
         const tabs = document.querySelectorAll('.tab-content');
         const navLinks = document.querySelectorAll('.navbar-menu a');
 
-        // Legacy redirects
-        if (tabName === 'muslim' || tabName === 'kristen') {
-          tabName = 'keagamaan';
-        }
-
         let found = false;
         tabs.forEach(tab => {
           if (tab.id === `tab-${tabName}`) {
@@ -1012,13 +218,11 @@
           }
         });
 
-        // Fallback to home if tab not found
         if (!found) {
           document.getElementById('tab-beranda').classList.add('active');
           tabName = 'beranda';
         }
 
-        // Update active class in navbar
         navLinks.forEach(link => {
           const href = link.getAttribute('href');
           if (href.includes(`tab=${tabName}`)) {
@@ -1028,7 +232,6 @@
           }
         });
 
-        // Scroll to top
         window.scrollTo({ top: 0, behavior: 'instant' });
       };
 
@@ -1037,11 +240,10 @@
       const initialTab = urlParams.get('tab') || 'beranda';
       switchTab(initialTab);
 
-      // Handle tab switching without reload
+      // Handle tab switching
       document.querySelectorAll('.navbar-menu a').forEach(link => {
         link.addEventListener('click', (e) => {
           const href = link.getAttribute('href');
-
           if (href.includes('tab=')) {
             e.preventDefault();
             const urlParams = new URLSearchParams(href.split('?')[1]);
@@ -1049,25 +251,10 @@
             switchTab(tabName);
             const newUrl = window.location.pathname + '?tab=' + tabName;
             window.history.pushState({ tab: tabName }, '', newUrl);
-          } else if (href.startsWith('#')) {
-            // Anchor link handling
-            const currentTab = document.querySelector('.tab-content.active').id;
-            if (currentTab !== 'tab-beranda') {
-              // Switch to beranda if clicking home anchors from another tab
-              switchTab('beranda');
-              const newUrl = window.location.pathname + '?tab=beranda' + href;
-              window.history.pushState({ tab: 'beranda' }, '', newUrl);
-              // Small timeout to allow tab to show before browser handles scroll
-              setTimeout(() => {
-                const target = document.querySelector(href);
-                if (target) target.scrollIntoView({ behavior: 'smooth' });
-              }, 100);
-            }
           }
         });
       });
 
-      // Handle browser back/forward
       window.addEventListener('popstate', (e) => {
         const tab = (e.state && e.state.tab) || 'beranda';
         switchTab(tab);
@@ -1088,22 +275,12 @@
         icon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
       });
 
-      // Close menu on link click
-      document.querySelectorAll('.navbar-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-          navbarMenu.classList.remove('active');
-          navbarToggle.querySelector('i').className = 'fas fa-bars';
-        });
-      });
-
-      // Navbar Scroll Effect
+      // Scroll Back to Top
       window.addEventListener('scroll', () => {
         const nav = document.querySelector('.navbar');
         if (window.scrollY > 50) nav.classList.add('scrolled');
         else nav.classList.remove('scrolled');
-      });
-      // Scroll Back to Top
-      window.addEventListener('scroll', () => {
+
         if (window.scrollY > 300) {
           backBtn.classList.add('visible');
         } else {
@@ -1118,522 +295,17 @@
       // Fun Fact Button
       fab.addEventListener('click', () => {
         const funFacts = [
-          "👨‍💻 Website ini dibuat oleh seorang siswa RPL kelas 10, dengan semangat dan bantuan dari AI, haha. Enggak ada yang istimewa, cuma hobi dan belajar aja nih.",
-          "🌐 Pemilik subdomain ini adalah murid dari sekolah, tanpa ada perintah atau arahan dari siapapun. Ini murni hasil kerja keras sendiri dan semangat belajar.",
-          "✨ Tanpa menggunakan framework apa pun, cuma HTML, CSS, dan JavaScript. Murni. Situs ini dibuat awalnya bermodalkan hp, dan ini situs berdasar HTML statis, biar simpel dan mudah dideploy.",
-          "♻️ Situs ini selalu dalam proses update. Kalau mau tanya-tanya atau mempunyai  saran, langsung aja hubungi <a href='https://flessan.pages.dev/#contact' target='_blank' style='color:#ffd966;text-decoration:underline;'>Klik aku!</a>. Jangan sungkan, ya!",
-          "🚀 Ditenagai oleh dua platform: GitHub dan Cloudflare, yang membantu situs ini tetap berjalan lancar dan aman. Tanpa mereka, mungkin nggak bisa kayak gini.",
-          "🧑‍💻 Admin ini rela mengorbankan waktu dan tenaga tanpa bayaran, buat bikin situs ini tetap eksis dan bermanfaat. Jadi, ya, ini benar-benar hasil kerja sukarela dan passion.",
-          "😄 Kamu nyoba bacain semua fakta menarik di sini? wkwk, nih reward : *(Kesempatan mendapatkan chat langka turun 1% buat yang baca sampai habis)*",
-          "🎉 Mendukung SMKN 4 Banjarmasin, mari sebarkan energi positif dan semangat belajar buat semua!",
-          "✨ Fitur baru yang keren bakal segera hadir. Pantau terus update dari situs ini, jangan sampai kelewatan!",
-          "💖 Kalau mau bantu admin ini, silakan donasi di sini: <a href='https://flessan.pages.dev/donate' target='_blank' style='color:#ffd966;text-decoration:underline;'>Klik aku!</a>.",
-          "Admin ini belum kerja nich, jadi bantuin ya orang baik, biar makin semangat bikin projek keren!",
-          "🔥 DAMN! Aku banget suka sama Skenpat!",
-          "SMK Negeri 4 Banjarmasin, tempat aku belajar dan berkarya!",
-          "🌟 DAMN! Aku cinta banget sama Banjarmasin!",
-          "🛶 Kayuh Baimbai Waja Sampai Kaputing",
-          "📱 UI desainku dibuat supaya enak dipakai scrolling di hape, jadi nggak bikin capek dan tetap keren dilihat."
+          "👨‍💻 Website ini dibuat oleh seorang siswa RPL kelas 10.",
+          "🌐 Pemilik subdomain ini adalah murid dari sekolah.",
+          "✨ Tanpa menggunakan framework apa pun, cuma HTML, CSS, dan JavaScript.",
+          "📱 UI desainku dibuat supaya enak dipakai scrolling di hape."
         ];
         const randomFact = funFacts[Math.floor(Math.random() * funFacts.length)];
-        showModal("Fun Fact /\ Fakta Unik ", `<p style="text-align: center; padding: 20px;">${randomFact}</p>`);
-      });
-
-      // --- REFACTORED MUSIC PLAYER LOGIC ---
-      const audioPlayer = document.getElementById('audio-player');
-      const playPauseBtn = document.getElementById('play-pause-btn');
-      const prevBtn = document.getElementById('prev-btn');
-      const nextBtn = document.getElementById('next-btn');
-      const shuffleBtn = document.getElementById('shuffle-btn');
-      const repeatBtn = document.getElementById('repeat-btn');
-      const progressBar = document.getElementById('progress-bar');
-      const progressFill = document.getElementById('progress-fill');
-      const currentTimeEl = document.getElementById('current-time');
-      const totalTimeEl = document.getElementById('total-time');
-      const volumeBtn = document.getElementById('volume-btn');
-      const volumeSlider = document.getElementById('volume-slider');
-      const playlistToggle = document.getElementById('playlist-toggle');
-      const playlistItemsContainer = document.getElementById('playlist-items');
-      const playlistItemElements = document.querySelectorAll('.playlist-item');
-      const musicPlayerSection = document.querySelector('.music-player-section');
-      const trackTitle = document.getElementById('track-title');
-      const trackArtist = document.getElementById('track-artist');
-      const playerArtwork = document.getElementById('player-artwork');
-
-      let currentTrackIndex = 0;
-      let isShuffle = false;
-      let isRepeat = false;
-
-      const tracks = Array.from(playlistItemElements).map(item => ({
-        src: item.dataset.src,
-        title: item.dataset.title,
-        artist: item.dataset.artist,
-        img: item.dataset.img
-      }));
-
-      const fmtTime = s => isNaN(s) ? '0:00' : `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
-
-      const updateTrackUI = () => {
-        const track = tracks[currentTrackIndex];
-        audioPlayer.src = track.src;
-        trackTitle.textContent = track.title;
-        trackArtist.textContent = track.artist;
-        playerArtwork.src = track.img;
-
-        playlistItemElements.forEach((el, idx) => {
-          el.classList.toggle('active', idx === currentTrackIndex);
-        });
-
-        // Reset progress
-        progressBar.value = 0;
-        progressFill.style.width = '0%';
-        currentTimeEl.textContent = '0:00';
-      };
-
-      const playTrack = () => {
-        audioPlayer.play();
-        playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-        musicPlayerSection.classList.add('playing');
-      };
-
-      const pauseTrack = () => {
-        audioPlayer.pause();
-        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-        musicPlayerSection.classList.remove('playing');
-      };
-
-      playPauseBtn.addEventListener('click', () => {
-        audioPlayer.paused ? playTrack() : pauseTrack();
-      });
-
-      const nextTrack = () => {
-        if (isShuffle) {
-          currentTrackIndex = Math.floor(Math.random() * tracks.length);
-        } else {
-          currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
-        }
-        updateTrackUI();
-        playTrack();
-      };
-
-      const prevTrack = () => {
-        currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
-        updateTrackUI();
-        playTrack();
-      };
-
-      nextBtn.addEventListener('click', nextTrack);
-      prevBtn.addEventListener('click', prevTrack);
-
-      audioPlayer.addEventListener('ended', () => {
-        if (isRepeat) {
-          playTrack();
-        } else {
-          nextTrack();
-        }
-      });
-
-      audioPlayer.addEventListener('timeupdate', () => {
-        const pct = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-        progressBar.value = pct || 0;
-        progressFill.style.width = `${pct || 0}%`;
-        currentTimeEl.textContent = fmtTime(audioPlayer.currentTime);
-      });
-
-      audioPlayer.addEventListener('loadedmetadata', () => {
-        totalTimeEl.textContent = fmtTime(audioPlayer.duration);
-      });
-
-      progressBar.addEventListener('input', () => {
-        const time = (progressBar.value / 100) * audioPlayer.duration;
-        audioPlayer.currentTime = time;
-        progressFill.style.width = `${progressBar.value}%`;
-      });
-
-      // Volume Control
-      volumeSlider.addEventListener('input', (e) => {
-        const vol = e.target.value;
-        audioPlayer.volume = vol;
-        const icon = volumeBtn.querySelector('i');
-        if (vol == 0) icon.className = 'fas fa-volume-mute';
-        else if (vol < 0.5) icon.className = 'fas fa-volume-down';
-        else icon.className = 'fas fa-volume-up';
-      });
-
-      volumeBtn.addEventListener('click', () => {
-        if (audioPlayer.muted) {
-          audioPlayer.muted = false;
-          volumeSlider.value = audioPlayer.volume;
-          updateVolumeIcon(audioPlayer.volume);
-        } else {
-          audioPlayer.muted = true;
-          volumeSlider.value = 0;
-          volumeBtn.querySelector('i').className = 'fas fa-volume-mute';
-        }
-      });
-
-      const updateVolumeIcon = (vol) => {
-        const icon = volumeBtn.querySelector('i');
-        if (vol == 0) icon.className = 'fas fa-volume-mute';
-        else if (vol < 0.5) icon.className = 'fas fa-volume-down';
-        else icon.className = 'fas fa-volume-up';
-      };
-
-      // Shuffle & Repeat
-      shuffleBtn.addEventListener('click', () => {
-        isShuffle = !isShuffle;
-        shuffleBtn.style.color = isShuffle ? 'var(--primary)' : 'inherit';
-      });
-
-      repeatBtn.addEventListener('click', () => {
-        isRepeat = !isRepeat;
-        repeatBtn.style.color = isRepeat ? 'var(--primary)' : 'inherit';
-      });
-
-      // Playlist Toggle
-      playlistToggle.addEventListener('click', () => {
-        playlistItemsContainer.classList.toggle('active');
-        const icon = playlistToggle.querySelector('i');
-        icon.className = playlistItemsContainer.classList.contains('active') ? 'fas fa-chevron-up' : 'fas fa-chevron-down';
-      });
-
-      // Playlist Item Selection
-      playlistItemElements.forEach((item, index) => {
-        item.addEventListener('click', () => {
-          currentTrackIndex = index;
-          updateTrackUI();
-          playTrack();
-        });
-      });
-
-      // Download
-      document.getElementById('download-btn').addEventListener('click', () => {
-        const a = document.createElement('a');
-        a.href = audioPlayer.src;
-        a.download = `${tracks[currentTrackIndex].title}.mp3`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        showModal("Unduhan Dimulai", `<p style="text-align: center; padding: 20px;">Lagu ${tracks[currentTrackIndex].title} sedang diunduh.</p>`);
-      });
-
-      // Lyrics Modal
-      const lyricsBtn = document.getElementById('show-lyrics-modal-btn');
-      const lyricsModal = document.getElementById('lyrics-modal');
-      const closeLyricsBtn = document.getElementById('close-lyrics-btn');
-
-      lyricsBtn.addEventListener('click', () => lyricsModal.classList.add('active'));
-      closeLyricsBtn.addEventListener('click', () => lyricsModal.classList.remove('active'));
-      lyricsModal.addEventListener('click', (e) => {
-        if (e.target === lyricsModal) lyricsModal.classList.remove('active');
-      });
-
-      // Timeline Logic
-      const timelineToggles = document.querySelectorAll('.timeline-toggle');
-      timelineToggles.forEach(toggle => {
-        toggle.addEventListener('click', () => {
-          const targetId = toggle.dataset.target;
-          const detailsElement = document.getElementById(targetId);
-          detailsElement.classList.toggle('active');
-          const icon = toggle.querySelector('i');
-          if (detailsElement.classList.contains('active')) {
-            toggle.innerHTML = 'Sembunyikan <i class="fas fa-chevron-up"></i>';
-          } else {
-            toggle.innerHTML = 'Selengkapnya <i class="fas fa-chevron-down"></i>';
-          }
-        });
-      });
-
-      // --- ALAT TAB LOGIC ---
-      const alatSearch = document.getElementById('alat-search');
-      const filterBtns = document.querySelectorAll('.filter-btn');
-      const alatGrid = document.getElementById('alat-grid');
-      let toolsData = [];
-
-      const renderTools = (tools) => {
-        if (!alatGrid) return;
-        alatGrid.innerHTML = tools.map(tool => `
-          <a href="${tool.link}" class="portal-card" data-category="${tool.category}" data-keywords="${tool.keywords}">
-            <div class="icon-wrapper" style="${tool.style || ''}"><i class="fas ${tool.icon}"></i></div>
-            <h4>${tool.title}</h4>
-            <p>${tool.desc}</p>
-          </a>
-        `).join('');
-      };
-
-      const filterAlat = () => {
-        const searchTerm = alatSearch.value.toLowerCase();
-        const activeFilter = document.querySelector('.filter-btn.active').dataset.category;
-
-        const filtered = toolsData.filter(tool => {
-          const matchesSearch = tool.title.toLowerCase().includes(searchTerm) ||
-            tool.desc.toLowerCase().includes(searchTerm) ||
-            tool.keywords.toLowerCase().includes(searchTerm);
-          const matchesCategory = activeFilter === 'semua' || tool.category === activeFilter;
-          return matchesSearch && matchesCategory;
-        });
-
-        renderTools(filtered);
-      };
-
-      // Load tools data
-      fetch('./aset/api/alat.json')
-        .then(res => res.json())
-        .then(data => {
-          toolsData = data;
-          renderTools(toolsData);
-        })
-        .catch(err => console.error('Error loading tools:', err));
-
-      if (alatSearch) {
-        alatSearch.addEventListener('input', filterAlat);
-      }
-
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          filterBtns.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          filterAlat();
-        });
+        showModal("Fun Fact", `<p style="text-align: center; padding: 20px;">${randomFact}</p>`);
       });
     });
 
-    // --- GLOBAL ADVANCED SEARCH V2 LOGIC ---
-    const globalSearchInput = document.getElementById('global-search-input');
-    const searchPreviewPane = document.getElementById('search-preview-pane');
-    const voiceSearchBtn = document.getElementById('voice-search-btn');
-    const recentList = document.querySelector('#recent-searches .suggestion-list');
-    const instantGrid = document.getElementById('instant-results-grid');
-
-    // Searchable Data Source
-    let searchData = [];
-
-    const loadSearchData = async () => {
-      try {
-        const [searchRes, articlesRes] = await Promise.all([
-          fetch('./aset/api/search.json'),
-          fetch('./aset/api/articles.json')
-        ]);
-        const sData = await searchRes.json();
-        const aData = await articlesRes.json();
-
-        // Map articles to search format
-        const mappedArticles = aData.map(art => ({
-          title: art.title,
-          desc: art.summary,
-          icon: "fa-book-open",
-          link: `artikel.html?id=${art.id}`,
-          cat: "Artikel",
-          kw: [art.category.toLowerCase(), "artikel", "baca", "panduan"]
-        }));
-
-        searchData = [...sData, ...mappedArticles];
-      } catch (err) {
-        console.error('Error loading search sources:', err);
-      }
-    };
-
-    loadSearchData();
-
-
-    const saveRecentSearch = (term) => {
-      let recents = JSON.parse(localStorage.getItem('recentSearches') || '[]');
-      if (!recents.includes(term) && term.length > 2) {
-        recents.unshift(term);
-        if (recents.length > 5) recents.pop();
-        localStorage.setItem('recentSearches', JSON.stringify(recents));
-        renderRecentSearches();
-      }
-    };
-
-    const renderRecentSearches = () => {
-      const recents = JSON.parse(localStorage.getItem('recentSearches') || '[]');
-      recentList.innerHTML = recents.map(r => `<span class="recent-item">${r}</span>`).join('');
-      document.querySelectorAll('.recent-item').forEach(item => {
-        item.addEventListener('click', () => {
-          globalSearchInput.value = item.textContent;
-          performSearch(item.textContent);
-        });
-      });
-    };
-
-    let selectedResultIndex = -1;
-
-    const performSearch = (query) => {
-      if (!query) {
-        searchPreviewPane.classList.remove('active');
-        document.body.classList.remove('search-focused');
-        selectedResultIndex = -1;
-        return;
-      }
-
-      const q = query.toLowerCase();
-      const results = searchData.filter(item =>
-        item.title.toLowerCase().includes(q) ||
-        item.desc.toLowerCase().includes(q) ||
-        item.kw.some(k => k.includes(q))
-      ).slice(0, 5);
-
-      if (results.length > 0) {
-        document.body.classList.add('search-focused');
-        instantGrid.innerHTML = results.map((res, idx) => {
-          const highlight = (text) => text.replace(new RegExp(q, 'gi'), match => `<span class="search-highlight">${match}</span>`);
-          return `
-            <div class="instant-card ${idx === selectedResultIndex ? 'selected' : ''}" 
-                 onclick="handleSearchClick('${res.link}')" 
-                 data-index="${idx}"
-                 data-link="${res.link}">
-              <div class="icon-small"><i class="fas ${res.icon}"></i></div>
-              <div class="info">
-                <h5>${highlight(res.title)}</h5>
-                <p>${highlight(res.desc)}</p>
-              </div>
-              <i class="fas fa-arrow-right" style="font-size: 0.8rem; color: var(--primary);"></i>
-            </div>
-          `;
-        }).join('');
-        searchPreviewPane.classList.add('active');
-      } else {
-        instantGrid.innerHTML = '<p style="text-align:center; padding: 20px; font-size: 0.9rem; color: var(--text-muted);">Tidak ada hasil ditemukan.</p>';
-        searchPreviewPane.classList.add('active');
-      }
-    };
-
-    window.handleSearchClick = (link) => {
-      saveRecentSearch(globalSearchInput.value);
-      if (link.startsWith('?tab=') || link.includes('.html')) {
-        window.location.href = link;
-      } else if (link.startsWith('#')) {
-        window.location.hash = link;
-        searchPreviewPane.classList.remove('active');
-      } else {
-        window.open(link, '_blank');
-      }
-    };
-
-    globalSearchInput.addEventListener('input', (e) => {
-      selectedResultIndex = -1;
-      performSearch(e.target.value);
-    });
-
-    globalSearchInput.addEventListener('focus', () => {
-      if (globalSearchInput.value) {
-        performSearch(globalSearchInput.value);
-      } else {
-        searchPreviewPane.classList.add('active');
-        document.body.classList.add('search-focused');
-      }
-    });
-
-    globalSearchInput.addEventListener('keydown', (e) => {
-      const items = instantGrid.querySelectorAll('.instant-card');
-      if (items.length === 0) return;
-
-      if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        selectedResultIndex = (selectedResultIndex + 1) % items.length;
-        updateSelection(items);
-      } else if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        selectedResultIndex = (selectedResultIndex - 1 + items.length) % items.length;
-        updateSelection(items);
-      } else if (e.key === 'Enter' && selectedResultIndex > -1) {
-        e.preventDefault();
-        const link = items[selectedResultIndex].getAttribute('data-link');
-        handleSearchClick(link);
-      } else if (e.key === 'Escape') {
-        globalSearchInput.blur();
-        closeSearch();
-      }
-    });
-
-    const updateSelection = (items) => {
-      items.forEach((item, idx) => {
-        item.classList.toggle('selected', idx === selectedResultIndex);
-        if (idx === selectedResultIndex) {
-          item.scrollIntoView({ block: 'nearest' });
-        }
-      });
-    };
-
-    const closeSearch = () => {
-      searchPreviewPane.classList.remove('active');
-      document.body.classList.remove('search-focused');
-      selectedResultIndex = -1;
-    };
-
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.search-container-v2') && !e.target.closest('.trend-tag') && !e.target.closest('.recent-item')) {
-        closeSearch();
-      }
-    });
-
-    document.getElementById('search-overlay')?.addEventListener('click', closeSearch);
-
-    // Voice Search Integration
-    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-      const recognition = new SpeechRecognition();
-      recognition.lang = 'id-ID';
-
-      recognition.onstart = () => voiceSearchBtn.classList.add('listening');
-      recognition.onend = () => voiceSearchBtn.classList.remove('listening');
-      recognition.onresult = (event) => {
-        const transcript = event.results[0][0].transcript;
-        globalSearchInput.value = transcript;
-        performSearch(transcript);
-      };
-
-      voiceSearchBtn.addEventListener('click', () => recognition.start());
-    } else {
-      voiceSearchBtn.style.display = 'none';
-    }
-
-    // --- SEARCH STICKY & COMPACT SYNC ---
-    const globalSearchSection = document.querySelector('.global-search-section');
-    const navbar = document.querySelector('.navbar');
-
-    const syncSearchSticky = () => {
-      if (globalSearchSection && navbar) {
-        // Sticky offset sync
-        if (navbar.classList.contains('scrolled')) {
-          globalSearchSection.style.top = '65px';
-        } else {
-          globalSearchSection.style.top = '75px';
-        }
-
-        // Compact state sync
-        if (window.scrollY > 150 && document.activeElement !== globalSearchInput) {
-          globalSearchSection.classList.add('compact');
-        } else {
-          globalSearchSection.classList.remove('compact');
-        }
-      }
-    };
-
-    // Expand when focused
-    globalSearchInput?.addEventListener('focus', () => {
-      globalSearchSection?.classList.remove('compact');
-    });
-
-    // Re-check when blurred
-    globalSearchInput?.addEventListener('blur', () => {
-      setTimeout(syncSearchSticky, 100); // Small delay to allow blur to complete
-    });
-
-    window.addEventListener('scroll', syncSearchSticky);
-    syncSearchSticky(); // Initial check
-
-    // Initial Render
-    renderRecentSearches();
-    document.querySelectorAll('.trend-tag').forEach(tag => {
-      tag.addEventListener('click', () => {
-        globalSearchInput.value = tag.textContent;
-        performSearch(tag.textContent);
-      });
-    });
-
-    // Modal Utility (Retained & Styled)
+    // Modal Utility
     window.showModal = function (title, content) {
       const existingModal = document.getElementById('custom-modal');
       if (existingModal) existingModal.remove();
@@ -1651,7 +323,7 @@
             ${content}
           </div>
           <div class="modal-actions">
-            <button class="btn" style="background:var(--primary); color:white; width:100%; padding:10px; cursor:pointer;" onclick="this.closest('.modal-overlay').remove()">Inggih, Sip.</button>
+            <button class="btn" style="background:var(--primary); color:white; width:100%; padding:10px; cursor:pointer;" onclick="this.closest('.modal-overlay').remove()">Tutup</button>
           </div>
         </div>
       `;
@@ -1663,10 +335,6 @@
 
     window.showPrivacyPolicy = function () {
       showModal("Kebijakan Privasi", `<p>Kami tidak mengumpulkan data pribadi apa pun. Website ini murni untuk informasi.</p>`);
-    };
-
-    window.showTermsOfService = function () {
-      showModal("Syarat & Ketentuan", `<p>Website ini adalah website resmi buatan OSIS SMK Negeri 4 Banjarmasin yang dibuat untuk memudahkan siswa SMKN 4 Banjarmasin.<br>Fun Fact: Site ini adalah Project Kesembilan <a style="color: var(--primary);" href='https://id.wikipedia.org/wiki/Pengguna:Flessan'>Thio Saputra</a></p>`);
     };
   </script>
 </body>
