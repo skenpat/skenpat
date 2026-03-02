@@ -171,6 +171,16 @@
         overflow: hidden;
     }
 
+    @media (max-width: 768px) {
+        .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            margin: 0 auto;
+        }
+    }
+
     .btn:hover {
         transform: translate(-3px, -3px);
         box-shadow: var(--shadow-hover);
@@ -181,6 +191,24 @@
     .btn:active {
         transform: translate(2px, 2px);
         box-shadow: 1px 1px 0px var(--border-color);
+    }
+
+    @media (max-width: 468px) {
+        .btn {
+            padding: 12px;
+            justify-content: center;
+            width: auto;
+            min-width: 67px;
+        }
+
+        .btn .btn-text {
+            display: none;
+        }
+
+        .btn i {
+            margin: 0;
+            font-size: 1.2rem;
+        }
     }
 
     .btn-secondary {
