@@ -1,9 +1,9 @@
-const CACHE_NAME = 'skenpat-cache-v1';
+const CACHE_NAME = 'skenpat-cache-v2';
 const urlsToCache = [
   '/',
-  '/aset/skenpat.css',
-  '/aset/sken.js',
-  '/aset/non-critical.css',
+  '/index.html',
+  '/aset/css/style.css',
+  '/aset/js/sken.js',
   '/manifest.json',
   'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap&font-display=swap',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
