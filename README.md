@@ -96,6 +96,37 @@ Kami terbuka untuk kontribusi dari seluruh warga sekolah dan masyarakat:
 - Berikan informasi yang akurat dan terbaru
 - Ikuti panduan gaya penulisan yang telah ditetapkan
 
+## ⚙️ Panduan Teknis (Developer)
+
+### Menjalankan website secara lokal
+Karena proyek ini berbasis static site, Anda bisa menjalankan server lokal sederhana:
+
+```bash
+python -m http.server 8080
+```
+
+Lalu buka `http://localhost:8080` di browser.
+
+### Struktur folder penting
+- `index.html` → halaman utama portal.
+- `app/` → entry halaman versi web-app.
+- `aset/css/` → stylesheet utama.
+- `aset/js/` → JavaScript client termasuk service worker.
+- `aset/api/` → data JSON statis (artikel/pencarian/dll).
+- `public/_headers` → konfigurasi header & cache policy untuk deployment.
+
+### Quality checks sebelum merge
+Jalankan pemeriksaan link internal agar tidak ada asset/path lokal yang rusak:
+
+```bash
+python tools/check_internal_links.py
+```
+
+Checklist ringan sebelum merge:
+- Tidak ada broken internal link.
+- Cek tampilan mobile + desktop pada halaman yang diubah.
+- Pastikan perubahan tidak merusak navigasi utama.
+
 ## 📄 Lisensi
 
 Proyek ini dilisensikan under MIT License - lihat file [LICENSE](LICENSE) untuk detail informasi.
