@@ -112,12 +112,24 @@
       </a>
       <ul class="navbar-menu" id="navbar-menu">
         <li><a href="index.html?tab=beranda">Beranda</a></li>
-        <li><a href="#team">Tim</a></li>
-        <li><a href="#profile">Profil</a></li>
-        <li><a href="#music-player">Mars</a></li>
-        <li><a href="#timeline">Acara</a></li>
-        <li><a href="../articles.html">Artikel</a></li>
-        <li><a href="index.html?tab=tentang">Tentang</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">Profil <i class="fas fa-chevron-down"
+              style="font-size: 0.8em; margin-left: 4px;"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="#profile">Visi Misi</a></li>
+            <li><a href="#team">Tim Skenpat</a></li>
+            <li><a href="index.html?tab=tentang">Tentang Digital</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">Eksplor <i class="fas fa-chevron-down"
+              style="font-size: 0.8em; margin-left: 4px;"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="#timeline">Acara</a></li>
+            <li><a href="../articles.html">Artikel</a></li>
+            <li><a href="#music-player">Mars</a></li>
+          </ul>
+        </li>
       </ul>
       <div class="navbar-actions">
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
@@ -262,42 +274,83 @@
             4 BJM.</p>
           <div class="portal-grid">
             <a href="https://l.instagram.com/?u=https%3A%2F%2Fforms.gle%2F7vwxuxU3iwuogYYi8%3Ffbclid%3DPAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnUpyz_3hduYIRZY78Oy-kpbtZ8OXI7lwtoashpnmuM0c5QhOybb00dBwHSek_aem_E0_xZ04lTSotesB5MCsHdA&e=AT3hhIMnwQ8o9kSYu1B5nwd2Zs5MFXwKmx7HpYX5wuV_N5FvOrMXED48koql6W0xhX8s30-CO_8O_dr97oMq-jSQoMVf-PlKFTjWxMYcTQ"
-              class="portal-card">
+              class="portal-card" onclick="showPortalPopup(event, this)">
               <div class="icon-wrapper"><i class="fas fa-heart"></i></div>
               <h4>Te Amo!</h4>
-              <p>Halo Skenpat People! 👋🏻 Kalian punya cerita yang mengganjal atau masalah namun bingung mau cerita ke
+              <p class="portal-desc" style="display: none;">Halo Skenpat People! 👋🏻 Kalian punya cerita yang mengganjal atau masalah namun bingung mau cerita ke
                 siapa? Pas banget! OSIS SMKN 4 BJM menghadirkan forum TEAMO (Tell Me About Something) sebagai wadah
                 aman. Di sini kalian bebas berbagi cerita, menyampaikan keluhan pribadi, serta memberikan kritik dan
                 saran membangun untuk kemajuan lingkungan sekolah. Tenang saja, privasi kalian dijamin aman 100%
                 kerahasiaannya. Yuk, berani curhat dan berbagi di TEAMO sekarang‼️</p>
             </a>
-            <a href="../eskul" class="portal-card">
+            <a href="../eskul" class="portal-card" onclick="showPortalPopup(event, this)">
               <div class="icon-wrapper"><i class="fas fa-users-cog"></i></div>
               <h4>Ekstrakurikuler</h4>
-              <p>Temukan informasi lengkap mengenai jadwal latihan rutin, daftar nama ekstrakurikuler yang tersedia,
+              <p class="portal-desc" style="display: none;">Temukan informasi lengkap mengenai jadwal latihan rutin, daftar nama ekstrakurikuler yang tersedia,
                 pengaturan fitur waktu kegiatan, serta berbagai detail penting lainnya untuk mengembangkan bakat dan
                 minat kalian.</p>
             </a>
-            <a href="../mapel" class="portal-card">
+            <a href="../mapel" class="portal-card" onclick="showPortalPopup(event, this)">
               <div class="icon-wrapper"><i class="fas fa-graduation-cap"></i></div>
               <h4>Jadwal Mapel</h4>
-              <p>Akses jadwal mata pelajaran kelas harian SMKN 4 BJM secara praktis. Pastikan kalian tidak melewatkan
+              <p class="portal-desc" style="display: none;">Akses jadwal mata pelajaran kelas harian SMKN 4 BJM secara praktis. Pastikan kalian tidak melewatkan
                 informasi pelajaran besok dan siap mempersiapkan diri untuk kegiatan belajar mengajar.</p>
             </a>
-            <a href="?tab=alat" class="portal-card">
+            <a href="?tab=alat" class="portal-card" onclick="showPortalPopup(event, this)">
               <div class="icon-wrapper"><i class="fas fa-tools"></i></div>
               <h4>Alat Bantu</h4>
-              <p>Koleksi alat bantu online atauu digital yang dirancang khusus para siswa untuk memudahkan pekerjaan
+              <p class="portal-desc" style="display: none;">Koleksi alat bantu online atauu digital yang dirancang khusus para siswa untuk memudahkan pekerjaan
                 administratif maupun akademik kalian menjadi lebih efisien dan teratur.</p>
             </a>
 
-            <a href="#music-player" class="portal-card">
+            <a href="#music-player" class="portal-card" onclick="showPortalPopup(event, this)">
               <div class="icon-wrapper"><i class="fas fa-music"></i></div>
               <h4>Mars Skenpat</h4>
-              <p>Dengarkan lagu kebangsaan sekolah (Mars Skenpat) untuk menumbuhkan semangat, hafalkan liriknya, dan
+              <p class="portal-desc" style="display: none;">Dengarkan lagu kebangsaan sekolah (Mars Skenpat) untuk menumbuhkan semangat, hafalkan liriknya, dan
                 nyanyikan bersama dengan penuh kebanggaan di setiap kesempatan.</p>
             </a>
           </div>
+
+          <script>
+            function showPortalPopup(event, element) {
+              event.preventDefault();
+              const title = element.querySelector('h4').innerHTML;
+              const desc = element.querySelector('.portal-desc').innerHTML;
+              const href = element.getAttribute('href');
+              
+              const existingModal = document.getElementById('custom-modal');
+              if (existingModal) existingModal.remove();
+
+              const modal = document.createElement('div');
+              modal.id = 'custom-modal';
+              modal.className = 'modal-overlay active';
+              modal.innerHTML = `
+                <div class="modal-content-wrapper">
+                  <div class="modal-header">
+                    <h2>${title}</h2>
+                    <button class="modal-close-btn">&times;</button>
+                  </div>
+                  <div class="modal-body">
+                    <p style="margin-bottom: 20px; font-size: 0.95rem; color: var(--text-main); line-height: 1.6; text-align: center;">${desc}</p>
+                  </div>
+                  <div class="modal-actions" style="display: flex; gap: 10px;">
+                    <button class="btn" style="background:var(--bg-secondary); color:var(--text-main); flex: 1; padding:10px; cursor:pointer; border: 1px solid var(--border-color); border-radius: 8px;" onclick="this.closest('.modal-overlay').remove()">Tutup</button>
+                    <a href="${href}" class="btn" onclick="document.getElementById('custom-modal').remove()" style="background:var(--primary); color:white; flex: 1; padding:10px; cursor:pointer; text-align: center; text-decoration: none; border-radius: 8px; font-weight: bold;">Buka</a>
+                  </div>
+                </div>
+              `;
+              document.body.appendChild(modal);
+
+              const closeBtn = modal.querySelector('.modal-close-btn');
+              if (closeBtn) {
+                closeBtn.addEventListener('click', () => modal.remove());
+              }
+              
+              modal.addEventListener('click', (e) => { 
+                if (e.target === modal) modal.remove(); 
+              });
+            }
+          </script>
         </section>
 
         <!-- Cbox Discussion Hub -->
