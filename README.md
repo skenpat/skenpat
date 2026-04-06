@@ -1,6 +1,6 @@
 
 
-# Website SMK Negeri 4 Banjarmasin (Skenpat)
+# Layanan Untuk Siswa/i SMK Negeri 4 Banjarmasin (Skenpat)
 
 [![Website](https://img.shields.io/badge/Website-smkn4bjm.sch.id-blue?style=for-the-badge&logo=globe)](https://smkn4bjm.sch.id)
 [![Subdomain](https://img.shields.io/badge/Subdomain-skenpat.pages.dev-green?style=for-the-badge&logo=github)](https://skenpat.pages.dev)
