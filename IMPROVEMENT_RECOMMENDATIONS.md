@@ -13,8 +13,8 @@ Dokumen ini merangkum area prioritas yang sebaiknya ditingkatkan berdasarkan rev
 
 Ditemukan beberapa referensi yang berpotensi broken:
 
-- `index.html` menggunakan tautan `./osis` dan `./green` (tanpa ekstensi) sementara file yang tersedia adalah `osis.html` dan `green.html`.
-- Di arsip OSIS (`2024-2025` dan `2025-2026`), stylesheet mengarah ke `/aset/osis.css`, padahal struktur saat ini menggunakan `/aset/css/osis.css`.
+- `index.html` menggunakan tautan `./Siswa` dan `./green` (tanpa ekstensi) sementara file yang tersedia adalah `Siswa.html` dan `green.html`.
+- Di arsip Siswa (`2024-2025` dan `2025-2026`), stylesheet mengarah ke `/aset/Siswa.css`, padahal struktur saat ini menggunakan `/aset/css/Siswa.css`.
 
 Rekomendasi:
 - Standarkan semua tautan internal ke path yang benar-benar ada.

@@ -21,7 +21,7 @@
         "link": "/eskul",
         "cat": "Umum",
         "kw": [
-            "osis",
+            "Siswa",
             "eskul",
             "habsyi",
             "habsi",
@@ -80,7 +80,7 @@
     },
     {
         "title": "Sektor Humas",
-        "desc": "Social media & info publik OSIS",
+        "desc": "Social media & info publik Siswa",
         "icon": "fa-bullhorn",
         "link": "?tab=humas",
         "cat": "Team",
@@ -91,7 +91,7 @@
             "whatsapp",
             "media",
             "sosial",
-            "osis"
+            "Siswa"
         ]
     },
     {
