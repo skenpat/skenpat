@@ -32,7 +32,7 @@ Mewujudkan Lulusan Yang Kompeten, Berkarakter, Berdaya Saing, Siap Menghadapi Du
 
 ### URL Utama
 - **Website Resmi**: [smkn4bjm.sch.id](https://smkn4bjm.sch.id)
-- **Web4Fun**: [skenpat](https://skenpat.pages.dev)
+- **Website buatan Siswa SMK**: [skenpat](https://skenpat.pages.dev)
 
 ### Fitur Website
 1. **Profil Sekolah**
